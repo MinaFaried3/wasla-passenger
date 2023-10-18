@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wasla/presentation/resources/theme_manager.dart';
 
 class WaslaApp extends StatelessWidget {
   //named constructor
@@ -19,6 +20,7 @@ class WaslaApp extends StatelessWidget {
         builder: (context, child) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'wasla',
+              theme: getApplicationTheme(),
               home: child,
             ),
         child: Scaffold());
