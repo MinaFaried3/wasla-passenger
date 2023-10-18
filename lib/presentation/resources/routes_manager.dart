@@ -6,6 +6,7 @@ import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
 import 'package:wasla/presentation/modules/splash/splash_view.dart';
+import 'package:wasla/presentation/resources/strings_manager.dart';
 
 class RoutesStrings {
   static const String splashRoute = '/';
@@ -43,7 +44,7 @@ class RouteGenerator {
     return MaterialPageRoute(
         builder: (_) => const Scaffold(
               body: Center(
-                child: Text("Screen is not found"),
+                child: Text(AppStrings.noRoute),
               ),
             ));
   }
