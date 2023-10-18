@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FontConstants {
   static const String fontFamily = "";
@@ -15,11 +14,11 @@ class FontWeightManager {
 }
 
 class FontSize {
-  static final double s12 = 12.0.sp;
-  static final double s14 = 14.0.sp;
-  static final double s16 = 16.0.sp;
-  static final double s17 = 17.0.sp;
-  static final double s18 = 18.0.sp;
-  static final double s20 = 20.0.sp;
-  static final double s22 = 22.0.sp;
+  static const double s12 = 12.0;
+  static const double s14 = 14.0;
+  static const double s16 = 16.0;
+  static const double s17 = 17.0;
+  static const double s18 = 18.0;
+  static const double s20 = 20.0;
+  static const double s22 = 22.0;
 }
