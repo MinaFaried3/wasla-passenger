@@ -6,6 +6,8 @@ import 'package:wasla/presentation/resources/values_manager.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.dark,
     // main colors
     primaryColor: ColorManager.thistle,
     primaryColorLight: ColorManager.lightFuchsia,

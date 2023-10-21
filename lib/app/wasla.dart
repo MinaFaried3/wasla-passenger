@@ -20,7 +20,8 @@ class WaslaApp extends StatelessWidget {
         builder: (context, child) => MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'wasla',
-              theme: getApplicationTheme(),
+              darkTheme: getApplicationTheme(),
+              themeMode: ThemeMode.dark,
               home: child,
             ),
         child: Scaffold());
