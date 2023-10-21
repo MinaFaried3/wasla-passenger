@@ -5,12 +5,10 @@ import 'package:wasla/presentation/modules/onboarding/onboarding_view.dart';
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
-import 'package:wasla/presentation/modules/splash/splash_view.dart';
 import 'package:wasla/presentation/resources/strings_manager.dart';
 
 class RoutesStrings {
-  static const String splashRoute = '/';
-  static const String onboardingRoute = '/onboarding';
+  static const String onboardingRoute = '/';
   static const String loginRoute = '/login';
   static const String registerRoute = '/register';
   static const String forgotPasswordRoute = '/forgot_password';
@@ -21,8 +19,6 @@ class RoutesStrings {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
-      case RoutesStrings.splashRoute:
-        return MaterialPageRoute(builder: (_) => const SplashScreen());
       case RoutesStrings.onboardingRoute:
         return MaterialPageRoute(builder: (_) => const OnboardingScreen());
       case RoutesStrings.loginRoute:

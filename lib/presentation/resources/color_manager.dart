@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class ColorManager {
-  static const Color navy = Color(0xff06142E);
-  static const Color teal = Color(0xff1B3358);
-  static const Color darkViolet = Color(0xff473E66);
+  static const Color navy = Color(0xff15192b);
+  static const Color lightNavy = Color(0xff252c49);
+  static const Color blue = Color(0xff3d5887);
+  static const Color lightBlue = Color(0xff909dbd);
+
+  static const Color paleVioletRed = Color(0xffba5874);
+  static const Color mauva = Color(0xff645577);
+  static const Color thistle = Color(0xffa1859c);
   static const Color lightFuchsia = Color(0xffF5D7DB);
-  static const Color orange = Color(0xffF1916D);
+  static const Color beige = Color(0xffF5e9d0);
 
   // new colors
-  static Color darkPrimary = const Color(0xff56cdf1);
-  static Color lightPrimary = const Color(0xCC1B3358); // color with 80% opacity
   static Color grey1 = const Color(0xff707070);
   static Color grey2 = const Color(0xff797979);
   static Color white = const Color(0xffFFFFFF);
