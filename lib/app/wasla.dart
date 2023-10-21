@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:wasla/presentation/resources/strings_manager.dart';
 import 'package:wasla/presentation/resources/theme_manager.dart';
 
 class WaslaApp extends StatelessWidget {
@@ -19,7 +20,7 @@ class WaslaApp extends StatelessWidget {
         splitScreenMode: true,
         builder: (context, child) => MaterialApp(
               debugShowCheckedModeBanner: false,
-              title: 'wasla',
+              title: AppStrings.appTitle,
               darkTheme: getApplicationTheme(),
               themeMode: ThemeMode.dark,
               home: child,
