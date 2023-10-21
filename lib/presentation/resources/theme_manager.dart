@@ -7,47 +7,47 @@ import 'package:wasla/presentation/resources/values_manager.dart';
 ThemeData getApplicationTheme() {
   return ThemeData(
     // main colors
-    primaryColor: ColorManager.teal,
-    primaryColorLight: ColorManager.lightPrimary,
-    primaryColorDark: ColorManager.navy,
+    primaryColor: ColorManager.thistle,
+    primaryColorLight: ColorManager.lightFuchsia,
+    primaryColorDark: ColorManager.mauva,
     disabledColor: ColorManager.grey1,
-    splashColor: ColorManager.lightFuchsia,
-    scaffoldBackgroundColor: ColorManager.white,
+    splashColor: ColorManager.beige,
+    scaffoldBackgroundColor: ColorManager.navy,
     // ripple effect color
     // cardView theme
     cardTheme: CardTheme(
-        color: ColorManager.white,
-        shadowColor: ColorManager.lightFuchsia,
+        color: ColorManager.beige,
+        shadowColor: ColorManager.grey1,
         elevation: AppSize.s4),
     // app bar theme
     appBarTheme: AppBarTheme(
         centerTitle: true,
-        color: ColorManager.white,
+        color: ColorManager.navy,
         elevation: AppSize.s0,
         // shadowColor: ColorManager.lightPrimary,
         titleTextStyle:
-            getRegularStyle(fontSize: FontSize.s16, color: ColorManager.white)),
+            getRegularStyle(fontSize: FontSize.s16, color: ColorManager.beige)),
     // button theme
     buttonTheme: ButtonThemeData(
         shape: const StadiumBorder(),
         disabledColor: ColorManager.grey1,
-        buttonColor: ColorManager.orange,
-        splashColor: ColorManager.lightPrimary),
+        buttonColor: ColorManager.paleVioletRed,
+        splashColor: ColorManager.beige),
 
     // text button theme
     textButtonTheme: TextButtonThemeData(
         style: ButtonStyle(
             foregroundColor:
-                const MaterialStatePropertyAll(ColorManager.orange),
+                const MaterialStatePropertyAll(ColorManager.lightBlue),
             textStyle: MaterialStatePropertyAll(getSemiBoldStyle(
-                color: ColorManager.lightFuchsia, fontSize: FontSize.s16)))),
+                color: ColorManager.navy, fontSize: FontSize.s16)))),
 
     // elevated button theme
     elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
             textStyle: getRegularStyle(
-                color: ColorManager.white, fontSize: FontSize.s17),
-            backgroundColor: ColorManager.teal,
+                color: ColorManager.mauva, fontSize: FontSize.s17),
+            backgroundColor: ColorManager.paleVioletRed,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s12)))),
 
@@ -56,31 +56,31 @@ ThemeData getApplicationTheme() {
     ),
     textTheme: TextTheme(
         displayLarge:
-            getSemiBoldStyle(color: ColorManager.navy, fontSize: FontSize.s16),
+            getSemiBoldStyle(color: ColorManager.beige, fontSize: FontSize.s16),
         headlineLarge:
-            getSemiBoldStyle(color: ColorManager.navy, fontSize: FontSize.s16),
+            getSemiBoldStyle(color: ColorManager.beige, fontSize: FontSize.s16),
         headlineMedium:
-            getRegularStyle(color: ColorManager.navy, fontSize: FontSize.s14),
+            getRegularStyle(color: ColorManager.beige, fontSize: FontSize.s14),
         titleMedium:
-            getMediumStyle(color: ColorManager.teal, fontSize: FontSize.s16),
+            getMediumStyle(color: ColorManager.beige, fontSize: FontSize.s16),
         titleSmall:
-            getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
-        bodyLarge: getRegularStyle(color: ColorManager.grey1),
-        bodySmall: getRegularStyle(color: ColorManager.grey2),
+            getRegularStyle(color: ColorManager.beige, fontSize: FontSize.s16),
+        bodyLarge: getRegularStyle(color: ColorManager.beige),
+        bodySmall: getRegularStyle(color: ColorManager.beige),
         bodyMedium:
-            getRegularStyle(color: ColorManager.grey2, fontSize: FontSize.s12),
-        labelSmall:
-            getBoldStyle(color: ColorManager.teal, fontSize: FontSize.s12)),
+            getRegularStyle(color: ColorManager.beige, fontSize: FontSize.s12),
+        labelSmall: getBoldStyle(
+            color: ColorManager.lightFuchsia, fontSize: FontSize.s12)),
 
     // input decoration theme (text form field)
     inputDecorationTheme: InputDecorationTheme(
         // content padding
         contentPadding: const EdgeInsets.all(AppPadding.p8),
         // hint style
-        hintStyle:
-            getRegularStyle(color: ColorManager.grey2, fontSize: FontSize.s14),
-        labelStyle:
-            getMediumStyle(color: ColorManager.grey2, fontSize: FontSize.s14),
+        hintStyle: getRegularStyle(
+            color: ColorManager.lightFuchsia, fontSize: FontSize.s14),
+        labelStyle: getMediumStyle(
+            color: ColorManager.lightFuchsia, fontSize: FontSize.s14),
         errorStyle: getRegularStyle(color: ColorManager.error),
 
         // enabled border style
@@ -91,8 +91,8 @@ ThemeData getApplicationTheme() {
 
         // focused border style
         focusedBorder: const OutlineInputBorder(
-            borderSide:
-                BorderSide(color: ColorManager.teal, width: AppSize.s1_5),
+            borderSide: BorderSide(
+                color: ColorManager.paleVioletRed, width: AppSize.s1_5),
             borderRadius: BorderRadius.all(Radius.circular(AppSize.s8))),
 
         // error border style
@@ -102,8 +102,8 @@ ThemeData getApplicationTheme() {
             borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
         // focused border style
         focusedErrorBorder: const OutlineInputBorder(
-            borderSide:
-                BorderSide(color: ColorManager.teal, width: AppSize.s1_5),
+            borderSide: BorderSide(
+                color: ColorManager.paleVioletRed, width: AppSize.s1_5),
             borderRadius: BorderRadius.all(Radius.circular(AppSize.s8)))),
     // label style
   );
