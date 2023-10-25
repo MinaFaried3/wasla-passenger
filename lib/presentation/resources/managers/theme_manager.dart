@@ -1,8 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:wasla/presentation/resources/color_manager.dart';
-import 'package:wasla/presentation/resources/font_manager.dart';
-import 'package:wasla/presentation/resources/styles_manager.dart';
-import 'package:wasla/presentation/resources/values_manager.dart';
+import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(

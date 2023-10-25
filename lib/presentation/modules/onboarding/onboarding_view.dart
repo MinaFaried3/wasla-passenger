@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:wasla/presentation/resources/assets_manager.dart';
+import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});

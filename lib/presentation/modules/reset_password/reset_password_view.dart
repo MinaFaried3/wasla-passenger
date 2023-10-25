@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key});
