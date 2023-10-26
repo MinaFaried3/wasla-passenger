@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 ThemeData getApplicationTheme() {
@@ -19,6 +20,13 @@ ThemeData getApplicationTheme() {
         elevation: AppSize.s4),
     // app bar theme
     appBarTheme: AppBarTheme(
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: ColorManager.blackNavy,
+          statusBarBrightness: Brightness.dark,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: ColorManager.darkNavy,
+          systemNavigationBarIconBrightness: Brightness.light,
+        ),
         centerTitle: true,
         color: ColorManager.blackNavy,
         elevation: AppSize.s0,

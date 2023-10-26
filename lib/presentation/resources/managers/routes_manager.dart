@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
 import 'package:wasla/presentation/modules/login/login_view.dart';
-import 'package:wasla/presentation/modules/onboarding/onboarding_view.dart';
+import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
-import 'package:wasla/presentation/resources/managers/strings_manager.dart';
+import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 class RoutesStrings {
   static const String onboardingRoute = '/';
@@ -20,7 +19,10 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesStrings.onboardingRoute:
-        return MaterialPageRoute(builder: (_) => const OnboardingScreen());
+        return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+                create: (context) => OnboardingCubit(),
+                child: const OnboardingScreen()));
       case RoutesStrings.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case RoutesStrings.registerRoute:
