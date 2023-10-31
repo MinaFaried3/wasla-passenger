@@ -16,6 +16,9 @@ class OnboardingScreen extends StatelessWidget {
               onFinish: () {
                 _onFinish(context);
               },
+              scaleFactor: 2,
+              direction: Axis.vertical,
+              verticalPosition: 0.9,
               physics: BouncingScrollPhysics(),
               onChange: (index) {},
               colors: state.onboardingPages.pagesColors,
@@ -37,7 +40,7 @@ class OnboardingScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 1),
       child: Icon(
-        IconsManager.next,
+        IconsManager.down,
         size: resp.screenWidth * 0.1,
       ),
     );
@@ -55,6 +58,16 @@ class OnboardingScreen extends StatelessWidget {
     return SafeArea(
       child: Column(
         children: [
+          Text(
+            page.title,
+            style: getBoldStyle(fontSize: 15.sp, color: page.textColor),
+          ),
+          space(1),
+          Text(
+            page.subTitle,
+            style: getMediumStyle(color: page.textColor),
+            textAlign: TextAlign.center,
+          ),
           space(2),
           Container(
             constraints: BoxConstraints(
@@ -67,16 +80,6 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
           Spacer(),
-          Text(
-            page.title,
-            style: getBoldStyle(fontSize: 15.sp, color: page.textColor),
-          ),
-          space(1),
-          Text(
-            page.subTitle,
-            style: getMediumStyle(color: page.textColor),
-            textAlign: TextAlign.center,
-          ),
         ],
       ),
     );
