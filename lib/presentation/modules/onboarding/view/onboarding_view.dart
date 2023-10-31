@@ -11,23 +11,30 @@ class OnboardingScreen extends StatelessWidget {
       builder: (context, state) {
         if (state is OnboardingInitial)
           return Scaffold(
-            body: ConcentricPageView(
-              itemCount: state.onboardingPages.itemsCount,
-              onFinish: () {
-                _onFinish(context);
-              },
-              scaleFactor: 2,
-              direction: Axis.vertical,
-              verticalPosition: 0.9,
-              physics: BouncingScrollPhysics(),
-              onChange: (index) {},
-              colors: state.onboardingPages.pagesColors,
-              radius: resp.screenWidth * 0.075,
-              nextButtonBuilder: (context) => _buildNextButton(resp),
-              itemBuilder: (index) {
-                final page = state.onboardingPages.getOnboardingPageData(index);
-                return _page(context, page: page);
-              },
+            body: Stack(
+              alignment: AlignmentDirectional.topEnd,
+              children: [
+                ConcentricPageView(
+                  itemCount: state.onboardingPages.itemsCount,
+                  onFinish: () {
+                    _onFinish(context);
+                  },
+                  scaleFactor: 2,
+                  direction: Axis.vertical,
+                  verticalPosition: 0.9,
+                  physics: BouncingScrollPhysics(),
+                  onChange: (index) {},
+                  colors: state.onboardingPages.pagesColors,
+                  radius: resp.screenWidth * 0.075,
+                  nextButtonBuilder: (context) => _buildNextButton(resp),
+                  itemBuilder: (index) {
+                    final page =
+                        state.onboardingPages.getOnboardingPageData(index);
+                    return _page(context, page: page);
+                  },
+                ),
+                TextButton(onPressed: () {}, child: Text("تخطي"))
+              ],
             ),
           );
         else
