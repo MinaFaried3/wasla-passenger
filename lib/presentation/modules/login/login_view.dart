@@ -161,6 +161,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           TextButton(
                               onPressed: () {
+                                PrintManager.printColoredText(
+                                    emailController.text);
                                 passwordFocusNode.unfocus();
                                 Future.delayed(const Duration(seconds: 1), () {
                                   if (passwordController.text == password &&
