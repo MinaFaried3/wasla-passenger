@@ -22,9 +22,10 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => BlocProvider(
                 create: (context) => OnboardingCubit(),
+                lazy: true,
                 child: const OnboardingScreen()));
       case RoutesStrings.loginRoute:
-        return MaterialPageRoute(builder: (_) => LoginScreen());
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       case RoutesStrings.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case RoutesStrings.forgotPasswordRoute:

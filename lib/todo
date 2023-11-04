@@ -19,3 +19,6 @@ bloc observer
     systemNavigationBarDividerColor: Colors.brown,
   );
   SystemChrome.setSystemUIOverlayStyle(overlayStyle);
+
+
+  try catch on main screen

@@ -9,6 +9,7 @@ export 'package:flutter_bloc/flutter_bloc.dart';
 
 ///packages
 export 'package:flutter_screenutil/flutter_screenutil.dart';
+export "package:wasla/app/shared/printer_manager.dart";
 
 ///cubit
 export 'package:wasla/presentation/modules/onboarding/cubit/onboarding_cubit.dart';
