@@ -3,12 +3,15 @@
 
 ///flutter
 export 'package:bloc/bloc.dart';
-export 'package:equatable/equatable.dart';
-export 'package:flutter/material.dart';
-export 'package:flutter_bloc/flutter_bloc.dart';
 
 ///packages
-export 'package:flutter_screenutil/flutter_screenutil.dart';
+export 'package:easy_localization/easy_localization.dart';
+export 'package:equatable/equatable.dart';
+export 'package:flutter/material.dart' hide TextDirection;
+export 'package:flutter_bloc/flutter_bloc.dart';
+export 'package:flutter_screenutil/flutter_screenutil.dart'
+    show SizeExtension, ScreenUtilInit;
+export "package:wasla/app/services/localization/language_manager.dart";
 export "package:wasla/app/shared/printer_manager.dart";
 
 ///cubit

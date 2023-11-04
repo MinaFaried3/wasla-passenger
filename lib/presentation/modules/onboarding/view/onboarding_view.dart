@@ -34,11 +34,12 @@ class OnboardingScreen extends StatelessWidget {
                   },
                 ),
                 TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      AppStrings.skip,
-                      style: TextStyle(color: Colors.white),
-                    ))
+                  onPressed: () {},
+                  child: Text(
+                    AppStrings.skip.tr(),
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )
               ],
             ),
           );
