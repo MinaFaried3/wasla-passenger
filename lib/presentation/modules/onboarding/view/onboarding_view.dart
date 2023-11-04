@@ -33,7 +33,12 @@ class OnboardingScreen extends StatelessWidget {
                     return _page(context, page: page);
                   },
                 ),
-                TextButton(onPressed: () {}, child: Text("تخطي"))
+                TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "تخطي",
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             ),
           );

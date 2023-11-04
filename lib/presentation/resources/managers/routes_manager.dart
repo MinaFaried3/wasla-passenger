@@ -24,7 +24,7 @@ class RouteGenerator {
                 create: (context) => OnboardingCubit(),
                 child: const OnboardingScreen()));
       case RoutesStrings.loginRoute:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(builder: (_) => LoginScreen());
       case RoutesStrings.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case RoutesStrings.forgotPasswordRoute:
