@@ -19,13 +19,13 @@ class OnboardingScreen extends StatelessWidget {
                   onFinish: () {
                     _onFinish(context);
                   },
-                  scaleFactor: 2,
+                  scaleFactor: AppSize.s2,
                   direction: Axis.vertical,
-                  verticalPosition: 0.9,
+                  verticalPosition: AppSize.s0_9,
                   physics: BouncingScrollPhysics(),
                   onChange: (index) {},
                   colors: state.onboardingPages.pagesColors,
-                  radius: resp.screenWidth * 0.075,
+                  radius: resp.screenWidth * AppSize.s0_075,
                   nextButtonBuilder: (context) => _buildNextButton(resp),
                   itemBuilder: (index) {
                     final page =
@@ -36,7 +36,7 @@ class OnboardingScreen extends StatelessWidget {
                 TextButton(
                     onPressed: () {},
                     child: Text(
-                      "تخطي",
+                      AppStrings.skip,
                       style: TextStyle(color: Colors.white),
                     ))
               ],
@@ -50,10 +50,10 @@ class OnboardingScreen extends StatelessWidget {
 
   Widget _buildNextButton(ResponsiveManager resp) {
     return Padding(
-      padding: const EdgeInsets.only(left: 1),
+      padding: const EdgeInsets.only(left: AppPadding.p1),
       child: Icon(
         IconsManager.down,
-        size: resp.screenWidth * 0.1,
+        size: resp.screenWidth * AppSize.s0_1,
       ),
     );
   }
@@ -63,9 +63,9 @@ class OnboardingScreen extends StatelessWidget {
   }
 
   _page(context, {required OnboardingModel page}) {
-    final resp = ResponsiveManager(context);
+    final responsive = ResponsiveManager(context);
     space(double p) => SizedBox(
-          height: resp.getBodyHeightPercentage(p),
+          height: responsive.getBodyHeightPercentage(p),
         );
     return SafeArea(
       child: Column(
@@ -83,8 +83,8 @@ class OnboardingScreen extends StatelessWidget {
           space(2),
           Container(
             constraints: BoxConstraints(
-                maxWidth: resp.screenWidth * 0.9,
-                maxHeight: resp.bodyHeight * 0.75),
+                maxWidth: responsive.screenWidth * 0.9,
+                maxHeight: responsive.bodyHeight * AppSize.s0_75),
             child: Center(
               child: Image.asset(
                 page.image,
