@@ -10,12 +10,12 @@ ThemeData getApplicationTheme() {
     primaryColorLight: ColorManager.lightFuchsia,
     primaryColorDark: ColorManager.mauva,
     disabledColor: ColorManager.grey1,
-    splashColor: ColorManager.beige,
+    splashColor: ColorManager.beige1,
     scaffoldBackgroundColor: ColorManager.blackNavy,
     // ripple effect color
     // cardView theme
     cardTheme: CardTheme(
-        color: ColorManager.beige,
+        color: ColorManager.beige1,
         shadowColor: ColorManager.grey1,
         elevation: AppSize.s4),
     // app bar theme
@@ -31,14 +31,14 @@ ThemeData getApplicationTheme() {
         color: ColorManager.blackNavy,
         elevation: AppSize.s0,
         // shadowColor: ColorManager.lightPrimary,
-        titleTextStyle:
-            getRegularStyle(fontSize: FontSize.s16, color: ColorManager.beige)),
+        titleTextStyle: getRegularStyle(
+            fontSize: FontSize.s16, color: ColorManager.beige1)),
     // button theme
     buttonTheme: ButtonThemeData(
         shape: const StadiumBorder(),
         disabledColor: ColorManager.grey1,
         buttonColor: ColorManager.paleVioletRed,
-        splashColor: ColorManager.beige),
+        splashColor: ColorManager.beige1),
 
     // text button theme
     textButtonTheme: TextButtonThemeData(
@@ -61,20 +61,20 @@ ThemeData getApplicationTheme() {
       backgroundColor: ColorManager.white,
     ),
     textTheme: TextTheme(
-        displayLarge:
-            getSemiBoldStyle(color: ColorManager.beige, fontSize: FontSize.s16),
-        headlineLarge:
-            getSemiBoldStyle(color: ColorManager.beige, fontSize: FontSize.s16),
+        displayLarge: getSemiBoldStyle(
+            color: ColorManager.beige1, fontSize: FontSize.s16),
+        headlineLarge: getSemiBoldStyle(
+            color: ColorManager.beige1, fontSize: FontSize.s16),
         headlineMedium:
-            getRegularStyle(color: ColorManager.beige, fontSize: FontSize.s14),
+            getRegularStyle(color: ColorManager.beige1, fontSize: FontSize.s14),
         titleMedium:
-            getMediumStyle(color: ColorManager.beige, fontSize: FontSize.s16),
+            getMediumStyle(color: ColorManager.beige1, fontSize: FontSize.s16),
         titleSmall:
-            getRegularStyle(color: ColorManager.beige, fontSize: FontSize.s16),
-        bodyLarge: getRegularStyle(color: ColorManager.beige),
-        bodySmall: getRegularStyle(color: ColorManager.beige),
+            getRegularStyle(color: ColorManager.beige1, fontSize: FontSize.s16),
+        bodyLarge: getRegularStyle(color: ColorManager.beige1),
+        bodySmall: getRegularStyle(color: ColorManager.beige1),
         bodyMedium:
-            getRegularStyle(color: ColorManager.beige, fontSize: FontSize.s12),
+            getRegularStyle(color: ColorManager.beige1, fontSize: FontSize.s12),
         labelSmall: getBoldStyle(
             color: ColorManager.lightFuchsia, fontSize: FontSize.s12)),
 

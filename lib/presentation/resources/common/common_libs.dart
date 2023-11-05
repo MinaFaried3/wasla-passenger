@@ -11,6 +11,7 @@ export 'package:flutter/material.dart' hide TextDirection;
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart'
     show SizeExtension, ScreenUtilInit;
+export 'package:flutter_svg/flutter_svg.dart';
 export "package:wasla/app/services/localization/language_manager.dart";
 export "package:wasla/app/shared/printer_manager.dart";
 

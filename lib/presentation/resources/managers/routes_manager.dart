@@ -4,10 +4,12 @@ import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart'
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
+import 'package:wasla/presentation/modules/start_now/start_now_screen.dart';
 import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 class RoutesStrings {
-  static const String onboardingRoute = '/';
+  static const String startNowRoute = '/';
+  static const String onboardingRoute = '/onboarding';
   static const String loginRoute = '/login';
   static const String registerRoute = '/register';
   static const String forgotPasswordRoute = '/forgot_password';
@@ -18,12 +20,15 @@ class RoutesStrings {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
+      case RoutesStrings.startNowRoute:
+        return MaterialPageRoute(builder: (_) => const StartNowScreen());
       case RoutesStrings.onboardingRoute:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
-                create: (context) => OnboardingCubit(),
-                lazy: true,
-                child: const OnboardingScreen()));
+            builder: (_) => MultiBlocProvider(providers: [
+                  BlocProvider(create: (context) => OnboardingCubit()),
+                  BlocProvider(
+                      create: (context) => OnChangeOnBoardingPageCubit()),
+                ], child: const OnboardingScreen()));
       case RoutesStrings.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case RoutesStrings.registerRoute:

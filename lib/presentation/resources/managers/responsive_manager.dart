@@ -12,6 +12,7 @@ class ResponsiveManager {
 
   //default appbar height
   late final Size appBarHeight;
+
   ResponsiveManager(BuildContext context) {
     mediaQueryData = MediaQuery.of(context);
     screenWidth = mediaQueryData.size.width;
@@ -36,6 +37,10 @@ class ResponsiveManager {
 
   double getWidthPercentage(double percentage) =>
       screenWidth * percentage / 100;
+
+  SizedBox space(double p) => SizedBox(
+        height: getBodyHeightPercentage(p),
+      );
 }
 
 // Get the proportionate height as per screen size

@@ -1,46 +1,48 @@
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:wasla/presentation/resources/common/common_libs.dart';
+import 'package:wasla/presentation/widgets/progress_painter.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final resp = ResponsiveManager(context);
+    final responsive = ResponsiveManager(context);
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
         if (state is OnboardingInitial)
           return Scaffold(
-            body: Stack(
-              alignment: AlignmentDirectional.topEnd,
-              children: [
-                ConcentricPageView(
+            body: BlocBuilder<OnChangeOnBoardingPageCubit,
+                OnChangeOnBoardingPageState>(
+              builder: (onChangeContext, onChangeState) {
+                return ConcentricPageView(
                   itemCount: state.onboardingPages.itemsCount,
                   onFinish: () {
                     _onFinish(context);
                   },
                   scaleFactor: AppSize.s2,
                   direction: Axis.vertical,
-                  verticalPosition: AppSize.s0_9,
+                  verticalPosition: 0.87,
                   physics: BouncingScrollPhysics(),
-                  onChange: (index) {},
+                  onChange: (index) {
+                    context
+                        .read<OnChangeOnBoardingPageCubit>()
+                        .changeIndex(index);
+                  },
                   colors: state.onboardingPages.pagesColors,
-                  radius: resp.screenWidth * AppSize.s0_075,
-                  nextButtonBuilder: (context) => _buildNextButton(resp),
+                  radius: responsive.screenWidth * AppSize.s0_075,
+                  nextButtonBuilder: (context) => _buildNextButton(
+                    responsive,
+                    onChangeState,
+                    state.onboardingPages.itemsCount,
+                  ),
                   itemBuilder: (index) {
                     final page =
                         state.onboardingPages.getOnboardingPageData(index);
-                    return _page(context, page: page);
+                    return _page(context, page: page, index: index);
                   },
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    AppStrings.skip.tr(),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )
-              ],
+                );
+              },
             ),
           );
         else
@@ -49,13 +51,58 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildNextButton(ResponsiveManager resp) {
-    return Padding(
-      padding: const EdgeInsets.only(left: AppPadding.p1),
-      child: Icon(
-        IconsManager.down,
-        size: resp.screenWidth * AppSize.s0_1,
+  Widget _buildNextButton(
+    ResponsiveManager responsive,
+    OnChangeOnBoardingPageState onChangeState,
+    int itemsCount,
+  ) {
+    final iconColor = ColorManager.paleVioletRed;
+    return SizedBox(
+      width: responsive.screenWidth * AppSize.s2,
+      height: responsive.screenWidth * AppSize.s2,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          //indicator
+          _buildCustomPaintIndicator(responsive, onChangeState, itemsCount),
+          //icon
+          if (onChangeState is OnChangeOnBoardingPage &&
+              onChangeState.index == itemsCount - 1)
+            Icon(
+              Icons.done,
+              color: iconColor,
+              size: responsive.screenWidth * AppSize.s0_075,
+            )
+          else
+            Padding(
+              padding: EdgeInsets.only(
+                  top: responsive.screenHeight * AppSize.s0_015),
+              child: SvgPicture.asset(
+                ImageAssets.arrowDown1,
+                fit: BoxFit.scaleDown,
+                colorFilter: ColorFilter.mode(
+                  iconColor,
+                  BlendMode.srcIn,
+                ),
+              ),
+            ),
+        ],
       ),
+    );
+  }
+
+  CustomPaint _buildCustomPaintIndicator(ResponsiveManager responsive,
+      OnChangeOnBoardingPageState onChangeState, int itemsCount) {
+    return CustomPaint(
+      size: Size(responsive.screenWidth * AppSize.s1_5,
+          responsive.screenWidth * AppSize.s1_5),
+      painter: onChangeState is OnChangeOnBoardingPage
+          ? ProgressPainter(
+              progress: ((onChangeState.index + 1) / itemsCount) * 100,
+              barColor: ColorManager.paleVioletRed,
+              topColor: ColorManager.paleVioletRed.withOpacity(AppSize.s0_75),
+            )
+          : null,
     );
   }
 
@@ -63,37 +110,69 @@ class OnboardingScreen extends StatelessWidget {
     Navigator.of(context).pushReplacementNamed(RoutesStrings.loginRoute);
   }
 
-  _page(context, {required OnboardingModel page}) {
+  Widget _page(context, {required OnboardingModel page, required int index}) {
     final responsive = ResponsiveManager(context);
-    space(double p) => SizedBox(
-          height: responsive.getBodyHeightPercentage(p),
-        );
     return SafeArea(
-      child: Column(
-        children: [
-          Text(
-            page.title,
-            style: getBoldStyle(fontSize: 15.sp, color: page.textColor),
-          ),
-          space(1),
-          Text(
-            page.subTitle,
-            style: getMediumStyle(color: page.textColor),
-            textAlign: TextAlign.center,
-          ),
-          space(2),
-          Container(
-            constraints: BoxConstraints(
-                maxWidth: responsive.screenWidth * 0.9,
-                maxHeight: responsive.bodyHeight * AppSize.s0_75),
-            child: Center(
-              child: Image.asset(
-                page.image,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppPadding.p18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildSkipButton(context),
+            responsive.space(3),
+            Text(
+              page.title,
+              style: getBoldStyle(
+                  fontSize: AppSize.s20.sp, color: ColorManager.beige2),
+            ),
+            responsive.space(2),
+            Text(
+              page.subTitle,
+              style: getMediumStyle(
+                  color: ColorManager.white, fontSize: AppSize.s14.sp),
+            ),
+            responsive.space(7),
+            Center(
+              child: Center(
+                child: Image.asset(
+                  page.image,
+                  width: responsive.screenWidth * AppSize.s0_9,
+                  height: responsive.bodyHeight * AppSize.s0_5,
+                ),
               ),
             ),
-          ),
-          Spacer(),
-        ],
+            Spacer(),
+          ],
+        ),
+      ),
+    );
+  }
+
+  List<Color> _getGradientList(int index) {
+    final evenGradient = [
+      ColorManager.lightViolet,
+      ColorManager.darkViolet,
+    ];
+    final oddGradient = [
+      ColorManager.lightBlackViolet,
+      ColorManager.darkBlackViolet
+    ];
+    return index % 2 == 0 ? evenGradient : oddGradient;
+  }
+
+  TextButton _buildSkipButton(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        _onFinish(context);
+      },
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.all(AppPadding.p0),
+      ),
+      child: Text(
+        AppStrings.skip.tr(),
+        style: getMediumStyle(
+            color: ColorManager.mauva.withOpacity(AppSize.s0_75),
+            fontSize: AppSize.s14.sp),
       ),
     );
   }

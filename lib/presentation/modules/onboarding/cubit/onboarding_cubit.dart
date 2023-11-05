@@ -8,3 +8,11 @@ class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit()
       : super(OnboardingInitial(onboardingPages: OnboardingPages()));
 }
+
+class OnChangeOnBoardingPageCubit extends Cubit<OnChangeOnBoardingPageState> {
+  OnChangeOnBoardingPageCubit() : super(OnChangeOnBoardingPage(index: 0));
+
+  void changeIndex(int index) {
+    emit(OnChangeOnBoardingPage(index: index));
+  }
+}

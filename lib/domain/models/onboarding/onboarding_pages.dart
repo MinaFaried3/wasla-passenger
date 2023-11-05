@@ -20,55 +20,37 @@ class OnboardingPages {
 
   OnboardingModel getOnboardingPageData(int index) => pagesData[index];
 
-  List<OnboardingModel> _getPagesData() => const [
+  List<OnboardingModel> _getPagesData() => [
         OnboardingModel(
-          title: 'عنوان ريئسي',
-          subTitle:
-              'عنوان فرعي كتييييييير تسبي سبيتى سملىبنبثنحي سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين',
-          bgColor: ColorManager.blackNavy,
-          textColor: ColorManager.beige,
-          image: ImageAssets.logo,
-        ),
+            title: AppStrings.onboardingTitle1.tr(),
+            subTitle: AppStrings.onboardingSubTitle1.tr(),
+            bgColor: ColorManager.darkViolet,
+            image: ImageAssets.onboarding1),
         OnboardingModel(
-          title: 'عنوان ريئسي',
-          subTitle:
-              'عنوان فرعي كتييييييير تسبي سبيتى سملىبنبثنحي سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين',
-          bgColor: ColorManager.beige,
-          textColor: ColorManager.navy,
-          image: ImageAssets.logoTitle,
-        ),
+            title: AppStrings.onboardingTitle2.tr(),
+            subTitle: AppStrings.onboardingSubTitle2.tr(),
+            bgColor: ColorManager.darkBlackViolet,
+            image: ImageAssets.onboarding2),
         OnboardingModel(
-          title: 'عنوان ريئسي',
-          subTitle:
-              'عنوان فرعي كتييييييير تسبي سبيتى سملىبنبثنحي سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين',
-          bgColor: ColorManager.darkNavy,
-          textColor: ColorManager.navy,
-          image: ImageAssets.logoIcon,
-        ),
+            title: AppStrings.onboardingTitle3.tr(),
+            subTitle: AppStrings.onboardingSubTitle3.tr(),
+            bgColor: ColorManager.darkViolet,
+            image: ImageAssets.onboarding3),
         OnboardingModel(
-          title: 'عنوان ريئسي',
-          subTitle:
-              'عنوان فرعي كتييييييير تسبي سبيتى سملىبنبثنحي سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين',
-          bgColor: ColorManager.lightFuchsia,
-          textColor: ColorManager.navy,
-          image: ImageAssets.logo1,
-        ),
+            title: AppStrings.onboardingTitle4.tr(),
+            subTitle: AppStrings.onboardingSubTitle4.tr(),
+            bgColor: ColorManager.darkBlackViolet,
+            image: ImageAssets.onboarding4),
         OnboardingModel(
-          title: 'عنوان ريئسي',
-          subTitle:
-              'عنوان فرعي كتييييييير تسبي سبيتى سملىبنبثنحي سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين',
-          bgColor: ColorManager.navy,
-          textColor: ColorManager.navy,
-          image: ImageAssets.logo2,
-        ),
+            title: AppStrings.onboardingTitle5.tr(),
+            subTitle: AppStrings.onboardingSubTitle5.tr(),
+            bgColor: ColorManager.darkViolet,
+            image: ImageAssets.onboarding5),
         OnboardingModel(
-          title: 'عنوان ريئسي',
-          subTitle:
-              'عنوان فرعي كتييييييير تسبي سبيتى سملىبنبثنحي سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين سلمبىن سيبىن سىاهنب يمسبىن سيمبىن سمبىين',
-          bgColor: ColorManager.paleVioletRed,
-          textColor: ColorManager.navy,
-          image: ImageAssets.logo,
-        ),
+            title: AppStrings.onboardingTitle6.tr(),
+            subTitle: AppStrings.onboardingSubTitle6.tr(),
+            bgColor: ColorManager.darkBlackViolet,
+            image: ImageAssets.onboarding6),
       ];
 
   List<Color> _getPagesColors() =>

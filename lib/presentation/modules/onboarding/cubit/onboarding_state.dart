@@ -12,3 +12,18 @@ class OnboardingInitial extends OnboardingState {
   @override
   List<Object> get props => [onboardingPages];
 }
+
+///------------------------------------------------------------
+
+abstract class OnChangeOnBoardingPageState extends Equatable {
+  const OnChangeOnBoardingPageState();
+}
+
+class OnChangeOnBoardingPage extends OnChangeOnBoardingPageState {
+  final int index;
+
+  OnChangeOnBoardingPage({required this.index});
+
+  @override
+  List<Object> get props => [index];
+}
