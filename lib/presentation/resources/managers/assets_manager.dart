@@ -12,6 +12,7 @@ class ImageAssets {
   static const String _logo = '$_imagePath/logo';
   static const String _onboarding = '$_imagePath/onboarding';
   static const String _svg = '$_imagePath/svg';
+  static const String _background = '$_imagePath/background';
 
   //images
   static const String logo = '$_logo/logo.png';
@@ -28,4 +29,6 @@ class ImageAssets {
   static const String arrowDown1 = '$_svg/arrow_down1.svg';
   static const String arrowDown2 = '$_svg/arrow_down2.svg';
   static const String arrowDown3 = '$_svg/right_arrow_ic.svg';
+  static const String startNowBackground =
+      '$_background/background_start_now.png';
 }
