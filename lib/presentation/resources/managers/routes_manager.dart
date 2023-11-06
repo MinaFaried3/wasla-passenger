@@ -22,13 +22,6 @@ class RouteGenerator {
     switch (settings.name) {
       case RoutesStrings.startNowRoute:
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
-      case RoutesStrings.onboardingRoute:
-        return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(providers: [
-                  BlocProvider(create: (context) => OnboardingCubit()),
-                  BlocProvider(
-                      create: (context) => OnChangeOnBoardingPageCubit()),
-                ], child: const OnboardingScreen()));
       case RoutesStrings.loginRoute:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
       case RoutesStrings.registerRoute:
@@ -39,6 +32,13 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
       case RoutesStrings.otpRoute:
         return MaterialPageRoute(builder: (_) => const OTPScreen());
+      case RoutesStrings.onboardingRoute:
+        return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(providers: [
+                  BlocProvider(create: (context) => OnboardingCubit()),
+                  BlocProvider(
+                      create: (context) => OnChangeOnBoardingPageCubit()),
+                ], child: const OnboardingScreen()));
       default:
         return unDefinedRoute();
     }

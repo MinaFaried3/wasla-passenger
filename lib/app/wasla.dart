@@ -36,7 +36,7 @@ class _WaslaAppState extends State<WaslaApp> {
         themeMode: ThemeMode.dark,
         home: child,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: RoutesStrings.onboardingRoute,
+        initialRoute: RoutesStrings.startNowRoute,
       ),
     );
   }
