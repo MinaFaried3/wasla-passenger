@@ -36,15 +36,16 @@ enum ConsoleColor {
   brightWhiteBg('\u001b[107m');
 
   final String colorCode;
+
   const ConsoleColor(this.colorCode);
 }
 
 class PrintManager {
   static void printColoredText(
-    String text, {
+    dynamic object, {
     ConsoleColor color = ConsoleColor.brightCyan,
   }) {
     final colorCode = color.colorCode;
-    debugPrint('$colorCode$text${ConsoleColor.reset.colorCode}');
+    debugPrint('$colorCode${object.toString()}${ConsoleColor.reset.colorCode}');
   }
 }
