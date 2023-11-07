@@ -119,19 +119,19 @@ class OnboardingScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildSkipButton(context),
-            responsive.space(3),
+            responsive.heightSpace(3),
             Text(
               page.title,
               style: getBoldStyle(
                   fontSize: AppSize.s20.sp, color: ColorManager.beige2),
             ),
-            responsive.space(2),
+            responsive.heightSpace(2),
             Text(
               page.subTitle,
               style: getMediumStyle(
                   color: ColorManager.white, fontSize: AppSize.s14.sp),
             ),
-            responsive.space(7),
+            responsive.heightSpace(7),
             Center(
               child: Center(
                 child: Image.asset(

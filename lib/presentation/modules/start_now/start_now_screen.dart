@@ -6,7 +6,8 @@ class StartNowScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context);
+    final responsive = ResponsiveManager(context, hasAppBar: false);
+
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
