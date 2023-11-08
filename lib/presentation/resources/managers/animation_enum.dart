@@ -1,5 +1,5 @@
 ///login bear
-enum LoginBearStatus {
+enum LoginBearStates {
   idle,
   Look_down_left,
   Look_down_right,

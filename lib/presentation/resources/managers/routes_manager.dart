@@ -1,4 +1,6 @@
+import 'package:wasla/domain/models/login_models/rive_controller.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
+import 'package:wasla/presentation/modules/login/cubit/bear_login_animation_cubit.dart';
 import 'package:wasla/presentation/modules/login/login_view.dart';
 import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
@@ -23,7 +25,13 @@ class RouteGenerator {
       case RoutesStrings.startNowRoute:
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
       case RoutesStrings.loginRoute:
-        return MaterialPageRoute(builder: (_) => const LoginScreen());
+        return MaterialPageRoute(
+            builder: (_) => MultiBlocProvider(providers: [
+                  BlocProvider(
+                      create: (context) =>
+                          BearLoginAnimationCubit(RiveControllerManager())
+                            ..loadAndBuildTheAnimation()),
+                ], child: const LoginScreen()));
       case RoutesStrings.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case RoutesStrings.forgotPasswordRoute:
