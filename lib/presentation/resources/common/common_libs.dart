@@ -5,9 +5,9 @@
 export 'package:bloc/bloc.dart';
 
 ///packages
-export 'package:easy_localization/easy_localization.dart';
+export 'package:easy_localization/easy_localization.dart' hide TextDirection;
 export 'package:equatable/equatable.dart';
-export 'package:flutter/material.dart' hide TextDirection;
+export 'package:flutter/material.dart';
 export 'package:flutter_bloc/flutter_bloc.dart';
 export 'package:flutter_screenutil/flutter_screenutil.dart'
     show SizeExtension, ScreenUtilInit;

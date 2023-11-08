@@ -132,7 +132,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         children: [
                           TextFormField(
+                            textDirection: TextDirection.ltr,
                             controller: emailController,
+                            decoration: InputDecoration(),
                             validator: (value) =>
                                 value != email ? "Wrong email" : null,
                             onChanged: (value) {
@@ -155,6 +157,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             height: responsive.getScreenHeightPercentage(3),
                           ),
                           TextFormField(
+                            textDirection: TextDirection.ltr,
                             controller: passwordController,
                             obscureText: true,
                             focusNode: passwordFocusNode,
