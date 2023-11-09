@@ -1,4 +1,4 @@
-import '../resources/common/common_libs.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 
 class ContainerClipper extends CustomClipper<Path> {
   Path path = Path();

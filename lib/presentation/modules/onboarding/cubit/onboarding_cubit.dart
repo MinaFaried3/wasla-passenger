@@ -1,4 +1,4 @@
-import 'package:wasla/presentation/resources/common/common_libs.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 
 part 'onboarding_state.dart';
 part 'package:wasla/domain/models/onboarding_models/onboarding_model.dart';

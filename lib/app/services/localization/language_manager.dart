@@ -1,4 +1,4 @@
-import 'package:wasla/presentation/resources/common/common_libs.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 
 const String ar = "ar";
 const String en = "en";
@@ -8,6 +8,7 @@ enum LanguageType {
   arabic(en);
 
   final String lang;
+
   const LanguageType(this.lang);
 }
 
