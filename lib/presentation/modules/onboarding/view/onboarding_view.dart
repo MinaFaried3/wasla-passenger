@@ -78,7 +78,7 @@ class OnboardingScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   top: responsive.screenHeight * AppSize.s0_015),
               child: SvgPicture.asset(
-                ImageAssets.arrowDown1,
+                AssetsProvider.arrowDown1,
                 fit: BoxFit.scaleDown,
                 colorFilter: ColorFilter.mode(
                   iconColor,

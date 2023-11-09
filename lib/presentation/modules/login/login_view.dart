@@ -1,4 +1,5 @@
 import 'package:rive/rive.dart';
+import 'package:wasla/domain/models/login_models/rive_controller.dart';
 import 'package:wasla/presentation/modules/login/cubit/bear_login_animation_cubit.dart';
 import 'package:wasla/presentation/resources/common/common_libs.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';
@@ -81,22 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 validator: (value) =>
                                     value != email ? "Wrong email" : null,
                                 onChanged: (value) {
-                                  if (value.isNotEmpty &&
-                                      value.length > 16 &&
-                                      !riveController.isLookingRight) {
-                                    riveController.addState(
-                                        LoginBearStates.Look_down_right,
-                                        lookingRight: true);
-                                  } else if (value.isNotEmpty &&
-                                      value.length < 16 &&
-                                      !riveController.isLookingLeft) {
-                                    riveController.addState(
-                                        LoginBearStates.Look_down_left,
-                                        lookingLeft: true);
-                                  } else if (value.isEmpty) {
-                                    riveController
-                                        .addState(LoginBearStates.look_idle);
-                                  }
+                                  _onChangePhoneEmail(value, riveController);
                                 },
                               ),
                               SizedBox(
@@ -110,21 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               TextButton(
                                   onPressed: () {
-                                    PrintManager.printColoredText(
-                                        emailController.text);
-                                    passwordFocusNode.unfocus();
-                                    Future.delayed(const Duration(seconds: 1),
-                                        () {
-                                      if (passwordController.text == password &&
-                                          emailController.text == email)
-                                        riveController.addState(
-                                            LoginBearStates.success,
-                                            successOrFail: true);
-                                      else
-                                        riveController.addState(
-                                            LoginBearStates.fail,
-                                            successOrFail: true);
-                                    });
+                                    _onPressedLogin(riveController);
                                   },
                                   child: Text("LOGIN"))
                             ],
@@ -138,5 +110,31 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  void _onPressedLogin(RiveControllerManager riveController) {
+    passwordFocusNode.unfocus();
+    Future.delayed(const Duration(seconds: 1), () {
+      if (passwordController.text == password && emailController.text == email)
+        riveController.addState(LoginBearStates.success, successOrFail: true);
+      else
+        riveController.addState(LoginBearStates.fail, successOrFail: true);
+    });
+  }
+
+  void _onChangePhoneEmail(String value, RiveControllerManager riveController) {
+    if (value.isNotEmpty &&
+        value.length > 16 &&
+        !riveController.isLookingRight) {
+      riveController.addState(LoginBearStates.Look_down_right,
+          lookingRight: true);
+    } else if (value.isNotEmpty &&
+        value.length < 16 &&
+        !riveController.isLookingLeft) {
+      riveController.addState(LoginBearStates.Look_down_left,
+          lookingLeft: true);
+    } else if (value.isEmpty) {
+      riveController.addState(LoginBearStates.look_idle);
+    }
   }
 }
