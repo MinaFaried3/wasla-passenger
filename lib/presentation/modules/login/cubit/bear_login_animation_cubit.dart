@@ -13,7 +13,7 @@ class BearLoginAnimationCubit extends Cubit<BearLoginAnimationState> {
       : super(BearLoginAnimationInitial());
 
   void loadAndBuildTheAnimation() async {
-    await rootBundle.load('assets/animation/rive/login_bear.riv').then((data) {
+    await rootBundle.load(AssetsProvider.loginBear).then((data) {
       final file = RiveFile.import(data);
 
       final artBoard = file.mainArtboard;

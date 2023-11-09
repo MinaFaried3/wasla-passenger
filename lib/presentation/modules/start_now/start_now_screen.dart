@@ -17,7 +17,7 @@ class StartNowScreen extends StatelessWidget {
           ColorManager.darkBlackViolet,
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
         image: DecorationImage(
-          image: AssetImage(ImageAssets.startNowBackground),
+          image: AssetImage(AssetsProvider.startNowBackground),
           fit: BoxFit.contain,
         ),
       ),
@@ -31,7 +31,7 @@ class StartNowScreen extends StatelessWidget {
               padding: EdgeInsets.only(bottom: responsive.screenHeight * 0.25),
               child: Center(
                 child: Image.asset(
-                  ImageAssets.logo,
+                  AssetsProvider.logo,
                   width: responsive.screenWidth * AppSize.s0_5,
                   height: responsive.screenHeight * AppSize.s0_5,
                 ),
