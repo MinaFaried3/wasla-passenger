@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:rive/rive.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/domain/models/login_models/rive_controller.dart';
-import 'package:wasla/presentation/resources/common/common_libs.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';
 
 part 'bear_login_animation_state.dart';

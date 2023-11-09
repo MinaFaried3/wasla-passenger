@@ -1,5 +1,5 @@
 import 'package:concentric_transition/concentric_transition.dart';
-import 'package:wasla/presentation/resources/common/common_libs.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/widgets/progress_painter.dart';
 
 class OnboardingScreen extends StatelessWidget {
