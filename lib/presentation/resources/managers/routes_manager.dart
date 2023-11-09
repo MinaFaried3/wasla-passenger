@@ -1,6 +1,4 @@
-import 'package:wasla/domain/models/login_models/rive_controller.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
-import 'package:wasla/presentation/modules/login/cubit/bear_login_animation_cubit.dart';
 import 'package:wasla/presentation/modules/login/login_view.dart';
 import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
@@ -26,12 +24,10 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
       case RoutesStrings.loginRoute:
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(providers: [
-                  BlocProvider(
-                      create: (context) =>
-                          BearLoginAnimationCubit(RiveControllerManager())
-                            ..loadAndBuildTheAnimation()),
-                ], child: const LoginScreen()));
+            builder: (_) => MultiBlocProvider(
+                  providers: BlocProvidersManager.loginProviders,
+                  child: const LoginScreen(),
+                ));
       case RoutesStrings.registerRoute:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
       case RoutesStrings.forgotPasswordRoute:
@@ -42,11 +38,9 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const OTPScreen());
       case RoutesStrings.onboardingRoute:
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(providers: [
-                  BlocProvider(create: (context) => OnboardingCubit()),
-                  BlocProvider(
-                      create: (context) => OnChangeOnBoardingPageCubit()),
-                ], child: const OnboardingScreen()));
+            builder: (context) => MultiBlocProvider(
+                providers: BlocProvidersManager.onboardingProviders,
+                child: const OnboardingScreen()));
       default:
         return unDefinedRoute();
     }

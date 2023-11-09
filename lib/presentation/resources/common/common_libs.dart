@@ -20,6 +20,7 @@ export 'package:wasla/presentation/modules/onboarding/cubit/onboarding_cubit.dar
 
 ///project files
 export "package:wasla/presentation/resources/managers/assets_manager.dart";
+export "package:wasla/presentation/resources/managers/bloc_providers_manager.dart";
 export "package:wasla/presentation/resources/managers/color_manager.dart";
 export "package:wasla/presentation/resources/managers/font_manager.dart";
 export "package:wasla/presentation/resources/managers/icons_manager.dart";
