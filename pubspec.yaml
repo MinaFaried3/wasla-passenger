@@ -24,7 +24,9 @@ dependencies:
   equatable: ^2.0.5
   rive: ^0.12.1
   easy_localization: ^3.0.3
-  flutter_phoenix: ^1.1.1
+  flutter_phoenix: ^1.1.1 #analysis issues
+
+  flutter_svg: ^2.0.9
 
 
 
@@ -51,6 +53,7 @@ flutter:
   assets:
     - assets/images/logo/
     - assets/images/onboarding/
+    - assets/images/background/
     - assets/images/svg/
     - assets/animation/rive/
     - assets/translations/

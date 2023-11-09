@@ -2,5 +2,18 @@
   "app_title": "wasla",
   "no_route": "Screen is not found",
   "skip": "skip",
-  "login": "login"
+  "login": "login",
+  "onboarding_title_1": "Welcome To Wasla",
+  "onboarding_title_2": "Book Your Ticket Now",
+  "onboarding_title_3": "Enjoy With Shipping Service",
+  "onboarding_title_4": "Start Your AD Space",
+  "onboarding_title_5": "Follow Passenger From Your Position",
+  "onboarding_title_6": "Request A Full Buses",
+  "onboarding_sub_title_1": "In the Wasla app, we try to help you find... A safe and comfortable means of transportation For other services in one place",
+  "onboarding_sub_title_2": "Now you can book your ticket through the link Before you come back from anywhere",
+  "onboarding_sub_title_3": "With us, you can ship your order from one place to another Easily and quickly",
+  "onboarding_sub_title_4": "Through the Wasla application, you can reserve a space Mobile advertising on buses",
+  "onboarding_sub_title_5": "There is a connection where you can follow up and check on the passenger From the start of the journey until arrival",
+  "onboarding_sub_title_6": "It is now available to order a full bus Special for you and your trip at your appropriate time",
+  "start_now": "Start Now"
 }

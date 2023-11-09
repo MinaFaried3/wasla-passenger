@@ -16,7 +16,8 @@ class MyBlocObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {
     super.onChange(bloc, change);
-    PrintManager.printColoredText('onChange -- ${bloc.runtimeType}, $change');
+    PrintManager.printColoredText('onChange -- ${bloc.runtimeType}, $change',
+        color: ConsoleColor.brightGreen);
   }
 
   @override
