@@ -14,7 +14,7 @@ enum LanguageType {
 
 extension GetLanguage on LanguageType {
   String getValue() {
-    return this.lang;
+    return lang;
   }
 }
 
