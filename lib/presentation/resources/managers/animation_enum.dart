@@ -1,8 +1,11 @@
 ///login bear
 enum LoginBearStates {
   idle,
-  Look_down_left,
-  Look_down_right,
+  look_left,
+  look_medium_left,
+  Look_right,
+  look_medium_right,
+  look_center,
   look_idle,
   success,
   fail,

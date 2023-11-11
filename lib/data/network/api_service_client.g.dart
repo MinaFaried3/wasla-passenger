@@ -29,7 +29,7 @@ class _ApiServiceClient implements ApiServiceClient {
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{
       r'Content-Type': 'application/json',
-      r'lang': 'ar',
+      r'Accept-Language': 'ar-EG',
     };
     _headers.removeWhere((k, v) => v == null);
     final _data = {

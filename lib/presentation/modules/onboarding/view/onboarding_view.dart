@@ -10,8 +10,9 @@ class OnboardingScreen extends StatelessWidget {
     final responsive = ResponsiveManager(context);
     return BlocBuilder<OnboardingCubit, OnboardingState>(
       builder: (context, state) {
-        if (state is OnboardingInitial)
+        if (state is OnboardingInitial) {
           return Scaffold(
+            resizeToAvoidBottomInset: false,
             body: BlocBuilder<OnChangeOnBoardingPageCubit,
                 OnChangeOnBoardingPageState>(
               builder: (onChangeContext, onChangeState) {
@@ -23,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
                   scaleFactor: AppSize.s2,
                   direction: Axis.vertical,
                   verticalPosition: 0.87,
-                  physics: BouncingScrollPhysics(),
+                  physics: const BouncingScrollPhysics(),
                   onChange: (index) {
                     context
                         .read<OnChangeOnBoardingPageCubit>()
@@ -45,8 +46,9 @@ class OnboardingScreen extends StatelessWidget {
               },
             ),
           );
-        else
-          return SizedBox();
+        } else {
+          return const SizedBox();
+        }
       },
     );
   }
@@ -56,7 +58,7 @@ class OnboardingScreen extends StatelessWidget {
     OnChangeOnBoardingPageState onChangeState,
     int itemsCount,
   ) {
-    final iconColor = ColorManager.paleVioletRed;
+    const iconColor = ColorManager.paleVioletRed;
     return SizedBox(
       width: responsive.screenWidth * AppSize.s2,
       height: responsive.screenWidth * AppSize.s2,
@@ -80,7 +82,7 @@ class OnboardingScreen extends StatelessWidget {
               child: SvgPicture.asset(
                 AssetsProvider.arrowDown1,
                 fit: BoxFit.scaleDown,
-                colorFilter: ColorFilter.mode(
+                colorFilter: const ColorFilter.mode(
                   iconColor,
                   BlendMode.srcIn,
                 ),
@@ -141,7 +143,7 @@ class OnboardingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
           ],
         ),
       ),

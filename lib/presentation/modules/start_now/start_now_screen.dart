@@ -9,7 +9,7 @@ class StartNowScreen extends StatelessWidget {
     final responsive = ResponsiveManager(context, hasAppBar: false);
 
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(colors: [
           ColorManager.lightViolet,
           ColorManager.darkBlackViolet,

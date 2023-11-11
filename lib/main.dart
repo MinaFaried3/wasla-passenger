@@ -10,12 +10,12 @@ void main() async {
   Bloc.observer = MyBlocObserver();
 
   runApp(EasyLocalization(
-      child: Phoenix(
-        child: WaslaApp(),
-      ),
-      supportedLocales: [
+      supportedLocales: const [
         LocalizationManager.arabicLocal,
         LocalizationManager.englishLocal,
       ],
-      path: LocalizationManager.assetsPath));
+      path: LocalizationManager.assetsPath,
+      child: Phoenix(
+        child: WaslaApp(),
+      )));
 }
