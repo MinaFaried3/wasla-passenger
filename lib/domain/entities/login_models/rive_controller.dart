@@ -19,6 +19,9 @@ class RiveControllerManager {
 
   bool isLookingLeft = false;
   bool isLookingRight = false;
+  bool isLookingCenter = false;
+  bool isLookingMediumLeft = false;
+  bool isLookingMediumRight = false;
 
   void _initStates() {
     _states = {
@@ -28,10 +31,16 @@ class RiveControllerManager {
       LoginBearStates.hands_up: SimpleAnimation(LoginBearStates.hands_up.name),
       LoginBearStates.look_idle:
           SimpleAnimation(LoginBearStates.look_idle.name),
-      LoginBearStates.Look_down_left:
-          SimpleAnimation(LoginBearStates.Look_down_left.name),
-      LoginBearStates.Look_down_right:
-          SimpleAnimation(LoginBearStates.Look_down_right.name),
+      LoginBearStates.look_left:
+          SimpleAnimation(LoginBearStates.look_left.name),
+      LoginBearStates.look_medium_left:
+          SimpleAnimation(LoginBearStates.look_medium_left.name),
+      LoginBearStates.look_center:
+          SimpleAnimation(LoginBearStates.look_center.name),
+      LoginBearStates.look_medium_right:
+          SimpleAnimation(LoginBearStates.look_medium_right.name),
+      LoginBearStates.Look_right:
+          SimpleAnimation(LoginBearStates.Look_right.name),
       LoginBearStates.hands_down:
           SimpleAnimation(LoginBearStates.hands_down.name),
     };
@@ -49,20 +58,31 @@ class RiveControllerManager {
     for (var state in _states.entries) {
       _removeCurrentState(state.key);
     }
-
+    //TODO SRP
     isLookingLeft = false;
     isLookingRight = false;
+    isLookingCenter = false;
+    isLookingMediumLeft = false;
+    isLookingMediumRight = false;
   }
 
+  //TODO SRP
   void addState(
     LoginBearStates loginBearStates, {
     bool lookingLeft = false,
     bool lookingRight = false,
+    bool lookingCenter = false,
+    bool lookingMediumLeft = false,
+    bool lookingMediumRight = false,
     bool successOrFail = false,
   }) {
     _removeAllStates();
+
     isLookingRight = lookingRight;
     isLookingLeft = lookingLeft;
+    isLookingCenter = lookingCenter;
+    isLookingMediumLeft = lookingMediumLeft;
+    isLookingMediumRight = lookingMediumRight;
 
     _addCurrentState(loginBearStates);
 

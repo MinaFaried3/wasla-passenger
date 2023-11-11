@@ -15,5 +15,17 @@
   "onboarding_sub_title_4": "Through the Wasla application, you can reserve a space Mobile advertising on buses",
   "onboarding_sub_title_5": "There is a connection where you can follow up and check on the passenger From the start of the journey until arrival",
   "onboarding_sub_title_6": "It is now available to order a full bus Special for you and your trip at your appropriate time",
-  "start_now": "Start Now"
+  "start_now": "Start Now",
+  "bad_request_error": "bad request. try again later",
+  "forbidden_error": "forbidden request. try again later",
+  "unauthorized_error": "user unauthorized, try again later",
+  "not_found_error": "url not found, try again later",
+  "conflict_error": "conflict found, try again later",
+  "internal_server_error": "some thing went wrong, try again later",
+  "unknown_error": "some thing went wrong, try again later",
+  "timeout_error": "time out, try again late",
+  "default_error": "some thing went wrong, try again later",
+  "cache_error": "cache error, try again later",
+  "no_internet_error": "Please check your internet connection",
+  "no_content": "success with not content"
 }

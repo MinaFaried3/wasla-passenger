@@ -20,7 +20,7 @@ ThemeData getApplicationTheme() {
         elevation: AppSize.s4),
     // app bar theme
     appBarTheme: AppBarTheme(
-        systemOverlayStyle: SystemUiOverlayStyle(
+        systemOverlayStyle: const SystemUiOverlayStyle(
           statusBarColor: ColorManager.blackNavy,
           statusBarBrightness: Brightness.dark,
           statusBarIconBrightness: Brightness.light,

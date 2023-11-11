@@ -27,10 +27,11 @@ class ResponsiveManager {
         mediaQueryData.viewPadding.top -
         mediaQueryData.viewPadding.bottom;
 
-    if (hasAppBar)
+    if (hasAppBar) {
       return baseHeight - appBarHeight.height;
-    else
+    } else {
       return baseHeight;
+    }
   }
 
   bool isLandScape() {

@@ -1,8 +1,8 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 
 part 'onboarding_state.dart';
-part 'package:wasla/domain/models/onboarding_models/onboarding_model.dart';
-part 'package:wasla/domain/models/onboarding_models/onboarding_pages.dart';
+part 'package:wasla/domain/entities/onboarding_models/onboarding_model.dart';
+part 'package:wasla/domain/entities/onboarding_models/onboarding_pages.dart';
 
 class OnboardingCubit extends Cubit<OnboardingState> {
   OnboardingCubit()
