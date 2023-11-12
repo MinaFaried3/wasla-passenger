@@ -43,7 +43,7 @@ enum ConsoleColor {
 class PrintManager {
   static void printColoredText(
     dynamic object, {
-    ConsoleColor color = ConsoleColor.brightCyan,
+    ConsoleColor color = ConsoleColor.magenta,
   }) {
     final colorCode = color.colorCode;
     debugPrint('$colorCode${object.toString()}${ConsoleColor.reset.colorCode}');

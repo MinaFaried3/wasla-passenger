@@ -11,7 +11,10 @@ class EndPointsManager {
 class HeadersManager {
   static const String contentType = "Content-Type";
   static const String applicationJson = "application/json";
+  static const String accept = "Accept";
   static const String acceptLanguage = "Accept-Language";
+  static const String authorization = "Authorization";
+
   static const String ar = "ar-EG";
   static const String en = "en-US";
 

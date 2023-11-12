@@ -18,9 +18,8 @@ class BearLoginAnimationCubit extends Cubit<BearLoginAnimationState> {
 
       final artBoard = file.mainArtboard;
 
-      artBoard.addController(riveController.states[LoginBearStates.idle]!);
-
       riveController.riveArtBoard = artBoard;
+      riveController.addState(LoginBearState.idle);
 
       emit(BearAssetLoaded());
     }).catchError((error) {
