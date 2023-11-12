@@ -9,6 +9,8 @@ export 'package:flutter_screenutil/flutter_screenutil.dart'
     show SizeExtension, ScreenUtilInit;
 export 'package:flutter_svg/flutter_svg.dart';
 export 'package:json_annotation/json_annotation.dart';
+export 'package:shared_preferences/shared_preferences.dart';
+export "package:wasla/app/services/app_preferences.dart";
 export "package:wasla/app/services/localization/language_manager.dart";
 export 'package:wasla/app/shared/error/failure.dart';
 export "package:wasla/app/shared/printer_manager.dart";

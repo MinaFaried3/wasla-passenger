@@ -1,13 +1,9 @@
-const zero = 0;
-const String emptyString = "";
-const List emptyList = [];
-const Set emptySet = {};
-const Map emptyMap = {};
+import 'package:wasla/app/shared/constants.dart';
 
 extension NonNullableInt on int? {
   int orZero() {
     if (this == null) {
-      return zero;
+      return AppConstants.zero;
     }
     return this!;
   }
@@ -16,7 +12,7 @@ extension NonNullableInt on int? {
 extension NonNullableDouble on double? {
   double orZero() {
     if (this == null) {
-      return zero.toDouble();
+      return AppConstants.zero.toDouble();
     }
     return this!;
   }
@@ -24,7 +20,7 @@ extension NonNullableDouble on double? {
 
 extension NonNullableString on String? {
   String orEmpty() {
-    if (this == null) return emptyString;
+    if (this == null) return AppConstants.emptyString;
     return this!;
   }
 }
@@ -38,21 +34,21 @@ extension NonNullableBool on bool? {
 
 extension NonNullableList on List? {
   List orEmpty() {
-    if (this == null) return emptyList;
+    if (this == null) return AppConstants.emptyList;
     return this!;
   }
 }
 
 extension NonNullableMap on Map? {
   Map orEmpty() {
-    if (this == null) return emptyMap;
+    if (this == null) return AppConstants.emptyMap;
     return this!;
   }
 }
 
 extension NonNullableSet on Set? {
   Set orEmpty() {
-    if (this == null) return emptySet;
+    if (this == null) return AppConstants.emptySet;
     return this!;
   }
 }

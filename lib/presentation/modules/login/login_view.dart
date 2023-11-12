@@ -34,9 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
         context.read<BearLoginAnimationCubit>().riveController;
     passwordFocusNode.addListener(() {
       if (passwordFocusNode.hasFocus) {
-        riveController.addState(LoginBearStates.hands_up);
+        riveController.addState(LoginBearState.handsUp);
       } else if (!passwordFocusNode.hasFocus) {
-        riveController.addState(LoginBearStates.hands_down);
+        riveController.addState(LoginBearState.handsDown);
       }
     });
   }
@@ -134,9 +134,9 @@ class _LoginScreenState extends State<LoginScreen> {
     Future.delayed(const Duration(seconds: 1), () {
       if (passwordController.text == password &&
           emailController.text == email) {
-        riveController.addState(LoginBearStates.success, successOrFail: true);
+        riveController.addState(LoginBearState.success);
       } else {
-        riveController.addState(LoginBearStates.fail, successOrFail: true);
+        riveController.addState(LoginBearState.fail);
       }
     });
   }
@@ -145,50 +145,47 @@ class _LoginScreenState extends State<LoginScreen> {
   void _onChangePhoneEmail(String value, RiveControllerManager riveController) {
     if (value.isNotEmpty &&
         value.length >= 40 &&
-        !riveController.isLookingRight) {
+        riveController.currentState != LoginBearState.lookRight) {
       riveController.addState(
-        LoginBearStates.Look_right,
-        lookingRight: true,
+        LoginBearState.lookRight,
       );
-      PrintManager.printColoredText(LoginBearStates.Look_right.name);
+      PrintManager.printColoredText(LoginBearState.lookRight.name);
     } else if (value.isNotEmpty &&
         (value.length >= 30 && value.length < 40) &&
-        !riveController.isLookingMediumRight) {
+        riveController.currentState != LoginBearState.lookMediumRight) {
       riveController.addState(
-        LoginBearStates.look_medium_right,
-        lookingMediumRight: true,
+        LoginBearState.lookMediumRight,
       );
-      PrintManager.printColoredText(LoginBearStates.look_medium_left.name);
+      PrintManager.printColoredText(LoginBearState.lookMediumLeft.name);
     } else if (value.isNotEmpty &&
         (value.length >= 20 && value.length < 30) &&
-        !riveController.isLookingCenter) {
+        riveController.currentState != LoginBearState.lookCenter) {
       riveController.addState(
-        LoginBearStates.look_center,
-        lookingCenter: true,
+        LoginBearState.lookCenter,
       );
-      PrintManager.printColoredText(LoginBearStates.look_center.name);
+      PrintManager.printColoredText(LoginBearState.lookCenter.name);
     } else if (value.isNotEmpty &&
         (value.length >= 10 && value.length < 20) &&
-        !riveController.isLookingMediumLeft) {
+        riveController.currentState != LoginBearState.lookMediumLeft) {
       riveController.addState(
-        LoginBearStates.look_medium_left,
-        lookingMediumLeft: true,
+        LoginBearState.lookMediumLeft,
       );
-      PrintManager.printColoredText(LoginBearStates.look_medium_left.name);
+      PrintManager.printColoredText(LoginBearState.lookMediumLeft.name);
     } else if (value.isNotEmpty &&
         value.length < 10 &&
-        !riveController.isLookingLeft) {
+        riveController.currentState != LoginBearState.lookLeft) {
       riveController.addState(
-        LoginBearStates.look_left,
-        lookingLeft: true,
+        LoginBearState.lookLeft,
       );
-      PrintManager.printColoredText(LoginBearStates.look_left.name);
+      PrintManager.printColoredText(
+          "${LoginBearState.lookLeft.name} ${riveController.currentState != LoginBearState.lookLeft}");
     } else if (value.isEmpty) {
-      riveController.addState(LoginBearStates.look_idle);
+      riveController.addState(LoginBearState.lookIdle);
     }
   }
 }
 
+//todo
 class DownClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(covariant CustomClipper oldClipper) {

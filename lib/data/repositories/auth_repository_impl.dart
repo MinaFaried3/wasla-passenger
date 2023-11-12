@@ -1,6 +1,7 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
 import 'package:wasla/data/mappers/login_mapper.dart';
+import 'package:wasla/data/network/error/data_source_status.dart';
+import 'package:wasla/data/network/error/network_error_handler.dart';
 import 'package:wasla/data/responses/login_response.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
@@ -17,24 +18,25 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<Either<Failure, LoginModel>> login(
       LoginRequestBody loginRequestBody) async {
     if (await _networkChecker.isConnected == false) {
-      //TODO content
-      return const Left(Failure(
-        code: 0,
-        message: "",
-      ));
+      return Left(DataSourceStatus.noInternetConnection.getFailure());
     }
 
-    final LoginResponse response =
-        await _remoteDataSource.login(loginRequestBody);
+    try {
+      final LoginResponse response =
+          await _remoteDataSource.login(loginRequestBody);
 
-    if (response.status == 200) {
-      return Right(response.toDomain());
-    } else {
-      //TODO content
-      return Left(ServerFailure(
-        code: response.status.orZero(),
-        message: response.message.orEmpty(),
-      ));
+      if (response.success == true) {
+        return Right(response.toDomain());
+      } else {
+        return Left(
+          ServerFailure(
+            code: response.status ?? ApiInternalStatus.failure,
+            message: response.message ?? AppStrings.defaultError,
+          ),
+        );
+      }
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
     }
   }
 }

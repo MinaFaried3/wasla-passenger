@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/data/network/data_source_status.dart';
+import 'package:wasla/data/network/error/data_source_status.dart';
 
 class ErrorHandler implements Exception {
   late final Failure failure;

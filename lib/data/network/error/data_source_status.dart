@@ -1,5 +1,10 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 
+class ApiInternalStatus {
+  static const int success = 200;
+  static const int failure = 409;
+}
+
 enum DataSourceStatus {
   success(
     200,

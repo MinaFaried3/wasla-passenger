@@ -2,90 +2,58 @@ import 'package:rive/rive.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';
 
 class RiveControllerManager {
-  late final Map<LoginBearStates, RiveAnimationController> _states;
+  late final Map<LoginBearState, RiveAnimationController> _states;
+  late final Artboard? riveArtBoard;
+  late LoginBearState currentState;
 
-  RiveControllerManager._internal() {
-    _initStates();
-  }
-
-  Map<LoginBearStates, RiveAnimationController> get states => _states;
+  Map<LoginBearState, RiveAnimationController> get states => _states;
 
   static final RiveControllerManager _instance =
       RiveControllerManager._internal();
 
+  RiveControllerManager._internal() {
+    currentState = LoginBearState.idle;
+    _initStates();
+  }
+
   factory RiveControllerManager() => _instance;
-
-  late final Artboard? riveArtBoard;
-
-  bool isLookingLeft = false;
-  bool isLookingRight = false;
-  bool isLookingCenter = false;
-  bool isLookingMediumLeft = false;
-  bool isLookingMediumRight = false;
 
   void _initStates() {
     _states = {
-      LoginBearStates.idle: SimpleAnimation(LoginBearStates.idle.name),
-      LoginBearStates.success: SimpleAnimation(LoginBearStates.success.name),
-      LoginBearStates.fail: SimpleAnimation(LoginBearStates.fail.name),
-      LoginBearStates.hands_up: SimpleAnimation(LoginBearStates.hands_up.name),
-      LoginBearStates.look_idle:
-          SimpleAnimation(LoginBearStates.look_idle.name),
-      LoginBearStates.look_left:
-          SimpleAnimation(LoginBearStates.look_left.name),
-      LoginBearStates.look_medium_left:
-          SimpleAnimation(LoginBearStates.look_medium_left.name),
-      LoginBearStates.look_center:
-          SimpleAnimation(LoginBearStates.look_center.name),
-      LoginBearStates.look_medium_right:
-          SimpleAnimation(LoginBearStates.look_medium_right.name),
-      LoginBearStates.Look_right:
-          SimpleAnimation(LoginBearStates.Look_right.name),
-      LoginBearStates.hands_down:
-          SimpleAnimation(LoginBearStates.hands_down.name),
+      LoginBearState.idle: SimpleAnimation(LoginBearState.idle.value),
+      LoginBearState.success: SimpleAnimation(LoginBearState.success.value),
+      LoginBearState.fail: SimpleAnimation(LoginBearState.fail.value),
+      LoginBearState.handsUp: SimpleAnimation(LoginBearState.handsUp.value),
+      LoginBearState.lookIdle: SimpleAnimation(LoginBearState.lookIdle.value),
+      LoginBearState.lookLeft: SimpleAnimation(LoginBearState.lookLeft.value),
+      LoginBearState.lookMediumLeft:
+          SimpleAnimation(LoginBearState.lookMediumLeft.value),
+      LoginBearState.lookCenter:
+          SimpleAnimation(LoginBearState.lookCenter.value),
+      LoginBearState.lookMediumRight:
+          SimpleAnimation(LoginBearState.lookMediumRight.value),
+      LoginBearState.lookRight: SimpleAnimation(LoginBearState.lookRight.value),
+      LoginBearState.handsDown: SimpleAnimation(LoginBearState.handsDown.value),
     };
   }
 
-  void _addCurrentState(LoginBearStates loginBearStates) {
-    riveArtBoard?.artboard.addController(_states[loginBearStates]!);
+  void _addCurrentState(LoginBearState loginBearState) {
+    riveArtBoard?.artboard.addController(_states[loginBearState]!);
   }
 
-  void _removeCurrentState(LoginBearStates loginBearStates) {
-    riveArtBoard?.artboard.removeController(_states[loginBearStates]!);
+  void _removeCurrentState(LoginBearState loginBearState) {
+    riveArtBoard?.artboard.removeController(_states[loginBearState]!);
   }
 
   void _removeAllStates() {
     for (var state in _states.entries) {
-      _removeCurrentState(state.key);
+      if (state.key != LoginBearState.idle) _removeCurrentState(state.key);
     }
-    //TODO SRP
-    isLookingLeft = false;
-    isLookingRight = false;
-    isLookingCenter = false;
-    isLookingMediumLeft = false;
-    isLookingMediumRight = false;
   }
 
-  //TODO SRP
-  void addState(
-    LoginBearStates loginBearStates, {
-    bool lookingLeft = false,
-    bool lookingRight = false,
-    bool lookingCenter = false,
-    bool lookingMediumLeft = false,
-    bool lookingMediumRight = false,
-    bool successOrFail = false,
-  }) {
+  void addState(LoginBearState loginBearState) {
     _removeAllStates();
-
-    isLookingRight = lookingRight;
-    isLookingLeft = lookingLeft;
-    isLookingCenter = lookingCenter;
-    isLookingMediumLeft = lookingMediumLeft;
-    isLookingMediumRight = lookingMediumRight;
-
-    _addCurrentState(loginBearStates);
-
-    if (!successOrFail) _addCurrentState(LoginBearStates.idle);
+    _addCurrentState(loginBearState);
+    currentState = loginBearState;
   }
 }
