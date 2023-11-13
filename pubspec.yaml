@@ -35,6 +35,8 @@ dependencies:
   vector_math:
   shared_preferences: ^2.2.2
   json_annotation:
+  freezed_annotation: ^2.4.1
+  get_it: ^7.6.4
 
 
 
@@ -48,7 +50,9 @@ dev_dependencies:
   retrofit_generator: ^8.0.3
   flutter_lints: ^3.0.1
   pretty_dio_logger: ^1.3.1
+  freezed: ^2.4.5
 
+  
 flutter_native_splash:
   color: "#0d101c"
   image: assets/images/logo/logo.png

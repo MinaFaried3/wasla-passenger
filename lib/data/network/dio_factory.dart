@@ -6,27 +6,23 @@ import 'package:wasla/data/network/end_points_manager.dart';
 
 class DioFactory extends Equatable {
   final AppPreferences _appPreferences;
+  final Dio _dio;
 
-  const DioFactory({required AppPreferences appPreferences})
-      : _appPreferences = appPreferences;
+  const DioFactory({required AppPreferences appPreferences, required Dio dio})
+      : _appPreferences = appPreferences,
+        _dio = dio;
 
   Future<String> getLanguage() async {
     return await _appPreferences.getAppLanguage();
   }
 
   Future<Dio> getDio() async {
-    final Dio dio = Dio();
-
     String lang = await _appPreferences.getAppLanguage();
 
-    Map<String, String> headers = {
-      HeadersManager.contentType: HeadersManager.applicationJson,
-      HeadersManager.accept: HeadersManager.applicationJson,
-      HeadersManager.authorization: AppConstants.token, //todo
-      HeadersManager.acceptLanguage: lang,
-    };
+    Map<String, String> headers =
+        HeadersManager.baseHeaders(lang, AppConstants.token);
 
-    dio.options = BaseOptions(
+    _dio.options = BaseOptions(
         baseUrl: EndPointsManager.baseUrl,
         headers: headers,
         sendTimeout: AppConstants.apiTimeOut,
@@ -34,14 +30,14 @@ class DioFactory extends Equatable {
         receiveDataWhenStatusError: true);
 
     if (kDebugMode) {
-      dio.interceptors.add(PrettyDioLogger(
+      _dio.interceptors.add(PrettyDioLogger(
           requestHeader: true,
           requestBody: true,
           responseHeader: true,
           logPrint: PrintManager.printColoredText));
     }
 
-    return dio;
+    return _dio;
   }
 
   @override

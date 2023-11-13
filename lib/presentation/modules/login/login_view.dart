@@ -18,8 +18,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  String email = "mina@gmail.com";
-  String password = "1234567";
+  String email = "01207340018";
+  String password = "12345678";
 
   final FocusNode passwordFocusNode = FocusNode();
 
@@ -111,11 +111,24 @@ class _LoginScreenState extends State<LoginScreen> {
                                 obscureText: true,
                                 focusNode: passwordFocusNode,
                               ),
-                              TextButton(
-                                  onPressed: () {
-                                    _onPressedLogin(riveController);
-                                  },
-                                  child: const Text("LOGIN"))
+                              BlocBuilder<LoginCubit, LoginState>(
+                                builder: (context, state) {
+                                  return state.maybeWhen(
+                                      loading: () => const Center(
+                                            child: CircularProgressIndicator(),
+                                          ),
+                                      success: (loginModel) =>
+                                          Text(loginModel.email),
+                                      orElse: () => TextButton(
+                                          onPressed: () {
+                                            _onPressedLogin(riveController);
+                                            context.read<LoginCubit>().login(
+                                                phone: email,
+                                                password: password);
+                                          },
+                                          child: const Text("LOGIN")));
+                                },
+                              )
                             ],
                           )),
                     ],
@@ -185,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 
-//todo
+//TODO
 class DownClipper extends CustomClipper<Path> {
   @override
   bool shouldReclip(covariant CustomClipper oldClipper) {

@@ -23,6 +23,8 @@ class RouteGenerator {
       case RoutesStrings.startNowRoute:
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
       case RoutesStrings.loginRoute:
+        DIModulesManger.prepareAuthModule();
+        DIModulesManger.prepareLoginModule();
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                   providers: BlocProvidersManager.loginProviders,
@@ -37,6 +39,7 @@ class RouteGenerator {
       case RoutesStrings.otpRoute:
         return MaterialPageRoute(builder: (_) => const OTPScreen());
       case RoutesStrings.onboardingRoute:
+        DIModulesManger.prepareOnboardingModule();
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
                 providers: BlocProvidersManager.onboardingProviders,
