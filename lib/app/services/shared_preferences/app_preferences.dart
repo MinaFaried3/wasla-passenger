@@ -10,7 +10,9 @@ class AppPreferences extends Equatable {
     String? lang = _sharedPreferences.getString(PrefKeys.lang);
 
     //default if null or empty
-    if (lang != null || lang!.isEmpty) return LanguageType.arabic.lang;
+    if (lang == null || lang.isEmpty) {
+      return LanguageType.arabic.getLangWithCountry();
+    }
 
     return lang;
   }

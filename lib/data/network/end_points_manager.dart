@@ -18,8 +18,13 @@ class HeadersManager {
   static const String ar = "ar-EG";
   static const String en = "en-US";
 
-  static const Map<String, dynamic> loginHeaders = {
+  static const Map<String, String> loginHeaders = {
     contentType: applicationJson,
-    acceptLanguage: ar
   };
+
+  static Map<String, String> baseHeaders(String lang, String token) => {
+        accept: applicationJson,
+        authorization: token,
+        acceptLanguage: lang,
+      };
 }

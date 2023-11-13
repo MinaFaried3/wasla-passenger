@@ -7,7 +7,7 @@ abstract class OnboardingState extends Equatable {
 class OnboardingInitial extends OnboardingState {
   final OnboardingPages onboardingPages;
 
-  OnboardingInitial({required this.onboardingPages});
+  const OnboardingInitial({required this.onboardingPages});
 
   @override
   List<Object> get props => [onboardingPages];
@@ -22,7 +22,7 @@ abstract class OnChangeOnBoardingPageState extends Equatable {
 class OnChangeOnBoardingPage extends OnChangeOnBoardingPageState {
   final int index;
 
-  OnChangeOnBoardingPage({required this.index});
+  const OnChangeOnBoardingPage({required this.index});
 
   @override
   List<Object> get props => [index];

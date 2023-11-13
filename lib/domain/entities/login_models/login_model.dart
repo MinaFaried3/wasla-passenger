@@ -39,4 +39,9 @@ class LoginModel extends Equatable {
         refreshToken,
         refreshTokenExpiresOn,
       ];
+
+  @override
+  String toString() {
+    return 'LoginModel{isAuthenticated: $isAuthenticated, email: $email, phone: $phone, role: $role, expiresOn: $expiresOn, token: $token, refreshToken: $refreshToken, refreshTokenExpiresOn: $refreshTokenExpiresOn}';
+  }
 }

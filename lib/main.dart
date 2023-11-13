@@ -6,8 +6,9 @@ import 'package:wasla/app/wasla.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await DIModulesManger.prepareAppModule();
 
-  Bloc.observer = MyBlocObserver();
+  Bloc.observer = getIt<MyBlocObserver>();
 
   runApp(EasyLocalization(
       supportedLocales: const [
