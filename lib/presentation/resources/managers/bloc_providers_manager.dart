@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/login/cubit/bear_login_animation_cubit.dart';
+import 'package:wasla/presentation/modules/login/cubit/bear_animation_cubit.dart';
 
 class BlocProvidersManager {
   static List<BlocProvider> onboardingProviders = [
@@ -10,11 +10,11 @@ class BlocProvidersManager {
   ];
 
   static List<BlocProvider> loginProviders = [
-    BlocProvider<BearLoginAnimationCubit>(
-        create: (context) =>
-            getIt<BearLoginAnimationCubit>()..loadAndBuildTheAnimation()),
-    BlocProvider<LoginCubit>(
-      create: (context) => getIt<LoginCubit>(),
+    BlocProvider<BearAnimationCubit>.value(
+      value: getIt<BearAnimationCubit>()..loadAndBuildTheAnimation(),
+    ),
+    BlocProvider<LoginCubit>.value(
+      value: getIt<LoginCubit>(),
     )
   ];
 }

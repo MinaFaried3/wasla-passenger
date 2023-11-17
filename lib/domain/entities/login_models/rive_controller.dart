@@ -2,56 +2,49 @@ import 'package:rive/rive.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';
 
 class RiveControllerManager {
-  late final Map<LoginBearState, RiveAnimationController> _states;
-  late final Artboard? riveArtBoard;
-  late LoginBearState currentState;
+  late final Map<BearState, RiveAnimationController> _states;
+  Artboard? riveArtBoard;
+  late BearState currentState;
 
-  Map<LoginBearState, RiveAnimationController> get states => _states;
+  Map<BearState, RiveAnimationController> get states => _states;
 
-  static final RiveControllerManager _instance =
-      RiveControllerManager._internal();
-
-  RiveControllerManager._internal() {
-    currentState = LoginBearState.idle;
+  RiveControllerManager() {
+    currentState = BearState.idle;
     _initStates();
   }
 
-  factory RiveControllerManager() => _instance;
-
   void _initStates() {
     _states = {
-      LoginBearState.idle: SimpleAnimation(LoginBearState.idle.value),
-      LoginBearState.success: SimpleAnimation(LoginBearState.success.value),
-      LoginBearState.fail: SimpleAnimation(LoginBearState.fail.value),
-      LoginBearState.handsUp: SimpleAnimation(LoginBearState.handsUp.value),
-      LoginBearState.lookIdle: SimpleAnimation(LoginBearState.lookIdle.value),
-      LoginBearState.lookLeft: SimpleAnimation(LoginBearState.lookLeft.value),
-      LoginBearState.lookMediumLeft:
-          SimpleAnimation(LoginBearState.lookMediumLeft.value),
-      LoginBearState.lookCenter:
-          SimpleAnimation(LoginBearState.lookCenter.value),
-      LoginBearState.lookMediumRight:
-          SimpleAnimation(LoginBearState.lookMediumRight.value),
-      LoginBearState.lookRight: SimpleAnimation(LoginBearState.lookRight.value),
-      LoginBearState.handsDown: SimpleAnimation(LoginBearState.handsDown.value),
+      BearState.idle: SimpleAnimation(BearState.idle.value),
+      BearState.success: SimpleAnimation(BearState.success.value),
+      BearState.fail: SimpleAnimation(BearState.fail.value),
+      BearState.handsUp: SimpleAnimation(BearState.handsUp.value),
+      BearState.lookIdle: SimpleAnimation(BearState.lookIdle.value),
+      BearState.lookLeft: SimpleAnimation(BearState.lookLeft.value),
+      BearState.lookMediumLeft: SimpleAnimation(BearState.lookMediumLeft.value),
+      BearState.lookCenter: SimpleAnimation(BearState.lookCenter.value),
+      BearState.lookMediumRight:
+          SimpleAnimation(BearState.lookMediumRight.value),
+      BearState.lookRight: SimpleAnimation(BearState.lookRight.value),
+      BearState.handsDown: SimpleAnimation(BearState.handsDown.value),
     };
   }
 
-  void _addCurrentState(LoginBearState loginBearState) {
+  void _addCurrentState(BearState loginBearState) {
     riveArtBoard?.artboard.addController(_states[loginBearState]!);
   }
 
-  void _removeCurrentState(LoginBearState loginBearState) {
+  void _removeCurrentState(BearState loginBearState) {
     riveArtBoard?.artboard.removeController(_states[loginBearState]!);
   }
 
   void _removeAllStates() {
     for (var state in _states.entries) {
-      if (state.key != LoginBearState.idle) _removeCurrentState(state.key);
+      if (state.key != BearState.idle) _removeCurrentState(state.key);
     }
   }
 
-  void addState(LoginBearState loginBearState) {
+  void addState(BearState loginBearState) {
     _removeAllStates();
     _addCurrentState(loginBearState);
     currentState = loginBearState;

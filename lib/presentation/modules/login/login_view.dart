@@ -1,9 +1,9 @@
-import 'package:rive/rive.dart';
-import 'package:vector_math/vector_math_64.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/constants.dart';
 import 'package:wasla/domain/entities/login_models/rive_controller.dart';
-import 'package:wasla/presentation/modules/login/cubit/bear_login_animation_cubit.dart';
+import 'package:wasla/presentation/modules/login/cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';
+import 'package:wasla/presentation/widgets/animated_bear.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,124 +16,46 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  late final RiveControllerManager riveController;
 
-  String email = "01207340018";
-  String password = "12345678";
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final FocusNode passwordFocusNode = FocusNode();
 
+  //todo change to stateless
   @override
   void initState() {
     super.initState();
-    checkPasswordFocused();
+    riveController = context.read<BearAnimationCubit>().riveController;
+    _checkPasswordFocused();
   }
 
-  void checkPasswordFocused() {
-    final riveController =
-        context.read<BearLoginAnimationCubit>().riveController;
-    passwordFocusNode.addListener(() {
-      if (passwordFocusNode.hasFocus) {
-        riveController.addState(LoginBearState.handsUp);
-      } else if (!passwordFocusNode.hasFocus) {
-        riveController.addState(LoginBearState.handsDown);
-      }
-    });
+  @override
+  void deactivate() {
+    super.deactivate();
+    riveController.addState(BearState.lookIdle);
+  }
+
+  @override
+  void dispose() {
+    passwordFocusNode.removeListener(_passwordFocusNodeListener);
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context, hasAppBar: false);
-    final riveController =
-        context.read<BearLoginAnimationCubit>().riveController;
     return Scaffold(
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-              horizontal: responsive.getWidthPercentage(3)),
+              horizontal: responsive.getWidthPercentage(AppSize.s3)),
           child: Center(
             child: SingleChildScrollView(
-              child:
-                  BlocBuilder<BearLoginAnimationCubit, BearLoginAnimationState>(
-                builder: (context, state) {
-                  return Column(
-                    children: [
-                      if (state is BearAssetLoaded)
-                        CircleAvatar(
-                            radius: responsive.screenWidth * 0.3,
-                            child: Center(
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(
-                                    responsive.screenWidth * 0.3),
-                                child: Transform(
-                                  transform: Matrix4.translation(Vector3(
-                                      0.0,
-                                      ((responsive.screenWidth * 0.3) * 2) *
-                                          0.1,
-                                      0.0)),
-                                  child: ClipPath(
-                                    clipper: DownClipper(),
-                                    child: Align(
-                                      alignment: Alignment.bottomCenter,
-                                      child: Rive(
-                                        artboard: riveController.riveArtBoard!,
-                                        fit: BoxFit.contain,
-                                        enablePointerEvents: true,
-                                        useArtboardSize: true,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ))
-                      else
-                        const SizedBox.shrink(),
-                      Form(
-                          key: formKey,
-                          child: Column(
-                            children: [
-                              TextFormField(
-                                textDirection: TextDirection.ltr,
-                                controller: emailController,
-                                decoration: const InputDecoration(),
-                                validator: (value) =>
-                                    value != email ? "Wrong email" : null,
-                                onChanged: (value) {
-                                  _onChangePhoneEmail(value, riveController);
-                                },
-                              ),
-                              SizedBox(
-                                height: responsive.getScreenHeightPercentage(3),
-                              ),
-                              TextFormField(
-                                textDirection: TextDirection.ltr,
-                                controller: passwordController,
-                                obscureText: true,
-                                focusNode: passwordFocusNode,
-                              ),
-                              BlocBuilder<LoginCubit, LoginState>(
-                                builder: (context, state) {
-                                  return state.maybeWhen(
-                                      loading: () => const Center(
-                                            child: CircularProgressIndicator(),
-                                          ),
-                                      success: (loginModel) =>
-                                          Text(loginModel.email),
-                                      orElse: () => TextButton(
-                                          onPressed: () {
-                                            _onPressedLogin(riveController);
-                                            context.read<LoginCubit>().login(
-                                                phone: email,
-                                                password: password);
-                                          },
-                                          child: const Text("LOGIN")));
-                                },
-                              )
-                            ],
-                          )),
-                    ],
-                  );
-                },
+              child: Column(
+                children: [
+                  buildLoginForm(responsive),
+                ],
               ),
             ),
           ),
@@ -142,79 +64,162 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _onPressedLogin(RiveControllerManager riveController) {
-    passwordFocusNode.unfocus();
-    Future.delayed(const Duration(seconds: 1), () {
-      if (passwordController.text == password &&
-          emailController.text == email) {
-        riveController.addState(LoginBearState.success);
-      } else {
-        riveController.addState(LoginBearState.fail);
-      }
+  Form buildLoginForm(ResponsiveManager responsive) {
+    return Form(
+        key: formKey,
+        child: Column(
+          children: [
+            BlocBuilder<BearAnimationCubit, BearAnimationState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loading: () => const LoadingIndicator(),
+                  loadedSuccessfully: () =>
+                      BlocListener<LoginCubit, LoginState>(
+                    listener: (context, state) {
+                      _listenToSuccessOrErrorState(state);
+                    },
+                    child: AnimatedBear(
+                      riveController: riveController,
+                      responsive: responsive,
+                    ),
+                  ),
+                  orElse: () => const SizedBox.shrink(),
+                );
+              },
+            ),
+            AppTextFormField(
+              textDirection: TextDirection.ltr,
+              controller: emailController,
+              validator: (value) => value == '' ? "empty email" : null,
+              onChanged: (value) {
+                _onChangePhoneEmail(
+                  value: value,
+                  riveController: riveController,
+                  numOfCharsChangedOn: 8,
+                );
+              },
+            ),
+            responsive.heightSpace(3),
+            AppTextFormField(
+              textDirection: TextDirection.ltr,
+              controller: passwordController,
+              isPassword: true,
+              focusNode: passwordFocusNode,
+            ),
+            BlocBuilder<LoginCubit, LoginState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                    loading: () => const LoadingIndicator(),
+                    orElse: () => TextButton(
+                        onPressed: () {
+                          _onPressedLogin();
+                        },
+                        child: Text(AppStrings.login.tr())));
+              },
+            )
+          ],
+        ));
+  }
+
+  void _listenToSuccessOrErrorState(LoginState state) {
+    state.whenOrNull(success: (loginModel) {
+      riveController.addState(BearState.success);
+    }, error: (failure) {
+      riveController.addState(BearState.fail);
     });
   }
 
-  //TODO SRP
-  void _onChangePhoneEmail(String value, RiveControllerManager riveController) {
-    if (value.isNotEmpty &&
-        value.length >= 40 &&
-        riveController.currentState != LoginBearState.lookRight) {
-      riveController.addState(
-        LoginBearState.lookRight,
-      );
-      PrintManager.printColoredText(LoginBearState.lookRight.name);
-    } else if (value.isNotEmpty &&
-        (value.length >= 30 && value.length < 40) &&
-        riveController.currentState != LoginBearState.lookMediumRight) {
-      riveController.addState(
-        LoginBearState.lookMediumRight,
-      );
-      PrintManager.printColoredText(LoginBearState.lookMediumLeft.name);
-    } else if (value.isNotEmpty &&
-        (value.length >= 20 && value.length < 30) &&
-        riveController.currentState != LoginBearState.lookCenter) {
-      riveController.addState(
-        LoginBearState.lookCenter,
-      );
-      PrintManager.printColoredText(LoginBearState.lookCenter.name);
-    } else if (value.isNotEmpty &&
-        (value.length >= 10 && value.length < 20) &&
-        riveController.currentState != LoginBearState.lookMediumLeft) {
-      riveController.addState(
-        LoginBearState.lookMediumLeft,
-      );
-      PrintManager.printColoredText(LoginBearState.lookMediumLeft.name);
-    } else if (value.isNotEmpty &&
-        value.length < 10 &&
-        riveController.currentState != LoginBearState.lookLeft) {
-      riveController.addState(
-        LoginBearState.lookLeft,
-      );
-      PrintManager.printColoredText(
-          "${LoginBearState.lookLeft.name} ${riveController.currentState != LoginBearState.lookLeft}");
-    } else if (value.isEmpty) {
-      riveController.addState(LoginBearState.lookIdle);
+  void _checkPasswordFocused() {
+    passwordFocusNode.addListener(_passwordFocusNodeListener);
+  }
+
+  void _passwordFocusNodeListener() {
+    if (passwordFocusNode.hasFocus) {
+      riveController.addState(BearState.handsUp);
+    } else if (!passwordFocusNode.hasFocus) {
+      riveController.addState(BearState.handsDown);
     }
   }
-}
 
-//TODO
-class DownClipper extends CustomClipper<Path> {
-  @override
-  bool shouldReclip(covariant CustomClipper oldClipper) {
-    return false;
+  void _onPressedLogin() {
+    passwordFocusNode.unfocus();
+
+    formKey.currentState!.validate();
+
+    context.read<LoginCubit>().login(
+          phone: emailController.text,
+          password: passwordController.text,
+        );
   }
 
-  @override
-  Path getClip(Size size) {
-    final path = Path();
+  void _addLookingState({
+    required String value,
+    required RiveControllerManager riveController,
+    int start = AppConstants.zero,
+    int end = AppConstants.thousands,
+    BearState wantedBearState = BearState.lookIdle,
+  }) {
+    if (riveController.currentState == wantedBearState) return;
 
-    path.moveTo(0, 0);
-    path.lineTo(size.width, 0);
-    path.lineTo(size.width, size.height * 0.9);
-    path.lineTo(0, size.height * 0.9);
-    path.lineTo(0, 0);
+    if (value.isEmpty && riveController.currentState != BearState.lookIdle) {
+      riveController.addState(BearState.lookIdle);
+      PrintManager.printColoredText(BearState.lookIdle.name);
+      return;
+    }
 
-    return path;
+    int length = value.length;
+    if (length >= start && length < end) {
+      riveController.addState(wantedBearState);
+      PrintManager.printColoredText(wantedBearState.name);
+    }
+  }
+
+  void _onChangePhoneEmail({
+    required String value,
+    required RiveControllerManager riveController,
+    required int numOfCharsChangedOn,
+  }) {
+    int x1 = numOfCharsChangedOn;
+    int x2 = x1 * 2;
+    int x3 = x1 * 3;
+    int x4 = x1 * 4;
+
+    _addLookingState(
+      value: value,
+      riveController: riveController,
+      end: x1,
+      wantedBearState: BearState.lookLeft,
+    );
+
+    _addLookingState(
+      value: value,
+      riveController: riveController,
+      start: x1,
+      end: x2,
+      wantedBearState: BearState.lookMediumLeft,
+    );
+
+    _addLookingState(
+      value: value,
+      riveController: riveController,
+      start: x2,
+      end: x3,
+      wantedBearState: BearState.lookCenter,
+    );
+
+    _addLookingState(
+      value: value,
+      riveController: riveController,
+      start: x3,
+      end: x4,
+      wantedBearState: BearState.lookMediumRight,
+    );
+
+    _addLookingState(
+      value: value,
+      riveController: riveController,
+      start: x4,
+      wantedBearState: BearState.lookRight,
+    );
   }
 }

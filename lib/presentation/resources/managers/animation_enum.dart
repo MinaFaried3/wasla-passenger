@@ -1,25 +1,25 @@
 ///login bear
-enum LoginBearState {
-  idle(_LoginBearStateStrings.idle),
-  lookLeft(_LoginBearStateStrings.lookLeft),
-  lookMediumLeft(_LoginBearStateStrings.lookMediumLeft),
-  lookRight(_LoginBearStateStrings.lookRight),
-  lookMediumRight(_LoginBearStateStrings.lookMediumRight),
-  lookCenter(_LoginBearStateStrings.lookCenter),
-  lookIdle(_LoginBearStateStrings.lookIdle),
-  success(_LoginBearStateStrings.success),
-  fail(_LoginBearStateStrings.fail),
-  handsUp(_LoginBearStateStrings.handsUp),
-  handsDown(_LoginBearStateStrings.handsDown),
-  none(_LoginBearStateStrings.none),
+enum BearState {
+  idle(_BearStateStrings.idle),
+  lookLeft(_BearStateStrings.lookLeft),
+  lookMediumLeft(_BearStateStrings.lookMediumLeft),
+  lookRight(_BearStateStrings.lookRight),
+  lookMediumRight(_BearStateStrings.lookMediumRight),
+  lookCenter(_BearStateStrings.lookCenter),
+  lookIdle(_BearStateStrings.lookIdle),
+  success(_BearStateStrings.success),
+  fail(_BearStateStrings.fail),
+  handsUp(_BearStateStrings.handsUp),
+  handsDown(_BearStateStrings.handsDown),
+  none(_BearStateStrings.none),
   ;
 
   final String value;
 
-  const LoginBearState(this.value);
+  const BearState(this.value);
 }
 
-class _LoginBearStateStrings {
+class _BearStateStrings {
   static const String idle = 'idle';
   static const String lookLeft = 'look_left';
   static const String lookMediumLeft = 'look_medium_left';
