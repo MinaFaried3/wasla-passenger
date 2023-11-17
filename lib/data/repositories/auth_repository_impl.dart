@@ -15,15 +15,21 @@ class AuthRepositoryImpl extends AuthRepository {
         _networkChecker = networkChecker;
 
   @override
+  NetworkChecker get networkChecker => _networkChecker;
+
+  @override
+  RemoteDataSource get remoteDataSource => _remoteDataSource;
+
+  @override
   Future<Either<Failure, LoginModel>> login(
       LoginRequestBody loginRequestBody) async {
-    if (await _networkChecker.isConnected == false) {
+    if (await networkChecker.isConnected == false) {
       return Left(DataSourceStatus.noInternetConnection.getFailure());
     }
 
     try {
       final LoginResponse response =
-          await _remoteDataSource.login(loginRequestBody);
+          await remoteDataSource.login(loginRequestBody);
 
       if (response.success == true) {
         return Right(response.toDomain());
