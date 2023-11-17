@@ -10,7 +10,7 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 }
 
 class OnChangeOnBoardingPageCubit extends Cubit<OnChangeOnBoardingPageState> {
-  OnChangeOnBoardingPageCubit() : super(OnChangeOnBoardingPage(index: 0));
+  OnChangeOnBoardingPageCubit() : super(const OnChangeOnBoardingPage(index: 0));
 
   void changeIndex(int index) {
     emit(OnChangeOnBoardingPage(index: index));

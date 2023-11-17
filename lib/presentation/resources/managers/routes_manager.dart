@@ -21,9 +21,9 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     switch (settings.name) {
       case RoutesStrings.startNowRoute:
+        // DIModulesManger.prepareLoginModule();
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
       case RoutesStrings.loginRoute:
-        DIModulesManger.prepareAuthModule();
         DIModulesManger.prepareLoginModule();
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(

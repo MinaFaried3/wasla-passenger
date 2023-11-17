@@ -25,8 +25,8 @@ class DioFactory extends Equatable {
     _dio.options = BaseOptions(
         baseUrl: EndPointsManager.baseUrl,
         headers: headers,
-        sendTimeout: AppConstants.apiTimeOut,
-        receiveTimeout: AppConstants.apiTimeOut,
+        sendTimeout: DurationManager.apiTimeOut,
+        receiveTimeout: DurationManager.apiTimeOut,
         receiveDataWhenStatusError: true);
 
     if (kDebugMode) {
