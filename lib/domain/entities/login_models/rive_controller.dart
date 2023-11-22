@@ -46,6 +46,7 @@ class RiveControllerManager {
 
   void addState(BearState loginBearState) {
     _removeAllStates();
+    //todo in case of idle and lookidle
     _addCurrentState(loginBearState);
     currentState = loginBearState;
   }

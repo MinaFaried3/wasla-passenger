@@ -1,5 +1,5 @@
 import 'package:rive/rive.dart';
-import 'package:vector_math/vector_math_64.dart';
+import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/constants.dart';
 import 'package:wasla/domain/entities/login_models/rive_controller.dart';
@@ -21,6 +21,7 @@ class AnimatedBear extends StatelessWidget {
     const double zCoordinate = AppConstants.doubleZero;
     return CircleAvatar(
         radius: radius,
+        backgroundColor: Colors.transparent,
         child: Center(
           child: ClipRRect(
             borderRadius: BorderRadius.circular(radius),

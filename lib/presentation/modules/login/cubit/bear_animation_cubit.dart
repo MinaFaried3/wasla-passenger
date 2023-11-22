@@ -7,6 +7,7 @@ import 'package:wasla/presentation/resources/managers/animation_enum.dart';
 part 'bear_animation_cubit.freezed.dart';
 part 'bear_animation_state.dart';
 
+//todo remove from here and create auth cubits modules
 class BearAnimationCubit extends Cubit<BearAnimationState> {
   late final RiveControllerManager riveController;
 
@@ -26,7 +27,7 @@ class BearAnimationCubit extends Cubit<BearAnimationState> {
     emit(const BearAnimationState.loading());
     // await Future.delayed(const Duration(milliseconds: 750));
 
-    rootBundle.load(AssetsProvider.loginBear).then((data) {
+    rootBundle.load(AssetsProvider.bear).then((data) {
       final file = RiveFile.import(data);
 
       final artBoard = file.mainArtboard;

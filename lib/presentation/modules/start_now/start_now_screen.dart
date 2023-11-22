@@ -11,10 +11,10 @@ class StartNowScreen extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
         gradient: LinearGradient(colors: [
-          ColorManager.lightViolet,
-          ColorManager.darkBlackViolet,
-          ColorManager.darkViolet,
-          ColorManager.darkBlackViolet,
+          ColorsManager.lightViolet,
+          ColorsManager.darkBlackViolet,
+          ColorsManager.darkViolet,
+          ColorsManager.darkBlackViolet,
         ], begin: Alignment.topLeft, end: Alignment.bottomRight),
         image: DecorationImage(
           image: AssetImage(AssetsProvider.startNowBackground),
@@ -63,7 +63,7 @@ class StartNowScreen extends StatelessWidget {
                 child: Text(
                   AppStrings.startNow.tr(),
                   style: getMediumStyle(
-                      color: ColorManager.mauva, fontSize: AppSize.s18.sp),
+                      color: ColorsManager.mauva, fontSize: AppSize.s18.sp),
                 ),
               ),
             )),
@@ -76,7 +76,7 @@ class StartNowScreen extends StatelessWidget {
     return ClipPath(
       clipper: ContainerClipper(),
       child: Container(
-        color: ColorManager.violet.withOpacity(AppSize.s0_2),
+        color: ColorsManager.violet.withOpacity(AppSize.s0_2),
         height: responsive.screenHeight * size,
         width: double.infinity,
         alignment: Alignment.bottomCenter,
