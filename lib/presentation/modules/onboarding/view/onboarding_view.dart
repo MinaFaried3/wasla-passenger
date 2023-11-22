@@ -150,6 +150,7 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
+  //not used
   List<Color> _getGradientList(int index) {
     final evenGradient = [
       ColorsManager.lightViolet,
