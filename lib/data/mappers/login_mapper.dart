@@ -1,4 +1,4 @@
-import 'package:wasla/app/shared/constants.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
 import 'package:wasla/data/responses/login_response.dart';
 import 'package:wasla/domain/entities/login_models/login_model.dart';

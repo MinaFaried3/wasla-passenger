@@ -4,27 +4,117 @@ class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
     super.key,
     this.isPassword = false,
-    required this.controller,
+    this.controller,
     this.validator,
     this.onChanged,
     this.focusNode,
     this.textDirection,
+    this.textInputType,
+    this.onTap,
+    this.onFieldSubmitted,
+    this.hintText,
+    this.prefix,
+    this.suffix,
+    this.outSideIcon,
+    this.svgPrefixPath,
+    this.labelText,
   });
 
   final bool isPassword;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
   final void Function(String)? onChanged;
+  final void Function(String)? onFieldSubmitted;
+  final void Function()? onTap;
   final FocusNode? focusNode;
   final TextDirection? textDirection;
+  final TextInputType? textInputType;
+  final String? hintText;
+  final String? labelText;
+  final String? svgPrefixPath;
+  final Widget? prefix;
+  final Widget? suffix;
+  final Widget? outSideIcon;
 
   @override
   Widget build(BuildContext context) {
+    return textDirection == null
+        ? _buildTextFormField(context)
+        : Directionality(
+            textDirection: textDirection!,
+            child: _buildTextFormField(context),
+          );
+  }
+
+  Widget _buildTextFormField(context) {
     return TextFormField(
       obscureText: isPassword,
       controller: controller,
-      textDirection: textDirection,
-      decoration: const InputDecoration(),
+      keyboardType: textInputType,
+      onTap: onTap,
+      onFieldSubmitted: onFieldSubmitted,
+      obscuringCharacter: '●',
+
+      //todo
+      // todo add english family
+      style: getRegularStyle(
+          color: ColorsManager.offWhite400, fontSize: AppSize.s28),
+      decoration: InputDecoration(
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: AppPadding.p14,
+          horizontal: AppPadding.p8,
+        ),
+        prefixIcon: Padding(
+          padding: const EdgeInsets.all(AppPadding.p6),
+          child: svgPrefixPath != null
+              ? SvgPicture.asset(
+                  svgPrefixPath!,
+                  width: AppSize.s10,
+                  height: AppSize.s10,
+                  colorFilter: ColorFilter.mode(
+                    ColorsManager.offWhite300.withOpacity(AppSize.s0_9),
+                    BlendMode.srcIn,
+                  ),
+                )
+              : null,
+        ),
+        suffixIcon: suffix,
+        alignLabelWithHint: true,
+        icon: outSideIcon,
+        filled: true,
+        fillColor: ColorsManager.tealPrimary1000,
+        hintText: hintText,
+        labelStyle: getRegularStyle(
+            color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
+            fontSize: AppSize.s24),
+        label: labelText != null
+            ? Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppPadding.p4,
+                  horizontal: AppPadding.p6,
+                ),
+                decoration: BoxDecoration(
+                  color: ColorsManager.tealPrimary1000,
+                  borderRadius: BorderRadius.circular(AppSize.s20),
+                ),
+                child: Text(labelText!),
+              )
+            : null,
+        hintStyle: getRegularStyle(
+            color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
+            fontSize: AppSize.s28),
+        floatingLabelAlignment: FloatingLabelAlignment.start,
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSize.s20),
+          borderSide: BorderSide.none,
+        ),
+        focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppSize.s20),
+            borderSide: const BorderSide(
+                color: ColorsManager.darkTealBackground900, width: AppSize.s2)),
+      ),
+      cursorColor: ColorsManager.tealPrimary,
       focusNode: focusNode,
       validator: validator,
       onChanged: onChanged,

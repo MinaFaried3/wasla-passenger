@@ -21,7 +21,7 @@ class AssetsProvider {
   static const String _rive = '$_animationPath/rive';
 
   //rive
-  static const String loginBear = '$_rive/login_bear.riv';
+  static const String bear = '$_rive/bear.riv';
 
   //images
   static const String logo = '$_logo/logo.png';
@@ -38,8 +38,17 @@ class AssetsProvider {
   static const String startNowBackground =
       '$_background/background_start_now.png';
 
-  //svg
-  static const String arrowDown1 = '$_svg/arrow_down1.svg';
-  static const String arrowDown2 = '$_svg/arrow_down2.svg';
-  static const String arrowDown3 = '$_svg/right_arrow_ic.svg';
+  //svg icons
+  static const String arrowDown1Icon = '$_svg/arrow_down1.svg';
+  static const String arrowDown2Icon = '$_svg/arrow_down2.svg';
+  static const String arrowDown3Icon = '$_svg/right_arrow_ic.svg';
+  static const String homeIcon = '$_svg/home.svg';
+  static const String wifiIcon = '$_svg/wifi.svg';
+  static const String searchIcon = '$_svg/search.svg';
+  static const String userIcon = '$_svg/user1_icon.svg';
+  static const String userIcon2 = '$_svg/user2_icon.svg';
+  static const String openEyeIcon = '$_svg/open_eye_icon.svg';
+  static const String closedEyeIcon = '$_svg/closed_eye_icon.svg';
+  static const String passwordIcon = '$_svg/password_icon.svg';
+  static const String passwordIcon2 = '$_svg/password1_icon.svg';
 }

@@ -1,4 +1,4 @@
-import 'package:wasla/app/shared/constants.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 
 extension NonNullableInt on int? {
   int orZero() {

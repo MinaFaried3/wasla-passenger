@@ -24,32 +24,32 @@ class OnboardingPages {
         OnboardingModel(
             title: AppStrings.onboardingTitle1.tr(),
             subTitle: AppStrings.onboardingSubTitle1.tr(),
-            bgColor: ColorManager.darkViolet,
+            bgColor: ColorsManager.darkViolet,
             image: AssetsProvider.onboarding1),
         OnboardingModel(
             title: AppStrings.onboardingTitle2.tr(),
             subTitle: AppStrings.onboardingSubTitle2.tr(),
-            bgColor: ColorManager.darkBlackViolet,
+            bgColor: ColorsManager.darkBlackViolet,
             image: AssetsProvider.onboarding2),
         OnboardingModel(
             title: AppStrings.onboardingTitle3.tr(),
             subTitle: AppStrings.onboardingSubTitle3.tr(),
-            bgColor: ColorManager.darkViolet,
+            bgColor: ColorsManager.darkViolet,
             image: AssetsProvider.onboarding3),
         OnboardingModel(
             title: AppStrings.onboardingTitle4.tr(),
             subTitle: AppStrings.onboardingSubTitle4.tr(),
-            bgColor: ColorManager.darkBlackViolet,
+            bgColor: ColorsManager.darkBlackViolet,
             image: AssetsProvider.onboarding4),
         OnboardingModel(
             title: AppStrings.onboardingTitle5.tr(),
             subTitle: AppStrings.onboardingSubTitle5.tr(),
-            bgColor: ColorManager.darkViolet,
+            bgColor: ColorsManager.darkViolet,
             image: AssetsProvider.onboarding5),
         OnboardingModel(
             title: AppStrings.onboardingTitle6.tr(),
             subTitle: AppStrings.onboardingSubTitle6.tr(),
-            bgColor: ColorManager.darkBlackViolet,
+            bgColor: ColorsManager.darkBlackViolet,
             image: AssetsProvider.onboarding6),
       ];
 
