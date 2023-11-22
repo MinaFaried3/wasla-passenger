@@ -1,6 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/constants.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 
 //todo colors
 ThemeData getApplicationTheme() {

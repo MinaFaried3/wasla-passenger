@@ -1,5 +1,5 @@
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:wasla/app/shared/bloc_observer.dart';
+import 'package:wasla/app/shared/common/bloc_observer.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/wasla.dart';
 

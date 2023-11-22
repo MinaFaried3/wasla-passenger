@@ -109,7 +109,7 @@ class OnboardingScreen extends StatelessWidget {
   }
 
   void _onFinish(context) {
-    Navigator.of(context).pushReplacementNamed(RoutesStrings.loginRoute);
+    context.pushReplacementNamed(RoutesStrings.loginRoute);
   }
 
   Widget _page(context, {required OnboardingModel page, required int index}) {
@@ -150,6 +150,7 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
+  //not used
   List<Color> _getGradientList(int index) {
     final evenGradient = [
       ColorsManager.lightViolet,
