@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/constants.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/domain/entities/login_models/rive_controller.dart';
 import 'package:wasla/presentation/modules/login/cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';

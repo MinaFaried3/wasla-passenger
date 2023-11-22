@@ -2,10 +2,20 @@ import 'package:flutter/material.dart';
 
 class ColorsManager {
   //last palette
+
+  //dark teal
   static const Color darkTealBackground1 = Color(0xff051215);
   static const Color darkTealBackground2 = Color(0xff07161B);
+  static const Color darkTealBackground3 = Color(0xff1C3039);
+  static const Color darkTealBackground4 = Color(0xff26353A);
+  static const Color darkTealBackground5 = Color(0xff2F4249);
+  static const Color darkTealBackground6 = Color(0xff394345);
+
   static const Color darkTealBackground1000 = Color(0xff2A525F);
   static const Color darkTealBackground900 = Color(0xff447281);
+
+  static const Color darkTeal = Color(0xff1C3039);
+  static const Color lightTeal = Color(0xff548E99);
 
   static const Color tealPrimary = Color(0xff3D737F);
   static const Color tealPrimary1000 = Color(0xff1C3D45);
@@ -18,6 +28,9 @@ class ColorsManager {
   static const Color tealPrimary300 = Color(0xffBDF2FD);
   static const Color tealPrimary200 = Color(0xffDAF8FF);
   static const Color tealPrimary100 = Color(0xffF6FDFF);
+
+  //offWhite
+  static const Color lightOffWhiteBase = Color(0xffE4DFDC);
 
   static const Color offWhite = Color(0xffCEC7BF);
   static const Color lightOffWhite = Color(0xffb6b3b0);
@@ -32,6 +45,8 @@ class ColorsManager {
   static const Color offWhite200 = Color(0xffFBF7F2);
   static const Color offWhite100 = Color(0xffFDFDFC);
 
+  //red
+
   static const Color red = Color(0xffE3596D);
   static const Color red1000 = Color(0xff5B141E);
   static const Color red900 = Color(0xff7D212E);
@@ -43,6 +58,8 @@ class ColorsManager {
   static const Color red300 = Color(0xffFFB0BB);
   static const Color red200 = Color(0xffFFD0D7);
   static const Color red100 = Color(0xffFFF0F2);
+
+  //Grey back ground
 
   static const Color lightViolet = Color(0xff201C31);
   static const Color darkViolet = Color(0xff1A1727);
@@ -66,9 +83,9 @@ class ColorsManager {
   static const Color beige2 = Color(0xfff6d6c5);
 
   // new colors
-  static Color grey1 = const Color(0xff707070);
-  static Color brownGey = const Color(0xff5D564E);
-  static Color grey2 = const Color(0xff797979);
-  static Color white = const Color(0xffFFFFFF);
-  static Color error = const Color(0xffe61f34); // red color
+  static const Color grey1 = Color(0xff707070);
+  static const Color brownGey = Color(0xff5D564E);
+  static const Color grey2 = Color(0xff797979);
+  static const Color white = Color(0xffFFFFFF);
+  static const Color error = Color(0xffe61f34); // red color
 }

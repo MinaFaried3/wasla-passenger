@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
-import 'package:wasla/app/shared/bloc_observer.dart';
+import 'package:wasla/app/shared/common/bloc_observer.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/api_service_client.dart';
 import 'package:wasla/data/network/dio_factory.dart';

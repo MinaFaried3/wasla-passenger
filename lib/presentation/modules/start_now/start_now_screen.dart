@@ -57,8 +57,7 @@ class StartNowScreen extends StatelessWidget {
                   bottom: responsive.screenHeight * AppSize.s0_04),
               child: TextButton(
                 onPressed: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(RoutesStrings.onboardingRoute);
+                  context.pushReplacementNamed(RoutesStrings.onboardingRoute);
                 },
                 child: Text(
                   AppStrings.startNow.tr(),
