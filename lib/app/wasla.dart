@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/constants.dart';
 
 class WaslaApp extends StatefulWidget {
   //named constructor
@@ -23,7 +24,8 @@ class _WaslaAppState extends State<WaslaApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: const Size(360, 690),
+      designSize: const Size(
+          AppConstants.screenUtilWidth, AppConstants.screenUtilHeight),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
@@ -36,7 +38,7 @@ class _WaslaAppState extends State<WaslaApp> {
         themeMode: ThemeMode.dark,
         home: child,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: RoutesStrings.loginRoute,
+        initialRoute: Routes.loginRoute.routeString,
       ),
     );
   }

@@ -22,12 +22,18 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final FocusNode passwordFocusNode = FocusNode();
 
+  //todo cubit
+  late String iconPath;
+
+  bool clicked = false;
+
   //todo change to stateless
   @override
   void initState() {
     super.initState();
     riveController = context.read<BearAnimationCubit>().riveController;
     _checkPasswordFocused();
+    iconPath = AssetsProvider.openEyeIcon;
   }
 
   @override
@@ -39,6 +45,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     passwordFocusNode.removeListener(_passwordFocusNodeListener);
+
     super.dispose();
   }
 
@@ -88,6 +95,8 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             AppTextFormField(
+              labelText: 'user name',
+              svgPrefixPath: AssetsProvider.userIcon2,
               textDirection: TextDirection.ltr,
               controller: emailController,
               validator: (value) => value == '' ? "empty email" : null,
@@ -95,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 _onChangePhoneEmail(
                   value: value,
                   riveController: riveController,
-                  numOfCharsChangedOn: 8,
+                  numOfCharsChangedOn: 5,
                 );
               },
             ),
@@ -103,20 +112,57 @@ class _LoginScreenState extends State<LoginScreen> {
             AppTextFormField(
               textDirection: TextDirection.ltr,
               controller: passwordController,
-              isPassword: true,
               focusNode: passwordFocusNode,
+              labelText: 'password',
+              svgPrefixPath: AssetsProvider.passwordIcon2,
+              isPassword: clicked,
+              suffix: IconButton(
+                padding: EdgeInsets.all(0),
+                icon: SvgPicture.asset(
+                  iconPath,
+                  width: 35,
+                  colorFilter: ColorFilter.mode(
+                    //todo try teal with filled
+                    // ColorsManager.brownGey,
+                    ColorsManager.offWhite300.withOpacity(0.9),
+                    BlendMode.srcIn,
+                  ),
+                ),
+                onPressed: () {
+                  //todo cubit
+                  clicked = !clicked;
+                  setState(() {
+                    clicked
+                        ? iconPath = AssetsProvider.closedEyeIcon
+                        : iconPath = AssetsProvider.openEyeIcon;
+                  });
+                },
+              ),
             ),
+            responsive.heightSpace(10),
             BlocBuilder<LoginCubit, LoginState>(
               builder: (context, state) {
                 return state.maybeWhen(
                     loading: () => const LoadingIndicator(),
-                    orElse: () => TextButton(
-                        onPressed: () {
-                          _onPressedLogin();
-                        },
-                        child: Text(AppStrings.login.tr())));
+                    orElse: () => SizedBox(
+                          width: double.infinity,
+                          height: 60,
+                          child: TextButton(
+                              style: ButtonStyle(
+                                // fixedSize: MaterialStateProperty.all(
+                                //     Size(responsive.getWidthOf(0.9), 30)),
+                                backgroundColor: MaterialStateProperty.all(
+                                  // ColorsManager.darkTealBackground1000,
+                                  ColorsManager.offWhite300,
+                                ),
+                              ),
+                              onPressed: () {
+                                _onPressedLogin();
+                              },
+                              child: Text(AppStrings.login.tr())),
+                        ));
               },
-            )
+            ),
           ],
         ));
   }
@@ -147,8 +193,8 @@ class _LoginScreenState extends State<LoginScreen> {
     formKey.currentState!.validate();
 
     context.read<LoginCubit>().login(
-          phone: emailController.text,
-          password: passwordController.text,
+          phone: '01207340018',
+          password: '12345678',
         );
   }
 

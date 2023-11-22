@@ -58,7 +58,7 @@ class OnboardingScreen extends StatelessWidget {
     OnChangeOnBoardingPageState onChangeState,
     int itemsCount,
   ) {
-    const iconColor = ColorManager.paleVioletRed;
+    const iconColor = ColorsManager.paleVioletRed;
     return SizedBox(
       width: responsive.screenWidth * AppSize.s2,
       height: responsive.screenWidth * AppSize.s2,
@@ -80,7 +80,7 @@ class OnboardingScreen extends StatelessWidget {
               padding: EdgeInsets.only(
                   top: responsive.screenHeight * AppSize.s0_015),
               child: SvgPicture.asset(
-                AssetsProvider.arrowDown1,
+                AssetsProvider.arrowDown1Icon,
                 fit: BoxFit.scaleDown,
                 colorFilter: const ColorFilter.mode(
                   iconColor,
@@ -101,8 +101,8 @@ class OnboardingScreen extends StatelessWidget {
       painter: onChangeState is OnChangeOnBoardingPage
           ? ProgressPainter(
               progress: ((onChangeState.index + 1) / itemsCount) * 100,
-              barColor: ColorManager.paleVioletRed,
-              topColor: ColorManager.paleVioletRed.withOpacity(AppSize.s0_75),
+              barColor: ColorsManager.paleVioletRed,
+              topColor: ColorsManager.paleVioletRed.withOpacity(AppSize.s0_75),
             )
           : null,
     );
@@ -125,13 +125,13 @@ class OnboardingScreen extends StatelessWidget {
             Text(
               page.title,
               style: getBoldStyle(
-                  fontSize: AppSize.s20.sp, color: ColorManager.beige2),
+                  fontSize: AppSize.s20.sp, color: ColorsManager.beige2),
             ),
             responsive.heightSpace(2),
             Text(
               page.subTitle,
               style: getMediumStyle(
-                  color: ColorManager.white, fontSize: AppSize.s14.sp),
+                  color: ColorsManager.white, fontSize: AppSize.s14.sp),
             ),
             responsive.heightSpace(7),
             Center(
@@ -152,12 +152,12 @@ class OnboardingScreen extends StatelessWidget {
 
   List<Color> _getGradientList(int index) {
     final evenGradient = [
-      ColorManager.lightViolet,
-      ColorManager.darkViolet,
+      ColorsManager.lightViolet,
+      ColorsManager.darkViolet,
     ];
     final oddGradient = [
-      ColorManager.lightBlackViolet,
-      ColorManager.darkBlackViolet
+      ColorsManager.lightBlackViolet,
+      ColorsManager.darkBlackViolet
     ];
     return index % 2 == 0 ? evenGradient : oddGradient;
   }
@@ -173,7 +173,7 @@ class OnboardingScreen extends StatelessWidget {
       child: Text(
         AppStrings.skip.tr(),
         style: getMediumStyle(
-            color: ColorManager.mauva.withOpacity(AppSize.s0_75),
+            color: ColorsManager.mauva.withOpacity(AppSize.s0_75),
             fontSize: AppSize.s14.sp),
       ),
     );
