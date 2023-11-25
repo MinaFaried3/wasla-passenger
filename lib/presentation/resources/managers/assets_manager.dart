@@ -23,20 +23,25 @@ class AssetsProvider {
   //rive
   static const String bear = '$_rive/bear.riv';
 
-  //images
+  ///images
+  //logo
   static const String logo = '$_logo/logo.png';
-  static const String logo1 = '$_logo/logo1.png';
-  static const String logo2 = '$_logo/logo2.png';
+  static const String logo500 = '$_logo/logo_500.png';
+  static const String logo1000 = '$_logo/logo_1000.png';
   static const String logoIcon = '$_logo/logo_icon.png';
-  static const String logoTitle = '$_logo/logo_title.png';
+  static const String logoTypo = '$_logo/logo_typo.png';
+
+  //start now
+  static const String startNowBackground =
+      '$_background/background_start_now.png';
+
+  //onboarding
   static const String onboarding1 = '$_onboarding/welcome.png';
   static const String onboarding2 = '$_onboarding/ticket.png';
   static const String onboarding3 = '$_onboarding/delivery.png';
   static const String onboarding4 = '$_onboarding/ads.png';
   static const String onboarding5 = '$_onboarding/following.png';
   static const String onboarding6 = '$_onboarding/private_bus.png';
-  static const String startNowBackground =
-      '$_background/background_start_now.png';
 
   //svg icons
   static const String arrowDown1Icon = '$_svg/arrow_down1.svg';

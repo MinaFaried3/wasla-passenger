@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
               svgPrefixPath: AssetsProvider.passwordIcon2,
               isPassword: clicked,
               suffix: IconButton(
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 icon: SvgPicture.asset(
                   iconPath,
                   width: 35,

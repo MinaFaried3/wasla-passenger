@@ -1,7 +1,7 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 
 class TestScreen extends StatefulWidget {
-  TestScreen({super.key});
+  const TestScreen({super.key});
 
   @override
   State<TestScreen> createState() => _TestScreenState();
@@ -35,7 +35,7 @@ class _TestScreenState extends State<TestScreen> {
                   labelText: 'user name',
                   svgPrefixPath: AssetsProvider.userIcon2,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 AppTextFormField(
@@ -46,11 +46,11 @@ class _TestScreenState extends State<TestScreen> {
                   validator: (str) =>
                       str == null || str.isEmpty ? 'wrong val' : null,
                   suffix: IconButton(
-                    padding: EdgeInsets.all(0),
+                    padding: const EdgeInsets.all(0),
                     icon: SvgPicture.asset(
                       iconPath,
                       width: 35,
-                      colorFilter: ColorFilter.mode(
+                      colorFilter: const ColorFilter.mode(
                         ColorsManager.brownGey,
                         BlendMode.srcIn,
                       ),
@@ -65,7 +65,7 @@ class _TestScreenState extends State<TestScreen> {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 TextFormField(
@@ -76,7 +76,7 @@ class _TestScreenState extends State<TestScreen> {
                       prefixIcon: SvgPicture.asset(
                         iconPath,
                         width: 35,
-                        colorFilter: ColorFilter.mode(
+                        colorFilter: const ColorFilter.mode(
                           ColorsManager.offWhite300,
                           BlendMode.srcIn,
                         ),
@@ -86,7 +86,7 @@ class _TestScreenState extends State<TestScreen> {
                     onPressed: () {
                       key.currentState?.validate();
                     },
-                    child: Text("validate"))
+                    child: const Text("validate"))
               ],
             ),
           ),

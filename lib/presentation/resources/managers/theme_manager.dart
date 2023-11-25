@@ -17,7 +17,7 @@ ThemeData getApplicationTheme() {
     scaffoldBackgroundColor: ColorsManager.darkTealBackground2,
     // ripple effect color
     // cardView theme
-    cardTheme: CardTheme(
+    cardTheme: const CardTheme(
         color: ColorsManager.beige1,
         shadowColor: ColorsManager.grey1,
         elevation: AppSize.s4),
@@ -37,8 +37,8 @@ ThemeData getApplicationTheme() {
         titleTextStyle: getRegularStyle(
             fontSize: FontSize.s16, color: ColorsManager.beige1)),
     // button theme
-    buttonTheme: ButtonThemeData(
-        shape: const StadiumBorder(),
+    buttonTheme: const ButtonThemeData(
+        shape: StadiumBorder(),
         disabledColor: ColorsManager.grey1,
         buttonColor: ColorsManager.paleVioletRed,
         splashColor: ColorsManager.beige1),
@@ -60,7 +60,7 @@ ThemeData getApplicationTheme() {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(AppSize.s12)))),
 
-    bottomSheetTheme: BottomSheetThemeData(
+    bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: ColorsManager.white,
     ),
 
