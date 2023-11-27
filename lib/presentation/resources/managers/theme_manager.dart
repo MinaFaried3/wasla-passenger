@@ -98,9 +98,10 @@ class ThemeManger {
   static final TextButtonThemeData textButtonThemeData = TextButtonThemeData(
       style: ButtonStyle(
           foregroundColor:
-              const MaterialStatePropertyAll(ColorsManager.lightBlue),
-          textStyle: MaterialStatePropertyAll(getSemiBoldStyle(
-              color: ColorsManager.navy, fontSize: FontSize.s16))));
+              const MaterialStatePropertyAll(ColorsManager.tealPrimary700),
+          textStyle: MaterialStatePropertyAll(getBoldStyle(
+              color: ColorsManager.tealPrimary700,
+              fontSize: FontSize.s22.sp))));
 
   static final ElevatedButtonThemeData elevatedButtonThemeData =
       ElevatedButtonThemeData(

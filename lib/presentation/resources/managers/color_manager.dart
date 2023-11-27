@@ -114,3 +114,17 @@ class ColorsManager {
   static const Color white = Color(0xffFFFFFF);
   static const Color error = Color(0xffe61f34); // red color
 }
+
+class GradientManager {
+  static const List<Color> startNowGradient = [
+    ColorsManager.tealPrimary1000,
+    ColorsManager.darkTealBackground2,
+    ColorsManager.darkTealBackground1,
+  ];
+
+  static const List<double> startNowStops = [
+    0.1,
+    0.6,
+    0.7,
+  ];
+}

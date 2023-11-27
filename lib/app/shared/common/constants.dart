@@ -22,4 +22,7 @@ class DurationManager {
   static const Duration apiTimeOut = Duration(minutes: timeOutMin);
   static const Duration bearHandsDownDuration =
       Duration(milliseconds: bearHandsDownMS);
+
+  static const Duration s4 = Duration(seconds: 4);
+  static const Duration s3 = Duration(seconds: 3);
 }
