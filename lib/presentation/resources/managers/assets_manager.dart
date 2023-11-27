@@ -1,12 +1,10 @@
 // base dirs
 const String _assets = 'assets';
 const String _images = '/images';
-const String _json = '/json';
 const String _animation = '/animation';
 
 //base paths
 const String _imagePath = _assets + _images;
-const String _jsonPath = _assets + _json;
 const String _animationPath = _assets + _animation;
 
 class AssetsProvider {
@@ -19,9 +17,14 @@ class AssetsProvider {
 
   //animation_dirs
   static const String _rive = '$_animationPath/rive';
+  static const String _json = '$_animationPath/json';
 
+  ///animation
   //rive
   static const String bear = '$_rive/bear.riv';
+
+  //json animation
+  static const String loadingIndicator = '$_json/loading_indicator.json';
 
   ///images
   //logo
@@ -43,6 +46,7 @@ class AssetsProvider {
   static const String onboarding5 = '$_onboarding/following.png';
   static const String onboarding6 = '$_onboarding/private_bus.png';
 
+  ///icons
   //svg icons
   static const String arrowDown1Icon = '$_svg/arrow_down1.svg';
   static const String arrowDown2Icon = '$_svg/arrow_down2.svg';
