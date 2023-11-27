@@ -68,7 +68,7 @@ class RouteGenerator {
                 providers: BlocProvidersManager.onboardingProviders,
                 child: const OnboardingScreen()));
       case Routes.testRoute:
-        return MaterialPageRoute(builder: (_) => TestScreen());
+        return MaterialPageRoute(builder: (_) => const TestScreen());
       case Routes.unDefined:
         return unDefinedRoute();
     }

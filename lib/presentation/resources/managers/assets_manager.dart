@@ -1,12 +1,10 @@
 // base dirs
 const String _assets = 'assets';
 const String _images = '/images';
-const String _json = '/json';
 const String _animation = '/animation';
 
 //base paths
 const String _imagePath = _assets + _images;
-const String _jsonPath = _assets + _json;
 const String _animationPath = _assets + _animation;
 
 class AssetsProvider {
@@ -19,25 +17,36 @@ class AssetsProvider {
 
   //animation_dirs
   static const String _rive = '$_animationPath/rive';
+  static const String _json = '$_animationPath/json';
 
+  ///animation
   //rive
   static const String bear = '$_rive/bear.riv';
 
-  //images
+  //json animation
+  static const String loadingIndicator = '$_json/loading_indicator.json';
+
+  ///images
+  //logo
   static const String logo = '$_logo/logo.png';
-  static const String logo1 = '$_logo/logo1.png';
-  static const String logo2 = '$_logo/logo2.png';
+  static const String logo500 = '$_logo/logo_500.png';
+  static const String logo1000 = '$_logo/logo_1000.png';
   static const String logoIcon = '$_logo/logo_icon.png';
-  static const String logoTitle = '$_logo/logo_title.png';
+  static const String logoTypo = '$_logo/logo_typo.png';
+
+  //start now
+  static const String startNowBackground =
+      '$_background/background_start_now.png';
+
+  //onboarding
   static const String onboarding1 = '$_onboarding/welcome.png';
   static const String onboarding2 = '$_onboarding/ticket.png';
   static const String onboarding3 = '$_onboarding/delivery.png';
   static const String onboarding4 = '$_onboarding/ads.png';
   static const String onboarding5 = '$_onboarding/following.png';
   static const String onboarding6 = '$_onboarding/private_bus.png';
-  static const String startNowBackground =
-      '$_background/background_start_now.png';
 
+  ///icons
   //svg icons
   static const String arrowDown1Icon = '$_svg/arrow_down1.svg';
   static const String arrowDown2Icon = '$_svg/arrow_down2.svg';

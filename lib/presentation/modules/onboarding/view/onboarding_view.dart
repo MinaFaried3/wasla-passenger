@@ -108,7 +108,7 @@ class OnboardingScreen extends StatelessWidget {
     );
   }
 
-  void _onFinish(context) {
+  void _onFinish(BuildContext context) {
     context.pushReplacementNamed(RoutesStrings.loginRoute);
   }
 

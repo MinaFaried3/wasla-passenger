@@ -117,7 +117,7 @@ class _LoginScreenState extends State<LoginScreen> {
               svgPrefixPath: AssetsProvider.passwordIcon2,
               isPassword: clicked,
               suffix: IconButton(
-                padding: EdgeInsets.all(0),
+                padding: const EdgeInsets.all(0),
                 icon: SvgPicture.asset(
                   iconPath,
                   width: 35,
@@ -143,24 +143,27 @@ class _LoginScreenState extends State<LoginScreen> {
             BlocBuilder<LoginCubit, LoginState>(
               builder: (context, state) {
                 return state.maybeWhen(
-                    loading: () => const LoadingIndicator(),
-                    orElse: () => SizedBox(
-                          width: double.infinity,
-                          height: 60,
-                          child: TextButton(
-                              style: ButtonStyle(
-                                // fixedSize: MaterialStateProperty.all(
-                                //     Size(responsive.getWidthOf(0.9), 30)),
-                                backgroundColor: MaterialStateProperty.all(
-                                  // ColorsManager.darkTealBackground1000,
-                                  ColorsManager.offWhite300,
-                                ),
-                              ),
-                              onPressed: () {
-                                _onPressedLogin();
-                              },
-                              child: Text(AppStrings.login.tr())),
-                        ));
+                  loading: () => const LoadingIndicator(
+                    height: 120,
+                  ),
+                  orElse: () => SizedBox(
+                    width: double.infinity,
+                    height: 60,
+                    child: TextButton(
+                        style: ButtonStyle(
+                          // fixedSize: MaterialStateProperty.all(
+                          //     Size(responsive.getWidthOf(0.9), 30)),
+                          backgroundColor: MaterialStateProperty.all(
+                            // ColorsManager.darkTealBackground1000,
+                            ColorsManager.offWhite300,
+                          ),
+                        ),
+                        onPressed: () {
+                          _onPressedLogin();
+                        },
+                        child: Text(AppStrings.login.tr())),
+                  ),
+                );
               },
             ),
           ],

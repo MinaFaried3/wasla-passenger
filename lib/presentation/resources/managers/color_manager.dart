@@ -45,8 +45,20 @@ class ColorsManager {
   static const Color offWhite200 = Color(0xffFBF7F2);
   static const Color offWhite100 = Color(0xffFDFDFC);
 
-  //red
+  //yellow
+  static const Color yellow = Color(0xffF1B24A);
+  static const Color yellow1000 = Color(0xff472E05);
+  static const Color yellow900 = Color(0xff69460C);
+  static const Color yellow800 = Color(0xff8B5F17);
+  static const Color yellow700 = Color(0xffAD7A25);
+  static const Color yellow600 = Color(0xffCF9536);
+  static const Color yellow500 = Color(0xffF1B24A);
+  static const Color yellow400 = Color(0xffFFCB76);
+  static const Color yellow300 = Color(0xffFFDA9E);
+  static const Color yellow200 = Color(0xffFFE9C5);
+  static const Color yellow100 = Color(0xffFFF8ED);
 
+  //red
   static const Color red = Color(0xffE3596D);
   static const Color red1000 = Color(0xff5B141E);
   static const Color red900 = Color(0xff7D212E);
@@ -60,6 +72,21 @@ class ColorsManager {
   static const Color red100 = Color(0xffFFF0F2);
 
   //Grey back ground
+  static const Color grey1 = Color(0xff707070);
+  static const Color grey2 = Color(0xff797979);
+  static const Color brownGey = Color(0xff5D564E);
+
+  static const Color grey = Color(0xff1F1F1F);
+  static const Color grey1000 = Color(0xff484848);
+  static const Color grey900 = Color(0xff5C5C5C);
+  static const Color grey800 = Color(0xff5C5C5C);
+  static const Color grey700 = Color(0xff5C5C5C);
+  static const Color grey600 = Color(0xff999999);
+  static const Color grey500 = Color(0xffAEAEAE);
+  static const Color grey400 = Color(0xffC2C2C2);
+  static const Color grey300 = Color(0xffD6D6D6);
+  static const Color grey200 = Color(0xffEBEBEB);
+  static const Color grey100 = Color(0xffFFFFFF);
 
   static const Color lightViolet = Color(0xff201C31);
   static const Color darkViolet = Color(0xff1A1727);
@@ -83,9 +110,7 @@ class ColorsManager {
   static const Color beige2 = Color(0xfff6d6c5);
 
   // new colors
-  static const Color grey1 = Color(0xff707070);
-  static const Color brownGey = Color(0xff5D564E);
-  static const Color grey2 = Color(0xff797979);
+
   static const Color white = Color(0xffFFFFFF);
   static const Color error = Color(0xffe61f34); // red color
 }
