@@ -37,6 +37,7 @@ class AppSize {
   static const double s0_525 = 0.525;
   static const double s0_7 = 0.7;
   static const double s0_75 = 0.75;
+  static const double s0_87 = 0.87;
 
   static const double s0_9 = 0.9;
   static const double s0 = 0;

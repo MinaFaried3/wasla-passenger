@@ -39,12 +39,12 @@ class AssetsProvider {
       '$_background/background_start_now.png';
 
   //onboarding
-  static const String onboarding1 = '$_onboarding/welcome.png';
-  static const String onboarding2 = '$_onboarding/ticket.png';
-  static const String onboarding3 = '$_onboarding/delivery.png';
-  static const String onboarding4 = '$_onboarding/ads.png';
-  static const String onboarding5 = '$_onboarding/following.png';
-  static const String onboarding6 = '$_onboarding/private_bus.png';
+  static const String onboarding1 = '$_onboarding/welcome_onboarding.png';
+  static const String onboarding2 = '$_onboarding/ticket_onboarding.png';
+  static const String onboarding3 = '$_onboarding/delivery_onboarding.png';
+  static const String onboarding4 = '$_onboarding/ads_onboarding.png';
+  static const String onboarding5 = '$_onboarding/following_onboarding.png';
+  static const String onboarding6 = '$_onboarding/private_bus_onboarding.png';
 
   ///icons
   //svg icons
