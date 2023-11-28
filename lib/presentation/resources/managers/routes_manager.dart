@@ -1,6 +1,6 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
-import 'package:wasla/presentation/modules/login/login_view.dart';
+import 'package:wasla/presentation/modules/login/view/login_view.dart';
 import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/register_view.dart';

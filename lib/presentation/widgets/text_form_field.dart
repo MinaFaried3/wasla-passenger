@@ -87,7 +87,7 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         labelStyle: getRegularStyle(
             color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
-            fontSize: AppSize.s24),
+            fontSize: FontSize.s20),
         label: labelText != null
             ? Container(
                 padding: const EdgeInsets.symmetric(

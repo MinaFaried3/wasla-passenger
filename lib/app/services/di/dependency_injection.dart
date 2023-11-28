@@ -8,7 +8,8 @@ import 'package:wasla/data/network/dio_factory.dart';
 import 'package:wasla/data/repositories/auth_repository_impl.dart';
 import 'package:wasla/domain/entities/login_models/rive_controller.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
-import 'package:wasla/presentation/modules/login/cubit/bear_animation_cubit.dart';
+import 'package:wasla/presentation/modules/login/cubit/password_icon_cubit.dart';
+import 'package:wasla/presentation/resources/common/bear_cubit/bear_animation_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -84,5 +85,6 @@ final class DIModulesManger {
     _registerFactory<LoginUseCase>(
         LoginUseCase(repository: getIt<AuthRepository>()));
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
+    _registerFactory<PasswordIconCubit>(PasswordIconCubit());
   }
 }

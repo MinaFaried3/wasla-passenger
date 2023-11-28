@@ -1,18 +1,18 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/domain/entities/login_models/rive_controller.dart';
-import 'package:wasla/presentation/modules/login/cubit/bear_animation_cubit.dart';
+import 'package:wasla/presentation/resources/common/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/resources/managers/animation_enum.dart';
 import 'package:wasla/presentation/widgets/animated_bear.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class LoginScreen3 extends StatefulWidget {
+  const LoginScreen3({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen3> createState() => _LoginScreen3State();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreen3State extends State<LoginScreen3> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -45,7 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void dispose() {
     passwordFocusNode.removeListener(_passwordFocusNodeListener);
-
+    emailController.dispose();
+    passwordController.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
   }
 
@@ -87,7 +89,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                     child: AnimatedBear(
                       riveController: riveController,
-                      responsive: responsive,
                     ),
                   ),
                   orElse: () => const SizedBox.shrink(),
@@ -196,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
     formKey.currentState!.validate();
 
     context.read<LoginCubit>().login(
-          phone: '01207340018',
+          userName: '01207340018',
           password: '12345678',
         );
   }
