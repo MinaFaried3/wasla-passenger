@@ -10,13 +10,13 @@ final class LoginCubit extends Cubit<LoginState> {
   LoginCubit(this._loginUseCase) : super(const LoginState.initial());
 
   void _login({
-    required String phone,
+    required String userName,
     required String password,
   }) async {
     emit(const LoginState.loading());
 
-    final result =
-        await _loginUseCase(LoginRequestBody(phone: phone, password: password));
+    final result = await _loginUseCase(
+        LoginRequestBody(userName: userName, password: password));
 
     result.fold(
       (failure) {
@@ -39,6 +39,6 @@ final class LoginCubit extends Cubit<LoginState> {
       return;
     }
 
-    _login(phone: phone, password: password);
+    _login(userName: phone, password: password);
   }
 }

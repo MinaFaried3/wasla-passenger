@@ -1,4 +1,6 @@
 class AppConstants {
+  static const role = 'passenger';
+
   static const zero = 0;
   static const one = 1;
   static const doubleZero = 0.0;

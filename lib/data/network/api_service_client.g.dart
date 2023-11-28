@@ -22,16 +22,18 @@ class _ApiServiceClient implements ApiServiceClient {
 
   @override
   Future<LoginResponse> login({
-    required String phone,
+    required String userName,
     required String password,
+    String role = AppConstants.role,
   }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
     _headers.removeWhere((k, v) => v == null);
     final _data = {
-      'phoneNumber': phone,
+      'userName': userName,
       'password': password,
+      'role': role,
     };
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
