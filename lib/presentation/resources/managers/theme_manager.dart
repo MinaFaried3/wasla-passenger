@@ -2,6 +2,13 @@ import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 
+/*
+* todo
+* make general theme manger have sizing values or decoration shapes
+* make light , dark theme manger
+* copy with the different colors only
+**/
+
 class ThemeManger {
   static const ColorScheme colorScheme = ColorScheme(
     //primary main color for selected and elevated text and indicator
@@ -105,6 +112,10 @@ class ThemeManger {
               color: ColorsManager.tealPrimary700,
               fontSize: FontSize.s22.sp))));
 
+  static const IconButtonThemeData iconButtonThemeData = IconButtonThemeData(
+      style: ButtonStyle(
+    padding: MaterialStatePropertyAll(EdgeInsets.all(AppPadding.p0)),
+  ));
   static final ElevatedButtonThemeData elevatedButtonThemeData =
       ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
@@ -208,7 +219,8 @@ ThemeData getApplicationTheme() {
     appBarTheme: ThemeManger.appBarTheme,
     // button theme
     buttonTheme: ThemeManger.buttonThemeData,
-
+    //icon button theme
+    iconButtonTheme: ThemeManger.iconButtonThemeData,
     // text button theme
     textButtonTheme: ThemeManger.textButtonThemeData,
 

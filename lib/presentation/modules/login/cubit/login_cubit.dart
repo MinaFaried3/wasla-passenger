@@ -29,16 +29,16 @@ final class LoginCubit extends Cubit<LoginState> {
   }
 
   void login({
-    required String phone,
+    required String userName,
     required String password,
   }) {
-    if (phone.isEmpty || password.isEmpty) {
+    if (userName.isEmpty || password.isEmpty) {
       //todo
       emit(const LoginState.error(
           failure: Failure(message: "wrong password or email", code: -2)));
       return;
     }
 
-    _login(userName: phone, password: password);
+    _login(userName: userName, password: password);
   }
 }

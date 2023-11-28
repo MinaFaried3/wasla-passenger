@@ -27,5 +27,7 @@
   "default_error": "some thing went wrong, try again later",
   "cache_error": "cache error, try again later",
   "no_internet_error": "Please check your internet connection",
-  "no_content": "success with not content"
+  "no_content": "success with not content",
+  "username_label": "user name",
+  "password_label": "Password"
 }
