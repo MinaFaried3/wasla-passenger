@@ -17,7 +17,7 @@ class AppStrings {
   static const String onboardingSubTitle3 = 'onboarding_sub_title_3';
   static const String onboardingSubTitle4 = 'onboarding_sub_title_4';
   static const String onboardingSubTitle5 = 'onboarding_sub_title_5';
-  static const String onboardingSubTitle6 = 'onboarding_sub_title_5';
+  static const String onboardingSubTitle6 = 'onboarding_sub_title_6';
 
   static const String startNow = 'start_now';
   static const String success = "success";

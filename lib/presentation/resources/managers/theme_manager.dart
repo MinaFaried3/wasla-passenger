@@ -99,6 +99,8 @@ class ThemeManger {
       style: ButtonStyle(
           foregroundColor:
               const MaterialStatePropertyAll(ColorsManager.tealPrimary700),
+          padding:
+              const MaterialStatePropertyAll(EdgeInsets.all(AppPadding.p0)),
           textStyle: MaterialStatePropertyAll(getBoldStyle(
               color: ColorsManager.tealPrimary700,
               fontSize: FontSize.s22.sp))));

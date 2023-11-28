@@ -16,13 +16,13 @@ class OnboardingInitial extends OnboardingState {
 ///------------------------------------------------------------
 
 abstract class OnChangeOnBoardingPageState extends Equatable {
-  const OnChangeOnBoardingPageState();
+  final int index;
+
+  const OnChangeOnBoardingPageState({required this.index});
 }
 
 class OnChangeOnBoardingPage extends OnChangeOnBoardingPageState {
-  final int index;
-
-  const OnChangeOnBoardingPage({required this.index});
+  const OnChangeOnBoardingPage({required super.index});
 
   @override
   List<Object> get props => [index];
