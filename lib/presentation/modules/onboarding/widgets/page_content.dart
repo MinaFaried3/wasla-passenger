@@ -14,7 +14,7 @@ class PageContent extends StatelessWidget {
     final responsive = ResponsiveManager(context, hasAppBar: false);
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: AppPadding.p18),
+        padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -23,7 +23,7 @@ class PageContent extends StatelessWidget {
             Text(
               content.title,
               style: getBoldStyle(
-                  fontSize: FontSize.s40.sp, color: ColorsManager.offWhite300),
+                  fontSize: FontSize.s37.sp, color: ColorsManager.offWhite300),
             ),
             responsive.heightSpace(2),
             Text(

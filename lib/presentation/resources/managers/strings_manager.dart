@@ -10,6 +10,7 @@ class AppStrings {
   static const String onboardingTitle4 = 'onboarding_title_4';
   static const String onboardingTitle5 = 'onboarding_title_5';
   static const String onboardingTitle6 = 'onboarding_title_6';
+  static const String onboardingTitle7 = 'onboarding_title_7';
 
   static const String onboardingSubTitle1 = 'onboarding_sub_title_1';
   static const String onboardingSubTitle2 = 'onboarding_sub_title_2';
@@ -17,6 +18,7 @@ class AppStrings {
   static const String onboardingSubTitle4 = 'onboarding_sub_title_4';
   static const String onboardingSubTitle5 = 'onboarding_sub_title_5';
   static const String onboardingSubTitle6 = 'onboarding_sub_title_6';
+  static const String onboardingSubTitle7 = 'onboarding_sub_title_7';
 
   static const String startNow = 'start_now';
   static const String success = 'success';

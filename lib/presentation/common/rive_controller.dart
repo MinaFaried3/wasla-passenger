@@ -86,10 +86,10 @@ class RiveControllerManager {
 
   void onChangePhoneEmail(
       {required String value, int? charsMountOfChangedState}) {
-    int x1 = charsMountOfChangedState ?? 4;
-    int x2 = x1 * 2;
-    int x3 = x1 * 3;
-    int x4 = x1 * 4;
+    int x1 = charsMountOfChangedState ?? 2;
+    int x2 = (x1 * 2) + 1;
+    int x3 = (x1 * 3) + 2;
+    int x4 = (x1 * 4) + 3;
 
     _addLookingState(
       value: value,
