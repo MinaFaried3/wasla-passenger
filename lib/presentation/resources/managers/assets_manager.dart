@@ -45,6 +45,7 @@ class AssetsProvider {
   static const String onboarding4 = '$_onboarding/ads_onboarding.png';
   static const String onboarding5 = '$_onboarding/following_onboarding.png';
   static const String onboarding6 = '$_onboarding/private_bus_onboarding.png';
+  static const String onboarding7 = '$_onboarding/seat_onboarding.png';
 
   ///icons
   //svg icons

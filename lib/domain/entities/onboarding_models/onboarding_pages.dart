@@ -57,6 +57,12 @@ class OnboardingPages {
             bgColor: ColorsManager.tealPrimary1000,
             nextColor: ColorsManager.darkTealBackground2,
             image: AssetsProvider.onboarding6),
+        OnboardingModel(
+            title: AppStrings.onboardingTitle7.tr(),
+            subTitle: AppStrings.onboardingSubTitle7.tr(),
+            bgColor: ColorsManager.darkTealBackground2,
+            nextColor: ColorsManager.tealPrimary1000,
+            image: AssetsProvider.onboarding7),
       ];
 
   List<Color> _getPagesColors() =>
