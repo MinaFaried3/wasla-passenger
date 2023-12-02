@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
-import 'package:wasla/domain/entities/login_models/rive_controller.dart';
-import 'package:wasla/presentation/modules/login/cubit/password_icon_cubit.dart';
-import 'package:wasla/presentation/resources/managers/animation_enum.dart';
+import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
+import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
+import 'package:wasla/presentation/common/rive_controller.dart';
+import 'package:wasla/presentation/modules/login/widgets/forget_password_button.dart';
 
 class LoginForm extends StatefulWidget {
   final RiveControllerManager riveController;
@@ -17,17 +20,18 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> {
-  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   final FocusNode passwordFocusNode = FocusNode();
+  final FocusNode usernameFocusNode = FocusNode();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
     super.initState();
-    _checkPasswordFocused();
+    _addFocusNodesListeners();
   }
 
   @override
@@ -36,85 +40,80 @@ class _LoginFormState extends State<LoginForm> {
     super.dispose();
   }
 
-  void _dispose() {
-    passwordFocusNode.removeListener(_passwordFocusNodeListener);
-    passwordFocusNode.dispose();
-    userNameController.dispose();
-    passwordController.dispose();
-  }
-
-  void _checkPasswordFocused() {
-    passwordFocusNode.addListener(_passwordFocusNodeListener);
-  }
-
-  void _passwordFocusNodeListener() {
-    if (passwordFocusNode.hasFocus) {
-      widget.riveController.addState(BearState.handsUp);
-    } else if (!passwordFocusNode.hasFocus) {
-      widget.riveController.addState(BearState.handsDown);
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context, hasAppBar: false);
-
+    const double containerPadding = AppPadding.p8;
+    const double containerRadius = containerPadding + AppSize.s20;
+    const double paddingBottom = AppPadding.p20;
     return Form(
       key: formKey,
-      child: Column(
-        children: [
-          //user name field
-          AppTextFormField(
-            labelText: AppStrings.userNameLabel.tr(),
-            svgPrefixPath: AssetsProvider.userIcon2,
-            textDirection: TextDirection.ltr,
-            controller: userNameController,
-            onChanged: (value) {
-              _onChangePhoneEmail(
-                value: value,
-                riveController: widget.riveController,
-              );
-            },
-          ),
-
-          //space
-          responsive.heightSpace(AppSize.s3),
-
-          //password field
-          BlocBuilder<PasswordIconCubit, PasswordIconState>(
-            builder: (context, state) {
-              return AppTextFormField(
+      child: Container(
+        padding: const EdgeInsets.all(containerPadding),
+        decoration: BoxDecoration(
+            color: ColorsManager.darkTeal,
+            borderRadius: BorderRadius.circular(containerRadius)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            //user name field
+            Padding(
+              padding: const EdgeInsets.only(bottom: paddingBottom),
+              child: AppTextFormField(
+                labelText:
+                    '${AppStrings.username.tr()}-${AppStrings.email.tr()}',
+                svgPrefixPath: AssetsProvider.emailIcon,
+                textInputType: TextInputType.emailAddress,
                 textDirection: TextDirection.ltr,
-                controller: passwordController,
-                focusNode: passwordFocusNode,
-                labelText: AppStrings.passwordLabel.tr(),
-                svgPrefixPath: AssetsProvider.passwordIcon2,
-                isPassword: state.isClosed,
-                suffix: _closedOpenIcon(
-                    iconPath: state.iconPath,
-                    width: responsive.getWidthOf(AppSize.s0_1)),
-              );
-            },
-          ),
+                controller: usernameController,
+                focusNode: usernameFocusNode,
+                onChanged: (value) {
+                  widget.riveController.onChangePhoneEmail(
+                    value: value,
+                  );
+                },
+              ),
+            ),
 
-          //space
-          responsive.heightSpace(AppSize.s10),
+            //password field
+            BlocBuilder<PasswordIconCubit, PasswordIconState>(
+              builder: (context, state) {
+                return AppTextFormField(
+                  textDirection: TextDirection.ltr,
+                  controller: passwordController,
+                  focusNode: passwordFocusNode,
+                  labelText: AppStrings.password.tr(),
+                  svgPrefixPath: AssetsProvider.passwordIcon,
+                  isPassword: state.isClosed,
+                  suffix: _closedOpenIcon(
+                      iconPath: state.iconPath,
+                      width: responsive.getWidthOf(AppSize.s0_1)),
+                );
+              },
+            ),
 
-          //login button
-          BlocBuilder<LoginCubit, LoginState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                loading: () => LoadingIndicator(
-                  height: responsive.getBodyHeightOf(AppSize.s0_2),
-                ),
-                orElse: () => AppButton(
-                  onPressed: _onPressedLogin,
-                  text: AppStrings.login.tr(),
-                ),
-              );
-            },
-          )
-        ],
+            //forget password Text
+            const ForgetPasswordButton(
+              containerPadding: containerPadding,
+              paddingBottom: paddingBottom,
+            ),
+
+            //login button
+            BlocBuilder<LoginCubit, LoginState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  loading: () => LoadingIndicator(
+                    height: responsive.getBodyHeightOf(AppSize.s0_2),
+                  ),
+                  orElse: () => AppButton(
+                    onPressed: _onPressedLogin,
+                    text: AppStrings.login.tr(),
+                  ),
+                );
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -135,87 +134,57 @@ class _LoginFormState extends State<LoginForm> {
     );
   }
 
-  void _addLookingState({
-    required String value,
-    required RiveControllerManager riveController,
-    int start = AppConstants.zero,
-    int end = AppConstants.thousands,
-    BearState wantedBearState = BearState.lookIdle,
-  }) {
-    if (riveController.currentState == wantedBearState) return;
-
-    if (value.isEmpty && riveController.currentState != BearState.lookIdle) {
-      riveController.addState(BearState.lookIdle);
-      PrintManager.printColoredText(BearState.lookIdle.name);
-      return;
-    }
-
-    int length = value.length;
-    if (length >= start && length < end) {
-      riveController.addState(wantedBearState);
-      PrintManager.printColoredText(wantedBearState.name);
-    }
-  }
-
-  void _onPressedLogin() {
+  void _onPressedLogin() async {
     passwordFocusNode.unfocus();
-
+    usernameFocusNode.unfocus();
+    await _addDelay();
     formKey.currentState!.validate();
+    if (context.mounted) {
+      context.read<LoginCubit>().login(
+            // phone: '01207340018',
+            // password: '12345678',
 
-    context.read<LoginCubit>().login(
-          // phone: '01207340018',
-          // password: '12345678',
-
-          userName: userNameController.text,
-          password: passwordController.text,
-        );
+            userName: usernameController.text,
+            password: passwordController.text,
+          );
+    }
   }
 
-  void _onChangePhoneEmail({
-    required String value,
-    required RiveControllerManager riveController,
-  }) {
-    int x1 = 4;
-    int x2 = x1 * 2;
-    int x3 = x1 * 3;
-    int x4 = x1 * 4;
+  Future<void> _addDelay() async {
+    if ((usernameController.text.isEmpty || passwordController.text.isEmpty) &&
+        widget.riveController.currentState == BearState.handsUp) {
+      await Future.delayed(DurationManager.bearHandsDownDuration);
+    }
+  }
 
-    _addLookingState(
-      value: value,
-      riveController: riveController,
-      end: x1,
-      wantedBearState: BearState.lookLeft,
-    );
+  void _dispose() {
+    //remove listener
+    passwordFocusNode.removeListener(_passwordFocusNodeListener);
+    usernameFocusNode.removeListener(_usernameFocusNodeListener);
+    //dispose nodes
+    passwordFocusNode.dispose();
+    usernameFocusNode.dispose();
+    //dispose controllers
+    usernameController.dispose();
+    passwordController.dispose();
+  }
 
-    _addLookingState(
-      value: value,
-      riveController: riveController,
-      start: x1,
-      end: x2,
-      wantedBearState: BearState.lookMediumLeft,
-    );
+  void _addFocusNodesListeners() {
+    passwordFocusNode.addListener(_passwordFocusNodeListener);
+    usernameFocusNode.addListener(_usernameFocusNodeListener);
+  }
 
-    _addLookingState(
-      value: value,
-      riveController: riveController,
-      start: x2,
-      end: x3,
-      wantedBearState: BearState.lookCenter,
-    );
+  void _passwordFocusNodeListener() {
+    if (passwordFocusNode.hasFocus) {
+      widget.riveController.addState(BearState.handsUp);
+    } else if (!passwordFocusNode.hasFocus) {
+      widget.riveController.addState(BearState.handsDown);
+    }
+  }
 
-    _addLookingState(
-      value: value,
-      riveController: riveController,
-      start: x3,
-      end: x4,
-      wantedBearState: BearState.lookMediumRight,
-    );
-
-    _addLookingState(
-      value: value,
-      riveController: riveController,
-      start: x4,
-      wantedBearState: BearState.lookRight,
-    );
+  void _usernameFocusNodeListener() {
+    if (usernameFocusNode.hasFocus) {
+      context.read<BearDialogCubit>().usernameFieldFocusedMsg();
+    }
   }
 }

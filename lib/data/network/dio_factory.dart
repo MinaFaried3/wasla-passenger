@@ -34,7 +34,7 @@ class DioFactory extends Equatable {
           requestHeader: true,
           requestBody: true,
           responseHeader: true,
-          logPrint: PrintManager.printColoredText));
+          logPrint: PrintManager.print));
     }
 
     return _dio;

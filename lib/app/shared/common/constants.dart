@@ -27,4 +27,5 @@ class DurationManager {
 
   static const Duration s4 = Duration(seconds: 4);
   static const Duration s3 = Duration(seconds: 3);
+  static const Duration textChanged = Duration(milliseconds: 750);
 }

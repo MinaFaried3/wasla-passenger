@@ -1,3 +1,5 @@
+part of 'package:wasla/presentation/common/rive_controller.dart';
+
 ///login bear
 enum BearState {
   idle(_BearStateStrings.idle),

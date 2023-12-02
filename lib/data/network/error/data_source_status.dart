@@ -49,27 +49,27 @@ enum DataSourceStatus {
 
   //local status code
   connectTimeout(
-    -1,
+    FailureCode.connectTimeout,
     AppStrings.timeoutError,
   ),
   cancel(
-    -2,
+    FailureCode.cancel,
     AppStrings.defaultError,
   ),
   receiveTimeout(
-    -3,
+    FailureCode.receiveTimeout,
     AppStrings.timeoutError,
   ),
   cacheError(
-    -4,
+    FailureCode.cacheError,
     AppStrings.cacheError,
   ),
   noInternetConnection(
-    -5,
+    FailureCode.noInternetConnection,
     AppStrings.noInternetError,
   ),
   defaultState(
-    -6,
+    FailureCode.defaultState,
     AppStrings.defaultError,
   );
 

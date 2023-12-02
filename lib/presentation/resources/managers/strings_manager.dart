@@ -22,8 +22,26 @@ class AppStrings {
   static const String startNow = 'start_now';
   static const String success = 'success';
 
-  static const String userNameLabel = 'username_label';
-  static const String passwordLabel = 'password_label';
+  static const String username = 'username';
+  static const String email = 'email';
+  static const String password = 'password';
+
+  //auth
+  static const String or = 'or';
+  static const String forgetPassword = 'forget_password';
+  static const String welcome = 'welcome';
+
+  //bear state dialog
+
+  static const String welcomeDialog = 'welcome_dialog';
+  static const String usernameFieldFocused = 'username_field_focused';
+  static const String usernameFieldEmpty = 'username_field_empty';
+  static const String passwordFieldEmpty = 'password_field_empty';
+  static const String usernameAndPasswordFieldEmpty =
+      'username_and_password_field_empty';
+  static const String loginError = 'login_error';
+  static const String loginSuccess = 'login_success';
+  static const String forgetPasswordInfo = 'forget_password_info';
 
   // error handler
   static const String badRequestError = 'bad_request_error';

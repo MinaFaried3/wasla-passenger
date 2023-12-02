@@ -9,6 +9,37 @@ final class LoginCubit extends Cubit<LoginState> {
 
   LoginCubit(this._loginUseCase) : super(const LoginState.initial());
 
+  void login({
+    required String userName,
+    required String password,
+  }) {
+    if (_validateUserNameAndPassword(userName: userName, password: password)) {
+      _login(userName: userName, password: password);
+    }
+  }
+
+  bool _validateUserNameAndPassword({
+    required String userName,
+    required String password,
+  }) {
+    if (userName.isEmpty && password.isEmpty) {
+      emit(const LoginState.emptyUsernameAndPassword());
+      return false;
+    }
+
+    if (userName.isEmpty) {
+      emit(const LoginState.emptyUsername());
+      return false;
+    }
+
+    if (password.isEmpty) {
+      emit(const LoginState.emptyPassword());
+      return false;
+    }
+
+    return true;
+  }
+
   void _login({
     required String userName,
     required String password,
@@ -26,19 +57,5 @@ final class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.success(loginModel: loginModel));
       },
     );
-  }
-
-  void login({
-    required String userName,
-    required String password,
-  }) {
-    if (userName.isEmpty || password.isEmpty) {
-      //todo
-      emit(const LoginState.error(
-          failure: Failure(message: "wrong password or email", code: -2)));
-      return;
-    }
-
-    _login(userName: userName, password: password);
   }
 }

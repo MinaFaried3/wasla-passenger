@@ -41,7 +41,7 @@ enum ConsoleColor {
 }
 
 class PrintManager {
-  static void printColoredText(
+  static void print(
     dynamic object, {
     ConsoleColor color = ConsoleColor.magenta,
   }) {

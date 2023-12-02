@@ -9,7 +9,7 @@ class BearClipper extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     final path = Path();
-    final double clipUntil = size.height * 0.95;
+    final double clipUntil = size.height * 0.81;
 
     path.moveTo(0, 0);
     path.lineTo(size.width, 0);

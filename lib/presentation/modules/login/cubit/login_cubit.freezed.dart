@@ -20,6 +20,9 @@ mixin _$LoginState {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
     required TResult Function(LoginModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) =>
@@ -28,6 +31,9 @@ mixin _$LoginState {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
     TResult? Function(LoginModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) =>
@@ -36,6 +42,9 @@ mixin _$LoginState {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
     TResult Function(LoginModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
@@ -45,6 +54,10 @@ mixin _$LoginState {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) =>
@@ -53,6 +66,10 @@ mixin _$LoginState {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) =>
@@ -61,6 +78,9 @@ mixin _$LoginState {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -126,6 +146,9 @@ class _$InitialImpl implements _Initial {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
     required TResult Function(LoginModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
@@ -137,6 +160,9 @@ class _$InitialImpl implements _Initial {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
     TResult? Function(LoginModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
@@ -148,6 +174,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
     TResult Function(LoginModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
@@ -163,6 +192,10 @@ class _$InitialImpl implements _Initial {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -174,6 +207,10 @@ class _$InitialImpl implements _Initial {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
@@ -185,6 +222,9 @@ class _$InitialImpl implements _Initial {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -240,6 +280,9 @@ class _$LoadingImpl implements _Loading {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
     required TResult Function(LoginModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
@@ -251,6 +294,9 @@ class _$LoadingImpl implements _Loading {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
     TResult? Function(LoginModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
@@ -262,6 +308,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
     TResult Function(LoginModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
@@ -277,6 +326,10 @@ class _$LoadingImpl implements _Loading {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -288,6 +341,10 @@ class _$LoadingImpl implements _Loading {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
@@ -299,6 +356,9 @@ class _$LoadingImpl implements _Loading {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -312,6 +372,411 @@ class _$LoadingImpl implements _Loading {
 
 abstract class _Loading implements LoginState {
   const factory _Loading() = _$LoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$EmpyUsernameImplCopyWith<$Res> {
+  factory _$$EmpyUsernameImplCopyWith(
+          _$EmpyUsernameImpl value, $Res Function(_$EmpyUsernameImpl) then) =
+      __$$EmpyUsernameImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmpyUsernameImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$EmpyUsernameImpl>
+    implements _$$EmpyUsernameImplCopyWith<$Res> {
+  __$$EmpyUsernameImplCopyWithImpl(
+      _$EmpyUsernameImpl _value, $Res Function(_$EmpyUsernameImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EmpyUsernameImpl implements _EmpyUsername {
+  const _$EmpyUsernameImpl();
+
+  @override
+  String toString() {
+    return 'LoginState.emptyUsername()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmpyUsernameImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
+    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(Failure failure) error,
+  }) {
+    return emptyUsername();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
+    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(Failure failure)? error,
+  }) {
+    return emptyUsername?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
+    TResult Function(LoginModel loginModel)? success,
+    TResult Function(Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyUsername != null) {
+      return emptyUsername();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return emptyUsername(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return emptyUsername?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyUsername != null) {
+      return emptyUsername(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmpyUsername implements LoginState {
+  const factory _EmpyUsername() = _$EmpyUsernameImpl;
+}
+
+/// @nodoc
+abstract class _$$EmptyPasswordImplCopyWith<$Res> {
+  factory _$$EmptyPasswordImplCopyWith(
+          _$EmptyPasswordImpl value, $Res Function(_$EmptyPasswordImpl) then) =
+      __$$EmptyPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmptyPasswordImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$EmptyPasswordImpl>
+    implements _$$EmptyPasswordImplCopyWith<$Res> {
+  __$$EmptyPasswordImplCopyWithImpl(
+      _$EmptyPasswordImpl _value, $Res Function(_$EmptyPasswordImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EmptyPasswordImpl implements _EmptyPassword {
+  const _$EmptyPasswordImpl();
+
+  @override
+  String toString() {
+    return 'LoginState.emptyPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$EmptyPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
+    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(Failure failure) error,
+  }) {
+    return emptyPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
+    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(Failure failure)? error,
+  }) {
+    return emptyPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
+    TResult Function(LoginModel loginModel)? success,
+    TResult Function(Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyPassword != null) {
+      return emptyPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return emptyPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return emptyPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyPassword != null) {
+      return emptyPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyPassword implements LoginState {
+  const factory _EmptyPassword() = _$EmptyPasswordImpl;
+}
+
+/// @nodoc
+abstract class _$$EmptyUsernameAndPasswordImplCopyWith<$Res> {
+  factory _$$EmptyUsernameAndPasswordImplCopyWith(
+          _$EmptyUsernameAndPasswordImpl value,
+          $Res Function(_$EmptyUsernameAndPasswordImpl) then) =
+      __$$EmptyUsernameAndPasswordImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$EmptyUsernameAndPasswordImplCopyWithImpl<$Res>
+    extends _$LoginStateCopyWithImpl<$Res, _$EmptyUsernameAndPasswordImpl>
+    implements _$$EmptyUsernameAndPasswordImplCopyWith<$Res> {
+  __$$EmptyUsernameAndPasswordImplCopyWithImpl(
+      _$EmptyUsernameAndPasswordImpl _value,
+      $Res Function(_$EmptyUsernameAndPasswordImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$EmptyUsernameAndPasswordImpl implements _EmptyUsernameAndPassword {
+  const _$EmptyUsernameAndPasswordImpl();
+
+  @override
+  String toString() {
+    return 'LoginState.emptyUsernameAndPassword()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EmptyUsernameAndPasswordImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
+    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(Failure failure) error,
+  }) {
+    return emptyUsernameAndPassword();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
+    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(Failure failure)? error,
+  }) {
+    return emptyUsernameAndPassword?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
+    TResult Function(LoginModel loginModel)? success,
+    TResult Function(Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyUsernameAndPassword != null) {
+      return emptyUsernameAndPassword();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
+    required TResult Function(_Success value) success,
+    required TResult Function(_Error value) error,
+  }) {
+    return emptyUsernameAndPassword(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
+    TResult? Function(_Success value)? success,
+    TResult? Function(_Error value)? error,
+  }) {
+    return emptyUsernameAndPassword?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
+    TResult Function(_Success value)? success,
+    TResult Function(_Error value)? error,
+    required TResult orElse(),
+  }) {
+    if (emptyUsernameAndPassword != null) {
+      return emptyUsernameAndPassword(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _EmptyUsernameAndPassword implements LoginState {
+  const factory _EmptyUsernameAndPassword() = _$EmptyUsernameAndPasswordImpl;
 }
 
 /// @nodoc
@@ -381,6 +846,9 @@ class _$SuccessImpl implements _Success {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
     required TResult Function(LoginModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
@@ -392,6 +860,9 @@ class _$SuccessImpl implements _Success {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
     TResult? Function(LoginModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
@@ -403,6 +874,9 @@ class _$SuccessImpl implements _Success {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
     TResult Function(LoginModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
@@ -418,6 +892,10 @@ class _$SuccessImpl implements _Success {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -429,6 +907,10 @@ class _$SuccessImpl implements _Success {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
@@ -440,6 +922,9 @@ class _$SuccessImpl implements _Success {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),
@@ -527,6 +1012,9 @@ class _$ErrorImpl implements _Error {
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
     required TResult Function() loading,
+    required TResult Function() emptyUsername,
+    required TResult Function() emptyPassword,
+    required TResult Function() emptyUsernameAndPassword,
     required TResult Function(LoginModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
@@ -538,6 +1026,9 @@ class _$ErrorImpl implements _Error {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
+    TResult? Function()? emptyUsername,
+    TResult? Function()? emptyPassword,
+    TResult? Function()? emptyUsernameAndPassword,
     TResult? Function(LoginModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
@@ -549,6 +1040,9 @@ class _$ErrorImpl implements _Error {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
+    TResult Function()? emptyUsername,
+    TResult Function()? emptyPassword,
+    TResult Function()? emptyUsernameAndPassword,
     TResult Function(LoginModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
@@ -564,6 +1058,10 @@ class _$ErrorImpl implements _Error {
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
     required TResult Function(_Loading value) loading,
+    required TResult Function(_EmpyUsername value) emptyUsername,
+    required TResult Function(_EmptyPassword value) emptyPassword,
+    required TResult Function(_EmptyUsernameAndPassword value)
+        emptyUsernameAndPassword,
     required TResult Function(_Success value) success,
     required TResult Function(_Error value) error,
   }) {
@@ -575,6 +1073,10 @@ class _$ErrorImpl implements _Error {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
     TResult? Function(_Loading value)? loading,
+    TResult? Function(_EmpyUsername value)? emptyUsername,
+    TResult? Function(_EmptyPassword value)? emptyPassword,
+    TResult? Function(_EmptyUsernameAndPassword value)?
+        emptyUsernameAndPassword,
     TResult? Function(_Success value)? success,
     TResult? Function(_Error value)? error,
   }) {
@@ -586,6 +1088,9 @@ class _$ErrorImpl implements _Error {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
     TResult Function(_Loading value)? loading,
+    TResult Function(_EmpyUsername value)? emptyUsername,
+    TResult Function(_EmptyPassword value)? emptyPassword,
+    TResult Function(_EmptyUsernameAndPassword value)? emptyUsernameAndPassword,
     TResult Function(_Success value)? success,
     TResult Function(_Error value)? error,
     required TResult orElse(),

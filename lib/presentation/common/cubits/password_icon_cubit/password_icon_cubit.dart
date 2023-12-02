@@ -10,6 +10,8 @@ class PasswordIconCubit extends Cubit<PasswordIconState> {
 
   bool _isClosed = true;
 
+  bool get isClosedIcon => _isClosed;
+
   void toggleOpenCloseIcon() {
     _isClosed = !_isClosed;
     if (_isClosed) {

@@ -9,3 +9,16 @@ class Failure extends Equatable {
   @override
   List<Object> get props => [message, code];
 }
+
+final class FailureCode {
+  ///data [-1] to [-99]
+  static const int connectTimeout = -1;
+  static const int cancel = -2;
+  static const int receiveTimeout = -3;
+  static const int cacheError = -4;
+  static const int noInternetConnection = -5;
+  static const int defaultState = -6;
+
+  ///ui [-100] for [-200]
+  static const int emptyInputFieldCode = -100;
+}
