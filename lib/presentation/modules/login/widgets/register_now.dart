@@ -13,20 +13,22 @@ class RegisterNow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //todo RichText(text: text)
-          //todo text
           Text(
-            'ليس لديك حساب ..... ',
+            AppStrings.doNotHaveAccount.tr(),
             style: getExtraLightStyle(
               color: ColorsManager.offWhite400,
               fontSize: FontSize.s22.sp,
             ),
           ),
           TextButton(
-              style: ButtonStyle(
-                  textStyle: MaterialStatePropertyAll(
-                      getRegularStyle(fontSize: FontSize.s28.sp))),
-              onPressed: () {},
-              child: Text('سجل الأن'))
+            style: ButtonStyle(
+                textStyle: MaterialStatePropertyAll(
+                    getRegularStyle(fontSize: FontSize.s28.sp))),
+            onPressed: () {},
+            child: Text(
+              AppStrings.registerNow.tr(),
+            ),
+          ),
         ],
       ),
     );
