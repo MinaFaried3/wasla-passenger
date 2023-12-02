@@ -32,8 +32,7 @@ class ForgetPasswordButton extends StatelessWidget {
                   fontSize: FontSize.s16.sp),
             ),
           ),
-          //todo
-          child: Text('نسيت كلمة المرور؟')),
+          child: Text(AppStrings.forgetPassword.tr())),
     );
   }
 }

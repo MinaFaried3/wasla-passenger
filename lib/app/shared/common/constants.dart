@@ -4,6 +4,7 @@ class AppConstants {
   static const zero = 0;
   static const one = 1;
   static const doubleZero = 0.0;
+  static const doubleOne = 1.0;
   static const thousands = 1000;
   static const String emptyString = "";
   static const List emptyList = [];
@@ -25,7 +26,11 @@ class DurationManager {
   static const Duration bearHandsDownDuration =
       Duration(milliseconds: bearHandsDownMS);
 
-  static const Duration s4 = Duration(seconds: 4);
+  static const Duration s2 = Duration(seconds: 2);
   static const Duration s3 = Duration(seconds: 3);
-  static const Duration textChanged = Duration(milliseconds: 750);
+  static const Duration s4 = Duration(seconds: 4);
+
+  static const Duration m500 = Duration(milliseconds: 500);
+  static const Duration m750 = Duration(milliseconds: 750);
+  static const Duration m3500 = Duration(milliseconds: 3500);
 }

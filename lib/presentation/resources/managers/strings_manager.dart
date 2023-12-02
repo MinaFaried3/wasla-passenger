@@ -3,7 +3,6 @@ class AppStrings {
   static const String noRoute = 'no_route';
 
   static const String skip = 'skip';
-  static const String login = 'login';
 
   static const String onboardingTitle1 = 'onboarding_title_1';
   static const String onboardingTitle2 = 'onboarding_title_2';
@@ -30,6 +29,9 @@ class AppStrings {
   static const String or = 'or';
   static const String forgetPassword = 'forget_password';
   static const String welcome = 'welcome';
+  static const String doNotHaveAccount = 'do_not_have_account';
+  static const String login = 'login';
+  static const String registerNow = 'register_now';
 
   //bear state dialog
 

@@ -25,11 +25,20 @@ class _LoginBearState extends State<LoginBear>
     _initAnimation();
   }
 
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
   void _initAnimation() {
     _animationController =
-        AnimationController(vsync: this, duration: DurationManager.textChanged);
+        AnimationController(vsync: this, duration: DurationManager.m750);
 
-    _animation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
+    _animation = Tween<double>(
+      begin: AppConstants.doubleZero,
+      end: AppConstants.doubleOne,
+    ).animate(CurvedAnimation(
       parent: _animationController,
       curve: Curves.easeInOut,
     ));

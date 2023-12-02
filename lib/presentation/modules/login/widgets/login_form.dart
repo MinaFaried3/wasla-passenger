@@ -19,7 +19,11 @@ class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends State<LoginForm>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<double> _sizedAnimation;
+
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
@@ -32,12 +36,25 @@ class _LoginFormState extends State<LoginForm> {
   void initState() {
     super.initState();
     _addFocusNodesListeners();
+    _initAnimation();
   }
 
   @override
   void dispose() {
     _dispose();
     super.dispose();
+  }
+
+  void _initAnimation() {
+    _animationController =
+        AnimationController(vsync: this, duration: DurationManager.m750);
+
+    _sizedAnimation = Tween<double>(
+            begin: AppConstants.doubleZero, end: AppConstants.doubleOne)
+        .animate(
+            CurvedAnimation(parent: _animationController, curve: Curves.ease));
+
+    _animationController.forward();
   }
 
   @override
@@ -85,9 +102,12 @@ class _LoginFormState extends State<LoginForm> {
                   labelText: AppStrings.password.tr(),
                   svgPrefixPath: AssetsProvider.passwordIcon,
                   isPassword: state.isClosed,
-                  suffix: _closedOpenIcon(
-                      iconPath: state.iconPath,
-                      width: responsive.getWidthOf(AppSize.s0_1)),
+                  suffix: FadeTransition(
+                    opacity: _sizedAnimation,
+                    child: _closedOpenIcon(
+                        iconPath: state.iconPath,
+                        width: responsive.getWidthOf(AppSize.s0_1)),
+                  ),
                 );
               },
             ),
@@ -101,13 +121,21 @@ class _LoginFormState extends State<LoginForm> {
             //login button
             BlocBuilder<LoginCubit, LoginState>(
               builder: (context, state) {
-                return state.maybeWhen(
-                  loading: () => LoadingIndicator(
-                    height: responsive.getBodyHeightOf(AppSize.s0_2),
+                return AnimatedSwitcher(
+                  duration: const Duration(seconds: 1),
+                  transitionBuilder: (child, animation) => SizeTransition(
+                    sizeFactor: animation,
+                    axis: Axis.horizontal,
+                    child: child,
                   ),
-                  orElse: () => AppButton(
-                    onPressed: _onPressedLogin,
-                    text: AppStrings.login.tr(),
+                  child: state.maybeWhen(
+                    loading: () => LoadingIndicator(
+                      height: responsive.getBodyHeightOf(AppSize.s0_2),
+                    ),
+                    orElse: () => AppButton(
+                      onPressed: _onPressedLogin,
+                      text: AppStrings.login.tr(),
+                    ),
                   ),
                 );
               },
@@ -129,6 +157,9 @@ class _LoginFormState extends State<LoginForm> {
         ),
       ),
       onPressed: () {
+        _animationController.reset();
+        _animationController.forward();
+
         context.read<PasswordIconCubit>().toggleOpenCloseIcon();
       },
     );
@@ -141,9 +172,6 @@ class _LoginFormState extends State<LoginForm> {
     formKey.currentState!.validate();
     if (context.mounted) {
       context.read<LoginCubit>().login(
-            // phone: '01207340018',
-            // password: '12345678',
-
             userName: usernameController.text,
             password: passwordController.text,
           );
@@ -158,6 +186,9 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _dispose() {
+    //animation
+    _animationController.dispose();
+
     //remove listener
     passwordFocusNode.removeListener(_passwordFocusNodeListener);
     usernameFocusNode.removeListener(_usernameFocusNodeListener);
