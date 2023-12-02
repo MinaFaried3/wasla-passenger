@@ -60,4 +60,11 @@ class AssetsProvider {
   static const String closedEyeIcon = '$_svg/closed_eye_icon.svg';
   static const String passwordIcon = '$_svg/password_icon.svg';
   static const String passwordIcon2 = '$_svg/password1_icon.svg';
+  static const String emailIcon = '$_svg/email_icon.svg';
+  static const String cameraIcon = '$_svg/camera_icon.svg';
+  static const String busIcon = '$_svg/bus_icon.svg';
+  static const String proIcon = '$_svg/pro_icon.svg';
+  static const String appleIcon = '$_svg/apple_icon.svg';
+  static const String facebookIcon = '$_svg/facebook_icon.svg';
+  static const String googleIcon = '$_svg/google_icon.svg';
 }

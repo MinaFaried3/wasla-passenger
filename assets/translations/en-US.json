@@ -28,6 +28,17 @@
   "cache_error": "cache error, try again later",
   "no_internet_error": "Please check your internet connection",
   "no_content": "success with not content",
-  "username_label": "user name",
-  "password_label": "Password"
+  "username": "user name",
+  "password": "Password",
+  "email": "email",
+  "or": "or",
+  "welcome": "welcome again",
+  "welcome_dialog": "welcome \n again in Wasla ... login now",
+  "username_field_focused": "we can login with your email or phone or username",
+  "username_field_empty": "we can't login with an empty username",
+  "password_field_empty": "we can't login with an empty password",
+  "username_and_password_field_empty": "we can't login with an empty username and password",
+  "login_error": "Oh Sorry .. wrong username or wrong password ,try again please",
+  "login_success": "login successfully , welcome ",
+  "forget_password_info": "if you forget your password you can reset it using verified email or phone"
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:rive/rive.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/domain/entities/login_models/rive_controller.dart';
-import 'package:wasla/presentation/resources/managers/animation_enum.dart';
+import 'package:wasla/presentation/common/rive_controller.dart';
 
 part 'bear_animation_cubit.freezed.dart';
 part 'bear_animation_state.dart';
@@ -25,8 +24,6 @@ class BearAnimationCubit extends Cubit<BearAnimationState> {
 
   void _buildTheAnimation() {
     emit(const BearAnimationState.loading());
-    // await Future.delayed(const Duration(milliseconds: 750));
-
     rootBundle.load(AssetsProvider.bear).then((data) {
       final file = RiveFile.import(data);
 
@@ -37,7 +34,7 @@ class BearAnimationCubit extends Cubit<BearAnimationState> {
 
       emit(const BearAnimationState.loadedSuccessfully());
     }).catchError((error) {
-      PrintManager.printColoredText(
+      PrintManager.print(
           "ERROR => on loading Bear login animation ______________ ${error.toString()}");
 
       emit(const BearAnimationState.error());

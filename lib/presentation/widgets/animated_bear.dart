@@ -2,7 +2,7 @@ import 'package:rive/rive.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
-import 'package:wasla/domain/entities/login_models/rive_controller.dart';
+import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/widgets/bear_clip_bath.dart';
 
 class AnimatedBear extends StatelessWidget {
@@ -15,9 +15,9 @@ class AnimatedBear extends StatelessWidget {
     final ResponsiveManager responsive =
         ResponsiveManager(context, hasAppBar: false);
     final double radius = responsive.screenWidth * AppSize.s0_3;
-    final double diameter = radius * 2;
+    // final double diameter = radius * 2;
     const double xCoordinate = AppConstants.doubleZero;
-    final double yCoordinate = (diameter) * 0.2;
+    const double yCoordinate = 45;
     const double zCoordinate = AppConstants.doubleZero;
     return SizedBox(
       width: responsive.getWidthPercentage(60),
