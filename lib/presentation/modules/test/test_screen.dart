@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -19,86 +20,49 @@ class _TestScreenState extends State<TestScreen> {
     iconPath = AssetsProvider.openEyeIcon;
   }
 
+  double height = 200;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: LoadingIndicator(
-          height: 200,
-        ),
-      ),
-    );
-  }
-
-  Form buildForm() {
-    return Form(
-      key: key,
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const AppTextFormField(
-                textDirection: TextDirection.ltr,
-                labelText: 'user name',
-                svgPrefixPath: AssetsProvider.userIcon2,
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              AppTextFormField(
-                textDirection: TextDirection.ltr,
-                labelText: 'password',
-                svgPrefixPath: AssetsProvider.passwordIcon2,
-                isPassword: clicked,
-                validator: (str) =>
-                    str == null || str.isEmpty ? 'wrong val' : null,
-                suffix: IconButton(
-                  padding: const EdgeInsets.all(0),
-                  icon: SvgPicture.asset(
-                    iconPath,
-                    width: 35,
-                    colorFilter: const ColorFilter.mode(
-                      ColorsManager.brownGey,
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                  onPressed: () {
-                    clicked = !clicked;
-                    setState(() {
-                      clicked
-                          ? iconPath = AssetsProvider.closedEyeIcon
-                          : iconPath = AssetsProvider.openEyeIcon;
-                    });
-                  },
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AnimatedContainer(
+              color: ColorsManager.tealPrimary,
+              duration: DurationManager.s4,
+              height: height,
+              curve: Curves.bounceOut,
+              child: InkWell(
+                onTap: () {
+                  setState(() {
+                    if (height == 200) {
+                      height = 400;
+                    } else {
+                      height = 200;
+                    }
+                  });
+                },
+                child: Center(
+                  child: LoadingIndicator(),
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'dssddsdfds sfdf',
-                    labelText: 'mooo',
-                    alignLabelWithHint: true,
-                    prefixIcon: SvgPicture.asset(
-                      iconPath,
-                      width: 35,
-                      colorFilter: const ColorFilter.mode(
-                        ColorsManager.offWhite300,
-                        BlendMode.srcIn,
-                      ),
-                    )),
-              ),
-              TextButton(
-                  onPressed: () {
-                    key.currentState?.validate();
-                  },
-                  child: const Text("validate"))
-            ],
+            ),
           ),
-        ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: AnimatedContainer(
+              color: ColorsManager.tealPrimary,
+              duration: DurationManager.m750,
+              child: Center(
+                child: LoadingIndicator(
+                  height: 200,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

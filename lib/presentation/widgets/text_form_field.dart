@@ -18,6 +18,7 @@ class AppTextFormField extends StatelessWidget {
     this.outSideIcon,
     this.svgPrefixPath,
     this.labelText,
+    this.textInputAction,
   });
 
   final bool isPassword;
@@ -29,6 +30,7 @@ class AppTextFormField extends StatelessWidget {
   final FocusNode? focusNode;
   final TextDirection? textDirection;
   final TextInputType? textInputType;
+  final TextInputAction? textInputAction;
   final String? hintText;
   final String? labelText;
   final String? svgPrefixPath;
@@ -51,6 +53,7 @@ class AppTextFormField extends StatelessWidget {
       obscureText: isPassword,
       controller: controller,
       keyboardType: textInputType,
+      textInputAction: TextInputAction.next,
       onTap: onTap,
       onFieldSubmitted: onFieldSubmitted,
       obscuringCharacter: '●',

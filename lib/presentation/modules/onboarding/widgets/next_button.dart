@@ -37,25 +37,20 @@ class NextButton extends StatelessWidget {
             },
           ),
           //icon
-          if (_isDone())
-            Icon(
-              Icons.done,
-              color: iconColor,
-              size: responsive.screenWidth * AppSize.s0_075,
-            )
-          else
-            Padding(
-              padding: EdgeInsets.only(
-                  top: responsive.screenHeight * AppSize.s0_015),
-              child: SvgPicture.asset(
-                AssetsProvider.arrowDown1Icon,
-                fit: BoxFit.scaleDown,
-                colorFilter: const ColorFilter.mode(
-                  iconColor,
-                  BlendMode.srcIn,
-                ),
+          Padding(
+            padding: EdgeInsets.only(
+                top: _isDone() ? 0 : responsive.screenHeight * AppSize.s0_015),
+            child: SvgPicture.asset(
+              _isDone()
+                  ? AssetsProvider.doneIcon
+                  : AssetsProvider.arrowDown1Icon,
+              fit: _isDone() ? BoxFit.scaleDown : BoxFit.contain,
+              colorFilter: const ColorFilter.mode(
+                iconColor,
+                BlendMode.srcIn,
               ),
             ),
+          ),
         ],
       ),
     );
