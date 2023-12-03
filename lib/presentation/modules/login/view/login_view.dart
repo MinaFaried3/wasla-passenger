@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen>
   late final AnimationController _bearAnimationController;
   late final Animation<Offset> _formOffsetAnimation;
   late final Animation<Offset> _bearOffsetAnimation;
+  late final Animation<double> _bearFadeAnimation;
   late final Animation<double> _scaleAnimation;
   late final Animation<double> _fadeAnimation;
   late final RiveControllerManager riveController;
@@ -57,9 +58,12 @@ class _LoginScreenState extends State<LoginScreen>
               child: Column(
                 children: [
                   ///bear animation
-                  SlideTransition(
-                      position: _bearOffsetAnimation,
-                      child: LoginBear(riveController: riveController)),
+                  FadeTransition(
+                    opacity: _bearFadeAnimation,
+                    child: SlideTransition(
+                        position: _bearOffsetAnimation,
+                        child: LoginBear(riveController: riveController)),
+                  ),
 
                   ///login form
                   SlideTransition(
@@ -111,6 +115,9 @@ class _LoginScreenState extends State<LoginScreen>
         parent: _bearAnimationController, curve: Curves.bounceInOut);
     _fadeAnimation = CurvedAnimation(
         parent: _formAnimationController, curve: Curves.easeInBack);
+    _bearFadeAnimation = Tween<double>(begin: AppSize.s0_375, end: AppSize.s1)
+        .animate(CurvedAnimation(
+            parent: _bearAnimationController, curve: Curves.easeInOutBack));
 
     _startAnimation();
   }

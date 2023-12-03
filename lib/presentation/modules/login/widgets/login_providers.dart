@@ -30,33 +30,34 @@ class LoginProviders extends StatelessWidget {
       {required String icon,
       required ResponsiveManager responsiveManager,
       required void Function() onPressed}) {
-    final double width = responsiveManager.getWidthOf(AppSize.s0_125);
+    final double width = responsiveManager.getWidthOf(AppSize.s0_1);
     final double iconWidth = width * AppSize.s0_65;
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: responsiveManager.getWidthOf(AppSize.s0_015),
-      ),
-      child: IconButton(
-        style: ButtonStyle(
-          backgroundColor:
-              const MaterialStatePropertyAll(ColorsManager.darkTeal),
-          shape: MaterialStatePropertyAll(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSize.s16),
+        padding: EdgeInsets.symmetric(
+          horizontal: responsiveManager.getWidthOf(AppSize.s0_0075),
+        ),
+        child: IconButton(
+          style: ButtonStyle(
+            backgroundColor:
+                const MaterialStatePropertyAll(ColorsManager.darkTeal),
+            shape: MaterialStatePropertyAll(
+              RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(AppSize.s10),
+              ),
+            ),
+            fixedSize: MaterialStatePropertyAll(
+              Size(width, width),
             ),
           ),
-          fixedSize: MaterialStatePropertyAll(
-            Size(width, width),
+          onPressed: onPressed,
+          icon: SvgPicture.asset(
+            icon,
+            width: iconWidth,
+            colorFilter: const ColorFilter.mode(
+              ColorsManager.offWhite400,
+              BlendMode.srcIn,
+            ),
           ),
-        ),
-        onPressed: onPressed,
-        icon: SvgPicture.asset(
-          icon,
-          width: iconWidth,
-          height: iconWidth,
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
+        ));
   }
 }

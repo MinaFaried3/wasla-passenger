@@ -37,7 +37,7 @@ class Or extends StatelessWidget {
     return SizedBox(
       height: AppSize.s0_5,
       child: ColoredBox(
-        color: ColorsManager.offWhite300.withOpacity(AppSize.s0_5),
+        color: ColorsManager.offWhite300.withOpacity(AppSize.s0_1),
       ),
     );
   }

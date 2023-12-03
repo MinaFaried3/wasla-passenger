@@ -11,6 +11,7 @@ class AppConstants {
   static const Set emptySet = {};
   static const Map emptyMap = {};
 
+  //todo for phone
   static const double screenUtilWidth = 428;
   static const double screenUtilHeight = 926;
 
