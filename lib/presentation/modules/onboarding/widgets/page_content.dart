@@ -23,13 +23,13 @@ class PageContent extends StatelessWidget {
             Text(
               content.title,
               style: getBoldStyle(
-                  fontSize: FontSize.s37.sp, color: ColorsManager.offWhite300),
+                  fontSize: FontSize.s34.sp, color: ColorsManager.offWhite300),
             ),
             responsive.heightSpace(2),
             Text(
               content.subTitle,
               style: getMediumStyle(
-                  color: ColorsManager.offWhite300, fontSize: FontSize.s26.sp),
+                  color: ColorsManager.offWhite300, fontSize: FontSize.s24.sp),
             ),
             responsive.heightSpace(7),
             Center(
