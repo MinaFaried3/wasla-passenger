@@ -5,16 +5,16 @@ import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_c
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/widgets/animated_bear.dart';
 
-class LoginBear extends StatefulWidget {
+class AuthBear extends StatefulWidget {
   final RiveControllerManager riveController;
 
-  const LoginBear({super.key, required this.riveController});
+  const AuthBear({super.key, required this.riveController});
 
   @override
-  State<LoginBear> createState() => _LoginBearState();
+  State<AuthBear> createState() => _AuthBearState();
 }
 
-class _LoginBearState extends State<LoginBear>
+class _AuthBearState extends State<AuthBear>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _animation;

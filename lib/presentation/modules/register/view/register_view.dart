@@ -1,18 +1,18 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
-import 'package:wasla/presentation/modules/login/widgets/login_form.dart';
+import 'package:wasla/presentation/modules/register/widgets/slide_register_form.dart';
 import 'package:wasla/presentation/widgets/auth/components/auth_now.dart';
 import 'package:wasla/presentation/widgets/auth/form.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
   late final RiveControllerManager riveController;
 
   @override
@@ -25,8 +25,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return AuthForm(
       riveController: riveController,
-      form: LoginForm(riveController: riveController),
-      bottomAction: AuthNow.register(),
+      form: SlideRegisterForm(riveController: riveController),
+      bottomAction: AuthNow.login(),
     );
   }
 }

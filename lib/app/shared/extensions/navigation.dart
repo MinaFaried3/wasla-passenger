@@ -18,4 +18,6 @@ extension Navigation on BuildContext {
 
   //pop
   void pop() => Navigator.of(this).pop();
+
+  bool canPop() => Navigator.canPop(this);
 }

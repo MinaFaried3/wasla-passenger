@@ -44,7 +44,7 @@ class _TestScreenState extends State<TestScreen> {
                     }
                   });
                 },
-                child: Center(
+                child: const Center(
                   child: LoadingIndicator(),
                 ),
               ),
@@ -55,7 +55,7 @@ class _TestScreenState extends State<TestScreen> {
             child: AnimatedContainer(
               color: ColorsManager.tealPrimary,
               duration: DurationManager.m750,
-              child: Center(
+              child: const Center(
                 child: LoadingIndicator(
                   height: 200,
                 ),
@@ -73,11 +73,11 @@ class MyCustomPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     // Define the top and bottom cut percentages
     double topCutPercentage = 0.2; // 20%
-    double bottomCutPercentage = 0.2; // 20%
+    // double bottomCutPercentage = 0.2; // 20%
 
     // Calculate the cut heights
     double topCutHeight = size.height * topCutPercentage;
-    double bottomCutHeight = size.height * bottomCutPercentage;
+    // double bottomCutHeight = size.height * bottomCutPercentage;
 
     // Draw the widget with cutouts
     Paint paint = Paint()..color = Colors.blue; // Adjust the color as needed

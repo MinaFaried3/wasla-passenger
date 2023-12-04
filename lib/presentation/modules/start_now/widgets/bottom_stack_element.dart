@@ -73,7 +73,9 @@ class _BottomStackElementsState extends State<BottomStackElements>
                         ),
                       ),
                   onPressed: () {
-                    context.pushReplacementNamed(RoutesStrings.onboardingRoute);
+                    context.pushNamedAndRemoveUntil(
+                        predicate: (routes) => false,
+                        RoutesStrings.onboardingRoute);
                   },
                   child: Text(
                     AppStrings.startNow.tr(),
