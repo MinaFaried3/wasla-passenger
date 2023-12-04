@@ -11,6 +11,7 @@ import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
+import 'package:wasla/presentation/modules/register/cubit/username_valdiator/username_validation_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -69,25 +70,41 @@ final class DIModulesManger {
         OnChangeOnBoardingPageCubit());
   }
 
-  static void prepareAuthModule() {
+  static void _prepareAuthModule() {
     _registerFactory<AuthRepository>(AuthRepositoryImpl(
       remoteDataSource: getIt<RemoteDataSource>(),
       networkChecker: getIt<NetworkChecker>(),
     ));
+
+    ///ui
+    _registerFactory<RiveControllerManager>(RiveControllerManager());
+    //cubits used on auth
+    _registerFactory<BearAnimationCubit>(
+        BearAnimationCubit(getIt<RiveControllerManager>()));
+    _registerFactory<BearDialogCubit>(BearDialogCubit());
+    _registerFactory<PasswordIconCubit>(PasswordIconCubit());
   }
 
   static void prepareLoginModule() {
-    prepareAuthModule();
+    _prepareAuthModule();
 
-    _registerFactory<RiveControllerManager>(RiveControllerManager());
+    ///use case
     _registerFactory<LoginUseCase>(
         LoginUseCase(repository: getIt<AuthRepository>()));
 
     ///cubit
-    _registerFactory<BearAnimationCubit>(
-        BearAnimationCubit(getIt<RiveControllerManager>()));
-    _registerFactory<BearDialogCubit>(BearDialogCubit());
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
-    _registerFactory<PasswordIconCubit>(PasswordIconCubit());
+  }
+
+  static void prepareRegisterModule() {
+    _prepareAuthModule();
+
+    ///use case
+    _registerFactory<LoginUseCase>(
+        LoginUseCase(repository: getIt<AuthRepository>()));
+
+    ///cubit
+    _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
+    _registerFactory<UsernameValidatorCubit>(UsernameValidatorCubit());
   }
 }

@@ -57,6 +57,7 @@ class OnboardingScreen extends StatelessWidget {
   }
 
   void _onFinish(BuildContext context) {
-    context.pushReplacementNamed(RoutesStrings.loginRoute);
+    context.pushNamedAndRemoveUntil(
+        predicate: (routes) => false, RoutesStrings.loginRoute);
   }
 }

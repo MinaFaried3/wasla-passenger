@@ -55,13 +55,13 @@ class AssetsProvider {
   static const String homeIcon = '$_svg/home.svg';
   static const String wifiIcon = '$_svg/wifi.svg';
   static const String searchIcon = '$_svg/search.svg';
-  static const String userIcon = '$_svg/user1_icon.svg';
-  static const String userIcon2 = '$_svg/user2_icon.svg';
+  static const String userIcon = '$_svg/user_icon.svg';
   static const String openEyeIcon = '$_svg/open_eye_icon.svg';
   static const String closedEyeIcon = '$_svg/closed_eye_icon.svg';
   static const String passwordIcon = '$_svg/password_icon.svg';
   static const String passwordIcon2 = '$_svg/password1_icon.svg';
   static const String emailIcon = '$_svg/email_icon.svg';
+  static const String phoneIcon = '$_svg/phone_icon.svg';
   static const String cameraIcon = '$_svg/camera_icon.svg';
   static const String busIcon = '$_svg/bus_icon.svg';
   static const String proIcon = '$_svg/pro_icon.svg';

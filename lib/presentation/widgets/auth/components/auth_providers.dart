@@ -1,7 +1,7 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 
-class LoginProviders extends StatelessWidget {
-  const LoginProviders({super.key});
+class AuthProviders extends StatelessWidget {
+  const AuthProviders({super.key});
 
   @override
   Widget build(BuildContext context) {

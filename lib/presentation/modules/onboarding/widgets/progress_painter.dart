@@ -51,5 +51,5 @@ class ProgressPainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(CustomPainter old) => true;
+  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

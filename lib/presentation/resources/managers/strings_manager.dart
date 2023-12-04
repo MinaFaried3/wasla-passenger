@@ -23,17 +23,25 @@ class AppStrings {
   static const String startNow = 'start_now';
   static const String success = 'success';
 
+  //user data
   static const String username = 'username';
+  static const String firstname = 'firstname';
+  static const String lastname = 'lastname';
   static const String email = 'email';
+  static const String phone = 'phone';
   static const String password = 'password';
+  static const String confirmPassword = 'confirm_password';
 
   //auth
   static const String or = 'or';
   static const String forgetPassword = 'forget_password';
   static const String welcome = 'welcome';
   static const String doNotHaveAccount = 'do_not_have_account';
+  static const String haveAccount = 'have_account';
   static const String login = 'login';
-  static const String registerNow = 'register_now';
+  static const String register = 'register';
+  static const String createAccount = 'create_account';
+  static const String loginNow = 'login_now';
 
   //bear state dialog
 

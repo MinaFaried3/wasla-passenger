@@ -101,13 +101,25 @@ class AppTextFormField extends StatelessWidget {
                   color: ColorsManager.tealPrimary1000,
                   borderRadius: BorderRadius.circular(AppSize.s20),
                 ),
-                child: Text(labelText!),
+                child: FittedBox(child: Text(labelText!)),
               )
             : null,
         hintStyle: getRegularStyle(
             color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
             fontSize: AppSize.s28),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSize.s20),
+          borderSide: BorderSide.none,
+        ),
         floatingLabelAlignment: FloatingLabelAlignment.start,
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSize.s20),
+          borderSide: BorderSide.none,
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(AppSize.s20),
+            borderSide: const BorderSide(
+                color: ColorsManager.darkTealBackground900, width: AppSize.s2)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSize.s20),
           borderSide: BorderSide.none,

@@ -14,7 +14,7 @@ class AnimatedBear extends StatelessWidget {
   Widget build(BuildContext context) {
     final ResponsiveManager responsive =
         ResponsiveManager(context, hasAppBar: false);
-    final double radius = responsive.screenWidth * AppSize.s0_3;
+    // final double radius = responsive.screenWidth * AppSize.s0_3;
     // final double diameter = radius * 2;
     const double xCoordinate = AppConstants.doubleZero;
     const double yCoordinate = 45;
