@@ -1,21 +1,32 @@
 import 'package:flutter_phoenix/flutter_phoenix.dart';
-import 'package:wasla/app/shared/bloc_observer.dart';
+import 'package:wasla/app/shared/common/bloc_observer.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/wasla.dart';
-import 'package:wasla/presentation/resources/common/common_libs.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  //todo
+  // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   await EasyLocalization.ensureInitialized();
+  await DIModulesManger.prepareAppModule();
 
-  Bloc.observer = MyBlocObserver();
+  Bloc.observer = getIt<MyBlocObserver>();
 
-  runApp(EasyLocalization(
-      child: Phoenix(
-        child: WaslaApp(),
-      ),
-      supportedLocales: [
+  runApp(
+    EasyLocalization(
+      supportedLocales: const [
         LocalizationManager.arabicLocal,
         LocalizationManager.englishLocal,
       ],
-      path: LocalizationManager.assetsPath));
+      path: LocalizationManager.assetsPath,
+      child: Phoenix(
+        child: WaslaApp(),
+      ),
+    ),
+  );
+  //todo
+  // whenever initialization is completed, remove the splash screen:
+  // FlutterNativeSplash.remove();
 }

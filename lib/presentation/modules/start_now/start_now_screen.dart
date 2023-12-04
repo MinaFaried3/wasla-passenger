@@ -1,21 +1,57 @@
-import 'package:wasla/presentation/resources/common/common_libs.dart';
-import 'package:wasla/presentation/widgets/stack_clip_path.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/common/constants.dart';
+import 'package:wasla/presentation/modules/start_now/widgets/bottom_stack_element.dart';
 
-class StartNowScreen extends StatelessWidget {
+class StartNowScreen extends StatefulWidget {
   const StartNowScreen({super.key});
+
+  @override
+  State<StartNowScreen> createState() => _StartNowScreenState();
+}
+
+class _StartNowScreenState extends State<StartNowScreen>
+    with SingleTickerProviderStateMixin {
+  late final AnimationController _animationController;
+  late final Animation<Offset> _offsetAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _initAnimation();
+  }
+
+  void _initAnimation() {
+    _animationController =
+        AnimationController(vsync: this, duration: DurationManager.s3);
+
+    _offsetAnimation =
+        Tween<Offset>(begin: const Offset(0, -1), end: Offset.zero)
+            .animate(CurvedAnimation(
+      parent: _animationController,
+      curve: Curves.bounceOut,
+    ));
+
+    _animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context, hasAppBar: false);
 
     return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          ColorManager.lightViolet,
-          ColorManager.darkBlackViolet,
-          ColorManager.darkViolet,
-          ColorManager.darkBlackViolet,
-        ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+      decoration: const BoxDecoration(
+        gradient: LinearGradient(
+          colors: GradientManager.startNowGradient,
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          stops: GradientManager.startNowStops,
+        ),
         image: DecorationImage(
           image: AssetImage(AssetsProvider.startNowBackground),
           fit: BoxFit.contain,
@@ -26,61 +62,24 @@ class StartNowScreen extends StatelessWidget {
         body: Stack(
           alignment: Alignment.bottomCenter,
           children: [
-            _buildStackClipPath(responsive, context),
-            Padding(
-              padding: EdgeInsets.only(bottom: responsive.screenHeight * 0.25),
-              child: Center(
-                child: Image.asset(
-                  AssetsProvider.logo,
-                  width: responsive.screenWidth * AppSize.s0_5,
-                  height: responsive.screenHeight * AppSize.s0_5,
+            const BottomStackElements(),
+            SlideTransition(
+              position: _offsetAnimation,
+              child: Padding(
+                padding: EdgeInsets.only(
+                  bottom: responsive.screenHeight * AppSize.s0_2,
+                ),
+                child: Center(
+                  child: Image.asset(
+                    AssetsProvider.logo,
+                    width: responsive.screenWidth * AppSize.s0_5,
+                    height: responsive.screenHeight * AppSize.s0_5,
+                  ),
                 ),
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  Stack _buildStackClipPath(
-      ResponsiveManager responsive, BuildContext context) {
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        _buildStackClipElement(responsive, AppSize.s0_3),
-        _buildStackClipElement(responsive, AppSize.s0_375),
-        _buildStackClipElement(responsive, AppSize.s0_450),
-        _buildStackClipElement(responsive, AppSize.s0_525,
-            child: Padding(
-              padding: EdgeInsets.only(
-                  bottom: responsive.screenHeight * AppSize.s0_04),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context)
-                      .pushReplacementNamed(RoutesStrings.onboardingRoute);
-                },
-                child: Text(
-                  AppStrings.startNow.tr(),
-                  style: getMediumStyle(
-                      color: ColorManager.mauva, fontSize: AppSize.s18.sp),
-                ),
-              ),
-            )),
-      ],
-    );
-  }
-
-  ClipPath _buildStackClipElement(ResponsiveManager responsive, double size,
-      {Widget? child}) {
-    return ClipPath(
-      clipper: ContainerClipper(),
-      child: Container(
-        color: ColorManager.violet.withOpacity(AppSize.s0_2),
-        height: responsive.screenHeight * size,
-        width: double.infinity,
-        alignment: Alignment.bottomCenter,
-        child: child,
       ),
     );
   }
