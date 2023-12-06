@@ -19,6 +19,7 @@ class AppTextFormField extends StatelessWidget {
     this.svgPrefixPath,
     this.labelText,
     this.textInputAction,
+    this.autofillHints,
   });
 
   final bool isPassword;
@@ -37,6 +38,7 @@ class AppTextFormField extends StatelessWidget {
   final Widget? prefix;
   final Widget? suffix;
   final Widget? outSideIcon;
+  final Iterable<String>? autofillHints;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +59,7 @@ class AppTextFormField extends StatelessWidget {
       onTap: onTap,
       onFieldSubmitted: onFieldSubmitted,
       obscuringCharacter: '●',
+      autofillHints: autofillHints,
 
       //todo
       // todo add english family

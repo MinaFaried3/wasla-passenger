@@ -16,6 +16,11 @@ class NamesFields extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context, hasAppBar: false);
+    const autoFill = [
+      AutofillHints.name,
+      AutofillHints.namePrefix,
+      AutofillHints.nameSuffix
+    ];
     return Row(
       textDirection: TextDirection.ltr,
       children: [
@@ -26,6 +31,7 @@ class NamesFields extends StatelessWidget {
             svgPrefixPath: AssetsProvider.userIcon,
             textInputAction: TextInputAction.next,
             textDirection: TextDirection.ltr,
+            autofillHints: autoFill,
             validator: _validateNotEmpty,
           ),
         ),
@@ -40,6 +46,7 @@ class NamesFields extends StatelessWidget {
               svgPrefixPath: AssetsProvider.userIcon,
               textInputAction: TextInputAction.next,
               textDirection: TextDirection.ltr,
+              autofillHints: autoFill,
               validator: _validateNotEmpty),
         ),
       ],

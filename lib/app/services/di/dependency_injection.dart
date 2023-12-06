@@ -95,6 +95,7 @@ final class DIModulesManger {
 
     ///cubit
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
+    // getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
   }
 
   static void prepareRegisterModule() {

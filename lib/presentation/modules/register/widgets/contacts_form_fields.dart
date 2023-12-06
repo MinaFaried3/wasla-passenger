@@ -24,6 +24,7 @@ class ContactsFormFields extends StatelessWidget {
               textInputAction: TextInputAction.next,
               labelText: AppStrings.email.tr(),
               svgPrefixPath: AssetsProvider.emailIcon,
+              autofillHints: const [AutofillHints.email],
             ),
           ),
 
@@ -35,6 +36,7 @@ class ContactsFormFields extends StatelessWidget {
               textInputAction: TextInputAction.next,
               labelText: AppStrings.phone.tr(),
               svgPrefixPath: AssetsProvider.phoneIcon,
+              autofillHints: const [AutofillHints.telephoneNumber],
             ),
           ),
         ],

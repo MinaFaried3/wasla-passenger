@@ -67,13 +67,6 @@ class AuthNow extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
-    //that is mean now i am on register
-    if (routeName == Routes.loginRoute.routeString) {
-      if (context.canPop()) {
-        context.pop();
-        return;
-      }
-    }
-    context.pushNamed(routeName);
+    context.pushNamedAndRemoveUntil(routeName);
   }
 }
