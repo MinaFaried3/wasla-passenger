@@ -5,12 +5,13 @@ import 'package:wasla/data/responses/base_response.dart';
 part 'check_username_response.g.dart';
 
 @JsonSerializable()
-class CheckUsernameResponse extends BaseResponse {
-  @JsonKey(name: 'data')
-  final CheckUsernameData? data;
-
-  const CheckUsernameResponse(
-      {super.status, super.message, super.success, this.data});
+class CheckUsernameResponse extends BaseResponse<CheckUsernameData> {
+  const CheckUsernameResponse({
+    super.status,
+    super.message,
+    super.success,
+    super.data,
+  });
 
   //from json
   factory CheckUsernameResponse.fromJson(Map<String, dynamic> json) =>

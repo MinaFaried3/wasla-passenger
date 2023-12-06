@@ -210,7 +210,6 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     usernameFocusNode.dispose();
     confirmPasswordFocusNode.dispose();
     lastnameFocusNode.dispose();
-    usernameFocusNode.dispose();
 
     //dispose controllers
     usernameController.dispose();
