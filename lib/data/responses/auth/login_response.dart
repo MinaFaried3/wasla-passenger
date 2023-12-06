@@ -4,15 +4,12 @@ import 'package:wasla/data/responses/base_response.dart';
 part 'login_response.g.dart';
 
 @JsonSerializable()
-final class LoginResponse extends BaseResponse {
-  @JsonKey(name: 'data')
-  final LoginData? data;
-
+final class LoginResponse extends BaseResponse<LoginData> {
   const LoginResponse({
     super.status,
     super.message,
     super.success,
-    this.data,
+    super.data,
   });
 
   //from json
