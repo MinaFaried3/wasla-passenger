@@ -48,6 +48,10 @@ class NamesFormFields extends StatelessWidget {
                 focusNode: usernameFocusNode,
                 textDirection: TextDirection.ltr,
                 textInputAction: TextInputAction.next,
+                autofillHints: const [
+                  AutofillHints.username,
+                  AutofillHints.newUsername
+                ],
                 labelText: AppStrings.username.tr(),
                 svgPrefixPath: AssetsProvider.userIcon,
                 onChanged: (username) {
@@ -90,9 +94,7 @@ class NamesFormFields extends StatelessWidget {
                       BlendMode.srcIn,
                     ),
                   );
-                },
-
-                    orElse: () {
+                }, orElse: () {
                   return SvgPicture.asset(
                     AssetsProvider.wifiIcon,
                     fit: BoxFit.scaleDown,

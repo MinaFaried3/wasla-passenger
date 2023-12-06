@@ -5,14 +5,14 @@ import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_ic
 import 'package:wasla/presentation/modules/register/cubit/username_valdiator/username_validation_cubit.dart';
 
 class BlocProvidersManager {
-  static List<BlocProvider> onboardingProviders = [
+  static final List<BlocProvider> onboardingProviders = [
     BlocProvider<OnboardingCubit>(
         create: (context) => getIt<OnboardingCubit>()),
     BlocProvider<OnChangeOnBoardingPageCubit>(
         create: (context) => getIt<OnChangeOnBoardingPageCubit>()),
   ];
 
-  static List<BlocProvider> loginProviders = [
+  static final List<BlocProvider> loginProviders = [
     BlocProvider<BearAnimationCubit>.value(
       value: getIt<BearAnimationCubit>()..loadAndBuildTheAnimation(),
     ),
@@ -32,7 +32,7 @@ class BlocProvidersManager {
   *     try do it in dispose method on widget class
   *     or create a custom dispose method
   * */
-  static List<BlocProvider> registerProviders = [
+  static final List<BlocProvider> registerProviders = [
     BlocProvider<BearAnimationCubit>.value(
       value: getIt<BearAnimationCubit>()..loadAndBuildTheAnimation(),
     ),
@@ -42,8 +42,8 @@ class BlocProvidersManager {
     BlocProvider<LoginCubit>.value(
       value: getIt<LoginCubit>(),
     ),
-    BlocProvider<UsernameValidatorCubit>(
-      create: (context) => getIt<UsernameValidatorCubit>(),
+    BlocProvider<UsernameValidatorCubit>.value(
+      value: getIt<UsernameValidatorCubit>(),
     )
   ];
 }
