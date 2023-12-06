@@ -30,10 +30,15 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   final TextEditingController firstnameController = TextEditingController();
   final TextEditingController lastnameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
 
   final FocusNode passwordFocusNode = FocusNode();
   final FocusNode confirmPasswordFocusNode = FocusNode();
   final FocusNode usernameFocusNode = FocusNode();
+  final FocusNode lastnameFocusNode = FocusNode();
 
   //form keys
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -58,6 +63,8 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
         usernameController: usernameController,
         lastnameController: lastnameController,
         firstnameController: firstnameController,
+        lastnameFocusNode: lastnameFocusNode,
+        usernameFocusNode: usernameFocusNode,
       ),
       ContactsFormFields(contactsFormKey: contactsFormKey),
       PasswordFormFields(passwordFormKey: passwordFormKey),
@@ -122,14 +129,21 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
-            onPressed: () {
-              if (formIndex > 0) {
-                setState(() {
-                  formIndex--;
-                });
-              }
-            },
-            icon: Icon(Icons.chevron_right)),
+          onPressed: () {
+            if (formIndex > 0) {
+              setState(() {
+                formIndex--;
+              });
+            }
+          },
+          icon: SvgPicture.asset(
+            AssetsProvider.arrowLeftIcon,
+            colorFilter: const ColorFilter.mode(
+              ColorsManager.tealPrimary,
+              BlendMode.srcIn,
+            ),
+          ),
+        ),
         Text(
           '${formIndex + 1} / ${forms.length}',
           textDirection: TextDirection.ltr,
@@ -137,9 +151,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
         IconButton(
             onPressed: () {
               if (formIndex == 0) {
-                context
-                    .read<UsernameValidatorCubit>()
-                    .validate(usernameController.text);
+                _validateNamesForm();
               }
 
               if (formsKeys[formIndex].currentState!.validate()) {
@@ -151,7 +163,13 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
                 }
               }
             },
-            icon: Icon(Icons.chevron_left)),
+            icon: SvgPicture.asset(
+              AssetsProvider.arrowRightIcon,
+              colorFilter: const ColorFilter.mode(
+                ColorsManager.tealPrimary,
+                BlendMode.srcIn,
+              ),
+            )),
       ],
     );
   }
@@ -184,21 +202,30 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
 
     //remove listener
     passwordFocusNode.removeListener(_passwordFocusNodeListener);
-    usernameFocusNode.removeListener(_usernameFocusNodeListener);
+    usernameFocusNode.removeListener(_usernameListener);
+    lastnameFocusNode.removeListener(_lastnameListener);
+
     //dispose nodes
     passwordFocusNode.dispose();
     usernameFocusNode.dispose();
     confirmPasswordFocusNode.dispose();
+    lastnameFocusNode.dispose();
+    usernameFocusNode.dispose();
+
     //dispose controllers
     usernameController.dispose();
     passwordController.dispose();
+    confirmPasswordController.dispose();
     firstnameController.dispose();
     lastnameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
   }
 
   void _addFocusNodesListeners() {
     passwordFocusNode.addListener(_passwordFocusNodeListener);
-    usernameFocusNode.addListener(_usernameFocusNodeListener);
+    usernameFocusNode.addListener(_usernameListener);
+    lastnameFocusNode.addListener(_lastnameListener);
   }
 
   void _passwordFocusNodeListener() {
@@ -210,9 +237,24 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     }
   }
 
-  void _usernameFocusNodeListener() {
+  void _usernameListener() {
+    final dialog = context.read<BearDialogCubit>();
+    //todo
     if (usernameFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().usernameFieldFocusedMsg();
+      dialog.writeMessage(
+          'يجب مراعاة ان يكون اسم المستخدم بالحروف الانجليزية الصغيرة و بدون اي مسافات او حروف مميزه مثل @#');
     }
+  }
+
+  void _lastnameListener() {
+    if (lastnameFocusNode.hasFocus) {
+      context
+          .read<BearDialogCubit>()
+          .writeMessage('يمكنك ادخال اسم العائلة او اسمك الثاني');
+    }
+  }
+
+  void _validateNamesForm() {
+    context.read<UsernameValidatorCubit>().validate(usernameController.text);
   }
 }

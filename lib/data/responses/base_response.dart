@@ -3,11 +3,11 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 // dart run build_runner build --delete-conflicting-outputs
 
 abstract class BaseResponse extends Equatable {
-  @JsonKey(name: "status")
+  @JsonKey(name: 'status')
   final int? status;
-  @JsonKey(name: "message")
+  @JsonKey(name: 'message')
   final String? message;
-  @JsonKey(name: "isSuccess")
+  @JsonKey(name: 'isSuccess')
   final bool? success;
 
   const BaseResponse({

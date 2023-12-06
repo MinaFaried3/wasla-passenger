@@ -9,12 +9,16 @@ class NamesFormFields extends StatelessWidget {
     required this.usernameController,
     required this.firstnameController,
     required this.lastnameController,
+    required this.lastnameFocusNode,
+    required this.usernameFocusNode,
   });
 
   final GlobalKey<FormState> namesFormKey;
   final TextEditingController usernameController;
   final TextEditingController firstnameController;
   final TextEditingController lastnameController;
+  final FocusNode lastnameFocusNode;
+  final FocusNode usernameFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +34,10 @@ class NamesFormFields extends StatelessWidget {
         Padding(
           padding: edgeInsetsBottom,
           child: NamesFields(
-              firstnameController: firstnameController,
-              lastnameController: lastnameController),
+            firstnameController: firstnameController,
+            lastnameController: lastnameController,
+            lastnameFocusNode: lastnameFocusNode,
+          ),
         ),
         Padding(
           padding: edgeInsetsBottom,
@@ -39,6 +45,7 @@ class NamesFormFields extends StatelessWidget {
             builder: (context, state) {
               return AppTextFormField(
                 controller: usernameController,
+                focusNode: usernameFocusNode,
                 textDirection: TextDirection.ltr,
                 textInputAction: TextInputAction.next,
                 labelText: AppStrings.username.tr(),
@@ -65,10 +72,15 @@ class NamesFormFields extends StatelessWidget {
                       ? 'غير صالح'
                       : null;
                 },
-                suffix: state.when(initial: () {
+                suffix: state.maybeWhen(initial: () {
                   return null;
                 }, loading: () {
-                  return const CircularProgressIndicator();
+                  return const Padding(
+                    padding: EdgeInsets.all(AppPadding.p16),
+                    child: CircularProgressIndicator(
+                      strokeWidth: AppSize.s1,
+                    ),
+                  );
                 }, valid: () {
                   return SvgPicture.asset(
                     AssetsProvider.doneIcon,
@@ -78,10 +90,16 @@ class NamesFormFields extends StatelessWidget {
                       BlendMode.srcIn,
                     ),
                   );
-                }, notValid: (message) {
-                  return Icon(
-                    Icons.error_outline,
-                    color: ColorsManager.error,
+                },
+
+                    orElse: () {
+                  return SvgPicture.asset(
+                    AssetsProvider.wifiIcon,
+                    fit: BoxFit.scaleDown,
+                    colorFilter: ColorFilter.mode(
+                      ColorsManager.red900.withOpacity(AppSize.s0_9),
+                      BlendMode.srcIn,
+                    ),
                   );
                 }),
               );

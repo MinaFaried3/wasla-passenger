@@ -9,4 +9,6 @@ class UsernameValidatorState with _$UsernameValidatorState {
   const factory UsernameValidatorState.valid() = _Valid;
 
   const factory UsernameValidatorState.notValid(String message) = _NotValid;
+
+  const factory UsernameValidatorState.error(Failure failure) = _Failure;
 }

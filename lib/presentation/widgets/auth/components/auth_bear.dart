@@ -108,39 +108,43 @@ class _AuthBearState extends State<AuthBear>
           ///dialog
           Align(
             alignment: Alignment.topRight,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                  color:
-                      ColorsManager.tealPrimary1000.withOpacity(AppSize.s0_375),
-                  borderRadius: BorderRadius.only(
-                      topLeft:
-                          Radius.circular(responsive.getWidthOf(AppSize.s0_08)),
-                      bottomRight:
-                          Radius.circular(responsive.getWidthOf(AppSize.s0_08)),
-                      topRight: Radius.circular(
-                          responsive.getWidthOf(AppSize.s0_08)))),
-              child: SizedBox(
-                width: responsive.getWidthPercentage(50),
-                height: responsive.getScreenHeightPercentage(15),
-                child: Padding(
-                  padding:
-                      EdgeInsets.all(responsive.getWidthOf(AppSize.s0_015)),
-                  child: Center(
-                    child: BlocConsumer<BearDialogCubit, String>(
-                      listener: (context, state) {
-                        _animationController.reset();
-                        _animationController.forward();
-                      },
-                      builder: (context, state) {
-                        return FadeTransition(
-                          opacity: _animation,
-                          child: Text(
-                            state.tr(),
-                            style: getRegularStyle(fontSize: FontSize.s20.sp),
-                            textAlign: TextAlign.center,
-                          ),
-                        );
-                      },
+            child: ScaleTransition(
+              scale: _animation,
+              alignment: Alignment.bottomLeft,
+              child: FittedBox(
+                fit: BoxFit.fitHeight,
+                child: Container(
+                  width: responsive.getWidthPercentage(50),
+                  decoration: BoxDecoration(
+                      color: ColorsManager.tealPrimary1000
+                          .withOpacity(AppSize.s0_375),
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(
+                              responsive.getWidthOf(AppSize.s0_08)),
+                          bottomRight: Radius.circular(
+                              responsive.getWidthOf(AppSize.s0_08)),
+                          topRight: Radius.circular(
+                              responsive.getWidthOf(AppSize.s0_08)))),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.all(responsive.getWidthOf(AppSize.s0_02)),
+                    child: Center(
+                      child: BlocConsumer<BearDialogCubit, String>(
+                        listener: (context, state) {
+                          _animationController.reset();
+                          _animationController.forward();
+                        },
+                        builder: (context, state) {
+                          return FadeTransition(
+                            opacity: _animation,
+                            child: Text(
+                              state.tr(),
+                              style: getRegularStyle(fontSize: FontSize.s20.sp),
+                              textAlign: TextAlign.center,
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),

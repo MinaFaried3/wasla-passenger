@@ -57,6 +57,36 @@ class _ApiServiceClient implements ApiServiceClient {
     return value;
   }
 
+  @override
+  Future<CheckUsernameResponse> checkUsername(
+      {required String username}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'userName': username};
+    final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<CheckUsernameResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'application/json',
+    )
+            .compose(
+              _dio.options,
+              '/Authentication/checkUserName',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = CheckUsernameResponse.fromJson(_result.data!);
+    return value;
+  }
+
   RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||

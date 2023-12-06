@@ -6,6 +6,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/api_service_client.dart';
 import 'package:wasla/data/network/dio_factory.dart';
 import 'package:wasla/data/repositories/auth_repository_impl.dart';
+import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
@@ -100,11 +101,14 @@ final class DIModulesManger {
     _prepareAuthModule();
 
     ///use case
+    _registerFactory<CheckUsernameUseCase>(
+        CheckUsernameUseCase(repository: getIt<AuthRepository>()));
     _registerFactory<LoginUseCase>(
         LoginUseCase(repository: getIt<AuthRepository>()));
 
     ///cubit
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
-    _registerFactory<UsernameValidatorCubit>(UsernameValidatorCubit());
+    _registerFactory<UsernameValidatorCubit>(
+        UsernameValidatorCubit(getIt<CheckUsernameUseCase>()));
   }
 }

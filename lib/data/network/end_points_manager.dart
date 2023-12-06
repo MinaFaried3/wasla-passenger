@@ -6,6 +6,7 @@ class EndPointsManager {
 
   //endpoint
   static const String login = "$_authentication/Login";
+  static const String checkUsername = "$_authentication/checkUserName";
 }
 
 class HeadersManager {
@@ -18,7 +19,7 @@ class HeadersManager {
   static const String ar = "ar-EG";
   static const String en = "en-US";
 
-  static const Map<String, String> loginHeaders = {
+  static const Map<String, String> jsonTypeHeader = {
     contentType: applicationJson,
   };
 
