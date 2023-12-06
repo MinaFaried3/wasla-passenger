@@ -12,6 +12,10 @@ username must have only lower alphabet chars and underscore
 email and username and must be english
 if phone arabic convert to english
 
+check if phone or email exists before or not
+generate username
+get_user_id
+
 
 
 

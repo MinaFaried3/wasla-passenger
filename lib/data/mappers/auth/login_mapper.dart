@@ -1,7 +1,7 @@
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
-import 'package:wasla/data/responses/login_response.dart';
-import 'package:wasla/domain/entities/login_models/login_model.dart';
+import 'package:wasla/data/responses/auth/login_response.dart';
+import 'package:wasla/domain/entities/auth/login_model.dart';
 
 //record to domain
 extension ConnectionDataResponseMapper on ConnectionsDataResponse? {

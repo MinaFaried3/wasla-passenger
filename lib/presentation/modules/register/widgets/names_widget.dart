@@ -5,11 +5,13 @@ class NamesFields extends StatelessWidget {
     super.key,
     required this.firstnameController,
     required this.lastnameController,
+    required this.lastnameFocusNode,
   });
 
   final TextEditingController firstnameController;
-
   final TextEditingController lastnameController;
+
+  final FocusNode lastnameFocusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class NamesFields extends StatelessWidget {
         Expanded(
           child: AppTextFormField(
               controller: lastnameController,
+              focusNode: lastnameFocusNode,
               labelText: AppStrings.lastname.tr(),
               svgPrefixPath: AssetsProvider.userIcon,
               textInputAction: TextInputAction.next,
@@ -45,6 +48,7 @@ class NamesFields extends StatelessWidget {
 
   String? _validateNotEmpty(String? name) {
     if (name == null || name.isEmpty) {
+      //todo
       return 'لا يمكن ان يكون فارغ';
     }
     return null;

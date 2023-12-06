@@ -69,4 +69,6 @@ class AssetsProvider {
   static const String facebookIcon = '$_svg/facebook_icon.svg';
   static const String googleIcon = '$_svg/google_icon.svg';
   static const String doneIcon = '$_svg/done_icon.svg';
+  static const String arrowLeftIcon = '$_svg/arrow_left_icon.svg';
+  static const String arrowRightIcon = '$_svg/arrow_right_icon.svg';
 }

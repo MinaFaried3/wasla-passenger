@@ -22,6 +22,7 @@ mixin _$UsernameValidatorState {
     required TResult Function() loading,
     required TResult Function() valid,
     required TResult Function(String message) notValid,
+    required TResult Function(Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +31,7 @@ mixin _$UsernameValidatorState {
     TResult? Function()? loading,
     TResult? Function()? valid,
     TResult? Function(String message)? notValid,
+    TResult? Function(Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +40,7 @@ mixin _$UsernameValidatorState {
     TResult Function()? loading,
     TResult Function()? valid,
     TResult Function(String message)? notValid,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,6 +50,7 @@ mixin _$UsernameValidatorState {
     required TResult Function(_loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
+    required TResult Function(_Failure value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,6 +59,7 @@ mixin _$UsernameValidatorState {
     TResult? Function(_loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
+    TResult? Function(_Failure value)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,6 +68,7 @@ mixin _$UsernameValidatorState {
     TResult Function(_loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
+    TResult Function(_Failure value)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +135,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function() valid,
     required TResult Function(String message) notValid,
+    required TResult Function(Failure failure) error,
   }) {
     return initial();
   }
@@ -140,6 +147,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function()? valid,
     TResult? Function(String message)? notValid,
+    TResult? Function(Failure failure)? error,
   }) {
     return initial?.call();
   }
@@ -151,6 +159,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? loading,
     TResult Function()? valid,
     TResult Function(String message)? notValid,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -166,6 +175,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
+    required TResult Function(_Failure value) error,
   }) {
     return initial(this);
   }
@@ -177,6 +187,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
+    TResult? Function(_Failure value)? error,
   }) {
     return initial?.call(this);
   }
@@ -188,6 +199,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
+    TResult Function(_Failure value)? error,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -243,6 +255,7 @@ class _$loadingImpl implements _loading {
     required TResult Function() loading,
     required TResult Function() valid,
     required TResult Function(String message) notValid,
+    required TResult Function(Failure failure) error,
   }) {
     return loading();
   }
@@ -254,6 +267,7 @@ class _$loadingImpl implements _loading {
     TResult? Function()? loading,
     TResult? Function()? valid,
     TResult? Function(String message)? notValid,
+    TResult? Function(Failure failure)? error,
   }) {
     return loading?.call();
   }
@@ -265,6 +279,7 @@ class _$loadingImpl implements _loading {
     TResult Function()? loading,
     TResult Function()? valid,
     TResult Function(String message)? notValid,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -280,6 +295,7 @@ class _$loadingImpl implements _loading {
     required TResult Function(_loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
+    required TResult Function(_Failure value) error,
   }) {
     return loading(this);
   }
@@ -291,6 +307,7 @@ class _$loadingImpl implements _loading {
     TResult? Function(_loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
+    TResult? Function(_Failure value)? error,
   }) {
     return loading?.call(this);
   }
@@ -302,6 +319,7 @@ class _$loadingImpl implements _loading {
     TResult Function(_loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
+    TResult Function(_Failure value)? error,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -357,6 +375,7 @@ class _$ValidImpl implements _Valid {
     required TResult Function() loading,
     required TResult Function() valid,
     required TResult Function(String message) notValid,
+    required TResult Function(Failure failure) error,
   }) {
     return valid();
   }
@@ -368,6 +387,7 @@ class _$ValidImpl implements _Valid {
     TResult? Function()? loading,
     TResult? Function()? valid,
     TResult? Function(String message)? notValid,
+    TResult? Function(Failure failure)? error,
   }) {
     return valid?.call();
   }
@@ -379,6 +399,7 @@ class _$ValidImpl implements _Valid {
     TResult Function()? loading,
     TResult Function()? valid,
     TResult Function(String message)? notValid,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (valid != null) {
@@ -394,6 +415,7 @@ class _$ValidImpl implements _Valid {
     required TResult Function(_loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
+    required TResult Function(_Failure value) error,
   }) {
     return valid(this);
   }
@@ -405,6 +427,7 @@ class _$ValidImpl implements _Valid {
     TResult? Function(_loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
+    TResult? Function(_Failure value)? error,
   }) {
     return valid?.call(this);
   }
@@ -416,6 +439,7 @@ class _$ValidImpl implements _Valid {
     TResult Function(_loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
+    TResult Function(_Failure value)? error,
     required TResult orElse(),
   }) {
     if (valid != null) {
@@ -497,6 +521,7 @@ class _$NotValidImpl implements _NotValid {
     required TResult Function() loading,
     required TResult Function() valid,
     required TResult Function(String message) notValid,
+    required TResult Function(Failure failure) error,
   }) {
     return notValid(message);
   }
@@ -508,6 +533,7 @@ class _$NotValidImpl implements _NotValid {
     TResult? Function()? loading,
     TResult? Function()? valid,
     TResult? Function(String message)? notValid,
+    TResult? Function(Failure failure)? error,
   }) {
     return notValid?.call(message);
   }
@@ -519,6 +545,7 @@ class _$NotValidImpl implements _NotValid {
     TResult Function()? loading,
     TResult Function()? valid,
     TResult Function(String message)? notValid,
+    TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
     if (notValid != null) {
@@ -534,6 +561,7 @@ class _$NotValidImpl implements _NotValid {
     required TResult Function(_loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
+    required TResult Function(_Failure value) error,
   }) {
     return notValid(this);
   }
@@ -545,6 +573,7 @@ class _$NotValidImpl implements _NotValid {
     TResult? Function(_loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
+    TResult? Function(_Failure value)? error,
   }) {
     return notValid?.call(this);
   }
@@ -556,6 +585,7 @@ class _$NotValidImpl implements _NotValid {
     TResult Function(_loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
+    TResult Function(_Failure value)? error,
     required TResult orElse(),
   }) {
     if (notValid != null) {
@@ -571,5 +601,156 @@ abstract class _NotValid implements UsernameValidatorState {
   String get message;
   @JsonKey(ignore: true)
   _$$NotValidImplCopyWith<_$NotValidImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FailureImplCopyWith<$Res> {
+  factory _$$FailureImplCopyWith(
+          _$FailureImpl value, $Res Function(_$FailureImpl) then) =
+      __$$FailureImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Failure failure});
+}
+
+/// @nodoc
+class __$$FailureImplCopyWithImpl<$Res>
+    extends _$UsernameValidatorStateCopyWithImpl<$Res, _$FailureImpl>
+    implements _$$FailureImplCopyWith<$Res> {
+  __$$FailureImplCopyWithImpl(
+      _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? failure = null,
+  }) {
+    return _then(_$FailureImpl(
+      null == failure
+          ? _value.failure
+          : failure // ignore: cast_nullable_to_non_nullable
+              as Failure,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FailureImpl implements _Failure {
+  const _$FailureImpl(this.failure);
+
+  @override
+  final Failure failure;
+
+  @override
+  String toString() {
+    return 'UsernameValidatorState.error(failure: $failure)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FailureImpl &&
+            (identical(other.failure, failure) || other.failure == failure));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, failure);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
+      __$$FailureImplCopyWithImpl<_$FailureImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function() valid,
+    required TResult Function(String message) notValid,
+    required TResult Function(Failure failure) error,
+  }) {
+    return error(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function()? valid,
+    TResult? Function(String message)? notValid,
+    TResult? Function(Failure failure)? error,
+  }) {
+    return error?.call(failure);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function()? valid,
+    TResult Function(String message)? notValid,
+    TResult Function(Failure failure)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(failure);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_loading value) loading,
+    required TResult Function(_Valid value) valid,
+    required TResult Function(_NotValid value) notValid,
+    required TResult Function(_Failure value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_Valid value)? valid,
+    TResult? Function(_NotValid value)? notValid,
+    TResult? Function(_Failure value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_loading value)? loading,
+    TResult Function(_Valid value)? valid,
+    TResult Function(_NotValid value)? notValid,
+    TResult Function(_Failure value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Failure implements UsernameValidatorState {
+  const factory _Failure(final Failure failure) = _$FailureImpl;
+
+  Failure get failure;
+  @JsonKey(ignore: true)
+  _$$FailureImplCopyWith<_$FailureImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
