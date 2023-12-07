@@ -7,8 +7,8 @@ class BearDialogCubit extends Cubit<String> {
     emit(message);
   }
 
-  void welcomeMsg() {
-    emit(AppStrings.welcomeDialog);
+  void loginWelcomeMsg() {
+    emit(AppStrings.loginWelcomeDialog);
   }
 
   void usernameFieldFocusedMsg() {

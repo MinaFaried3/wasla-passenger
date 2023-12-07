@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/register/cubit/username_valdiator/username_validation_cubit.dart';
+import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_widget.dart';
 
 class NamesFormFields extends StatelessWidget {
@@ -41,7 +41,7 @@ class NamesFormFields extends StatelessWidget {
         ),
         Padding(
           padding: edgeInsetsBottom,
-          child: BlocBuilder<UsernameValidatorCubit, UsernameValidatorState>(
+          child: BlocBuilder<CheckUsernameBloc, CheckUsernameState>(
             builder: (context, state) {
               return AppTextFormField(
                 controller: usernameController,
@@ -54,61 +54,68 @@ class NamesFormFields extends StatelessWidget {
                 ],
                 labelText: AppStrings.username.tr(),
                 svgPrefixPath: AssetsProvider.userIcon,
-                onChanged: (username) {
-                  context.read<UsernameValidatorCubit>().validate(username);
-                },
+                onChanged: (username) => _checkUsername(context, username),
                 onFieldSubmitted: (username) {
                   state.maybeWhen(
                       valid: () {},
-                      orElse: () {
-                        context
-                            .read<UsernameValidatorCubit>()
-                            .validate(username);
-                      });
+                      orElse: () => _checkUsername(context, username));
                 },
                 validator: (username) {
-                  return state.whenOrNull(notValid: (message) {
-                    return message;
-                  });
-
-                  //todo
-                  return username == null || username.length < 3
-                      ? 'غير صالح'
-                      : null;
+                  return state.whenOrNull(
+                    notValid: (message) => message.tr(),
+                    error: (failure) => failure.message,
+                  );
                 },
-                suffix: state.maybeWhen(initial: () {
-                  return null;
-                }, loading: () {
-                  return const Padding(
-                    padding: EdgeInsets.all(AppPadding.p16),
-                    child: CircularProgressIndicator(
-                      strokeWidth: AppSize.s1,
-                    ),
-                  );
-                }, valid: () {
-                  return SvgPicture.asset(
-                    AssetsProvider.doneIcon,
-                    fit: BoxFit.scaleDown,
-                    colorFilter: ColorFilter.mode(
-                      ColorsManager.tealPrimary500.withOpacity(AppSize.s0_9),
-                      BlendMode.srcIn,
-                    ),
-                  );
-                }, orElse: () {
-                  return SvgPicture.asset(
-                    AssetsProvider.wifiIcon,
-                    fit: BoxFit.scaleDown,
-                    colorFilter: ColorFilter.mode(
-                      ColorsManager.red900.withOpacity(AppSize.s0_9),
-                      BlendMode.srcIn,
-                    ),
-                  );
-                }),
+                suffix: state.maybeWhen(
+                  initial: () => null,
+                  loading: () => _loadingIndicator(),
+                  valid: () => _validIcon(),
+                  orElse: () => _notValidIcon(),
+                ),
               );
             },
           ),
         ),
       ]),
     );
+  }
+
+  SvgPicture _notValidIcon() {
+    return SvgPicture.asset(
+      AssetsProvider.errorIcon,
+      fit: BoxFit.scaleDown,
+      colorFilter: const ColorFilter.mode(
+        ColorsManager.red700,
+        BlendMode.srcIn,
+      ),
+    );
+  }
+
+  SvgPicture _validIcon() {
+    return SvgPicture.asset(
+      AssetsProvider.doneIcon,
+      fit: BoxFit.scaleDown,
+      colorFilter: ColorFilter.mode(
+        ColorsManager.tealPrimary300.withOpacity(AppSize.s0_9),
+        BlendMode.srcIn,
+      ),
+    );
+  }
+
+  Padding _loadingIndicator() {
+    return const Padding(
+      padding: EdgeInsets.all(AppPadding.p16),
+      child: SizedBox(
+        width: AppSize.s4,
+        height: AppSize.s4,
+        child: CircularProgressIndicator(
+          strokeWidth: AppSize.s1,
+        ),
+      ),
+    );
+  }
+
+  void _checkUsername(BuildContext context, String username) {
+    context.read<CheckUsernameBloc>().add(CheckUsernameEvent.check(username));
   }
 }

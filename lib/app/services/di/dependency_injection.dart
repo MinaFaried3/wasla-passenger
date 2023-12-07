@@ -12,7 +12,7 @@ import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
-import 'package:wasla/presentation/modules/register/cubit/username_valdiator/username_validation_cubit.dart';
+import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -109,7 +109,7 @@ final class DIModulesManger {
 
     ///cubit
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
-    _registerFactory<UsernameValidatorCubit>(
-        UsernameValidatorCubit(getIt<CheckUsernameUseCase>()));
+    _registerFactory<CheckUsernameBloc>(
+        CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
   }
 }
