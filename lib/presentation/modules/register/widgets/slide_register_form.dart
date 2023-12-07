@@ -5,6 +5,7 @@ import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
+import 'package:wasla/presentation/modules/register/controller/form_controller.dart';
 import 'package:wasla/presentation/modules/register/widgets/contacts_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/password_form_fields.dart';
@@ -46,28 +47,39 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   final GlobalKey<FormState> contactsFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> passwordFormKey = GlobalKey<FormState>();
 
-  late final List<GlobalKey<FormState>> formsKeys;
-
-  late final List<Widget> forms;
+  late final List<FormViewContent> forms;
 
   late int formIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    formsKeys = [namesFormKey, contactsFormKey, passwordFormKey];
 
     forms = [
-      NamesFormFields(
-        namesFormKey: namesFormKey,
-        usernameController: usernameController,
-        lastnameController: lastnameController,
-        firstnameController: firstnameController,
-        lastnameFocusNode: lastnameFocusNode,
-        usernameFocusNode: usernameFocusNode,
+      //names form fields
+      FormViewContent(
+        key: namesFormKey,
+        form: NamesFormFields(
+          namesFormKey: namesFormKey,
+          usernameController: usernameController,
+          lastnameController: lastnameController,
+          firstnameController: firstnameController,
+          lastnameFocusNode: lastnameFocusNode,
+          usernameFocusNode: usernameFocusNode,
+        ),
       ),
-      ContactsFormFields(contactsFormKey: contactsFormKey),
-      PasswordFormFields(passwordFormKey: passwordFormKey),
+
+      //contacts
+      FormViewContent(
+        key: contactsFormKey,
+        form: ContactsFormFields(contactsFormKey: contactsFormKey),
+      ),
+
+      //password
+      FormViewContent(
+        key: passwordFormKey,
+        form: PasswordFormFields(passwordFormKey: passwordFormKey),
+      ),
     ];
 
     _addFocusNodesListeners();
@@ -115,7 +127,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            forms[formIndex],
+            forms[formIndex].form,
             _buildNextButton(),
           ],
         ),
@@ -150,7 +162,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
         ),
         IconButton(
             onPressed: () {
-              if (formsKeys[formIndex].currentState!.validate() == false) {
+              if (forms[formIndex].key.currentState!.validate() == false) {
                 context
                     .read<BearDialogCubit>()
                     .writeMessage(AppStrings.makeSureToGoNext);
@@ -255,6 +267,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     }
   }
 
+  //todo add form view class
   bool _validateNamesForm() {
     return context.read<CheckUsernameBloc>().valid;
   }

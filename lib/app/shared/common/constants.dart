@@ -19,8 +19,15 @@ class AppConstants {
   static const String token = "";
 
   //regex
-  static final RegExp usernameRegEx =
-      RegExp(r'^[a-z0-9](?!.*\.\.)[a-z0-9_]{0,13}[a-z0-9]$');
+  static const String emailEditingRegExSource =
+      '^[a-zA-Z0-9_.+-]*(@([a-zA-Z0-9-]*(\\.[a-zA-Z0-9-]*)?)?)?\$';
+  static const String emailSubmittedRegExSource =
+      '(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-]+\$)';
+
+  static final RegExp usernameRegEx = RegExp(
+      r'^(?!.*[._]{2})[a-z0-9](?:[a-z0-9]|(?:_(?=[a-z0-9]))|(?:\.(?=[a-z0-9]))){0,28}[a-z0-9]$');
+  static final RegExp emailEditingRegEx = RegExp(emailEditingRegExSource);
+  static final RegExp emailSubmittedRegEx = RegExp(emailSubmittedRegExSource);
 }
 
 class DurationManager {

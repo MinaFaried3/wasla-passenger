@@ -1,3 +1,4 @@
+import 'package:wasla/app/services/validator/validator_input_formater.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_widget.dart';
@@ -52,6 +53,7 @@ class NamesFormFields extends StatelessWidget {
                   AutofillHints.username,
                   AutofillHints.newUsername
                 ],
+                inputFormatters: [LowerCaseTextFormatter()],
                 labelText: AppStrings.username.tr(),
                 svgPrefixPath: AssetsProvider.userIcon,
                 onChanged: (username) => _checkUsername(context, username),
