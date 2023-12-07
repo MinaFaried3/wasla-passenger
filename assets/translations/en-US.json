@@ -58,5 +58,11 @@
   "username_not_valid": "username not valid or not following standards",
   "username_info": "The username must be in lower case letters and without any spaces or special characters such as @#!",
   "lastname_info": "Lastname can be your second name or your family name",
-  "make_sure_to_go_next": "Make sure that you enter all the data completely and correctly so that we can complete the rest of the registration steps"
+  "make_sure_to_go_next": "Make sure that you enter all the data completely and correctly so that we can complete the rest of the registration steps",
+  "email_info": "I highly recommend adding your email for additional validation but you are not obligated to do so",
+  "phone_info": "Your mobile phone number must be 11 digits long and begin with “01”",
+  "start_contacts_form": "Enter your contact information correctly and we recommend entering your email",
+  "email_not_valid": "email is invalid",
+  "phone_not_valid": "phone number is invalid",
+  "phone_length_not_valid": "number of mobile phone digits is incorrect"
 }

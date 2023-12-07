@@ -11,6 +11,8 @@ class AppConstants {
   static const Set emptySet = {};
   static const Map emptyMap = {};
 
+  static const int phoneNumberLength = 11;
+
   //todo for phone
   static const double screenUtilWidth = 428;
   static const double screenUtilHeight = 926;
@@ -23,11 +25,16 @@ class AppConstants {
       '^[a-zA-Z0-9_.+-]*(@([a-zA-Z0-9-]*(\\.[a-zA-Z0-9-]*)?)?)?\$';
   static const String emailSubmittedRegExSource =
       '(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-]+\$)';
+  static const String phoneNumberEditingRegexSource = r"^(01)[0-9]{0,9}$";
+  static const String phoneNumberSubmittedRegexSource = r"^01[0-9]{9}$";
 
   static final RegExp usernameRegEx = RegExp(
       r'^(?!.*[._]{2})[a-z0-9](?:[a-z0-9]|(?:_(?=[a-z0-9]))|(?:\.(?=[a-z0-9]))){0,28}[a-z0-9]$');
   static final RegExp emailEditingRegEx = RegExp(emailEditingRegExSource);
   static final RegExp emailSubmittedRegEx = RegExp(emailSubmittedRegExSource);
+  static final RegExp phoneEditingRegEx = RegExp(phoneNumberEditingRegexSource);
+  static final RegExp phoneSubmittedRegEx =
+      RegExp(phoneNumberSubmittedRegexSource);
 }
 
 class DurationManager {

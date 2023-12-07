@@ -43,6 +43,9 @@ class AppStrings {
   static const String createAccount = 'create_account';
   static const String loginNow = 'login_now';
   static const String cannotBeEmpty = 'cannot_be_empty';
+  static const String phoneLengthNotValid = 'phone_length_not_valid';
+  static const String phoneNotValid = 'phone_not_valid';
+  static const String emailNotValid = 'email_not_valid';
 
   //bear state dialog
   static const String welcomeDialog = 'welcome_dialog';
@@ -60,6 +63,9 @@ class AppStrings {
   static const String usernameInfo = 'username_info';
   static const String usernameNotValid = 'username_not_valid';
   static const String makeSureToGoNext = 'make_sure_to_go_next';
+  static const String startContactsForm = 'start_contacts_form';
+  static const String phoneInfo = 'phone_info';
+  static const String emailInfo = 'email_info';
 
   // error handler
   static const String badRequestError = 'bad_request_error';
