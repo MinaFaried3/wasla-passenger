@@ -1,3 +1,5 @@
+import 'package:wasla/app/services/validator/regex_validator_types.dart';
+import 'package:wasla/app/services/validator/validator_input_formater.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 
 class ContactsFormFields extends StatelessWidget {
@@ -24,6 +26,11 @@ class ContactsFormFields extends StatelessWidget {
               textInputAction: TextInputAction.next,
               labelText: AppStrings.email.tr(),
               svgPrefixPath: AssetsProvider.emailIcon,
+              inputFormatters: [
+                ValidatorInputFormatter(
+                  editingFormatter: const EmailEditingRegexValidator(),
+                )
+              ],
               autofillHints: const [AutofillHints.email],
             ),
           ),

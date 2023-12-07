@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -20,6 +21,8 @@ class AppTextFormField extends StatelessWidget {
     this.labelText,
     this.textInputAction,
     this.autofillHints,
+    this.textCapitalization,
+    this.inputFormatters,
   });
 
   final bool isPassword;
@@ -39,6 +42,8 @@ class AppTextFormField extends StatelessWidget {
   final Widget? suffix;
   final Widget? outSideIcon;
   final Iterable<String>? autofillHints;
+  final TextCapitalization? textCapitalization;
+  final List<TextInputFormatter>? inputFormatters;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +65,8 @@ class AppTextFormField extends StatelessWidget {
       onFieldSubmitted: onFieldSubmitted,
       obscuringCharacter: '●',
       autofillHints: autofillHints,
+      textCapitalization: textCapitalization ?? TextCapitalization.none,
+      inputFormatters: inputFormatters,
 
       //todo
       // todo add english family
