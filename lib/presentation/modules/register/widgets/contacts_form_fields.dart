@@ -4,6 +4,8 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 
+//todo add bear eyes state
+
 class ContactsFormFields extends StatefulWidget {
   const ContactsFormFields({
     super.key,
@@ -103,7 +105,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
 
     final validPhone = const PhoneNumberSubmitRegexValidator().isValid(phone);
     if (!validPhone) {
-      return AppStrings.phoneNotValid.tr();
+      return AppStrings.phoneInvalid.tr();
     }
 
     return null;
@@ -116,7 +118,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
 
     final validEmail = const EmailSubmitRegexValidator().isValid(email);
     if (!validEmail) {
-      return AppStrings.emailNotValid.tr();
+      return AppStrings.emailInvalid.tr();
     }
 
     return null;

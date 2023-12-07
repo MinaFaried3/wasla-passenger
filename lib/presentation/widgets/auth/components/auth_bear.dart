@@ -139,7 +139,7 @@ class _AuthBearState extends State<AuthBear>
                             opacity: _animation,
                             child: Text(
                               state.tr(),
-                              style: getRegularStyle(fontSize: FontSize.s20.sp),
+                              style: getRegularStyle(fontSize: FontSize.s18.sp),
                               textAlign: TextAlign.center,
                             ),
                           );

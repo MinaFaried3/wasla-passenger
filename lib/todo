@@ -5,12 +5,12 @@ dart run build_runner build --delete-conflicting-outputs
 
 network errors like connections fails
 
-dialog for register
-password must be 8
-have numbers and chars
-username must have only lower alphabet chars and underscore
-email and username and must be english
-if phone arabic convert to english
+
+
+
+
+on submit on next field
+
 
 check if phone or email exists before or not
 generate username
