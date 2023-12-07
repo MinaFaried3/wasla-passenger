@@ -181,8 +181,9 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
 
     _animationController.forward();
 
-    if (widget.passwordController.text ==
-        widget.confirmPasswordController.text) {
+    if (widget.passwordController.text.isNotEmpty &&
+        widget.passwordController.text ==
+            widget.confirmPasswordController.text) {
       _scale = AppConstants.doubleOne;
     } else {
       _scale = AppConstants.doubleZero;

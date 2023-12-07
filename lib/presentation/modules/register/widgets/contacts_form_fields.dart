@@ -2,9 +2,8 @@ import 'package:wasla/app/services/validator/string_validator.dart';
 import 'package:wasla/app/services/validator/validator_input_formater.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
+import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
-
-//todo add bear eyes state
 
 class ContactsFormFields extends StatefulWidget {
   const ContactsFormFields({
@@ -63,6 +62,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                 )
               ],
               validator: _validatePhone,
+              onChanged: _onChange,
               textInputAction: TextInputAction.next,
               labelText: AppStrings.phone.tr(),
               svgPrefixPath: AssetsProvider.phoneIcon,
@@ -86,6 +86,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                 )
               ],
               validator: _validateEmail,
+              onChanged: _onChange,
               autofillHints: const [AutofillHints.email],
             ),
           ),
@@ -148,5 +149,12 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
     if (phoneFocusNode.hasFocus) {
       context.read<BearDialogCubit>().writeMessage(AppStrings.phoneInfo.tr());
     }
+  }
+
+  void _onChange(String contact) {
+    context
+        .read<BearAnimationCubit>()
+        .riveController
+        .followFieldText(value: contact);
   }
 }

@@ -87,7 +87,7 @@ class _LoginFormState extends State<LoginForm>
                 focusNode: usernameFocusNode,
                 autofillHints: const [AutofillHints.email],
                 onChanged: (value) {
-                  widget.riveController.onChangePhoneEmail(
+                  widget.riveController.followFieldText(
                     value: value,
                   );
                 },
