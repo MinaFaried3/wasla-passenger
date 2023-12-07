@@ -1,5 +1,6 @@
 import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({
@@ -67,7 +68,9 @@ class AppTextFormField extends StatelessWidget {
       autofillHints: autofillHints,
       textCapitalization: textCapitalization ?? TextCapitalization.none,
       inputFormatters: inputFormatters,
-
+      maxLength: _getFieldLength(),
+      cursorOpacityAnimates: true,
+      cursorWidth: AppSize.s1,
       //todo
       // todo add english family
       style: getRegularStyle(
@@ -78,6 +81,9 @@ class AppTextFormField extends StatelessWidget {
           vertical: AppPadding.p14,
           horizontal: AppPadding.p8,
         ),
+        counterStyle: getMediumStyle(
+            color: Theme.of(context).colorScheme.primary,
+            fontSize: FontSize.s16),
         prefixIcon: Padding(
           padding: const EdgeInsets.all(AppPadding.p6),
           child: svgPrefixPath != null
@@ -144,5 +150,13 @@ class AppTextFormField extends StatelessWidget {
       validator: validator,
       onChanged: onChanged,
     );
+  }
+
+  int? _getFieldLength() {
+    if (textInputType != TextInputType.phone) {
+      return null;
+    }
+
+    return AppConstants.phoneNumberLength;
   }
 }

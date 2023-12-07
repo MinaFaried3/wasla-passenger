@@ -1,4 +1,7 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/common/constants.dart';
+
+part 'package:wasla/app/services/validator/regex_validator_types.dart';
 
 sealed class StringValidator extends Equatable {
   bool isValid(String text);
@@ -6,7 +9,7 @@ sealed class StringValidator extends Equatable {
   const StringValidator();
 }
 
-class RegexValidator extends StringValidator {
+sealed class RegexValidator extends StringValidator {
   final String regexSource;
 
   const RegexValidator({required this.regexSource});

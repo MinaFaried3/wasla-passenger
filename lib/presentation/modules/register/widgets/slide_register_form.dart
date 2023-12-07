@@ -36,6 +36,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
+  //todo
   final FocusNode passwordFocusNode = FocusNode();
   final FocusNode confirmPasswordFocusNode = FocusNode();
   final FocusNode usernameFocusNode = FocusNode();
@@ -72,7 +73,11 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
       //contacts
       FormViewContent(
         key: contactsFormKey,
-        form: ContactsFormFields(contactsFormKey: contactsFormKey),
+        form: ContactsFormFields(
+          contactsFormKey: contactsFormKey,
+          emailController: emailController,
+          phoneController: phoneController,
+        ),
       ),
 
       //password
@@ -166,6 +171,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
                 context
                     .read<BearDialogCubit>()
                     .writeMessage(AppStrings.makeSureToGoNext);
+                widget.riveController.addState(BearState.lookIdle);
                 widget.riveController.addState(BearState.fail);
 
                 return;
