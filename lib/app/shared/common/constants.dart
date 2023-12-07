@@ -17,6 +17,10 @@ class AppConstants {
 
   //todo
   static const String token = "";
+
+  //regex
+  static final RegExp usernameRegEx =
+      RegExp(r'^[a-z0-9](?!.*\.\.)[a-z0-9_]{0,13}[a-z0-9]$');
 }
 
 class DurationManager {
@@ -31,6 +35,7 @@ class DurationManager {
   static const Duration s3 = Duration(seconds: 3);
   static const Duration s4 = Duration(seconds: 4);
 
+  static const Duration m300 = Duration(milliseconds: 300);
   static const Duration m500 = Duration(milliseconds: 500);
   static const Duration m750 = Duration(milliseconds: 750);
   static const Duration m3500 = Duration(milliseconds: 3500);

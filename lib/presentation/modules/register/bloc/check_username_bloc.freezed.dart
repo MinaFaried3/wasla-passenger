@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'username_validation_cubit.dart';
+part of 'check_username_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,213 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$UsernameValidatorState {
+mixin _$CheckUsernameEvent {
+  String get username => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username) check,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String username)? check,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username)? check,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckUsername value) check,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckUsername value)? check,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckUsername value)? check,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $CheckUsernameEventCopyWith<CheckUsernameEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CheckUsernameEventCopyWith<$Res> {
+  factory $CheckUsernameEventCopyWith(
+          CheckUsernameEvent value, $Res Function(CheckUsernameEvent) then) =
+      _$CheckUsernameEventCopyWithImpl<$Res, CheckUsernameEvent>;
+  @useResult
+  $Res call({String username});
+}
+
+/// @nodoc
+class _$CheckUsernameEventCopyWithImpl<$Res, $Val extends CheckUsernameEvent>
+    implements $CheckUsernameEventCopyWith<$Res> {
+  _$CheckUsernameEventCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+  }) {
+    return _then(_value.copyWith(
+      username: null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$CheckUsernameImplCopyWith<$Res>
+    implements $CheckUsernameEventCopyWith<$Res> {
+  factory _$$CheckUsernameImplCopyWith(
+          _$CheckUsernameImpl value, $Res Function(_$CheckUsernameImpl) then) =
+      __$$CheckUsernameImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String username});
+}
+
+/// @nodoc
+class __$$CheckUsernameImplCopyWithImpl<$Res>
+    extends _$CheckUsernameEventCopyWithImpl<$Res, _$CheckUsernameImpl>
+    implements _$$CheckUsernameImplCopyWith<$Res> {
+  __$$CheckUsernameImplCopyWithImpl(
+      _$CheckUsernameImpl _value, $Res Function(_$CheckUsernameImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? username = null,
+  }) {
+    return _then(_$CheckUsernameImpl(
+      null == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$CheckUsernameImpl implements _CheckUsername {
+  const _$CheckUsernameImpl(this.username);
+
+  @override
+  final String username;
+
+  @override
+  String toString() {
+    return 'CheckUsernameEvent.check(username: $username)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$CheckUsernameImpl &&
+            (identical(other.username, username) ||
+                other.username == username));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, username);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$CheckUsernameImplCopyWith<_$CheckUsernameImpl> get copyWith =>
+      __$$CheckUsernameImplCopyWithImpl<_$CheckUsernameImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String username) check,
+  }) {
+    return check(username);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String username)? check,
+  }) {
+    return check?.call(username);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String username)? check,
+    required TResult orElse(),
+  }) {
+    if (check != null) {
+      return check(username);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_CheckUsername value) check,
+  }) {
+    return check(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_CheckUsername value)? check,
+  }) {
+    return check?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_CheckUsername value)? check,
+    required TResult orElse(),
+  }) {
+    if (check != null) {
+      return check(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _CheckUsername implements CheckUsernameEvent {
+  const factory _CheckUsername(final String username) = _$CheckUsernameImpl;
+
+  @override
+  String get username;
+  @override
+  @JsonKey(ignore: true)
+  _$$CheckUsernameImplCopyWith<_$CheckUsernameImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$CheckUsernameState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -47,7 +253,7 @@ mixin _$UsernameValidatorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
     required TResult Function(_Failure value) error,
@@ -56,7 +262,7 @@ mixin _$UsernameValidatorState {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
     TResult? Function(_Failure value)? error,
@@ -65,7 +271,7 @@ mixin _$UsernameValidatorState {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
     TResult Function(_Failure value)? error,
@@ -75,17 +281,16 @@ mixin _$UsernameValidatorState {
 }
 
 /// @nodoc
-abstract class $UsernameValidatorStateCopyWith<$Res> {
-  factory $UsernameValidatorStateCopyWith(UsernameValidatorState value,
-          $Res Function(UsernameValidatorState) then) =
-      _$UsernameValidatorStateCopyWithImpl<$Res, UsernameValidatorState>;
+abstract class $CheckUsernameStateCopyWith<$Res> {
+  factory $CheckUsernameStateCopyWith(
+          CheckUsernameState value, $Res Function(CheckUsernameState) then) =
+      _$CheckUsernameStateCopyWithImpl<$Res, CheckUsernameState>;
 }
 
 /// @nodoc
-class _$UsernameValidatorStateCopyWithImpl<$Res,
-        $Val extends UsernameValidatorState>
-    implements $UsernameValidatorStateCopyWith<$Res> {
-  _$UsernameValidatorStateCopyWithImpl(this._value, this._then);
+class _$CheckUsernameStateCopyWithImpl<$Res, $Val extends CheckUsernameState>
+    implements $CheckUsernameStateCopyWith<$Res> {
+  _$CheckUsernameStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -102,7 +307,7 @@ abstract class _$$InitialImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<$Res>
-    extends _$UsernameValidatorStateCopyWithImpl<$Res, _$InitialImpl>
+    extends _$CheckUsernameStateCopyWithImpl<$Res, _$InitialImpl>
     implements _$$InitialImplCopyWith<$Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
@@ -116,7 +321,7 @@ class _$InitialImpl implements _Initial {
 
   @override
   String toString() {
-    return 'UsernameValidatorState.initial()';
+    return 'CheckUsernameState.initial()';
   }
 
   @override
@@ -172,7 +377,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
     required TResult Function(_Failure value) error,
@@ -184,7 +389,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
     TResult? Function(_Failure value)? error,
@@ -196,7 +401,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
     TResult Function(_Failure value)? error,
@@ -209,40 +414,40 @@ class _$InitialImpl implements _Initial {
   }
 }
 
-abstract class _Initial implements UsernameValidatorState {
+abstract class _Initial implements CheckUsernameState {
   const factory _Initial() = _$InitialImpl;
 }
 
 /// @nodoc
-abstract class _$$loadingImplCopyWith<$Res> {
-  factory _$$loadingImplCopyWith(
-          _$loadingImpl value, $Res Function(_$loadingImpl) then) =
-      __$$loadingImplCopyWithImpl<$Res>;
+abstract class _$$LoadingImplCopyWith<$Res> {
+  factory _$$LoadingImplCopyWith(
+          _$LoadingImpl value, $Res Function(_$LoadingImpl) then) =
+      __$$LoadingImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$loadingImplCopyWithImpl<$Res>
-    extends _$UsernameValidatorStateCopyWithImpl<$Res, _$loadingImpl>
-    implements _$$loadingImplCopyWith<$Res> {
-  __$$loadingImplCopyWithImpl(
-      _$loadingImpl _value, $Res Function(_$loadingImpl) _then)
+class __$$LoadingImplCopyWithImpl<$Res>
+    extends _$CheckUsernameStateCopyWithImpl<$Res, _$LoadingImpl>
+    implements _$$LoadingImplCopyWith<$Res> {
+  __$$LoadingImplCopyWithImpl(
+      _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$loadingImpl implements _loading {
-  const _$loadingImpl();
+class _$LoadingImpl implements _Loading {
+  const _$LoadingImpl();
 
   @override
   String toString() {
-    return 'UsernameValidatorState.loading()';
+    return 'CheckUsernameState.loading()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$loadingImpl);
+        (other.runtimeType == runtimeType && other is _$LoadingImpl);
   }
 
   @override
@@ -292,7 +497,7 @@ class _$loadingImpl implements _loading {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
     required TResult Function(_Failure value) error,
@@ -304,7 +509,7 @@ class _$loadingImpl implements _loading {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
     TResult? Function(_Failure value)? error,
@@ -316,7 +521,7 @@ class _$loadingImpl implements _loading {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
     TResult Function(_Failure value)? error,
@@ -329,8 +534,8 @@ class _$loadingImpl implements _loading {
   }
 }
 
-abstract class _loading implements UsernameValidatorState {
-  const factory _loading() = _$loadingImpl;
+abstract class _Loading implements CheckUsernameState {
+  const factory _Loading() = _$LoadingImpl;
 }
 
 /// @nodoc
@@ -342,7 +547,7 @@ abstract class _$$ValidImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ValidImplCopyWithImpl<$Res>
-    extends _$UsernameValidatorStateCopyWithImpl<$Res, _$ValidImpl>
+    extends _$CheckUsernameStateCopyWithImpl<$Res, _$ValidImpl>
     implements _$$ValidImplCopyWith<$Res> {
   __$$ValidImplCopyWithImpl(
       _$ValidImpl _value, $Res Function(_$ValidImpl) _then)
@@ -356,7 +561,7 @@ class _$ValidImpl implements _Valid {
 
   @override
   String toString() {
-    return 'UsernameValidatorState.valid()';
+    return 'CheckUsernameState.valid()';
   }
 
   @override
@@ -412,7 +617,7 @@ class _$ValidImpl implements _Valid {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
     required TResult Function(_Failure value) error,
@@ -424,7 +629,7 @@ class _$ValidImpl implements _Valid {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
     TResult? Function(_Failure value)? error,
@@ -436,7 +641,7 @@ class _$ValidImpl implements _Valid {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
     TResult Function(_Failure value)? error,
@@ -449,7 +654,7 @@ class _$ValidImpl implements _Valid {
   }
 }
 
-abstract class _Valid implements UsernameValidatorState {
+abstract class _Valid implements CheckUsernameState {
   const factory _Valid() = _$ValidImpl;
 }
 
@@ -464,7 +669,7 @@ abstract class _$$NotValidImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$NotValidImplCopyWithImpl<$Res>
-    extends _$UsernameValidatorStateCopyWithImpl<$Res, _$NotValidImpl>
+    extends _$CheckUsernameStateCopyWithImpl<$Res, _$NotValidImpl>
     implements _$$NotValidImplCopyWith<$Res> {
   __$$NotValidImplCopyWithImpl(
       _$NotValidImpl _value, $Res Function(_$NotValidImpl) _then)
@@ -494,7 +699,7 @@ class _$NotValidImpl implements _NotValid {
 
   @override
   String toString() {
-    return 'UsernameValidatorState.notValid(message: $message)';
+    return 'CheckUsernameState.notValid(message: $message)';
   }
 
   @override
@@ -558,7 +763,7 @@ class _$NotValidImpl implements _NotValid {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
     required TResult Function(_Failure value) error,
@@ -570,7 +775,7 @@ class _$NotValidImpl implements _NotValid {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
     TResult? Function(_Failure value)? error,
@@ -582,7 +787,7 @@ class _$NotValidImpl implements _NotValid {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
     TResult Function(_Failure value)? error,
@@ -595,7 +800,7 @@ class _$NotValidImpl implements _NotValid {
   }
 }
 
-abstract class _NotValid implements UsernameValidatorState {
+abstract class _NotValid implements CheckUsernameState {
   const factory _NotValid(final String message) = _$NotValidImpl;
 
   String get message;
@@ -615,7 +820,7 @@ abstract class _$$FailureImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$FailureImplCopyWithImpl<$Res>
-    extends _$UsernameValidatorStateCopyWithImpl<$Res, _$FailureImpl>
+    extends _$CheckUsernameStateCopyWithImpl<$Res, _$FailureImpl>
     implements _$$FailureImplCopyWith<$Res> {
   __$$FailureImplCopyWithImpl(
       _$FailureImpl _value, $Res Function(_$FailureImpl) _then)
@@ -645,7 +850,7 @@ class _$FailureImpl implements _Failure {
 
   @override
   String toString() {
-    return 'UsernameValidatorState.error(failure: $failure)';
+    return 'CheckUsernameState.error(failure: $failure)';
   }
 
   @override
@@ -709,7 +914,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(_loading value) loading,
+    required TResult Function(_Loading value) loading,
     required TResult Function(_Valid value) valid,
     required TResult Function(_NotValid value) notValid,
     required TResult Function(_Failure value) error,
@@ -721,7 +926,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(_loading value)? loading,
+    TResult? Function(_Loading value)? loading,
     TResult? Function(_Valid value)? valid,
     TResult? Function(_NotValid value)? notValid,
     TResult? Function(_Failure value)? error,
@@ -733,7 +938,7 @@ class _$FailureImpl implements _Failure {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(_loading value)? loading,
+    TResult Function(_Loading value)? loading,
     TResult Function(_Valid value)? valid,
     TResult Function(_NotValid value)? notValid,
     TResult Function(_Failure value)? error,
@@ -746,7 +951,7 @@ class _$FailureImpl implements _Failure {
   }
 }
 
-abstract class _Failure implements UsernameValidatorState {
+abstract class _Failure implements CheckUsernameState {
   const factory _Failure(final Failure failure) = _$FailureImpl;
 
   Failure get failure;

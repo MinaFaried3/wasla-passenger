@@ -54,7 +54,6 @@ class RouteGenerator {
                   child: const LoginScreen(),
                 ));
       case Routes.registerRoute:
-        //todo prepare register module
         DIModulesManger.prepareRegisterModule();
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(

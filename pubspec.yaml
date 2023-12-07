@@ -61,6 +61,7 @@ dependencies:
 
   #for matrix clipping
   vector_math:
+  stream_transform: ^2.1.0
 
 
 dev_dependencies:

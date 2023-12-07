@@ -4,7 +4,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
-import 'package:wasla/presentation/modules/register/cubit/username_valdiator/username_validation_cubit.dart';
+import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/widgets/contacts_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/password_form_fields.dart';
@@ -150,17 +150,24 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
         ),
         IconButton(
             onPressed: () {
-              if (formIndex == 0) {
-                _validateNamesForm();
-              }
+              if (formsKeys[formIndex].currentState!.validate() == false) {
+                context
+                    .read<BearDialogCubit>()
+                    .writeMessage(AppStrings.makeSureToGoNext);
+                widget.riveController.addState(BearState.fail);
 
-              if (formsKeys[formIndex].currentState!.validate()) {
-                if (formIndex < forms.length - 1) {
-                  setState(() {
-                    formIndex++;
-                    print(formIndex);
-                  });
+                return;
+              }
+              if (formIndex == 0) {
+                if (!_validateNamesForm()) {
+                  return;
                 }
+              }
+              if (formIndex < forms.length - 1) {
+                setState(() {
+                  formIndex++;
+                  print(formIndex);
+                });
               }
             },
             icon: SvgPicture.asset(
@@ -237,23 +244,18 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   }
 
   void _usernameListener() {
-    final dialog = context.read<BearDialogCubit>();
-    //todo
     if (usernameFocusNode.hasFocus) {
-      dialog.writeMessage(
-          'يجب مراعاة ان يكون اسم المستخدم بالحروف الانجليزية الصغيرة و بدون اي مسافات او حروف مميزه مثل @#');
+      context.read<BearDialogCubit>().writeMessage(AppStrings.usernameInfo);
     }
   }
 
   void _lastnameListener() {
     if (lastnameFocusNode.hasFocus) {
-      context
-          .read<BearDialogCubit>()
-          .writeMessage('يمكنك ادخال اسم العائلة او اسمك الثاني');
+      context.read<BearDialogCubit>().writeMessage(AppStrings.lastnameInfo);
     }
   }
 
-  void _validateNamesForm() {
-    context.read<UsernameValidatorCubit>().validate(usernameController.text);
+  bool _validateNamesForm() {
+    return context.read<CheckUsernameBloc>().valid;
   }
 }

@@ -42,10 +42,12 @@ class AppStrings {
   static const String register = 'register';
   static const String createAccount = 'create_account';
   static const String loginNow = 'login_now';
+  static const String cannotBeEmpty = 'cannot_be_empty';
 
   //bear state dialog
-
   static const String welcomeDialog = 'welcome_dialog';
+  static const String loginWelcomeDialog = 'login_welcome_dialog';
+  static const String registerWelcomeDialog = 'register_welcome_dialog';
   static const String usernameFieldFocused = 'username_field_focused';
   static const String usernameFieldEmpty = 'username_field_empty';
   static const String passwordFieldEmpty = 'password_field_empty';
@@ -54,6 +56,10 @@ class AppStrings {
   static const String loginError = 'login_error';
   static const String loginSuccess = 'login_success';
   static const String forgetPasswordInfo = 'forget_password_info';
+  static const String lastnameInfo = 'lastname_info';
+  static const String usernameInfo = 'username_info';
+  static const String usernameNotValid = 'username_not_valid';
+  static const String makeSureToGoNext = 'make_sure_to_go_next';
 
   // error handler
   static const String badRequestError = 'bad_request_error';

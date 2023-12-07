@@ -55,8 +55,7 @@ class NamesFields extends StatelessWidget {
 
   String? _validateNotEmpty(String? name) {
     if (name == null || name.isEmpty) {
-      //todo
-      return 'لا يمكن ان يكون فارغ';
+      return AppStrings.cannotBeEmpty.tr();
     }
     return null;
   }
