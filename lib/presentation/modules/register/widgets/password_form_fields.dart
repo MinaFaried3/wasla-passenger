@@ -202,6 +202,15 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
   }
 
   void _dispose() {
+    // todo bug
+    // await Future.delayed(
+    //   DurationManager.bearHandsDownDuration,
+    //   () {
+    //     passwordFocusNode.unfocus();
+    //     _unFocus();
+    //   },
+    // );
+
     passwordFocusNode.removeListener(_passwordListener);
     confirmPasswordFocusNode.removeListener(_confirmPasswordListener);
 
