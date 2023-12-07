@@ -84,8 +84,7 @@ class RiveControllerManager {
     }
   }
 
-  void onChangePhoneEmail(
-      {required String value, int? charsMountOfChangedState}) {
+  void followFieldText({required String value, int? charsMountOfChangedState}) {
     int x1 = charsMountOfChangedState ?? 2;
     int x2 = (x1 * 2) + 1;
     int x3 = (x1 * 3) + 2;
@@ -121,6 +120,33 @@ class RiveControllerManager {
     _addLookingState(
       value: value,
       start: x4,
+      wantedBearState: BearState.lookRight,
+    );
+  }
+
+  void followRightSideFieldText(
+      {required String value, int? charsMountOfChangedState}) {
+    int x1 = charsMountOfChangedState ?? 1;
+    int x2 = (x1 * 2) + 1;
+    int x3 = (x1 * 3) + 2;
+
+    _addLookingState(
+      value: value,
+      end: x1,
+      wantedBearState: BearState.lookCenter,
+    );
+
+    _addLookingState(
+      value: value,
+      start: x1,
+      end: x2,
+      wantedBearState: BearState.lookMediumRight,
+    );
+
+    _addLookingState(
+      value: value,
+      start: x2,
+      end: x3,
       wantedBearState: BearState.lookRight,
     );
   }

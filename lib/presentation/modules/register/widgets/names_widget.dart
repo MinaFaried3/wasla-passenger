@@ -1,4 +1,6 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
+import 'package:wasla/presentation/common/rive_controller.dart';
 
 class NamesFields extends StatelessWidget {
   const NamesFields({
@@ -34,6 +36,8 @@ class NamesFields extends StatelessWidget {
             autofillHints: autoFill,
             textCapitalization: TextCapitalization.words,
             validator: _validateNotEmpty,
+            onFieldSubmitted: (name) => _onFieldSubmitted(context),
+            onChanged: (name) => _onChangeFirstname(name, context),
           ),
         ),
         //space
@@ -41,15 +45,18 @@ class NamesFields extends StatelessWidget {
 
         Expanded(
           child: AppTextFormField(
-              controller: lastnameController,
-              focusNode: lastnameFocusNode,
-              labelText: AppStrings.lastname.tr(),
-              svgPrefixPath: AssetsProvider.userIcon,
-              textInputAction: TextInputAction.next,
-              textDirection: TextDirection.ltr,
-              autofillHints: autoFill,
-              textCapitalization: TextCapitalization.words,
-              validator: _validateNotEmpty),
+            controller: lastnameController,
+            focusNode: lastnameFocusNode,
+            labelText: AppStrings.lastname.tr(),
+            svgPrefixPath: AssetsProvider.userIcon,
+            textInputAction: TextInputAction.next,
+            textDirection: TextDirection.ltr,
+            autofillHints: autoFill,
+            textCapitalization: TextCapitalization.words,
+            validator: _validateNotEmpty,
+            onFieldSubmitted: (name) => _onFieldSubmitted(context),
+            onChanged: (name) => _onChangeLastname(name, context),
+          ),
         ),
       ],
     );
@@ -60,5 +67,26 @@ class NamesFields extends StatelessWidget {
       return AppStrings.cannotBeEmpty.tr();
     }
     return null;
+  }
+
+  void _onFieldSubmitted(BuildContext context) {
+    context
+        .read<BearAnimationCubit>()
+        .riveController
+        .addState(BearState.lookIdle);
+  }
+
+  void _onChangeFirstname(String name, BuildContext context) {
+    context
+        .read<BearAnimationCubit>()
+        .riveController
+        .followFieldText(value: name);
+  }
+
+  void _onChangeLastname(String name, BuildContext context) {
+    context
+        .read<BearAnimationCubit>()
+        .riveController
+        .followRightSideFieldText(value: name);
   }
 }

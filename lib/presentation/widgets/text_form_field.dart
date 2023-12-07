@@ -24,11 +24,14 @@ class AppTextFormField extends StatelessWidget {
     this.autofillHints,
     this.textCapitalization,
     this.inputFormatters,
+    this.onSaved,
   });
 
   final bool isPassword;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final void Function(String?)? onSaved;
+
   final void Function(String)? onChanged;
   final void Function(String)? onFieldSubmitted;
   final void Function()? onTap;
@@ -64,6 +67,7 @@ class AppTextFormField extends StatelessWidget {
       textInputAction: TextInputAction.next,
       onTap: onTap,
       onFieldSubmitted: onFieldSubmitted,
+      onSaved: onSaved,
       obscuringCharacter: '●',
       autofillHints: autofillHints,
       textCapitalization: textCapitalization ?? TextCapitalization.none,
