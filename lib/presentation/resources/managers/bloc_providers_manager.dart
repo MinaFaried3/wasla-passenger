@@ -46,6 +46,9 @@ class BlocProvidersManager {
     ),
     BlocProvider<CheckUsernameBloc>.value(
       value: getIt<CheckUsernameBloc>(),
-    )
+    ),
+    BlocProvider<PasswordIconCubit>.value(
+      value: getIt<PasswordIconCubit>(),
+    ),
   ];
 }

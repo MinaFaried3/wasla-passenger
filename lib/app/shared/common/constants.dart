@@ -12,6 +12,7 @@ class AppConstants {
   static const Map emptyMap = {};
 
   static const int phoneNumberLength = 11;
+  static const int minPasswordLength = 8;
 
   //todo for phone
   static const double screenUtilWidth = 428;
@@ -28,6 +29,18 @@ class AppConstants {
   static const String phoneNumberEditingRegexSource = r"^(01)[0-9]{0,9}$";
   static const String phoneNumberSubmittedRegexSource = r"^01[0-9]{9}$";
 
+  /*
+  * ^                               start anchor
+    (?=(.*[a-z]){2,})               lowercase letters. {2,} indicates that you want 2 of this group
+    (?=(.*[A-Z]){1,})               uppercase letters. {1,} indicates that you want 1 of this group
+    (?=(.*[0-9]){1,})               numbers. {1,} indicates that you want 1 of this group
+    (?=(.*[!@#$%^&*()\-__+.]){1,})  all the special characters in the [] fields. The ones used by regex are escaped by using the \ or the character itself. {1,} is redundant, but good practice, in case you change that to more than 1 in the future. Also keeps all the groups consistent
+    {8,}                            indicates that you want 8 or more
+    $                               end anchor
+  * */
+  static const String passwordSubmittedRegexSource =
+      r'^(?=(.*[a-z]){2,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$';
+
   static final RegExp usernameRegEx = RegExp(
       r'^(?!.*[._]{2})[a-z0-9](?:[a-z0-9]|(?:_(?=[a-z0-9]))|(?:\.(?=[a-z0-9]))){0,28}[a-z0-9]$');
   static final RegExp emailEditingRegEx = RegExp(emailEditingRegExSource);
@@ -35,6 +48,7 @@ class AppConstants {
   static final RegExp phoneEditingRegEx = RegExp(phoneNumberEditingRegexSource);
   static final RegExp phoneSubmittedRegEx =
       RegExp(phoneNumberSubmittedRegexSource);
+  static final RegExp passwordRegEx = RegExp(passwordSubmittedRegexSource);
 }
 
 class DurationManager {

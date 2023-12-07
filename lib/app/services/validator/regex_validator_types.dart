@@ -19,3 +19,8 @@ class PhoneNumberSubmitRegexValidator extends RegexValidator {
   const PhoneNumberSubmitRegexValidator(
       {super.regexSource = AppConstants.phoneNumberSubmittedRegexSource});
 }
+
+class PasswordSubmitRegexValidator extends RegexValidator {
+  const PasswordSubmitRegexValidator(
+      {super.regexSource = AppConstants.passwordSubmittedRegexSource});
+}

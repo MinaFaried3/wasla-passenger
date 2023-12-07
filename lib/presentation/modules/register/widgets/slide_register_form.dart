@@ -83,7 +83,11 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
       //password
       FormViewContent(
         key: passwordFormKey,
-        form: PasswordFormFields(passwordFormKey: passwordFormKey),
+        form: PasswordFormFields(
+          passwordFormKey: passwordFormKey,
+          passwordController: passwordController,
+          confirmPasswordController: confirmPasswordController,
+        ),
       ),
     ];
 
