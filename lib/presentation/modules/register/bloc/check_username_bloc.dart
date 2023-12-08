@@ -20,7 +20,7 @@ class CheckUsernameBloc extends Bloc<CheckUsernameEvent, CheckUsernameState> {
   CheckUsernameBloc(this._checkUsernameUseCase)
       : super(const CheckUsernameState.initial()) {
     on<CheckUsernameEvent>(_checkUserName,
-        transformer: debounce(DurationManager.m300));
+        transformer: debounce(DurationManager.m500));
   }
 
   bool valid = false;
