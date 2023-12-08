@@ -21,8 +21,8 @@ class _ApiServiceClient implements ApiServiceClient {
   String? baseUrl;
 
   @override
-  Future<LoginResponse> login({
-    required String userName,
+  Future<AuthResponse> login({
+    required String username,
     required String password,
     String role = AppConstants.role,
   }) async {
@@ -31,12 +31,12 @@ class _ApiServiceClient implements ApiServiceClient {
     final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
     _headers.removeWhere((k, v) => v == null);
     final _data = {
-      'userName': userName,
+      'userName': username,
       'password': password,
       'role': role,
     };
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<LoginResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<AuthResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -53,7 +53,7 @@ class _ApiServiceClient implements ApiServiceClient {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = LoginResponse.fromJson(_result.data!);
+    final value = AuthResponse.fromJson(_result.data!);
     return value;
   }
 
@@ -84,6 +84,49 @@ class _ApiServiceClient implements ApiServiceClient {
               baseUrl,
             ))));
     final value = CheckUsernameResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<AuthResponse> register({
+    required String username,
+    required String firstname,
+    required String lastname,
+    required String phone,
+    required String email,
+    required String password,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = {
+      'userName': username,
+      'firstName': firstname,
+      'lastName': lastname,
+      'phone': phone,
+      'email': email,
+      'password': password,
+    };
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<AuthResponse>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'application/json',
+    )
+            .compose(
+              _dio.options,
+              '/Authentication/PassengerRegister',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = AuthResponse.fromJson(_result.data!);
     return value;
   }
 

@@ -91,6 +91,7 @@ class _AuthBearState extends State<AuthBear>
                 return state.maybeWhen(
                   loading: () => const LoadingIndicator(),
                   loadedSuccessfully: () =>
+                      //todo
                       BlocListener<LoginCubit, LoginState>(
                     listener: (context, state) {
                       _listenToSuccessOrErrorState(context, state);

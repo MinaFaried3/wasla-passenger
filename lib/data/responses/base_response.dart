@@ -2,7 +2,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 
 // dart run build_runner build --delete-conflicting-outputs
 
-abstract class BaseResponse<Data> extends Equatable {
+abstract class BaseResponse<Data extends Object?> extends Equatable {
   @JsonKey(name: 'status')
   final int? status;
   @JsonKey(name: 'message')

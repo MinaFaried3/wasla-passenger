@@ -65,7 +65,7 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
                   controller: widget.passwordController,
                   focusNode: passwordFocusNode,
                   textDirection: TextDirection.ltr,
-                  textInputAction: TextInputAction.done,
+                  textInputAction: TextInputAction.next,
                   labelText: AppStrings.password.tr(),
                   svgPrefixPath: AssetsProvider.passwordIcon,
                   validator: _passwordValidator,

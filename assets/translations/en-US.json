@@ -69,5 +69,6 @@
   "confirm_Password_invalid": "password mismatch",
   "password_invalid": "password isn't follow the steps above",
   "password_length_invalid": "password length must be at least 8",
-  "register": "register"
+  "register": "register",
+  "register_success": "Your account has been created successfully. Welcome to us "
 }

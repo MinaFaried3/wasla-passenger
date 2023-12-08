@@ -1,6 +1,6 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 
-class LoginRequestBody extends Equatable {
+final class LoginRequestBody extends Equatable {
   final String userName;
   final String password;
 

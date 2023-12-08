@@ -8,12 +8,14 @@ import 'package:wasla/data/network/dio_factory.dart';
 import 'package:wasla/data/repositories/auth_repository_impl.dart';
 import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
+import 'package:wasla/domain/usecases/auth_usecases/register_usecase.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
+import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -96,22 +98,25 @@ final class DIModulesManger {
 
     ///cubit
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
-    // getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
   }
 
   static void prepareRegisterModule() {
     _prepareAuthModule();
 
     ///
+    ///TODO
+    _registerFactory<LoginUseCase>(
+        LoginUseCase(repository: getIt<AuthRepository>()));
+    _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
 
     ///use case
     _registerFactory<CheckUsernameUseCase>(
         CheckUsernameUseCase(repository: getIt<AuthRepository>()));
-    _registerFactory<LoginUseCase>(
-        LoginUseCase(repository: getIt<AuthRepository>()));
+    _registerFactory<RegisterUseCase>(
+        RegisterUseCase(repository: getIt<AuthRepository>()));
 
     ///cubit
-    _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
+    _registerFactory<RegisterCubit>(RegisterCubit(getIt<RegisterUseCase>()));
     _registerFactory<CheckUsernameBloc>(
         CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
     _registerFactory<FormIndexCubit>(FormIndexCubit());

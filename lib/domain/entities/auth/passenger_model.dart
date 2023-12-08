@@ -1,7 +1,7 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 
-final class LoginModel extends Equatable {
+final class PassengerModel extends Equatable {
   final int points;
   final String firstName;
   final String lastName;
@@ -12,7 +12,7 @@ final class LoginModel extends Equatable {
   final Tokens tokens;
   final String role;
 
-  const LoginModel({
+  const PassengerModel({
     required this.points,
     required this.firstName,
     required this.lastName,
@@ -24,7 +24,7 @@ final class LoginModel extends Equatable {
     required this.tokens,
   });
 
-  factory LoginModel.empty() => LoginModel(
+  factory PassengerModel.empty() => PassengerModel(
       points: AppConstants.zero,
       firstName: AppConstants.emptyString,
       lastName: AppConstants.emptyString,
@@ -50,7 +50,7 @@ final class LoginModel extends Equatable {
 
   @override
   String toString() {
-    return 'LoginModel{points: $points, firstName: $firstName, lastName: $lastName, profile: $profile, userName: $userName, isAuthenticated: $isAuthenticated, connections: $connections, tokens: $tokens, role: $role}';
+    return 'PassengerModel{points: $points, firstName: $firstName, lastName: $lastName, profile: $profile, userName: $userName, isAuthenticated: $isAuthenticated, connections: $connections, tokens: $tokens, role: $role}';
   }
 }
 

@@ -61,6 +61,7 @@ class AppStrings {
       'username_and_password_field_empty';
   static const String loginError = 'login_error';
   static const String loginSuccess = 'login_success';
+  static const String registerSuccess = 'register_success';
   static const String forgetPasswordInfo = 'forget_password_info';
   static const String lastnameInfo = 'lastname_info';
   static const String usernameInfo = 'username_info';

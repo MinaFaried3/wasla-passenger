@@ -21,7 +21,7 @@ export 'package:wasla/data/data_source/remote_data_source.dart';
 export 'package:wasla/data/network/error/server_failure.dart';
 export 'package:wasla/data/network/network_checker.dart';
 export 'package:wasla/data/requests/auth/login_request.dart';
-export 'package:wasla/domain/entities/auth/login_model.dart';
+export 'package:wasla/domain/entities/auth/passenger_model.dart';
 export 'package:wasla/domain/repositories/auth_repository.dart';
 export 'package:wasla/presentation/modules/login/cubit/login_cubit.dart';
 export 'package:wasla/presentation/modules/onboarding/cubit/onboarding_cubit.dart';

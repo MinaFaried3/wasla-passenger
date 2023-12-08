@@ -51,7 +51,8 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
         children: [
           //phone filed
           Padding(
-            padding: edgeInsetsBottom,
+            padding: EdgeInsets.only(
+                bottom: responsive.getScreenHeightOf(AppSize.s0_01)),
             child: AppTextFormField(
               controller: widget.phoneController,
               textDirection: TextDirection.ltr,

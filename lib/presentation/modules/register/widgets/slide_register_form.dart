@@ -1,8 +1,11 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
+import 'package:wasla/data/requests/auth/register_request.dart';
+import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/register/controller/form_controller.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
+import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
 import 'package:wasla/presentation/modules/register/widgets/contacts_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/form_controller_indicator.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_form_fields.dart';
@@ -90,9 +93,39 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
 
                 //register button
                 if (formIndex == forms.length - 1)
-                  AuthButton(
-                    onPressed: () {},
-                    text: AppStrings.register.tr(),
+                  BlocConsumer<RegisterCubit, RegisterState>(
+                    listener: (context, state) {
+                      state.whenOrNull(error: (failure) {
+                        context
+                            .read<BearDialogCubit>()
+                            .writeMessage(failure.message);
+                        widget.riveController.addState(BearState.fail);
+                      }, success: (passengerModel) {
+                        context
+                            .read<BearDialogCubit>()
+                            .writeMessage(AppStrings.registerSuccess);
+                        widget.riveController.addState(BearState.success);
+                      });
+                    },
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                          loading: () => AuthButton.loading(),
+                          orElse: () => AuthButton(
+                                text: AppStrings.register.tr(),
+                                onPressed: () {
+                                  context.read<RegisterCubit>().register(
+                                      RegisterRequestBody(
+                                        username: usernameController.text,
+                                        firstname: firstnameController.text,
+                                        lastname: lastnameController.text,
+                                        phone: phoneController.text,
+                                        email: emailController.text,
+                                        password: passwordController.text,
+                                      ),
+                                      confirmPasswordController.text);
+                                },
+                              ));
+                    },
                   ),
               ],
             );
