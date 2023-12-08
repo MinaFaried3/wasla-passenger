@@ -79,6 +79,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
               controller: widget.emailController,
               textDirection: TextDirection.ltr,
               textInputAction: TextInputAction.next,
+              textInputType: TextInputType.emailAddress,
               focusNode: emailFocusNode,
               labelText: AppStrings.email.tr(),
               svgPrefixPath: AssetsProvider.emailIcon,
