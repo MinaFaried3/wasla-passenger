@@ -12,7 +12,13 @@ class PasswordFormFields extends StatefulWidget {
     required this.passwordFormKey,
     required this.passwordController,
     required this.confirmPasswordController,
+    required this.passwordFocusNode,
+    required this.confirmPasswordFocusNode,
   });
+
+  final FocusNode passwordFocusNode;
+
+  final FocusNode confirmPasswordFocusNode;
 
   final TextEditingController passwordController;
   final TextEditingController confirmPasswordController;
@@ -27,9 +33,6 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _sizedAnimation;
-
-  final passwordFocusNode = FocusNode();
-  final confirmPasswordFocusNode = FocusNode();
 
   late double _scale;
 
@@ -63,7 +66,7 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
                 padding: edgeInsetsBottom,
                 child: AppTextFormField(
                   controller: widget.passwordController,
-                  focusNode: passwordFocusNode,
+                  focusNode: widget.passwordFocusNode,
                   textDirection: TextDirection.ltr,
                   textInputAction: TextInputAction.next,
                   labelText: AppStrings.password.tr(),
@@ -86,7 +89,7 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
             padding: edgeInsetsBottom,
             child: AppTextFormField(
               controller: widget.confirmPasswordController,
-              focusNode: confirmPasswordFocusNode,
+              focusNode: widget.confirmPasswordFocusNode,
               textDirection: TextDirection.ltr,
               textInputAction: TextInputAction.done,
               labelText: AppStrings.confirmPassword.tr(),
@@ -191,38 +194,28 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
   }
 
   void _init() {
-    passwordFocusNode.requestFocus();
+    widget.passwordFocusNode.requestFocus();
 
-    context.read<BearDialogCubit>().writeMessage(AppStrings.passwordInfo);
+    context.read<BearDialogCubit>().writeMessage(AppStrings.passwordInfo.tr());
 
     _initAnimation();
 
-    passwordFocusNode.addListener(_passwordListener);
-    confirmPasswordFocusNode.addListener(_confirmPasswordListener);
+    widget.passwordFocusNode.addListener(_passwordListener);
+    widget.confirmPasswordFocusNode.addListener(_confirmPasswordListener);
   }
 
   void _dispose() {
-    passwordFocusNode.unfocus();
-    confirmPasswordFocusNode.unfocus();
+    widget.passwordFocusNode.unfocus();
+    widget.confirmPasswordFocusNode.unfocus();
 
-    passwordFocusNode.removeListener(_passwordListener);
-    confirmPasswordFocusNode.removeListener(_confirmPasswordListener);
-
-    passwordFocusNode.dispose();
-    confirmPasswordFocusNode.dispose();
+    widget.passwordFocusNode.removeListener(_passwordListener);
+    widget.confirmPasswordFocusNode.removeListener(_confirmPasswordListener);
 
     _animationController.dispose();
   }
 
-  Future<void> _addDelay() async {
-    if (context.read<BearAnimationCubit>().riveController.currentState ==
-        BearState.handsUp) {
-      await Future.delayed(DurationManager.bearHandsDownDuration);
-    }
-  }
-
   void _passwordListener() {
-    if (passwordFocusNode.hasFocus) {
+    if (widget.passwordFocusNode.hasFocus) {
       _focus();
     } else {
       _unFocus();
@@ -230,7 +223,7 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
   }
 
   void _confirmPasswordListener() {
-    if (confirmPasswordFocusNode.hasFocus) {
+    if (widget.confirmPasswordFocusNode.hasFocus) {
       _focus();
     } else {
       _unFocus();
@@ -243,7 +236,7 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
         .riveController
         .addState(BearState.handsUp);
 
-    context.read<BearDialogCubit>().writeMessage(AppStrings.passwordInfo);
+    context.read<BearDialogCubit>().writeMessage(AppStrings.passwordInfo.tr());
   }
 
   void _unFocus() {
@@ -252,7 +245,9 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
         .riveController
         .addState(BearState.handsDown);
 
-    context.read<BearDialogCubit>().writeMessage(AppStrings.makeSureToGoNext);
+    context
+        .read<BearDialogCubit>()
+        .writeMessage(AppStrings.makeSureToGoNext.tr());
   }
 
   void _onChangedConfirmPassword(String password) {

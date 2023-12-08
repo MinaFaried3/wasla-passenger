@@ -53,7 +53,7 @@ class AppConstants {
 
 class DurationManager {
   static const int timeOutMin = 2;
-  static const int bearHandsDownMS = 750;
+  static const int bearHandsDownMS = 600;
 
   static const Duration apiTimeOut = Duration(minutes: timeOutMin);
   static const Duration bearHandsDownDuration =

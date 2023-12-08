@@ -38,8 +38,10 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
+  final FocusNode passwordFocusNode = FocusNode();
+  final FocusNode confirmPasswordFocusNode = FocusNode();
+
   //form keys
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final GlobalKey<FormState> namesFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> contactsFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> passwordFormKey = GlobalKey<FormState>();
@@ -65,74 +67,84 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     const double containerRadius = containerPadding + AppSize.s20;
 
     //return
-    return Form(
-      key: formKey,
-      child: Container(
-        padding: const EdgeInsets.all(containerPadding),
-        decoration: BoxDecoration(
-            color: ColorsManager.darkTeal,
-            borderRadius: BorderRadius.circular(containerRadius)),
-        child: BlocBuilder<FormIndexCubit, int>(
-          builder: (context, formIndex) {
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //form
-                ScaleTransition(
-                  alignment: Alignment.bottomCenter,
-                  scale: _sizedAnimation,
-                  child: forms[formIndex].form,
-                ),
+    return Container(
+      padding: const EdgeInsets.all(containerPadding),
+      decoration: BoxDecoration(
+          color: ColorsManager.darkTeal,
+          borderRadius: BorderRadius.circular(containerRadius)),
+      child: BlocBuilder<FormIndexCubit, int>(
+        builder: (context, formIndex) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              //form
+              ScaleTransition(
+                alignment: Alignment.bottomCenter,
+                scale: _sizedAnimation,
+                child: forms[formIndex].form,
+              ),
 
-                //indicator
-                FormControllerIndicator(
-                  animationController: _animationController,
-                  currentFromKey: forms[formIndex].key,
-                  length: forms.length,
-                ),
+              //indicator
+              FormControllerIndicator(
+                animationController: _animationController,
+                currentFromKey: forms[formIndex].key,
+                length: forms.length,
+              ),
 
-                //register button
-                if (formIndex == forms.length - 1)
-                  BlocConsumer<RegisterCubit, RegisterState>(
-                    listener: (context, state) {
-                      state.whenOrNull(error: (failure) {
-                        context
-                            .read<BearDialogCubit>()
-                            .writeMessage(failure.message);
-                        widget.riveController.addState(BearState.fail);
-                      }, success: (passengerModel) {
-                        context
-                            .read<BearDialogCubit>()
-                            .writeMessage(AppStrings.registerSuccess);
-                        widget.riveController.addState(BearState.success);
-                      });
-                    },
-                    builder: (context, state) {
-                      return state.maybeWhen(
-                          loading: () => AuthButton.loading(),
-                          orElse: () => AuthButton(
-                                text: AppStrings.register.tr(),
-                                onPressed: () {
-                                  context.read<RegisterCubit>().register(
-                                      RegisterRequestBody(
-                                        username: usernameController.text,
-                                        firstname: firstnameController.text,
-                                        lastname: lastnameController.text,
-                                        phone: phoneController.text,
-                                        email: emailController.text,
-                                        password: passwordController.text,
-                                      ),
-                                      confirmPasswordController.text);
-                                },
-                              ));
-                    },
-                  ),
-              ],
-            );
-          },
-        ),
+              //register button
+              if (formIndex == forms.length - 1)
+                BlocConsumer<RegisterCubit, RegisterState>(
+                  listener: (context, state) =>
+                      _bearDialogRegisterListener(state, context),
+                  builder: (context, state) {
+                    return state.maybeWhen(
+                        loading: () => AuthButton.loading(),
+                        orElse: () => AuthButton(
+                              text: AppStrings.register.tr(),
+                              onPressed: _onPressedRegister,
+                            ));
+                  },
+                ),
+            ],
+          );
+        },
       ),
     );
+  }
+
+  void _bearDialogRegisterListener(RegisterState state, BuildContext context) {
+    state.whenOrNull(error: (failure) {
+      context.read<BearDialogCubit>().writeMessage(failure.message);
+      widget.riveController.addState(BearState.fail);
+    }, success: (passengerModel) {
+      context.read<BearDialogCubit>().writeMessage(
+          '${AppStrings.registerSuccess.tr()} ${passengerModel.firstName}');
+      widget.riveController.addState(BearState.success);
+    });
+  }
+
+  void _onPressedRegister() async {
+    passwordFocusNode.unfocus();
+    confirmPasswordFocusNode.unfocus();
+    await _addDelay();
+    if (context.mounted) {
+      context.read<RegisterCubit>().register(
+          RegisterRequestBody(
+            username: usernameController.text,
+            firstname: firstnameController.text,
+            lastname: lastnameController.text,
+            phone: phoneController.text,
+            email: emailController.text,
+            password: passwordController.text,
+          ),
+          confirmPasswordController.text);
+    }
+  }
+
+  Future<void> _addDelay() async {
+    if (widget.riveController.currentState == BearState.handsUp) {
+      await Future.delayed(DurationManager.bearHandsDownDuration);
+    }
   }
 
   void _init() {
@@ -165,6 +177,8 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
           passwordFormKey: passwordFormKey,
           passwordController: passwordController,
           confirmPasswordController: confirmPasswordController,
+          passwordFocusNode: passwordFocusNode,
+          confirmPasswordFocusNode: confirmPasswordFocusNode,
         ),
       ),
     ];
@@ -185,6 +199,9 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   }
 
   void _dispose() {
+    passwordFocusNode.dispose();
+    confirmPasswordFocusNode.dispose();
+
     //dispose controllers
     usernameController.dispose();
     passwordController.dispose();

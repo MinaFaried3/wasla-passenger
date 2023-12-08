@@ -8,34 +8,34 @@ class BearDialogCubit extends Cubit<String> {
   }
 
   void loginWelcomeMsg() {
-    emit(AppStrings.loginWelcomeDialog);
+    emit(AppStrings.loginWelcomeDialog.tr());
   }
 
   void usernameFieldFocusedMsg() {
-    emit(AppStrings.usernameFieldFocused);
+    emit(AppStrings.usernameFieldFocused.tr());
   }
 
   void usernameFieldEmptyMsg() {
-    emit(AppStrings.usernameFieldEmpty);
+    emit(AppStrings.usernameFieldEmpty.tr());
   }
 
   void passwordFieldEmptyMsg() {
-    emit(AppStrings.passwordFieldEmpty);
+    emit(AppStrings.passwordFieldEmpty.tr());
   }
 
   void usernameAndPasswordFieldEmptyMsg() {
-    emit(AppStrings.usernameAndPasswordFieldEmpty);
+    emit(AppStrings.usernameAndPasswordFieldEmpty.tr());
   }
 
   void loginErrorMsg() {
-    emit(AppStrings.loginError);
+    emit(AppStrings.loginError.tr());
   }
 
-  void loginSuccessMsg() {
-    emit(AppStrings.loginSuccess);
+  void loginSuccessMsg(String name) {
+    emit('${AppStrings.loginSuccess.tr()} $name');
   }
 
   void forgetPasswordInfo() {
-    emit(AppStrings.forgetPasswordInfo);
+    emit(AppStrings.forgetPasswordInfo.tr());
   }
 }

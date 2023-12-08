@@ -46,33 +46,6 @@ class _AuthBearState extends State<AuthBear>
     _animationController.forward();
   }
 
-  void _listenToSuccessOrErrorState(BuildContext context, LoginState state) {
-    final dialogCubit = context.read<BearDialogCubit>();
-
-    state.whenOrNull(
-      success: (loginModel) {
-        widget.riveController.addState(BearState.success);
-        dialogCubit.loginSuccessMsg();
-      },
-      error: (failure) {
-        widget.riveController.addState(BearState.fail);
-        dialogCubit.loginErrorMsg();
-      },
-      emptyUsername: () {
-        widget.riveController.addState(BearState.fail);
-        dialogCubit.usernameFieldEmptyMsg();
-      },
-      emptyPassword: () {
-        widget.riveController.addState(BearState.fail);
-        dialogCubit.passwordFieldEmptyMsg();
-      },
-      emptyUsernameAndPassword: () {
-        widget.riveController.addState(BearState.fail);
-        dialogCubit.usernameAndPasswordFieldEmptyMsg();
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context, hasAppBar: false);
@@ -90,15 +63,8 @@ class _AuthBearState extends State<AuthBear>
               builder: (context, state) {
                 return state.maybeWhen(
                   loading: () => const LoadingIndicator(),
-                  loadedSuccessfully: () =>
-                      //todo
-                      BlocListener<LoginCubit, LoginState>(
-                    listener: (context, state) {
-                      _listenToSuccessOrErrorState(context, state);
-                    },
-                    child: AnimatedBear(
-                      riveController: widget.riveController,
-                    ),
+                  loadedSuccessfully: () => AnimatedBear(
+                    riveController: widget.riveController,
                   ),
                   orElse: () => const SizedBox(),
                 );
@@ -139,7 +105,7 @@ class _AuthBearState extends State<AuthBear>
                           return FadeTransition(
                             opacity: _animation,
                             child: Text(
-                              state.tr(),
+                              state,
                               style: getRegularStyle(fontSize: FontSize.s18.sp),
                               textAlign: TextAlign.center,
                             ),

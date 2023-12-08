@@ -103,12 +103,6 @@ final class DIModulesManger {
   static void prepareRegisterModule() {
     _prepareAuthModule();
 
-    ///
-    ///TODO
-    _registerFactory<LoginUseCase>(
-        LoginUseCase(repository: getIt<AuthRepository>()));
-    _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
-
     ///use case
     _registerFactory<CheckUsernameUseCase>(
         CheckUsernameUseCase(repository: getIt<AuthRepository>()));
