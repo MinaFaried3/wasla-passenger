@@ -1,12 +1,11 @@
-import 'dart:async';
-
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
-import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/controller/form_controller.dart';
+import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/widgets/contacts_form_fields.dart';
+import 'package:wasla/presentation/modules/register/widgets/form_controller_indicator.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/password_form_fields.dart';
 
@@ -23,9 +22,11 @@ class SlideRegisterForm extends StatefulWidget {
 }
 
 class _SlideRegisterFormState extends State<SlideRegisterForm>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   late final AnimationController _animationController;
+  late final AnimationController _formAnimationController;
   late final Animation<double> _sizedAnimation;
+  late final Animation<Offset> _offsetFromAnimation;
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController firstnameController = TextEditingController();
@@ -49,8 +50,6 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   final GlobalKey<FormState> passwordFormKey = GlobalKey<FormState>();
 
   late final List<FormViewContent> forms;
-
-  late int formIndex = 0;
 
   @override
   void initState() {
@@ -102,8 +101,11 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   }
 
   void _initAnimation() {
+    //todo
     _animationController =
-        AnimationController(vsync: this, duration: DurationManager.m750);
+        AnimationController(vsync: this, duration: DurationManager.m500);
+    _formAnimationController =
+        AnimationController(vsync: this, duration: DurationManager.m500);
 
     _sizedAnimation = Tween<double>(
             begin: AppConstants.doubleZero, end: AppConstants.doubleOne)
@@ -121,10 +123,6 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     const double containerPadding = AppPadding.p8;
     const double containerRadius = containerPadding + AppSize.s20;
 
-    //bottom padding
-    final double paddingBottom = responsive.getScreenHeightOf(AppSize.s0_02);
-    final edgeInsetsBottom = EdgeInsets.only(bottom: paddingBottom);
-
     //return
     return Form(
       key: formKey,
@@ -136,99 +134,32 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            forms[formIndex].form,
-            _buildNextButton(),
+            BlocBuilder<FormIndexCubit, int>(
+              builder: (context, formIndex) {
+                return ScaleTransition(
+                  alignment: Alignment.bottomCenter,
+                  scale: _sizedAnimation,
+                  child: forms[formIndex].form,
+                );
+              },
+            ),
+            BlocBuilder<FormIndexCubit, int>(
+              builder: (context, formIndex) {
+                return FormControllerIndicator(
+                  animationController: _animationController,
+                  currentFromKey: forms[formIndex].key,
+                  length: forms.length,
+                );
+              },
+            ),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildNextButton() {
-    return Row(
-      textDirection: TextDirection.ltr,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          onPressed: () {
-            if (formIndex > 0) {
-              setState(() {
-                formIndex--;
-              });
-            }
-          },
-          icon: SvgPicture.asset(
-            AssetsProvider.arrowLeftIcon,
-            colorFilter: const ColorFilter.mode(
-              ColorsManager.tealPrimary,
-              BlendMode.srcIn,
-            ),
-          ),
-        ),
-        Text(
-          '${formIndex + 1} / ${forms.length}',
-          textDirection: TextDirection.ltr,
-        ),
-        IconButton(
-            onPressed: () {
-              if (forms[formIndex].key.currentState!.validate() == false) {
-                context
-                    .read<BearDialogCubit>()
-                    .writeMessage(AppStrings.makeSureToGoNext);
-                widget.riveController.addState(BearState.lookIdle);
-                widget.riveController.addState(BearState.fail);
-
-                return;
-              }
-              if (formIndex == 0) {
-                if (!_validateNamesForm()) {
-                  return;
-                }
-              }
-              if (formIndex < forms.length - 1) {
-                setState(() {
-                  formIndex++;
-                  print(formIndex);
-                });
-              }
-            },
-            icon: SvgPicture.asset(
-              AssetsProvider.arrowRightIcon,
-              colorFilter: const ColorFilter.mode(
-                ColorsManager.tealPrimary,
-                BlendMode.srcIn,
-              ),
-            )),
-      ],
-    );
-  }
-
-  void _onPressedLogin() async {
-    passwordFocusNode.unfocus();
-    confirmPasswordFocusNode.unfocus();
-    usernameFocusNode.unfocus();
-    await _addDelay();
-    formKey.currentState!.validate();
-    if (context.mounted) {
-      context.read<LoginCubit>().login(
-            userName: usernameController.text,
-            password: passwordController.text,
-          );
-    }
-  }
-
-  Future<void> _addDelay() async {
-    if ((usernameController.text.isEmpty || passwordController.text.isEmpty) &&
-        widget.riveController.currentState == BearState.handsUp) {
-      await Future.delayed(DurationManager.bearHandsDownDuration);
-    }
-  }
-
   //todo
   void _dispose() {
-    //animation
-    _animationController.dispose();
-
     //remove listener
     passwordFocusNode.removeListener(_passwordFocusNodeListener);
     usernameFocusNode.removeListener(_usernameListener);
@@ -248,6 +179,10 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     lastnameController.dispose();
     emailController.dispose();
     phoneController.dispose();
+
+    //animation
+    _animationController.dispose();
+    _formAnimationController.dispose();
   }
 
   void _addFocusNodesListeners() {
@@ -275,10 +210,5 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     if (lastnameFocusNode.hasFocus) {
       context.read<BearDialogCubit>().writeMessage(AppStrings.lastnameInfo);
     }
-  }
-
-  //todo add form view class
-  bool _validateNamesForm() {
-    return context.read<CheckUsernameBloc>().valid;
   }
 }

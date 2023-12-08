@@ -71,7 +71,7 @@ class ThemeManger {
     //surface
     onInverseSurface: ColorsManager.grey400,
     //tertiary
-    onTertiary: ColorsManager.tealPrimary300,
+    onTertiary: ColorsManager.tealPrimary500,
     //scrim
     // scrim: Colors.purple,
   );

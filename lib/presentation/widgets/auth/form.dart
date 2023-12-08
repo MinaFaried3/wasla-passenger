@@ -72,7 +72,7 @@ class _AuthFormState extends State<AuthForm> with TickerProviderStateMixin {
                                 riveController: widget.riveController))),
                   ),
 
-                  ///login form
+                  ///auth form
                   SlideTransition(
                     position: _formOffsetAnimation,
                     child: widget.form,
