@@ -23,7 +23,7 @@ mixin _$LoginState {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) =>
       throw _privateConstructorUsedError;
@@ -34,7 +34,7 @@ mixin _$LoginState {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,7 +45,7 @@ mixin _$LoginState {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) =>
@@ -149,7 +149,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return initial();
@@ -163,7 +163,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return initial?.call();
@@ -177,7 +177,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -283,7 +283,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return loading();
@@ -297,7 +297,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return loading?.call();
@@ -311,7 +311,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -417,7 +417,7 @@ class _$EmpyUsernameImpl implements _EmpyUsername {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return emptyUsername();
@@ -431,7 +431,7 @@ class _$EmpyUsernameImpl implements _EmpyUsername {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return emptyUsername?.call();
@@ -445,7 +445,7 @@ class _$EmpyUsernameImpl implements _EmpyUsername {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -551,7 +551,7 @@ class _$EmptyPasswordImpl implements _EmptyPassword {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return emptyPassword();
@@ -565,7 +565,7 @@ class _$EmptyPasswordImpl implements _EmptyPassword {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return emptyPassword?.call();
@@ -579,7 +579,7 @@ class _$EmptyPasswordImpl implements _EmptyPassword {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -688,7 +688,7 @@ class _$EmptyUsernameAndPasswordImpl implements _EmptyUsernameAndPassword {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return emptyUsernameAndPassword();
@@ -702,7 +702,7 @@ class _$EmptyUsernameAndPasswordImpl implements _EmptyUsernameAndPassword {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return emptyUsernameAndPassword?.call();
@@ -716,7 +716,7 @@ class _$EmptyUsernameAndPasswordImpl implements _EmptyUsernameAndPassword {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -785,7 +785,7 @@ abstract class _$$SuccessImplCopyWith<$Res> {
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({LoginModel loginModel});
+  $Res call({PassengerModel loginModel});
 }
 
 /// @nodoc
@@ -805,7 +805,7 @@ class __$$SuccessImplCopyWithImpl<$Res>
       loginModel: null == loginModel
           ? _value.loginModel
           : loginModel // ignore: cast_nullable_to_non_nullable
-              as LoginModel,
+              as PassengerModel,
     ));
   }
 }
@@ -816,7 +816,7 @@ class _$SuccessImpl implements _Success {
   const _$SuccessImpl({required this.loginModel});
 
   @override
-  final LoginModel loginModel;
+  final PassengerModel loginModel;
 
   @override
   String toString() {
@@ -849,7 +849,7 @@ class _$SuccessImpl implements _Success {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return success(loginModel);
@@ -863,7 +863,7 @@ class _$SuccessImpl implements _Success {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return success?.call(loginModel);
@@ -877,7 +877,7 @@ class _$SuccessImpl implements _Success {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {
@@ -937,10 +937,10 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements LoginState {
-  const factory _Success({required final LoginModel loginModel}) =
+  const factory _Success({required final PassengerModel loginModel}) =
       _$SuccessImpl;
 
-  LoginModel get loginModel;
+  PassengerModel get loginModel;
   @JsonKey(ignore: true)
   _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1015,7 +1015,7 @@ class _$ErrorImpl implements _Error {
     required TResult Function() emptyUsername,
     required TResult Function() emptyPassword,
     required TResult Function() emptyUsernameAndPassword,
-    required TResult Function(LoginModel loginModel) success,
+    required TResult Function(PassengerModel loginModel) success,
     required TResult Function(Failure failure) error,
   }) {
     return error(failure);
@@ -1029,7 +1029,7 @@ class _$ErrorImpl implements _Error {
     TResult? Function()? emptyUsername,
     TResult? Function()? emptyPassword,
     TResult? Function()? emptyUsernameAndPassword,
-    TResult? Function(LoginModel loginModel)? success,
+    TResult? Function(PassengerModel loginModel)? success,
     TResult? Function(Failure failure)? error,
   }) {
     return error?.call(failure);
@@ -1043,7 +1043,7 @@ class _$ErrorImpl implements _Error {
     TResult Function()? emptyUsername,
     TResult Function()? emptyPassword,
     TResult Function()? emptyUsernameAndPassword,
-    TResult Function(LoginModel loginModel)? success,
+    TResult Function(PassengerModel loginModel)? success,
     TResult Function(Failure failure)? error,
     required TResult orElse(),
   }) {

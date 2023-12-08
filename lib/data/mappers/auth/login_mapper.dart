@@ -1,7 +1,7 @@
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
-import 'package:wasla/data/responses/auth/login_response.dart';
-import 'package:wasla/domain/entities/auth/login_model.dart';
+import 'package:wasla/data/responses/auth/auth_response.dart';
+import 'package:wasla/domain/entities/auth/passenger_model.dart';
 
 //record to domain
 extension ConnectionDataResponseMapper on ConnectionsDataResponse? {
@@ -22,9 +22,9 @@ extension TokensDataResponseMapper on TokensDataResponse? {
       );
 }
 
-extension LoginResponseMapper on LoginResponse? {
-  LoginModel toDomain() {
-    return LoginModel(
+extension AuthResponseMapper on AuthResponse? {
+  PassengerModel toDomain() {
+    return PassengerModel(
       isAuthenticated: this?.data?.isAuthenticated.orFalse() ?? false,
       connections:
           this?.data?.connectionsData.toDomain() ?? Connections.empty(),

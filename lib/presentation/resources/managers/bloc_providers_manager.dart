@@ -4,6 +4,7 @@ import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_c
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
+import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
 
 class BlocProvidersManager {
   static final List<BlocProvider> onboardingProviders = [
@@ -42,8 +43,8 @@ class BlocProvidersManager {
       value: getIt<BearDialogCubit>()
         ..writeMessage(AppStrings.registerWelcomeDialog),
     ),
-    BlocProvider<LoginCubit>.value(
-      value: getIt<LoginCubit>(),
+    BlocProvider<RegisterCubit>.value(
+      value: getIt<RegisterCubit>(),
     ),
     BlocProvider<CheckUsernameBloc>.value(
       value: getIt<CheckUsernameBloc>(),
@@ -53,6 +54,10 @@ class BlocProvidersManager {
     ),
     BlocProvider<FormIndexCubit>.value(
       value: getIt<FormIndexCubit>(),
+    ),
+    //todo
+    BlocProvider<LoginCubit>.value(
+      value: getIt<LoginCubit>(),
     ),
   ];
 }

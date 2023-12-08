@@ -1,22 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_response.dart';
+part of 'auth_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LoginResponse _$LoginResponseFromJson(Map<String, dynamic> json) =>
-    LoginResponse(
+AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
       status: json['status'] as int?,
       message: json['message'] as String?,
       success: json['isSuccess'] as bool?,
       data: json['data'] == null
           ? null
-          : LoginData.fromJson(json['data'] as Map<String, dynamic>),
+          : AuthData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
+Map<String, dynamic> _$AuthResponseToJson(AuthResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
       'message': instance.message,
@@ -24,7 +23,7 @@ Map<String, dynamic> _$LoginResponseToJson(LoginResponse instance) =>
       'data': instance.data,
     };
 
-LoginData _$LoginDataFromJson(Map<String, dynamic> json) => LoginData(
+AuthData _$AuthDataFromJson(Map<String, dynamic> json) => AuthData(
       points: json['points'] as int?,
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
@@ -42,7 +41,7 @@ LoginData _$LoginDataFromJson(Map<String, dynamic> json) => LoginData(
       role: json['role'] as String?,
     );
 
-Map<String, dynamic> _$LoginDataToJson(LoginData instance) => <String, dynamic>{
+Map<String, dynamic> _$AuthDataToJson(AuthData instance) => <String, dynamic>{
       'points': instance.points,
       'firstName': instance.firstName,
       'lastName': instance.lastName,

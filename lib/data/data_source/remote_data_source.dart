@@ -1,10 +1,13 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/api_service_client.dart';
+import 'package:wasla/data/requests/auth/register_request.dart';
+import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
-import 'package:wasla/data/responses/auth/login_response.dart';
 
 abstract class RemoteDataSource {
-  Future<LoginResponse> login(LoginRequestBody loginRequestBody);
+  Future<AuthResponse> login(LoginRequestBody loginRequestBody);
+
+  Future<AuthResponse> register(RegisterRequestBody registerRequestBody);
 
   Future<CheckUsernameResponse> checkUsername(String username);
 
@@ -18,14 +21,26 @@ class RemoteDataSourceImpl extends RemoteDataSource {
       : _apiServiceClient = apiServiceClient;
 
   @override
-  Future<LoginResponse> login(LoginRequestBody loginRequestBody) async {
+  Future<AuthResponse> login(LoginRequestBody loginRequestBody) async {
     return await _apiServiceClient.login(
-        userName: loginRequestBody.userName,
+        username: loginRequestBody.userName,
         password: loginRequestBody.password);
   }
 
   @override
   Future<CheckUsernameResponse> checkUsername(String username) async {
     return await _apiServiceClient.checkUsername(username: username);
+  }
+
+  @override
+  Future<AuthResponse> register(RegisterRequestBody registerRequestBody) async {
+    return await _apiServiceClient.register(
+      username: registerRequestBody.username,
+      firstname: registerRequestBody.firstname,
+      lastname: registerRequestBody.lastname,
+      phone: registerRequestBody.phone,
+      email: registerRequestBody.email,
+      password: registerRequestBody.password,
+    );
   }
 }

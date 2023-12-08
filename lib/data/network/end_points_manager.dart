@@ -6,6 +6,7 @@ class EndPointsManager {
 
   //endpoint
   static const String login = "$_authentication/Login";
+  static const String register = "$_authentication/PassengerRegister";
   static const String checkUsername = "$_authentication/checkUserName";
 }
 

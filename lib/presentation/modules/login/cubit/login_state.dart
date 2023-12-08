@@ -13,7 +13,8 @@ class LoginState with _$LoginState {
   const factory LoginState.emptyUsernameAndPassword() =
       _EmptyUsernameAndPassword;
 
-  const factory LoginState.success({required LoginModel loginModel}) = _Success;
+  const factory LoginState.success({required PassengerModel loginModel}) =
+      _Success;
 
   const factory LoginState.error({required Failure failure}) = _Error;
 }

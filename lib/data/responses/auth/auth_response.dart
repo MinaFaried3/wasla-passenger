@@ -1,11 +1,11 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/responses/base_response.dart';
 
-part 'login_response.g.dart';
+part 'auth_response.g.dart';
 
 @JsonSerializable()
-final class LoginResponse extends BaseResponse<LoginData> {
-  const LoginResponse({
+final class AuthResponse extends BaseResponse<AuthData> {
+  const AuthResponse({
     super.status,
     super.message,
     super.success,
@@ -13,11 +13,11 @@ final class LoginResponse extends BaseResponse<LoginData> {
   });
 
   //from json
-  factory LoginResponse.fromJson(Map<String, dynamic> json) =>
-      _$LoginResponseFromJson(json);
+  factory AuthResponse.fromJson(Map<String, dynamic> json) =>
+      _$AuthResponseFromJson(json);
 
   //to json
-  Map<String, dynamic> toJson() => _$LoginResponseToJson(this);
+  Map<String, dynamic> toJson() => _$AuthResponseToJson(this);
 
   @override
   List<Object?> get props => [
@@ -29,7 +29,7 @@ final class LoginResponse extends BaseResponse<LoginData> {
 }
 
 @JsonSerializable()
-class LoginData extends Equatable {
+class AuthData extends Equatable {
   @JsonKey(name: "points")
   final int? points;
   @JsonKey(name: "firstName")
@@ -49,7 +49,7 @@ class LoginData extends Equatable {
   @JsonKey(name: "role")
   final String? role;
 
-  const LoginData({
+  const AuthData({
     this.points,
     this.firstName,
     this.lastName,
@@ -62,11 +62,11 @@ class LoginData extends Equatable {
   });
 
   //from json
-  factory LoginData.fromJson(Map<String, dynamic> json) =>
-      _$LoginDataFromJson(json);
+  factory AuthData.fromJson(Map<String, dynamic> json) =>
+      _$AuthDataFromJson(json);
 
   //to json
-  Map<String, dynamic> toJson() => _$LoginDataToJson(this);
+  Map<String, dynamic> toJson() => _$AuthDataToJson(this);
 
   @override
   List<Object?> get props => [
