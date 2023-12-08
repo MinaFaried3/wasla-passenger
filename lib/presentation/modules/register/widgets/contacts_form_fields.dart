@@ -141,13 +141,13 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
 
   void _emailListener() {
     if (emailFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.emailInfo.tr());
+      context.read<BearDialogCubit>().writeMessage(AppStrings.emailInfo);
     }
   }
 
   void _phoneListener() {
     if (phoneFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.phoneInfo.tr());
+      context.read<BearDialogCubit>().writeMessage(AppStrings.phoneInfo);
     }
   }
 

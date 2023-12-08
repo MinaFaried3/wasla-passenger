@@ -3,6 +3,7 @@ import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
+import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 
 class BlocProvidersManager {
   static final List<BlocProvider> onboardingProviders = [
@@ -49,6 +50,9 @@ class BlocProvidersManager {
     ),
     BlocProvider<PasswordIconCubit>.value(
       value: getIt<PasswordIconCubit>(),
+    ),
+    BlocProvider<FormIndexCubit>.value(
+      value: getIt<FormIndexCubit>(),
     ),
   ];
 }

@@ -13,6 +13,7 @@ import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_c
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
+import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 
 final GetIt getIt = GetIt.instance;
 
@@ -101,6 +102,8 @@ final class DIModulesManger {
   static void prepareRegisterModule() {
     _prepareAuthModule();
 
+    ///
+
     ///use case
     _registerFactory<CheckUsernameUseCase>(
         CheckUsernameUseCase(repository: getIt<AuthRepository>()));
@@ -111,5 +114,6 @@ final class DIModulesManger {
     _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
     _registerFactory<CheckUsernameBloc>(
         CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
+    _registerFactory<FormIndexCubit>(FormIndexCubit());
   }
 }
