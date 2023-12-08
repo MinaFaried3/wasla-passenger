@@ -20,7 +20,7 @@ class BlocProvidersManager {
     ),
     BlocProvider<BearDialogCubit>.value(
       value: getIt<BearDialogCubit>()
-        ..writeMessage(AppStrings.loginWelcomeDialog),
+        ..writeMessage(AppStrings.loginWelcomeDialog.tr()),
     ),
     BlocProvider<LoginCubit>.value(
       value: getIt<LoginCubit>(),
@@ -41,7 +41,7 @@ class BlocProvidersManager {
     ),
     BlocProvider<BearDialogCubit>.value(
       value: getIt<BearDialogCubit>()
-        ..writeMessage(AppStrings.registerWelcomeDialog),
+        ..writeMessage(AppStrings.registerWelcomeDialog.tr()),
     ),
     BlocProvider<RegisterCubit>.value(
       value: getIt<RegisterCubit>(),
@@ -54,10 +54,6 @@ class BlocProvidersManager {
     ),
     BlocProvider<FormIndexCubit>.value(
       value: getIt<FormIndexCubit>(),
-    ),
-    //todo
-    BlocProvider<LoginCubit>.value(
-      value: getIt<LoginCubit>(),
     ),
   ];
 }

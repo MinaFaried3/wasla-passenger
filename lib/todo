@@ -5,10 +5,9 @@ dart run build_runner build --delete-conflicting-outputs
 
 network errors like connections fails
 
-remove login cubit form bear dialog
-remove tr from bear dialog
-refactor forms in register and check bear down hands
-add name to success state
+
+refactor forms in register
+
 
 check if phone or email exists before or not
 generate username

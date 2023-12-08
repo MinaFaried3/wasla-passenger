@@ -106,7 +106,9 @@ class _FormControllerIndicatorState extends State<FormControllerIndicator> {
   bool _validateFormBeforeGoNext(int formIndex) {
     if (widget.currentFromKey.currentState?.validate() == false ||
         (formIndex == 0 && !_validateNamesForm())) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.makeSureToGoNext);
+      context
+          .read<BearDialogCubit>()
+          .writeMessage(AppStrings.makeSureToGoNext.tr());
       context
           .read<BearAnimationCubit>()
           .riveController

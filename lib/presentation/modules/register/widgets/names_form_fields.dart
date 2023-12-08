@@ -49,7 +49,9 @@ class _NamesFormFieldsState extends State<NamesFormFields>
 
   void _usernameListener() {
     if (usernameFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.usernameInfo);
+      context
+          .read<BearDialogCubit>()
+          .writeMessage(AppStrings.usernameInfo.tr());
     }
   }
 

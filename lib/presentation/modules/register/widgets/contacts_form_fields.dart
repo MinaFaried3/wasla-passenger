@@ -135,7 +135,9 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
   }
 
   _init() {
-    context.read<BearDialogCubit>().writeMessage(AppStrings.startContactsForm);
+    context
+        .read<BearDialogCubit>()
+        .writeMessage(AppStrings.startContactsForm.tr());
     if (context.read<BearAnimationCubit>().riveController.currentState ==
         BearState.handsUp) {
       context
@@ -151,13 +153,13 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
 
   void _emailListener() {
     if (emailFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.emailInfo);
+      context.read<BearDialogCubit>().writeMessage(AppStrings.emailInfo.tr());
     }
   }
 
   void _phoneListener() {
     if (phoneFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.phoneInfo);
+      context.read<BearDialogCubit>().writeMessage(AppStrings.phoneInfo.tr());
     }
   }
 

@@ -1,5 +1,6 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
+import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/login/widgets/login_form.dart';
 import 'package:wasla/presentation/widgets/auth/components/auth_now.dart';
@@ -21,11 +22,43 @@ class _LoginScreenState extends State<LoginScreen> {
     riveController = context.read<BearAnimationCubit>().riveController;
   }
 
+  void _listenToSuccessOrErrorState(BuildContext context, LoginState state) {
+    final dialogCubit = context.read<BearDialogCubit>();
+
+    state.whenOrNull(
+      success: (loginModel) {
+        riveController.addState(BearState.success);
+        dialogCubit.loginSuccessMsg(loginModel.firstName);
+      },
+      error: (failure) {
+        riveController.addState(BearState.fail);
+        dialogCubit.loginErrorMsg();
+      },
+      emptyUsername: () {
+        riveController.addState(BearState.fail);
+        dialogCubit.usernameFieldEmptyMsg();
+      },
+      emptyPassword: () {
+        riveController.addState(BearState.fail);
+        dialogCubit.passwordFieldEmptyMsg();
+      },
+      emptyUsernameAndPassword: () {
+        riveController.addState(BearState.fail);
+        dialogCubit.usernameAndPasswordFieldEmptyMsg();
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return AuthForm(
       riveController: riveController,
-      form: LoginForm(riveController: riveController),
+      form: BlocListener<LoginCubit, LoginState>(
+        listener: (context, state) {
+          _listenToSuccessOrErrorState(context, state);
+        },
+        child: LoginForm(riveController: riveController),
+      ),
       bottomAction: AuthNow.register(),
     );
   }

@@ -35,7 +35,9 @@ class _NamesFieldsState extends State<NamesFields> {
 
   void _lastnameListener() {
     if (lastnameFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.lastnameInfo);
+      context
+          .read<BearDialogCubit>()
+          .writeMessage(AppStrings.lastnameInfo.tr());
     }
   }
 
