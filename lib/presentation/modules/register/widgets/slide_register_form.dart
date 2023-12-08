@@ -1,6 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
-import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/register/controller/form_controller.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
@@ -8,6 +7,7 @@ import 'package:wasla/presentation/modules/register/widgets/contacts_form_fields
 import 'package:wasla/presentation/modules/register/widgets/form_controller_indicator.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/password_form_fields.dart';
+import 'package:wasla/presentation/widgets/auth/components/auth_button.dart';
 
 class SlideRegisterForm extends StatefulWidget {
   final RiveControllerManager riveController;
@@ -22,11 +22,9 @@ class SlideRegisterForm extends StatefulWidget {
 }
 
 class _SlideRegisterFormState extends State<SlideRegisterForm>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
-  late final AnimationController _formAnimationController;
   late final Animation<double> _sizedAnimation;
-  late final Animation<Offset> _offsetFromAnimation;
 
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController firstnameController = TextEditingController();
@@ -36,12 +34,6 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
       TextEditingController();
   final TextEditingController phoneController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-
-  //todo
-  final FocusNode passwordFocusNode = FocusNode();
-  final FocusNode confirmPasswordFocusNode = FocusNode();
-  final FocusNode usernameFocusNode = FocusNode();
-  final FocusNode lastnameFocusNode = FocusNode();
 
   //form keys
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -54,7 +46,63 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   @override
   void initState() {
     super.initState();
+    _init();
+  }
 
+  @override
+  void dispose() {
+    _dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    //container padding and radius
+    const double containerPadding = AppPadding.p8;
+    const double containerRadius = containerPadding + AppSize.s20;
+
+    //return
+    return Form(
+      key: formKey,
+      child: Container(
+        padding: const EdgeInsets.all(containerPadding),
+        decoration: BoxDecoration(
+            color: ColorsManager.darkTeal,
+            borderRadius: BorderRadius.circular(containerRadius)),
+        child: BlocBuilder<FormIndexCubit, int>(
+          builder: (context, formIndex) {
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                //form
+                ScaleTransition(
+                  alignment: Alignment.bottomCenter,
+                  scale: _sizedAnimation,
+                  child: forms[formIndex].form,
+                ),
+
+                //indicator
+                FormControllerIndicator(
+                  animationController: _animationController,
+                  currentFromKey: forms[formIndex].key,
+                  length: forms.length,
+                ),
+
+                //register button
+                if (formIndex == forms.length - 1)
+                  AuthButton(
+                    onPressed: () {},
+                    text: AppStrings.register.tr(),
+                  ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+  void _init() {
     forms = [
       //names form fields
       FormViewContent(
@@ -64,8 +112,6 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
           usernameController: usernameController,
           lastnameController: lastnameController,
           firstnameController: firstnameController,
-          lastnameFocusNode: lastnameFocusNode,
-          usernameFocusNode: usernameFocusNode,
         ),
       ),
 
@@ -90,21 +136,11 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
       ),
     ];
 
-    _addFocusNodesListeners();
     _initAnimation();
   }
 
-  @override
-  void dispose() {
-    _dispose();
-    super.dispose();
-  }
-
   void _initAnimation() {
-    //todo
     _animationController =
-        AnimationController(vsync: this, duration: DurationManager.m500);
-    _formAnimationController =
         AnimationController(vsync: this, duration: DurationManager.m500);
 
     _sizedAnimation = Tween<double>(
@@ -115,62 +151,7 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     _animationController.forward();
   }
 
-  @override
-  Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
-
-    //container padding and radius
-    const double containerPadding = AppPadding.p8;
-    const double containerRadius = containerPadding + AppSize.s20;
-
-    //return
-    return Form(
-      key: formKey,
-      child: Container(
-        padding: const EdgeInsets.all(containerPadding),
-        decoration: BoxDecoration(
-            color: ColorsManager.darkTeal,
-            borderRadius: BorderRadius.circular(containerRadius)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BlocBuilder<FormIndexCubit, int>(
-              builder: (context, formIndex) {
-                return ScaleTransition(
-                  alignment: Alignment.bottomCenter,
-                  scale: _sizedAnimation,
-                  child: forms[formIndex].form,
-                );
-              },
-            ),
-            BlocBuilder<FormIndexCubit, int>(
-              builder: (context, formIndex) {
-                return FormControllerIndicator(
-                  animationController: _animationController,
-                  currentFromKey: forms[formIndex].key,
-                  length: forms.length,
-                );
-              },
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  //todo
   void _dispose() {
-    //remove listener
-    passwordFocusNode.removeListener(_passwordFocusNodeListener);
-    usernameFocusNode.removeListener(_usernameListener);
-    lastnameFocusNode.removeListener(_lastnameListener);
-
-    //dispose nodes
-    passwordFocusNode.dispose();
-    usernameFocusNode.dispose();
-    confirmPasswordFocusNode.dispose();
-    lastnameFocusNode.dispose();
-
     //dispose controllers
     usernameController.dispose();
     passwordController.dispose();
@@ -182,33 +163,5 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
 
     //animation
     _animationController.dispose();
-    _formAnimationController.dispose();
-  }
-
-  void _addFocusNodesListeners() {
-    passwordFocusNode.addListener(_passwordFocusNodeListener);
-    usernameFocusNode.addListener(_usernameListener);
-    lastnameFocusNode.addListener(_lastnameListener);
-  }
-
-  void _passwordFocusNodeListener() {
-    if (passwordFocusNode.hasFocus || confirmPasswordFocusNode.hasFocus) {
-      widget.riveController.addState(BearState.handsUp);
-    } else if (!passwordFocusNode.hasFocus ||
-        !confirmPasswordFocusNode.hasFocus) {
-      widget.riveController.addState(BearState.handsDown);
-    }
-  }
-
-  void _usernameListener() {
-    if (usernameFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.usernameInfo);
-    }
-  }
-
-  void _lastnameListener() {
-    if (lastnameFocusNode.hasFocus) {
-      context.read<BearDialogCubit>().writeMessage(AppStrings.lastnameInfo);
-    }
   }
 }

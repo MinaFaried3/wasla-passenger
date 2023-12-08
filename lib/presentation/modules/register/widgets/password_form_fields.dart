@@ -202,14 +202,8 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
   }
 
   void _dispose() {
-    // todo bug
-    // await Future.delayed(
-    //   DurationManager.bearHandsDownDuration,
-    //   () {
-    //     passwordFocusNode.unfocus();
-    //     _unFocus();
-    //   },
-    // );
+    passwordFocusNode.unfocus();
+    confirmPasswordFocusNode.unfocus();
 
     passwordFocusNode.removeListener(_passwordListener);
     confirmPasswordFocusNode.removeListener(_confirmPasswordListener);
@@ -218,6 +212,13 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
     confirmPasswordFocusNode.dispose();
 
     _animationController.dispose();
+  }
+
+  Future<void> _addDelay() async {
+    if (context.read<BearAnimationCubit>().riveController.currentState ==
+        BearState.handsUp) {
+      await Future.delayed(DurationManager.bearHandsDownDuration);
+    }
   }
 
   void _passwordListener() {

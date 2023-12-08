@@ -68,5 +68,6 @@
   "password_info": "The password must have:\n 1- lowercase letters.\n 2- uppercase letters.\n 3- numbers.\n 4- special characters..like(@#$%^&*).\n 5- its length is 8 chars or more.",
   "confirm_Password_invalid": "password mismatch",
   "password_invalid": "password isn't follow the steps above",
-  "password_length_invalid": "password length must be at least 8"
+  "password_length_invalid": "password length must be at least 8",
+  "register": "register"
 }
