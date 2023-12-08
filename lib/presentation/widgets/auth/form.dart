@@ -120,7 +120,7 @@ class _AuthFormState extends State<AuthForm> with TickerProviderStateMixin {
         parent: _bearAnimationController, curve: Curves.bounceInOut);
     _fadeAnimation = CurvedAnimation(
         parent: _formAnimationController, curve: Curves.easeInBack);
-    _bearFadeAnimation = Tween<double>(begin: AppSize.s0_375, end: AppSize.s1)
+    _bearFadeAnimation = Tween<double>(begin: AppSize.s0, end: AppSize.s1)
         .animate(CurvedAnimation(
             parent: _bearAnimationController, curve: Curves.easeInOutBack));
 

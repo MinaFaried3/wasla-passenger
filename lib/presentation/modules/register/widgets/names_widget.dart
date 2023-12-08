@@ -1,20 +1,43 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
+import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 
-class NamesFields extends StatelessWidget {
+class NamesFields extends StatefulWidget {
   const NamesFields({
     super.key,
     required this.firstnameController,
     required this.lastnameController,
-    required this.lastnameFocusNode,
   });
 
   final TextEditingController firstnameController;
   final TextEditingController lastnameController;
 
-  //todo
-  final FocusNode lastnameFocusNode;
+  @override
+  State<NamesFields> createState() => _NamesFieldsState();
+}
+
+class _NamesFieldsState extends State<NamesFields> {
+  final FocusNode lastnameFocusNode = FocusNode();
+
+  @override
+  void initState() {
+    super.initState();
+    lastnameFocusNode.addListener(_lastnameListener);
+  }
+
+  @override
+  void dispose() {
+    lastnameFocusNode.removeListener(_lastnameListener);
+    lastnameFocusNode.dispose();
+    super.dispose();
+  }
+
+  void _lastnameListener() {
+    if (lastnameFocusNode.hasFocus) {
+      context.read<BearDialogCubit>().writeMessage(AppStrings.lastnameInfo);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +52,7 @@ class NamesFields extends StatelessWidget {
       children: [
         Expanded(
           child: AppTextFormField(
-            controller: firstnameController,
+            controller: widget.firstnameController,
             labelText: AppStrings.firstname.tr(),
             svgPrefixPath: AssetsProvider.userIcon,
             textInputAction: TextInputAction.next,
@@ -46,7 +69,7 @@ class NamesFields extends StatelessWidget {
 
         Expanded(
           child: AppTextFormField(
-            controller: lastnameController,
+            controller: widget.lastnameController,
             focusNode: lastnameFocusNode,
             labelText: AppStrings.lastname.tr(),
             svgPrefixPath: AssetsProvider.userIcon,

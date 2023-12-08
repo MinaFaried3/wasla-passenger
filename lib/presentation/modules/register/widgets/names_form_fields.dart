@@ -2,6 +2,7 @@ import 'package:wasla/app/services/validator/validator_input_formater.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
+import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_widget.dart';
 
@@ -12,16 +13,12 @@ class NamesFormFields extends StatefulWidget {
     required this.usernameController,
     required this.firstnameController,
     required this.lastnameController,
-    required this.lastnameFocusNode,
-    required this.usernameFocusNode,
   });
 
   final GlobalKey<FormState> namesFormKey;
   final TextEditingController usernameController;
   final TextEditingController firstnameController;
   final TextEditingController lastnameController;
-  final FocusNode lastnameFocusNode;
-  final FocusNode usernameFocusNode;
 
   @override
   State<NamesFormFields> createState() => _NamesFormFieldsState();
@@ -31,17 +28,35 @@ class _NamesFormFieldsState extends State<NamesFormFields>
     with SingleTickerProviderStateMixin {
   late final AnimationController _animationController;
   late final Animation<double> _scaleAnimation;
+  final FocusNode usernameFocusNode = FocusNode();
 
   @override
   void initState() {
     super.initState();
+    _init();
+  }
+
+  void _init() {
     _initAnimation();
+    usernameFocusNode.addListener(_usernameListener);
   }
 
   @override
   void dispose() {
-    _animationController.dispose();
+    _dispose();
     super.dispose();
+  }
+
+  void _usernameListener() {
+    if (usernameFocusNode.hasFocus) {
+      context.read<BearDialogCubit>().writeMessage(AppStrings.usernameInfo);
+    }
+  }
+
+  void _dispose() {
+    usernameFocusNode.removeListener(_usernameListener);
+    usernameFocusNode.dispose();
+    _animationController.dispose();
   }
 
   @override
@@ -60,7 +75,6 @@ class _NamesFormFieldsState extends State<NamesFormFields>
           child: NamesFields(
             firstnameController: widget.firstnameController,
             lastnameController: widget.lastnameController,
-            lastnameFocusNode: widget.lastnameFocusNode,
           ),
         ),
         Padding(
@@ -70,7 +84,7 @@ class _NamesFormFieldsState extends State<NamesFormFields>
             builder: (context, state) {
               return AppTextFormField(
                 controller: widget.usernameController,
-                focusNode: widget.usernameFocusNode,
+                focusNode: usernameFocusNode,
                 textDirection: TextDirection.ltr,
                 textInputAction: TextInputAction.next,
                 autofillHints: const [

@@ -6,6 +6,7 @@ import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_c
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/login/widgets/forget_password_button.dart';
+import 'package:wasla/presentation/widgets/auth/components/auth_button.dart';
 
 class LoginForm extends StatefulWidget {
   final RiveControllerManager riveController;
@@ -124,23 +125,11 @@ class _LoginFormState extends State<LoginForm>
             //login button
             BlocBuilder<LoginCubit, LoginState>(
               builder: (context, state) {
-                return AnimatedSwitcher(
-                  duration: const Duration(seconds: 1),
-                  transitionBuilder: (child, animation) => SizeTransition(
-                    sizeFactor: animation,
-                    axis: Axis.horizontal,
-                    child: child,
-                  ),
-                  child: state.maybeWhen(
-                    loading: () => LoadingIndicator(
-                      height: responsive.getBodyHeightOf(AppSize.s0_2),
-                    ),
-                    orElse: () => AppButton(
-                      onPressed: _onPressedLogin,
-                      text: AppStrings.login.tr(),
-                    ),
-                  ),
-                );
+                return state.maybeWhen(
+                    loading: () => AuthButton.loading(),
+                    orElse: () => AuthButton(
+                        text: AppStrings.login.tr(),
+                        onPressed: _onPressedLogin));
               },
             )
           ],
