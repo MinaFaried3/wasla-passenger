@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
@@ -20,6 +21,12 @@ class _LoginScreenState extends State<LoginScreen> {
   void initState() {
     super.initState();
     riveController = context.read<BearAnimationCubit>().riveController;
+  }
+
+  @override
+  void dispose() {
+    DIModulesManger.disposeBloc<LoginCubit>();
+    super.dispose();
   }
 
   void _listenToSuccessOrErrorState(BuildContext context, LoginState state) {
@@ -51,15 +58,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return AuthForm(
-      riveController: riveController,
-      form: BlocListener<LoginCubit, LoginState>(
-        listener: (context, state) {
-          _listenToSuccessOrErrorState(context, state);
-        },
-        child: LoginForm(riveController: riveController),
+    return PopScope(
+      onPopInvoked: (pop) {
+        SystemNavigator.pop();
+      },
+      child: AuthForm(
+        riveController: riveController,
+        form: BlocListener<LoginCubit, LoginState>(
+          listener: (context, state) {
+            _listenToSuccessOrErrorState(context, state);
+          },
+          child: LoginForm(riveController: riveController),
+        ),
+        bottomAction: AuthNow.register(),
       ),
-      bottomAction: AuthNow.register(),
     );
   }
 }

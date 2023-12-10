@@ -67,6 +67,10 @@ class AuthNow extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
-    context.pushNamedAndRemoveUntil(routeName);
+    if (routeName == Routes.registerRoute.routeString) {
+      context.pushNamed(routeName);
+    } else {
+      context.pop();
+    }
   }
 }

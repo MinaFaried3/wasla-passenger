@@ -48,4 +48,8 @@ class PrintManager {
     final colorCode = color.colorCode;
     debugPrint('$colorCode${object.toString()}${ConsoleColor.reset.colorCode}');
   }
+
+  static void printHint(dynamic object) {
+    print(object, color: ConsoleColor.brightBlack);
+  }
 }

@@ -21,6 +21,9 @@ final GetIt getIt = GetIt.instance;
 
 final class DIModulesManger {
   static Future<void> prepareAppModule() async {
+    //get it
+    getIt.allowReassignment = true;
+
     //bloc
     if (kDebugMode) {
       getIt.registerLazySingleton<MyBlocObserver>(() => MyBlocObserver());
@@ -59,12 +62,67 @@ final class DIModulesManger {
     //repository
   }
 
-  static void _registerFactory<TYPE extends Object>(TYPE object) {
-    if (!GetIt.I.isRegistered<TYPE>()) {
-      getIt.registerFactory<TYPE>(() => object);
+  static void _registerFactory<T extends Object>(T object) {
+    bool isRegistered = GetIt.I.isRegistered<T>();
 
-      PrintManager.print("${object.toString()} is registered factory",
+    if (!isRegistered) {
+      getIt.registerFactory<T>(() => object);
+    }
+
+    _printHint<T>(isRegistered);
+  }
+
+  static void _printHint<T extends Object>(bool isRegistered) {
+    if (isRegistered) {
+      PrintManager.printHint(
+        '$T is already registered factory no thing new',
+      );
+    } else {
+      PrintManager.printHint(
+        '$T is registered factory',
+      );
+    }
+  }
+
+  static void _printIsRegistered<T extends Object>() {
+    PrintManager.printHint(
+      '$T is registered factory',
+    );
+  }
+
+  static void _registerFactoryBloc<TYPE extends Bloc>(TYPE bloc) {
+    if (!(GetIt.I.isRegistered<TYPE>() && getIt<TYPE>().isClosed)) {
+      getIt.registerFactory<TYPE>(() => bloc);
+      PrintManager.print("${bloc.toString()} is registered factory",
           color: ConsoleColor.brightBlack);
+    } else {
+      PrintManager.print("${bloc.toString()} is not registered factory",
+          color: ConsoleColor.brightRed);
+    }
+  }
+
+  static void _registerFactoryCubit<TYPE extends Cubit>(TYPE cubit) {
+    if (!GetIt.I.isRegistered<TYPE>()) {
+      getIt.registerFactory<TYPE>(() => cubit);
+      PrintManager.print("${cubit.toString()} is registered factory",
+          color: ConsoleColor.brightBlack);
+
+      PrintManager.print("cubit.isClosed ${getIt<TYPE>().isClosed} ",
+          color: ConsoleColor.redBg);
+    } else {
+      PrintManager.print("${cubit.toString()} is not registered factory",
+          color: ConsoleColor.brightRed);
+    }
+  }
+
+  static void disposeBloc<T extends BlocBase>() {
+    getIt<T>().close();
+
+    getIt.unregister<T>();
+    if (!(GetIt.I.isRegistered<T>())) {
+      PrintManager.printHint(
+        '$T is unregistered',
+      );
     }
   }
 
@@ -86,7 +144,12 @@ final class DIModulesManger {
     _registerFactory<BearAnimationCubit>(
         BearAnimationCubit(getIt<RiveControllerManager>()));
     _registerFactory<BearDialogCubit>(BearDialogCubit());
-    _registerFactory<PasswordIconCubit>(PasswordIconCubit());
+
+    if (!GetIt.I.isRegistered<PasswordIconCubit>()) {
+      getIt.registerFactory<PasswordIconCubit>(() => PasswordIconCubit());
+
+      _printIsRegistered<PasswordIconCubit>();
+    }
   }
 
   static void prepareLoginModule() {
@@ -97,7 +160,15 @@ final class DIModulesManger {
         LoginUseCase(repository: getIt<AuthRepository>()));
 
     ///cubit
-    _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
+    // _registerFactory<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
+
+    if (!(GetIt.I.isRegistered<LoginCubit>())) {
+      getIt
+          .registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginUseCase>()));
+      _printIsRegistered<LoginCubit>();
+    }
+
+    // _registerFactoryCubit<LoginCubit>(LoginCubit(getIt<LoginUseCase>()));
   }
 
   static void prepareRegisterModule() {
@@ -110,9 +181,28 @@ final class DIModulesManger {
         RegisterUseCase(repository: getIt<AuthRepository>()));
 
     ///cubit
-    _registerFactory<RegisterCubit>(RegisterCubit(getIt<RegisterUseCase>()));
-    _registerFactory<CheckUsernameBloc>(
-        CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
-    _registerFactory<FormIndexCubit>(FormIndexCubit());
+
+    // _registerFactory<RegisterCubit>(RegisterCubit(getIt<RegisterUseCase>()));
+    // _registerFactory<CheckUsernameBloc>(
+    //     CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
+    // _registerFactory<FormIndexCubit>(FormIndexCubit());
+
+    if (!GetIt.I.isRegistered<RegisterCubit>()) {
+      getIt.registerFactory<RegisterCubit>(
+          () => RegisterCubit(getIt<RegisterUseCase>()));
+
+      _printIsRegistered<RegisterCubit>();
+    }
+    if (!GetIt.I.isRegistered<CheckUsernameBloc>()) {
+      getIt.registerFactory<CheckUsernameBloc>(
+          () => CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
+
+      _printIsRegistered<CheckUsernameBloc>();
+    }
+    if (!GetIt.I.isRegistered<FormIndexCubit>()) {
+      getIt.registerFactory<FormIndexCubit>(() => FormIndexCubit());
+
+      _printIsRegistered<FormIndexCubit>();
+    }
   }
 }

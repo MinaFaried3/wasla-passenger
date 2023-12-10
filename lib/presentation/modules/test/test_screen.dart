@@ -9,15 +9,9 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  final TextEditingController controller = TextEditingController();
-  late String iconPath;
-  final GlobalKey<FormState> key = GlobalKey<FormState>();
-  bool clicked = false;
-
   @override
   void initState() {
     super.initState();
-    iconPath = AssetsProvider.openEyeIcon;
   }
 
   double height = 200;
