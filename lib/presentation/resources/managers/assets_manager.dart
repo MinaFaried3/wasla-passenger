@@ -14,6 +14,7 @@ class AssetsProvider {
   static const String _onboarding = '$_imagePath/onboarding';
   static const String _svg = '$_imagePath/svg';
   static const String _background = '$_imagePath/background';
+  static const String _png = '$_imagePath/png';
 
   //animation_dirs
   static const String _rive = '$_animationPath/rive';
@@ -37,6 +38,7 @@ class AssetsProvider {
   //start now
   static const String startNowBackground =
       '$_background/background_start_now.png';
+  static const String startImg = '$_png/start.png';
 
   //onboarding
   static const String onboarding1 = '$_onboarding/welcome_onboarding.png';

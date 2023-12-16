@@ -1,5 +1,5 @@
 class AppStrings {
-  static const String appTitle = 'app_title';
+  static const String appTitle = 'wasla';
   static const String noRoute = 'no_route';
 
   static const String skip = 'skip';
@@ -71,6 +71,11 @@ class AppStrings {
   static const String phoneInfo = 'phone_info';
   static const String emailInfo = 'email_info';
   static const String passwordInfo = 'password_info';
+
+  //start screen
+  static const String welcomeWith = 'welcome_with';
+  static const String toWasla = 'to_wasla';
+  static const String start = 'start';
 
   // error handler
   static const String badRequestError = 'bad_request_error';

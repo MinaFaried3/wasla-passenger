@@ -19,7 +19,7 @@ class AuthNow extends StatelessWidget {
       AuthNow(
         caption: caption.tr(),
         buttonName: buttonName.tr(),
-        routeName: routeName ?? Routes.registerRoute.routeString,
+        routeName: routeName ?? Routes.registerRoute.path,
       );
 
   factory AuthNow.login({
@@ -30,7 +30,7 @@ class AuthNow extends StatelessWidget {
       AuthNow(
         caption: caption.tr(),
         buttonName: buttonName.tr(),
-        routeName: routeName ?? Routes.loginRoute.routeString,
+        routeName: routeName ?? Routes.loginRoute.path,
       );
 
   @override
@@ -67,7 +67,7 @@ class AuthNow extends StatelessWidget {
   }
 
   void _onPressed(BuildContext context) {
-    if (routeName == Routes.registerRoute.routeString) {
+    if (routeName == Routes.registerRoute.path) {
       context.pushNamed(routeName);
     } else {
       context.pop();

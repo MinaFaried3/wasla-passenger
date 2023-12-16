@@ -5,6 +5,7 @@ import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart'
 import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/view/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
+import 'package:wasla/presentation/modules/start/start_view.dart';
 import 'package:wasla/presentation/modules/start_now/start_now_screen.dart';
 import 'package:wasla/presentation/modules/test/test_screen.dart';
 
@@ -17,6 +18,7 @@ class RoutesStrings {
   static const String resetPasswordRoute = '/reset_password';
   static const String otpRoute = '/otp';
   static const String testRoute = '/test';
+  static const String startRoute = '/start';
   static const String unDefinedRoute = '/un_defined';
 }
 
@@ -28,18 +30,19 @@ enum Routes {
   forgotPasswordRoute(RoutesStrings.forgotPasswordRoute),
   resetPasswordRoute(RoutesStrings.resetPasswordRoute),
   otpRoute(RoutesStrings.otpRoute),
+  start(RoutesStrings.startRoute),
   testRoute(RoutesStrings.testRoute),
   unDefined(RoutesStrings.unDefinedRoute);
 
-  final String routeString;
+  final String path;
 
-  const Routes(this.routeString);
+  const Routes(this.path);
 }
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     Routes currentRoute = Routes.values.firstWhere(
-      (element) => element.routeString == settings.name,
+      (element) => element.path == settings.name,
       orElse: () => Routes.unDefined,
     );
 
@@ -72,6 +75,12 @@ class RouteGenerator {
             builder: (context) => MultiBlocProvider(
                 providers: BlocProvidersManager.onboardingProviders,
                 child: const OnboardingScreen()));
+      case Routes.start:
+        final passengerName = settings.arguments as String;
+        return MaterialPageRoute(
+            builder: (_) => StartScreen(
+                  passengerName: passengerName,
+                ));
       case Routes.testRoute:
         return MaterialPageRoute(builder: (_) => const TestScreen());
       case Routes.unDefined:
