@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
@@ -119,7 +121,13 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     }, success: (passengerModel) {
       context.read<BearDialogCubit>().writeMessage(
           '${AppStrings.registerSuccess.tr()} ${passengerModel.firstName}');
+
       widget.riveController.addState(BearState.success);
+
+      Timer(DurationManager.s2, () {
+        context.pushNamedAndRemoveUntil(Routes.start.path,
+            arguments: passengerModel.firstName);
+      });
     });
   }
 

@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class TestScreen extends StatefulWidget {
   const TestScreen({super.key});
@@ -9,54 +8,80 @@ class TestScreen extends StatefulWidget {
 }
 
 class _TestScreenState extends State<TestScreen> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  double height = 200;
+  int selectedIndex = 0;
+  List<IconData> data = [
+    Icons.home_outlined,
+    Icons.search,
+    Icons.add_box_outlined,
+    Icons.favorite_outline_sharp,
+    Icons.person_outline_sharp
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AnimatedContainer(
-              color: ColorsManager.tealPrimary,
-              duration: DurationManager.s4,
-              height: height,
-              curve: Curves.bounceOut,
-              child: InkWell(
-                onTap: () {
-                  setState(() {
-                    if (height == 200) {
-                      height = 400;
-                    } else {
-                      height = 200;
-                    }
-                  });
-                },
-                child: const Center(
-                  child: LoadingIndicator(),
+      backgroundColor: Colors.greenAccent,
+      extendBody: true,
+      body: ListView.builder(
+        itemBuilder: (context, index) {
+          return Container(
+            margin: EdgeInsets.all(10),
+            color: Colors.blue,
+            width: 100,
+            height: 200,
+          );
+        },
+        itemCount: 20,
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Material(
+          elevation: 10,
+          borderRadius: BorderRadius.circular(20),
+          color: Colors.black,
+          child: Container(
+            height: 70,
+            width: double.infinity,
+            child: ListView.builder(
+              itemCount: data.length,
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              itemBuilder: (ctx, i) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 15),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      selectedIndex = i;
+                    });
+                  },
+                  child: AnimatedContainer(
+                    duration: Duration(milliseconds: 250),
+                    width: 35,
+                    decoration: BoxDecoration(
+                      border: i == selectedIndex
+                          ? Border(
+                              top: BorderSide(width: 3.0, color: Colors.white))
+                          : null,
+                      gradient: i == selectedIndex
+                          ? LinearGradient(
+                              colors: [Colors.grey.shade800, Colors.black],
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter)
+                          : null,
+                    ),
+                    child: Icon(
+                      data[i],
+                      size: 35,
+                      color: i == selectedIndex
+                          ? Colors.white
+                          : Colors.grey.shade800,
+                    ),
+                  ),
                 ),
               ),
+              scrollDirection: Axis.horizontal,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: AnimatedContainer(
-              color: ColorsManager.tealPrimary,
-              duration: DurationManager.m750,
-              child: const Center(
-                child: LoadingIndicator(
-                  height: 200,
-                ),
-              ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }

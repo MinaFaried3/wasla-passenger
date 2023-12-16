@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
@@ -36,6 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
       success: (loginModel) {
         riveController.addState(BearState.success);
         dialogCubit.loginSuccessMsg(loginModel.firstName);
+
+        Timer(DurationManager.s2, () {
+          context.pushNamedAndRemoveUntil(Routes.start.path,
+              arguments: loginModel.firstName);
+        });
       },
       error: (failure) {
         riveController.addState(BearState.fail);
