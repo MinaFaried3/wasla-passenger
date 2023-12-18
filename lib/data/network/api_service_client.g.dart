@@ -13,7 +13,7 @@ class _ApiServiceClient implements ApiServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://wasla.wiremockapi.cloud';
+    baseUrl ??= 'https://10.0.2.2:7095/api';
   }
 
   final Dio _dio;
@@ -21,20 +21,14 @@ class _ApiServiceClient implements ApiServiceClient {
   String? baseUrl;
 
   @override
-  Future<AuthResponse> login({
-    required String username,
-    required String password,
-    String role = AppConstants.role,
-  }) async {
+  Future<AuthResponse> login(
+      {required LoginRequestBody loginRequestBody}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
     _headers.removeWhere((k, v) => v == null);
-    final _data = {
-      'userName': username,
-      'password': password,
-      'role': role,
-    };
+    final _data = <String, dynamic>{};
+    _data.addAll(loginRequestBody.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<AuthResponse>(Options(
       method: 'POST',
@@ -44,7 +38,7 @@ class _ApiServiceClient implements ApiServiceClient {
     )
             .compose(
               _dio.options,
-              '/Authentication/Login',
+              '/auth/login',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -59,9 +53,9 @@ class _ApiServiceClient implements ApiServiceClient {
 
   @override
   Future<CheckUsernameResponse> checkUsername(
-      {required String username}) async {
+      {required String userName}) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'userName': username};
+    final queryParameters = <String, dynamic>{r'userName': userName};
     final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
     _headers.removeWhere((k, v) => v == null);
     final Map<String, dynamic>? _data = null;
@@ -74,7 +68,7 @@ class _ApiServiceClient implements ApiServiceClient {
     )
             .compose(
               _dio.options,
-              '/Authentication/checkUserName',
+              '/auth/checkUserName',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -88,26 +82,14 @@ class _ApiServiceClient implements ApiServiceClient {
   }
 
   @override
-  Future<AuthResponse> register({
-    required String username,
-    required String firstname,
-    required String lastname,
-    required String phone,
-    required String email,
-    required String password,
-  }) async {
+  Future<AuthResponse> register(
+      {required RegisterRequestBody registerRequestBody}) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
     _headers.removeWhere((k, v) => v == null);
-    final _data = {
-      'userName': username,
-      'firstName': firstname,
-      'lastName': lastname,
-      'phone': phone,
-      'email': email,
-      'password': password,
-    };
+    final _data = <String, dynamic>{};
+    _data.addAll(registerRequestBody.toJson());
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<AuthResponse>(Options(
       method: 'POST',
@@ -117,7 +99,7 @@ class _ApiServiceClient implements ApiServiceClient {
     )
             .compose(
               _dio.options,
-              '/Authentication/PassengerRegister',
+              '/auth/passenger/register',
               queryParameters: queryParameters,
               data: _data,
             )

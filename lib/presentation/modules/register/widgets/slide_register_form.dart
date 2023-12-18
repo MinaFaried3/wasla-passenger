@@ -132,15 +132,17 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
   }
 
   void _onPressedRegister() async {
+    passwordFormKey.currentState?.validate();
+
     passwordFocusNode.unfocus();
     confirmPasswordFocusNode.unfocus();
     await _addDelay();
     if (context.mounted) {
       context.read<RegisterCubit>().register(
           RegisterRequestBody(
-            username: usernameController.text,
-            firstname: firstnameController.text,
-            lastname: lastnameController.text,
+            userName: usernameController.text,
+            firstName: firstnameController.text,
+            lastName: lastnameController.text,
             phone: phoneController.text,
             email: emailController.text,
             password: passwordController.text,

@@ -6,12 +6,20 @@ dart run build_runner build --delete-conflicting-outputs
 network errors like connections fails
 
 
-refactor forms in register
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //load assets before run
+  ByteData data = await PlatformAssetBundle().load('assets/ca/lets-encrypt-r3.pem');
+  SecurityContext.defaultContext.setTrustedCertificatesBytes(data.buffer.asUint8List());
+
+  runApp(MyApp());
+}
 
 
-check if phone or email exists before or not
+
 generate username
-get_user_id
+
 
 
 

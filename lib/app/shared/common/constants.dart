@@ -1,5 +1,5 @@
 class AppConstants {
-  static const role = 'passenger';
+  static const role = 'Passenger';
 
   static const zero = 0;
   static const one = 1;
@@ -39,7 +39,7 @@ class AppConstants {
     $                               end anchor
   * */
   static const String passwordSubmittedRegexSource =
-      r'^(?=(.*[a-z]){2,})(?=(.*[A-Z]){1,})(?=(.*[0-9]){1,})(?=(.*[!@#$%^&*()\-__+.]){1,}).{8,}$';
+      r'^(?=(.*[a-z]){2,})(?=(.*[0-9]){1,}).{8,}$';
 
   static final RegExp usernameRegEx = RegExp(
       r'^(?!.*[._]{2})[a-z0-9](?:[a-z0-9]|(?:_(?=[a-z0-9]))|(?:\.(?=[a-z0-9]))){0,28}[a-z0-9]$');

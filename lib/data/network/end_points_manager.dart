@@ -1,12 +1,17 @@
 class EndPointsManager {
-  static const String baseUrl = "https://wasla.wiremockapi.cloud";
+  static const String baseUrl = "https://10.0.2.2:7095/api";
 
   //dirs
-  static const String _authentication = "/Authentication";
+  static const String _authentication = "/auth";
+  static const String _passengerAuth = "$_authentication/passenger";
 
   //endpoint
-  static const String login = "$_authentication/Login";
-  static const String register = "$_authentication/PassengerRegister";
+  //auth
+  // passenger dir
+  static const String register = "$_passengerAuth/register";
+
+  // auth dir
+  static const String login = "$_authentication/login";
   static const String checkUsername = "$_authentication/checkUserName";
 }
 

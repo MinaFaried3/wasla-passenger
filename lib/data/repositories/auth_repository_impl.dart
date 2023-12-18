@@ -2,7 +2,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/mappers/auth/login_mapper.dart';
 import 'package:wasla/data/mappers/auth/register_mappers.dart';
 import 'package:wasla/data/network/error/data_source_status.dart';
-import 'package:wasla/data/network/error/network_error_handler.dart';
+import 'package:wasla/data/network/network_error_handler.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
@@ -47,6 +47,7 @@ class AuthRepositoryImpl extends AuthRepository {
         );
       }
     } catch (error) {
+      PrintManager.print(error.toString(), color: ConsoleColor.reset);
       return Left(ErrorHandler.handle(error).failure);
     }
   }
@@ -76,6 +77,7 @@ class AuthRepositoryImpl extends AuthRepository {
         );
       }
     } catch (error) {
+      PrintManager.print(error.toString(), color: ConsoleColor.reset);
       return Left(ErrorHandler.handle(error).failure);
     }
   }
@@ -102,6 +104,7 @@ class AuthRepositoryImpl extends AuthRepository {
         );
       }
     } catch (error) {
+      PrintManager.print(error.toString(), color: ConsoleColor.reset);
       return Left(ErrorHandler.handle(error).failure);
     }
   }

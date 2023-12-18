@@ -1,27 +1,33 @@
-import 'package:equatable/equatable.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 
+part 'register_request.g.dart';
+
+@JsonSerializable()
 final class RegisterRequestBody extends Equatable {
-  final String username;
-  final String firstname;
-  final String lastname;
+  final String userName;
+  final String firstName;
+  final String lastName;
   final String phone;
   final String email;
   final String password;
 
   const RegisterRequestBody({
-    required this.username,
-    required this.firstname,
-    required this.lastname,
+    required this.userName,
+    required this.firstName,
+    required this.lastName,
     required this.phone,
     required this.email,
     required this.password,
   });
 
+  //to json
+  Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
+
   @override
   List<Object> get props => [
-        username,
-        firstname,
-        lastname,
+        userName,
+        firstName,
+        lastName,
         phone,
         email,
         password,
