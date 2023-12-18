@@ -44,7 +44,7 @@ class ThemeManger {
     //mix with surface color
     surfaceTint: null,
     //font color that on only on background
-    onSurface: ColorsManager.offWhite300,
+    onSurface: ColorsManager.offWhite,
     //date title in date picker and icon button color ,and switching color of switch,and unselected checkbox
     onSurfaceVariant: ColorsManager.tealPrimary600,
     //color of hour on time picker and back color of linear indicator, back ground of false switch
@@ -83,14 +83,14 @@ class ThemeManger {
 
   static final AppBarTheme appBarTheme = AppBarTheme(
       systemOverlayStyle: const SystemUiOverlayStyle(
-        statusBarColor: ColorsManager.blackNavy,
+        statusBarColor: ColorsManager.darkTealBackground2,
         statusBarBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
-        systemNavigationBarColor: ColorsManager.darkNavy,
+        systemNavigationBarColor: ColorsManager.darkTealBackground2,
         systemNavigationBarIconBrightness: Brightness.light,
       ),
       centerTitle: true,
-      color: ColorsManager.blackNavy,
+      color: ColorsManager.darkTealBackground2,
       elevation: AppSize.s0,
       // shadowColor: ColorManager.lightPrimary,
       titleTextStyle:
@@ -127,22 +127,23 @@ class ThemeManger {
 
   //todo
   static final TextTheme textTheme = TextTheme(
-      displayLarge: getSemiBoldStyle(
-          color: ColorsManager.offWhite200, fontSize: FontSize.s16),
-      headlineLarge: getSemiBoldStyle(
-          color: ColorsManager.offWhite200, fontSize: FontSize.s16),
-      headlineMedium: getRegularStyle(
-          color: ColorsManager.offWhite200, fontSize: FontSize.s14),
-      titleMedium: getMediumStyle(
-          color: ColorsManager.offWhite200, fontSize: FontSize.s16),
-      titleSmall: getRegularStyle(
-          color: ColorsManager.offWhite200, fontSize: FontSize.s16),
-      bodyLarge: getRegularStyle(color: ColorsManager.offWhite200),
-      bodySmall: getRegularStyle(color: ColorsManager.offWhite200),
-      bodyMedium: getRegularStyle(
-          color: ColorsManager.offWhite200, fontSize: FontSize.s12),
-      labelSmall: getBoldStyle(
-          color: ColorsManager.lightFuchsia, fontSize: FontSize.s12));
+    displayLarge:
+        getBoldStyle(color: ColorsManager.offWhite, fontSize: FontSize.s35.sp),
+    headlineLarge:
+        getBoldStyle(color: ColorsManager.offWhite, fontSize: FontSize.s28.sp),
+    headlineMedium: getRegularStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s20.sp),
+    titleMedium: getMediumStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s16.sp),
+    titleSmall:
+        getRegularStyle(color: ColorsManager.offWhite, fontSize: FontSize.s16),
+    bodyLarge: getRegularStyle(color: ColorsManager.offWhite),
+    bodySmall: getRegularStyle(color: ColorsManager.offWhite),
+    bodyMedium:
+        getRegularStyle(color: ColorsManager.offWhite, fontSize: FontSize.s12),
+    labelSmall:
+        getBoldStyle(color: ColorsManager.lightFuchsia, fontSize: FontSize.s12),
+  );
 
   static const BottomSheetThemeData bottomSheetThemeData = BottomSheetThemeData(
     backgroundColor: ColorsManager.white,

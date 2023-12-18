@@ -68,10 +68,14 @@
   "email_not_valid": "email is invalid",
   "phone_not_valid": "phone number is invalid",
   "phone_length_not_valid": "number of mobile phone digits is incorrect",
-  "password_info": "The password must have:\n 1- lowercase letters.\n 2- uppercase letters.\n 3- numbers.\n 4- special characters..like(@#$%^&*).\n 5- its length is 8 chars or more.",
+  "password_info": "The password must have:\n 1- lowercase or uppercase letters.\n 2- numbers.\n 3- its length is 8 chars or more.",
   "confirm_Password_invalid": "password mismatch",
   "password_invalid": "password isn't follow the steps above",
   "password_length_invalid": "password length must be at least 8",
   "register": "register",
-  "register_success": "Your account has been created successfully. Welcome to us "
+  "register_success": "Your account has been created successfully. Welcome to us ",
+  "verifyYourAccountTitle": "Confirm Registration",
+  "verifyYourAccountSubtitle": "Please choose between email or phone number\nto verify your account information",
+  "verifyWithPhone": "Confirm with phone",
+  "verifyWithEmail": "Confirm with gmail"
 }

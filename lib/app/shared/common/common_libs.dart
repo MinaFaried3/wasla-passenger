@@ -1,6 +1,6 @@
 export 'package:bloc/bloc.dart';
 export 'package:dartz/dartz.dart' hide State;
-export 'package:dio/dio.dart';
+export 'package:dio/dio.dart' hide Headers;
 export 'package:easy_localization/easy_localization.dart' hide TextDirection;
 export 'package:equatable/equatable.dart';
 export 'package:flutter/material.dart';

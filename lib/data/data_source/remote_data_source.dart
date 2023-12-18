@@ -9,7 +9,7 @@ abstract class RemoteDataSource {
 
   Future<AuthResponse> register(RegisterRequestBody registerRequestBody);
 
-  Future<CheckUsernameResponse> checkUsername(String username);
+  Future<CheckUsernameResponse> checkUsername(String userName);
 
   const RemoteDataSource();
 }
@@ -22,25 +22,17 @@ class RemoteDataSourceImpl extends RemoteDataSource {
 
   @override
   Future<AuthResponse> login(LoginRequestBody loginRequestBody) async {
-    return await _apiServiceClient.login(
-        username: loginRequestBody.userName,
-        password: loginRequestBody.password);
+    return await _apiServiceClient.login(loginRequestBody: loginRequestBody);
   }
 
   @override
-  Future<CheckUsernameResponse> checkUsername(String username) async {
-    return await _apiServiceClient.checkUsername(username: username);
+  Future<CheckUsernameResponse> checkUsername(String userName) async {
+    return await _apiServiceClient.checkUsername(userName: userName);
   }
 
   @override
   Future<AuthResponse> register(RegisterRequestBody registerRequestBody) async {
     return await _apiServiceClient.register(
-      username: registerRequestBody.username,
-      firstname: registerRequestBody.firstname,
-      lastname: registerRequestBody.lastname,
-      phone: registerRequestBody.phone,
-      email: registerRequestBody.email,
-      password: registerRequestBody.password,
-    );
+        registerRequestBody: registerRequestBody);
   }
 }

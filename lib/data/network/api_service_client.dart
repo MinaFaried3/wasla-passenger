@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart' hide Headers;
 import 'package:retrofit/http.dart';
-import 'package:wasla/app/shared/common/constants.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/end_points_manager.dart';
+import 'package:wasla/data/requests/auth/register_request.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
 
@@ -15,29 +15,20 @@ abstract class ApiServiceClient {
   ///login
   @POST(EndPointsManager.login)
   @Headers(HeadersManager.jsonTypeHeader)
-  Future<AuthResponse> login({
-    @Field('userName') required String username,
-    @Field('password') required String password,
-    @Field('role') String role = AppConstants.role,
-  });
+  Future<AuthResponse> login(
+      {@Body() required LoginRequestBody loginRequestBody});
 
   ///register
   @GET(EndPointsManager.checkUsername)
   @Headers(HeadersManager.jsonTypeHeader)
   Future<CheckUsernameResponse> checkUsername({
-    @Query('userName') required String username,
+    @Query('userName') required String userName,
   });
 
   @POST(EndPointsManager.register)
   @Headers(HeadersManager.jsonTypeHeader)
-  Future<AuthResponse> register({
-    @Field('userName') required String username,
-    @Field('firstName') required String firstname,
-    @Field('lastName') required String lastname,
-    @Field('phone') required String phone,
-    @Field('email') required String email,
-    @Field('password') required String password,
-  });
+  Future<AuthResponse> register(
+      {@Body() required RegisterRequestBody registerRequestBody});
 
   ///----------------------------------------------------------------------
 }

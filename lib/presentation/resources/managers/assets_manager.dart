@@ -26,6 +26,7 @@ class AssetsProvider {
 
   //json animation
   static const String loadingIndicator = '$_json/loading_indicator.json';
+  static const String otp = '$_json/otp.json';
 
   ///images
   //logo
