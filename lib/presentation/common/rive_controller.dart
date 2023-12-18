@@ -2,7 +2,7 @@ import 'package:rive/rive.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 
-part 'package:wasla/presentation/resources/managers/animation_enum.dart';
+part 'package:wasla/presentation/common/enums/animation_enum.dart';
 
 class RiveControllerManager {
   late final Map<BearState, RiveAnimationController> _states;

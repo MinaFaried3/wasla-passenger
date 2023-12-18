@@ -77,6 +77,12 @@ class AppStrings {
   static const String toWasla = 'to_wasla';
   static const String start = 'start';
 
+  //account verification
+  static const String verifyYourAccountTitle = 'verifyYourAccountTitle';
+  static const String verifyYourAccountSubtitle = 'verifyYourAccountSubtitle';
+  static const String verifyWithPhone = 'verifyWithPhone';
+  static const String verifyWithEmail = 'verifyWithEmail';
+
   // error handler
   static const String badRequestError = 'bad_request_error';
   static const String noContent = 'no_content';

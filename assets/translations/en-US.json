@@ -73,5 +73,9 @@
   "password_invalid": "password isn't follow the steps above",
   "password_length_invalid": "password length must be at least 8",
   "register": "register",
-  "register_success": "Your account has been created successfully. Welcome to us "
+  "register_success": "Your account has been created successfully. Welcome to us ",
+  "verifyYourAccountTitle": "Confirm Registration",
+  "verifyYourAccountSubtitle": "Please choose between email or phone number\nto verify your account information",
+  "verifyWithPhone": "Confirm with phone",
+  "verifyWithEmail": "Confirm with gmail"
 }

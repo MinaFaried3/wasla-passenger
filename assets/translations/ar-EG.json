@@ -73,5 +73,9 @@
   "password_invalid": "كلمة المرور غير متابعة الخطوات الموجودة بالاعلي",
   "password_length_invalid": "طول كلمة المرور يجب ان يكون ٨ على الاقل",
   "register": "تسجيل",
-  "register_success": "تم انشاء حسابك بنجاح اهلا بك معنا يا "
+  "register_success": "تم انشاء حسابك بنجاح اهلا بك معنا يا ",
+  "verifyYourAccountTitle": "تاكيد تسجيل الحساب",
+  "verifyYourAccountSubtitle": "من فضلك اختار بين البريد الإلكتروني أو رقم الهاتف حتي \nنتمكن من التحقق لبيانات الحساب لديك",
+  "verifyWithPhone": "تاكيد برقم الهاتف",
+  "verifyWithEmail": "تاكيد بالبريد الإلكتروني"
 }

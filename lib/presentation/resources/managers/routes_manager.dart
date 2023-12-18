@@ -1,8 +1,8 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/account_verification/verification_way/view/verification_way_view.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
 import 'package:wasla/presentation/modules/login/view/login_view.dart';
 import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
-import 'package:wasla/presentation/modules/otp/otp_view.dart';
 import 'package:wasla/presentation/modules/register/view/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
 import 'package:wasla/presentation/modules/start/start_view.dart';
@@ -16,7 +16,7 @@ class RoutesStrings {
   static const String registerRoute = '/register';
   static const String forgotPasswordRoute = '/forgot_password';
   static const String resetPasswordRoute = '/reset_password';
-  static const String otpRoute = '/otp';
+  static const String verificationWayRoute = '/verification_way';
   static const String testRoute = '/test';
   static const String startRoute = '/start';
   static const String unDefinedRoute = '/un_defined';
@@ -29,7 +29,7 @@ enum Routes {
   registerRoute(RoutesStrings.registerRoute),
   forgotPasswordRoute(RoutesStrings.forgotPasswordRoute),
   resetPasswordRoute(RoutesStrings.resetPasswordRoute),
-  otpRoute(RoutesStrings.otpRoute),
+  verificationWayRoute(RoutesStrings.verificationWayRoute),
   start(RoutesStrings.startRoute),
   testRoute(RoutesStrings.testRoute),
   unDefined(RoutesStrings.unDefinedRoute);
@@ -67,8 +67,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ForgotPasswordScreen());
       case Routes.resetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
-      case Routes.otpRoute:
-        return MaterialPageRoute(builder: (_) => const OTPScreen());
+      case Routes.verificationWayRoute:
+        return MaterialPageRoute(builder: (_) => const VerificationWayScreen());
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
         return MaterialPageRoute(

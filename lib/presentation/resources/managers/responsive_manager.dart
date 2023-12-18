@@ -11,14 +11,14 @@ class ResponsiveManager {
   late final Orientation orientation;
 
   //default appbar height
-  late final Size appBarHeight;
+  late final double appBarHeight;
 
   ResponsiveManager(BuildContext context, {bool hasAppBar = true}) {
     mediaQueryData = MediaQuery.of(context);
     screenWidth = mediaQueryData.size.width;
     screenHeight = mediaQueryData.size.height;
     orientation = mediaQueryData.orientation;
-    appBarHeight = Size.fromHeight(screenHeight * 0.06639566395663957);
+    appBarHeight = screenHeight * 0.06639566395663957;
     bodyHeight = _calculateBodyHeight(hasAppBar);
   }
 
@@ -28,7 +28,7 @@ class ResponsiveManager {
         mediaQueryData.viewPadding.bottom;
 
     if (hasAppBar) {
-      return baseHeight - appBarHeight.height;
+      return baseHeight - appBarHeight;
     } else {
       return baseHeight;
     }
