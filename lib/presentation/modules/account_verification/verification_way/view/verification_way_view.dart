@@ -1,18 +1,23 @@
 import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/otp_lottie.dart';
-import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/titles.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/verification_buttons.dart';
+import 'package:wasla/presentation/modules/account_verification/widgets/titles.dart';
 
-class VerificationWayScreen extends StatelessWidget {
+class VerificationWayScreen extends StatefulWidget {
   final Connections connections;
 
   const VerificationWayScreen({super.key, required this.connections});
 
   @override
+  State<VerificationWayScreen> createState() => _VerificationWayScreenState();
+}
+
+class _VerificationWayScreenState extends State<VerificationWayScreen> {
+  @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context);
-    PrintManager.print(connections.toString());
+    PrintManager.print(widget.connections.toString());
     return PopScope(
       onPopInvoked: (canPop) => SystemNavigator.pop(),
       child: Scaffold(
@@ -26,12 +31,15 @@ class VerificationWayScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Tittles(),
+              const Titles(
+                title: AppStrings.verifyYourAccountTitle,
+                subTitle: AppStrings.verifyYourAccountSubtitle,
+              ),
               VerticalSpace(AppSize.s20.h),
               const OtpLottie(),
               VerticalSpace(AppSize.s50.h),
               VerificationButtons(
-                connections: connections,
+                connections: widget.connections,
               ),
             ],
           ),

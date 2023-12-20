@@ -1,5 +1,5 @@
 import 'package:wasla/app/services/validator/string_validator.dart';
-import 'package:wasla/app/services/validator/validator_input_formater.dart';
+import 'package:wasla/app/services/validator/validator_input_formatter.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
@@ -81,7 +81,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
               textInputAction: TextInputAction.next,
               textInputType: TextInputType.emailAddress,
               focusNode: emailFocusNode,
-              labelText: AppStrings.email.tr(),
+              labelText: AppStrings.email2.tr(),
               svgPrefixPath: AssetsProvider.emailIcon,
               inputFormatters: [
                 ValidatorInputFormatter(

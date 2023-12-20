@@ -46,9 +46,15 @@ class EmptyConnectionDialogContent extends StatelessWidget {
             onPressed: () {
               switch (connectionType) {
                 case ConnectionType.phone:
-                // TODO: Handle this case.
+                  context.pop();
+                  context.pushNamed(Routes.editPhoneRoute.path,
+                      arguments: AppStrings.inputYourOwnPhone);
+                  break;
                 case ConnectionType.email:
-                // TODO: Handle this case.
+                  context.pop();
+                  context.pushNamed(Routes.editEmailRoute.path,
+                      arguments: AppStrings.inputYourOwnEmail);
+                  break;
               }
             },
             child: Text(

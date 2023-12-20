@@ -1,4 +1,8 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/account_verification/edit_email/view/edit_email_view.dart';
+import 'package:wasla/presentation/modules/account_verification/edit_phone/view/edit_phone_view.dart';
+import 'package:wasla/presentation/modules/account_verification/email_verfy/view/verify_email_view.dart';
+import 'package:wasla/presentation/modules/account_verification/phone_verify/view/verify_phone_view.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/view/verification_way_view.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
 import 'package:wasla/presentation/modules/login/view/login_view.dart';
@@ -10,16 +14,20 @@ import 'package:wasla/presentation/modules/start_now/start_now_screen.dart';
 import 'package:wasla/presentation/modules/test/test_screen.dart';
 
 class RoutesStrings {
-  static const String startNowRoute = '/';
+  static const String startNowRoute = '/start_now';
   static const String onboardingRoute = '/onboarding';
   static const String loginRoute = '/login';
   static const String registerRoute = '/register';
   static const String forgotPasswordRoute = '/forgot_password';
   static const String resetPasswordRoute = '/reset_password';
   static const String verificationWayRoute = '/verification_way';
-  static const String testRoute = '/test';
+  static const String editPhoneRoute = '/edit_phone';
+  static const String editEmailRoute = '/edit_email';
+  static const String verifyPhoneRoute = '/verify_phone';
+  static const String verifyEmailRoute = '/verify_email';
   static const String startRoute = '/start';
   static const String unDefinedRoute = '/un_defined';
+  static const String testRoute = '/test';
 }
 
 enum Routes {
@@ -30,6 +38,10 @@ enum Routes {
   forgotPasswordRoute(RoutesStrings.forgotPasswordRoute),
   resetPasswordRoute(RoutesStrings.resetPasswordRoute),
   verificationWayRoute(RoutesStrings.verificationWayRoute),
+  editPhoneRoute(RoutesStrings.editPhoneRoute),
+  editEmailRoute(RoutesStrings.editEmailRoute),
+  verifyPhoneRoute(RoutesStrings.verifyPhoneRoute),
+  verifyEmailRoute(RoutesStrings.verifyEmailRoute),
   start(RoutesStrings.startRoute),
   testRoute(RoutesStrings.testRoute),
   unDefined(RoutesStrings.unDefinedRoute);
@@ -73,10 +85,32 @@ class RouteGenerator {
         return MaterialPageRoute(
             builder: (_) => const VerificationWayScreen(
                   //todo
-                  // connections: (args as PassengerModel).connections,
+                  //get connections from local
                   connections:
-                      Connections(email: 'ewew@ewew.com', phone: '01207340018'),
+                      Connections(email: 'mina@se.com', phone: '01207340018'),
                 ));
+      case Routes.editPhoneRoute:
+        //todo
+        //get connections from local
+        return MaterialPageRoute(
+            builder: (_) => EditPhoneScreen(
+                  phone: '01207340018',
+                  title: (args as String?) ?? AppStrings.editYourOwnPhone,
+                ));
+      case Routes.editEmailRoute:
+        //todo
+        //get connections from local
+        return MaterialPageRoute(
+            builder: (_) => EditEmailScreen(
+                  email: 'ewew@ewew.com',
+                  title: (args as String?) ?? AppStrings.editYourOwnEmail,
+                ));
+      case Routes.verifyPhoneRoute:
+        return MaterialPageRoute(
+            builder: (_) => const VerifyPhoneScreen(phone: '01207340018'));
+      case Routes.verifyEmailRoute:
+        return MaterialPageRoute(
+            builder: (_) => const VerifyEmailScreen(email: 'ewew@ewew.com'));
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
         return MaterialPageRoute(

@@ -42,7 +42,8 @@
   "password": "password",
   "confirm_password": "confirm password",
   "phone": "phone",
-  "email": "email",
+  "email1": "email",
+  "email2": "email",
   "or": "or",
   "welcome": "Welcome",
   "welcome_with": "Welcome",
@@ -88,5 +89,17 @@
   "yourPhoneIs": "Your phone is",
   "editYourEmail": "edit email",
   "editYourPhone": "edit phone",
-  "verifyNow": "verify now"
+  "verifyNow": "verify now",
+  "editYourOwnEmail": "Edit your email",
+  "yourEmailShouldBe": "your email should be like example@gmail.com",
+  "edit": "edit",
+  "editYourOwnPhone": "Edit your phone number",
+  "yourPhoneShouldBe": "your phone number should contain 14 valid digits",
+  "enterVerificationCode": "Enter verification code",
+  "verificationCodeSentToYourEmail": "Enter 4 digit number that sent to your email",
+  "verificationCodeSentToYourPhone": "Enter 4 digit number that sent to your phone",
+  "verificationCodeNotSent": "Don’t receive code ?",
+  "sendAgain": "Resend again",
+  "inputYourOwnPhone": "Input your phone number",
+  "inputYourOwnEmail": "Input your email"
 }

@@ -42,7 +42,8 @@
   "phone": "رقم الهاتف",
   "password": "كلمة السر",
   "confirm_password": "تاكيد كلمة السر",
-  "email": "الايميل",
+  "email1": "الايميل",
+  "email2": "البريد الإلكتروني",
   "or": "أو",
   "welcome": "مرحباً بك",
   "welcome_with": "مرحباً يا",
@@ -88,5 +89,17 @@
   "yourPhoneIs": "رقم هاتفك هو",
   "editYourEmail": "تعديل البريد الإلكتروني",
   "editYourPhone": "تعديل رقم الهاتف",
-  "verifyNow": "تاكيد الأن"
+  "verifyNow": "تاكيد الأن",
+  "editYourOwnEmail": "تعديل البريد الإلكتروني الخاص بك",
+  "yourEmailShouldBe": "يجب ان يكون البريد الإلكتروني مثل  example@gmail.com ",
+  "edit": "تعديل",
+  "editYourOwnPhone": "تعديل رقم الهاتف الخاص بك",
+  "yourPhoneShouldBe": "يجب ان يحتوي رقم الهاتف الخاص بك علي 11 رقم صحيح ",
+  "enterVerificationCode": "ادخل كود التحقق",
+  "verificationCodeSentToYourEmail": "لقد تم إرسال كود مكون من 4 ارقام علي البريد الخاص بك ",
+  "verificationCodeSentToYourPhone": "لقد تم إرسال كود مكون من 4 ارقام علي البريدالإلكتروني الخاص بك ",
+  "verificationCodeNotSent": "لم يصلني كود تحقق؟",
+  "sendAgain": "إرسال مرة أخري",
+  "inputYourOwnEmail": "ادخل البريد الإلكتروني الخاص بك",
+  "inputYourOwnPhone": "ادخل رقم الهاتف الخاص بك"
 }
