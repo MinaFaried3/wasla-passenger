@@ -27,7 +27,8 @@ class AppStrings {
   static const String username = 'username';
   static const String firstname = 'firstname';
   static const String lastname = 'lastname';
-  static const String email = 'email';
+  static const String email1 = 'email1';
+  static const String email2 = 'email2';
   static const String phone = 'phone';
   static const String password = 'password';
   static const String confirmPassword = 'confirm_password';
@@ -93,6 +94,20 @@ class AppStrings {
   static const String editYourEmail = 'editYourEmail';
   static const String editYourPhone = 'editYourPhone';
   static const String verifyNow = 'verifyNow';
+  static const String editYourOwnEmail = 'editYourOwnEmail';
+  static const String inputYourOwnEmail = 'inputYourOwnEmail';
+  static const String yourEmailShouldBe = 'yourEmailShouldBe';
+  static const String edit = 'edit';
+  static const String editYourOwnPhone = 'editYourOwnPhone';
+  static const String inputYourOwnPhone = 'inputYourOwnPhone';
+  static const String yourPhoneShouldBe = 'yourPhoneShouldBe';
+  static const String enterVerificationCode = 'enterVerificationCode';
+  static const String verificationCodeSentToYourEmail =
+      'verificationCodeSentToYourEmail';
+  static const String verificationCodeSentToYourPhone =
+      'verificationCodeSentToYourPhone';
+  static const String verificationCodeNotSent = 'verificationCodeNotSent';
+  static const String sendAgain = 'sendAgain';
 
   // error handler
   static const String badRequestError = 'bad_request_error';

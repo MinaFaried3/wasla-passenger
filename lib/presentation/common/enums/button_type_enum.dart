@@ -1,7 +1,10 @@
-part of 'package:wasla/presentation/widgets/button.dart';
-
-enum ButtonType {
+enum ButtonContentType {
   text,
   icon,
   iconText,
+}
+
+enum AppButtonStyle {
+  solidBackground,
+  outlined,
 }

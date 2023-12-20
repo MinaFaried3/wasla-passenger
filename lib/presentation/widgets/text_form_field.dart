@@ -78,25 +78,26 @@ class AppTextFormField extends StatelessWidget {
       //todo
       // todo add english family
       style: getRegularStyle(
-          color: ColorsManager.offWhite400, fontSize: AppSize.s28),
+          color: ColorsManager.offWhite400, fontSize: AppSize.s28.sp),
       decoration: InputDecoration(
         isDense: true,
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: AppPadding.p14,
-          horizontal: AppPadding.p8,
+        contentPadding: EdgeInsets.symmetric(
+          vertical: AppPadding.p14.h,
+          horizontal: AppPadding.p8.w,
         ),
         counterStyle: getMediumStyle(
             color: Theme.of(context).colorScheme.primary,
-            fontSize: FontSize.s16),
+            fontSize: FontSize.s16.sp),
         prefixIcon: Padding(
-          padding: const EdgeInsets.all(AppPadding.p6),
+          padding: EdgeInsets.all(AppPadding.p6.sp),
           child: svgPrefixPath != null
               ? SvgPicture.asset(
                   svgPrefixPath!,
-                  width: AppSize.s10,
-                  height: AppSize.s10,
+                  matchTextDirection: true,
+                  width: AppSize.s10.sp,
+                  height: AppSize.s10.sp,
                   colorFilter: ColorFilter.mode(
-                    ColorsManager.offWhite300.withOpacity(AppSize.s0_9),
+                    ColorsManager.offWhite.withOpacity(AppSize.s0_9),
                     BlendMode.srcIn,
                   ),
                 )
@@ -110,44 +111,46 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         labelStyle: getRegularStyle(
             color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
-            fontSize: FontSize.s20),
+            fontSize: FontSize.s20.sp),
         label: labelText != null
             ? Container(
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppPadding.p4,
-                  horizontal: AppPadding.p6,
+                padding: EdgeInsets.symmetric(
+                  vertical: AppPadding.p4.h,
+                  horizontal: AppPadding.p6.w,
                 ),
                 decoration: BoxDecoration(
                   color: ColorsManager.tealPrimary1000,
-                  borderRadius: BorderRadius.circular(AppSize.s20),
+                  borderRadius: BorderRadius.circular(AppSize.s20.r),
                 ),
                 child: FittedBox(child: Text(labelText!)),
               )
             : null,
         hintStyle: getRegularStyle(
             color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
-            fontSize: AppSize.s28),
+            fontSize: AppSize.s18.sp),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSize.s20),
+          borderRadius: BorderRadius.circular(AppSize.s20.r),
           borderSide: BorderSide.none,
         ),
         floatingLabelAlignment: FloatingLabelAlignment.start,
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSize.s20),
+          borderRadius: BorderRadius.circular(AppSize.s20.r),
           borderSide: BorderSide.none,
         ),
         focusedErrorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppSize.s20),
-            borderSide: const BorderSide(
-                color: ColorsManager.darkTealBackground900, width: AppSize.s2)),
+            borderRadius: BorderRadius.circular(AppSize.s20.r),
+            borderSide: BorderSide(
+                color: ColorsManager.darkTealBackground900,
+                width: AppSize.s2.sp)),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSize.s20),
+          borderRadius: BorderRadius.circular(AppSize.s20.r),
           borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(AppSize.s20),
-            borderSide: const BorderSide(
-                color: ColorsManager.darkTealBackground900, width: AppSize.s2)),
+            borderRadius: BorderRadius.circular(AppSize.s20.r),
+            borderSide: BorderSide(
+                color: ColorsManager.darkTealBackground900,
+                width: AppSize.s2.sp)),
       ),
       cursorColor: ColorsManager.tealPrimary,
       focusNode: focusNode,

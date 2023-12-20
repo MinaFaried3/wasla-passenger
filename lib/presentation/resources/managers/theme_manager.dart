@@ -81,6 +81,9 @@ class ThemeManger {
       shadowColor: ColorsManager.grey1,
       elevation: AppSize.s4);
 
+  static const IconThemeData iconThemeData =
+      IconThemeData(color: ColorsManager.offWhite);
+
   static final AppBarTheme appBarTheme = AppBarTheme(
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarColor: ColorsManager.darkTealBackground2,
@@ -89,6 +92,7 @@ class ThemeManger {
         systemNavigationBarColor: ColorsManager.darkTealBackground2,
         systemNavigationBarIconBrightness: Brightness.light,
       ),
+      iconTheme: iconThemeData,
       centerTitle: true,
       color: ColorsManager.darkTealBackground2,
       elevation: AppSize.s0,
@@ -174,7 +178,7 @@ class ThemeManger {
     bodyLarge: getRegularStyle(
         color: ColorsManager.offWhite, fontSize: FontSize.s22.sp),
     bodyMedium: getMediumStyle(
-        color: ColorsManager.offWhite, fontSize: FontSize.s18.sp),
+        color: ColorsManager.offWhite, fontSize: FontSize.s15.sp),
     bodySmall:
         getLightStyle(color: ColorsManager.offWhite, fontSize: FontSize.s14.sp),
 
@@ -255,6 +259,18 @@ ThemeData getApplicationTheme() {
     disabledColor: ColorsManager.grey1,
     splashColor: ColorsManager.beige1,
     scaffoldBackgroundColor: ColorsManager.darkTealBackground2,
+
+    //todo
+    badgeTheme: BadgeThemeData(),
+    datePickerTheme: DatePickerThemeData(),
+    timePickerTheme: TimePickerThemeData(),
+    listTileTheme: ListTileThemeData(),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(),
+    dataTableTheme: DataTableThemeData(),
+    snackBarTheme: SnackBarThemeData(),
+    bannerTheme: MaterialBannerThemeData(),
+    // platform: TargetPlatform.android,
+
     // ripple effect color
     // cardView theme
     cardTheme: ThemeManger.cardTheme,
@@ -272,6 +288,8 @@ ThemeData getApplicationTheme() {
     elevatedButtonTheme: ThemeManger.elevatedButtonThemeData,
 
     bottomSheetTheme: ThemeManger.bottomSheetThemeData,
+
+    iconTheme: ThemeManger.iconThemeData,
 
     textTheme: ThemeManger.textTheme,
     //text selection

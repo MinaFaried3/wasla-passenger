@@ -101,6 +101,7 @@ flutter:
     - assets/images/logo/
     - assets/images/onboarding/
     - assets/images/background/
+    - assets/images/account_verification/
     - assets/images/svg/
     - assets/images/png/
     - assets/animation/rive/

@@ -12,7 +12,7 @@ import 'package:wasla/presentation/modules/register/widgets/contacts_form_fields
 import 'package:wasla/presentation/modules/register/widgets/form_controller_indicator.dart';
 import 'package:wasla/presentation/modules/register/widgets/names_form_fields.dart';
 import 'package:wasla/presentation/modules/register/widgets/password_form_fields.dart';
-import 'package:wasla/presentation/widgets/auth/components/auth_button.dart';
+import 'package:wasla/presentation/widgets/buttons/loading_button.dart';
 
 class SlideRegisterForm extends StatefulWidget {
   final RiveControllerManager riveController;
@@ -100,8 +100,8 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
                       _bearDialogRegisterListener(state, context),
                   builder: (context, state) {
                     return state.maybeWhen(
-                        loading: () => AuthButton.loading(),
-                        orElse: () => AuthButton(
+                        loading: () => LoadingButton.loading(),
+                        orElse: () => LoadingButton(
                               text: AppStrings.register.tr(),
                               onPressed: _onPressedRegister,
                             ));

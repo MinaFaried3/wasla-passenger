@@ -59,6 +59,7 @@ class _AuthFormState extends State<AuthForm> with TickerProviderStateMixin {
               horizontal: responsive.getWidthPercentage(AppSize.s3)),
           child: Center(
             child: SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   ///bear animation

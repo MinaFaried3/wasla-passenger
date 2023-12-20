@@ -14,6 +14,8 @@ class AppConstants {
   static const int phoneNumberLength = 11;
   static const int minPasswordLength = 8;
 
+  static const String emailSample = 'example@gmail.com';
+
   //todo for phone
   static const double screenUtilWidth = 428;
   static const double screenUtilHeight = 926;
@@ -59,6 +61,7 @@ class DurationManager {
   static const Duration bearHandsDownDuration =
       Duration(milliseconds: bearHandsDownMS);
 
+  static const Duration s1 = Duration(seconds: 1);
   static const Duration s2 = Duration(seconds: 2);
   static const Duration s3 = Duration(seconds: 3);
   static const Duration s4 = Duration(seconds: 4);
