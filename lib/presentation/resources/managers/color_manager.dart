@@ -74,7 +74,7 @@ class ColorsManager {
   //Grey back ground
   static const Color grey1 = Color(0xff707070);
   static const Color grey2 = Color(0xff797979);
-  static const Color brownGey = Color(0xff5D564E);
+  static const Color brownGrey = Color(0xff5D564E);
 
   static const Color grey = Color(0xff1F1F1F);
   static const Color grey1000 = Color(0xff484848);

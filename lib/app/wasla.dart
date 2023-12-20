@@ -25,7 +25,9 @@ class _WaslaAppState extends State<WaslaApp> {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(
-          AppConstants.screenUtilWidth, AppConstants.screenUtilHeight),
+        AppConstants.screenUtilWidth,
+        AppConstants.screenUtilHeight,
+      ),
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(

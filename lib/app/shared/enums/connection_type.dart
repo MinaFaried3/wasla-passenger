@@ -1,0 +1,1 @@
+enum ConnectionType { phone, email }

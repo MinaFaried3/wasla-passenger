@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/widgets/space.dart';
 
 part 'package:wasla/presentation/common/enums/button_type_enum.dart';
 
@@ -11,6 +10,8 @@ class AppButton extends StatelessWidget {
   final double? fontSize;
   final ButtonType buttonType;
   final String? svgIconPath;
+  final Color? backgroundColor;
+  final Color? fontColor;
 
   const AppButton({
     super.key,
@@ -21,34 +22,55 @@ class AppButton extends StatelessWidget {
     this.fontSize,
     this.buttonType = ButtonType.text,
     this.svgIconPath,
+    this.backgroundColor,
+    this.fontColor,
   });
+
+  factory AppButton.dark({
+    required String text,
+    required void Function() onPressed,
+    double? width,
+    double? height,
+    double? fontSize,
+    ButtonType buttonType = ButtonType.text,
+    String? svgIconPath,
+  }) =>
+      AppButton(
+        text: text,
+        onPressed: onPressed,
+        fontColor: ColorsManager.offWhite,
+        backgroundColor: ColorsManager.tealPrimary1000,
+        height: height,
+        width: width,
+        svgIconPath: svgIconPath,
+        buttonType: buttonType,
+        fontSize: fontSize,
+      );
 
   @override
   Widget build(BuildContext context) {
-    final ResponsiveManager responsive = ResponsiveManager(context);
-
     return TextButton(
         style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(
-              Theme.of(context).colorScheme.onSurface,
+              backgroundColor ?? Theme.of(context).colorScheme.onSurface,
             ),
             foregroundColor: MaterialStatePropertyAll(
-              Theme.of(context).colorScheme.surfaceVariant,
+              fontColor ?? Theme.of(context).colorScheme.surfaceVariant,
             ),
             fixedSize: MaterialStatePropertyAll(
               Size(
                 width ?? double.infinity,
-                height ?? responsive.getBodyHeightOf(AppSize.s0_075),
+                height ?? AppSize.s60.h,
               ),
             ),
-            minimumSize: const MaterialStatePropertyAll(
-              Size(AppSize.s100, AppSize.s40),
+            minimumSize: MaterialStatePropertyAll(
+              Size(AppSize.s100.w, AppSize.s40.h),
             ),
-            maximumSize: const MaterialStatePropertyAll(
-              Size(AppSize.s400, AppSize.s100),
+            maximumSize: MaterialStatePropertyAll(
+              Size(AppSize.s400.w, AppSize.s100.h),
             ),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(AppSize.s20)))),
+                borderRadius: BorderRadius.circular(AppSize.s20.r)))),
         onPressed: onPressed,
         child: buildButtonChild(context));
   }
@@ -76,8 +98,8 @@ class AppButton extends StatelessWidget {
           svgIconPath!,
           height: AppSize.s37_5.sp,
           matchTextDirection: true,
-          colorFilter: const ColorFilter.mode(
-            ColorsManager.tealPrimary800,
+          colorFilter: ColorFilter.mode(
+            fontColor ?? ColorsManager.tealPrimary800,
             BlendMode.srcIn,
           ),
         )
@@ -94,15 +116,15 @@ class AppButton extends StatelessWidget {
     switch (buttonType) {
       case ButtonType.text:
         return getSemiBoldStyle(
-            color: Theme.of(context).colorScheme.surfaceVariant,
+            color: fontColor ?? Theme.of(context).colorScheme.surfaceVariant,
             fontSize: fontSize ?? FontSize.s24.sp);
       case ButtonType.icon:
         return getSemiBoldStyle(
-            color: Theme.of(context).colorScheme.surfaceVariant,
+            color: fontColor ?? Theme.of(context).colorScheme.surfaceVariant,
             fontSize: fontSize ?? FontSize.s24.sp);
       case ButtonType.iconText:
         return getLightStyle(
-            color: Theme.of(context).colorScheme.surfaceVariant,
+            color: fontColor ?? Theme.of(context).colorScheme.surfaceVariant,
             fontSize: fontSize ?? FontSize.s24.sp);
     }
   }

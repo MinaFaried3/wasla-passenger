@@ -112,6 +112,25 @@ class ThemeManger {
               color: ColorsManager.tealPrimary700,
               fontSize: FontSize.s22.sp))));
 
+  static final OutlinedButtonThemeData outlinedButtonThemeData =
+      OutlinedButtonThemeData(
+    style: ButtonStyle(
+      foregroundColor:
+          const MaterialStatePropertyAll(ColorsManager.tealPrimary700),
+      side: const MaterialStatePropertyAll(
+        BorderSide(color: ColorsManager.tealPrimary1000),
+      ),
+      shape: MaterialStatePropertyAll(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s14),
+        ),
+      ),
+      textStyle: MaterialStatePropertyAll(
+        getSemiBoldStyle(fontSize: FontSize.s18.sp),
+      ),
+    ),
+  );
+
   static const IconButtonThemeData iconButtonThemeData = IconButtonThemeData(
       style: ButtonStyle(
     padding: MaterialStatePropertyAll(EdgeInsets.all(AppPadding.p0)),
@@ -127,22 +146,45 @@ class ThemeManger {
 
   //todo
   static final TextTheme textTheme = TextTheme(
-    displayLarge:
-        getBoldStyle(color: ColorsManager.offWhite, fontSize: FontSize.s35.sp),
-    headlineLarge:
-        getBoldStyle(color: ColorsManager.offWhite, fontSize: FontSize.s28.sp),
-    headlineMedium: getRegularStyle(
+    //headlines
+    headlineLarge: getExtraBoldStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s28.sp),
+    headlineMedium:
+        getBoldStyle(color: ColorsManager.offWhite, fontSize: FontSize.s26.sp),
+    headlineSmall: getSemiBoldStyle(
         color: ColorsManager.offWhite, fontSize: FontSize.s20.sp),
-    titleMedium: getMediumStyle(
-        color: ColorsManager.offWhite, fontSize: FontSize.s16.sp),
-    titleSmall:
-        getRegularStyle(color: ColorsManager.offWhite, fontSize: FontSize.s16),
-    bodyLarge: getRegularStyle(color: ColorsManager.offWhite),
-    bodySmall: getRegularStyle(color: ColorsManager.offWhite),
-    bodyMedium:
-        getRegularStyle(color: ColorsManager.offWhite, fontSize: FontSize.s12),
-    labelSmall:
-        getBoldStyle(color: ColorsManager.lightFuchsia, fontSize: FontSize.s12),
+
+    //titles
+    titleLarge: getSemiBoldStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s28.sp),
+    titleMedium: getRegularStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s26.sp),
+    titleSmall: getMediumStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s20.sp),
+
+    //displays
+    displayLarge: getRegularStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s28.sp),
+    displayMedium: getMediumStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s26.sp),
+    displaySmall:
+        getLightStyle(color: ColorsManager.offWhite, fontSize: FontSize.s20.sp),
+
+    //bodies
+    bodyLarge: getRegularStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s22.sp),
+    bodyMedium: getMediumStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s18.sp),
+    bodySmall:
+        getLightStyle(color: ColorsManager.offWhite, fontSize: FontSize.s14.sp),
+
+    //labels
+    labelLarge: getMediumStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s28.sp),
+    labelMedium:
+        getLightStyle(color: ColorsManager.offWhite, fontSize: FontSize.s26.sp),
+    labelSmall: getExtraLightStyle(
+        color: ColorsManager.offWhite, fontSize: FontSize.s20.sp),
   );
 
   static const BottomSheetThemeData bottomSheetThemeData = BottomSheetThemeData(
@@ -224,7 +266,8 @@ ThemeData getApplicationTheme() {
     iconButtonTheme: ThemeManger.iconButtonThemeData,
     // text button theme
     textButtonTheme: ThemeManger.textButtonThemeData,
-
+    // outlined button theme
+    outlinedButtonTheme: ThemeManger.outlinedButtonThemeData,
     // elevated button theme
     elevatedButtonTheme: ThemeManger.elevatedButtonThemeData,
 

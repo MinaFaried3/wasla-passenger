@@ -75,4 +75,5 @@ class AssetsProvider {
   static const String errorIcon = '$_svg/error_icon.svg';
   static const String arrowLeftIcon = '$_svg/arrow_left_icon.svg';
   static const String arrowRightIcon = '$_svg/arrow_right_icon.svg';
+  static const String exitIcon = '$_svg/exit_icon.svg';
 }
