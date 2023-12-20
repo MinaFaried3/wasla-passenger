@@ -77,5 +77,16 @@
   "verifyYourAccountTitle": "Confirm Registration",
   "verifyYourAccountSubtitle": "Please choose between email or phone number\nto verify your account information",
   "verifyWithPhone": "Confirm with phone",
-  "verifyWithEmail": "Confirm with gmail"
+  "verifyWithEmail": "Confirm with gmail",
+  "unEnteredEmail": "You did not enter any email",
+  "unEnteredPhone": "You did not enter any phone number",
+  "pleaseEnterEmail": "Please enter your email first",
+  "pleaseEnterPhone": "Please enter the phone number first",
+  "enterEmail": "enter your email",
+  "enterPhone": "enter your phone",
+  "yourEmailIs": "Your email is",
+  "yourPhoneIs": "Your phone is",
+  "editYourEmail": "edit email",
+  "editYourPhone": "edit phone",
+  "verifyNow": "verify now"
 }

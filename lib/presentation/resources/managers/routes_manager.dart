@@ -46,6 +46,8 @@ class RouteGenerator {
       orElse: () => Routes.unDefined,
     );
 
+    final args = settings.arguments;
+
     switch (currentRoute) {
       case Routes.startNowRoute:
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
@@ -68,7 +70,13 @@ class RouteGenerator {
       case Routes.resetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
       case Routes.verificationWayRoute:
-        return MaterialPageRoute(builder: (_) => const VerificationWayScreen());
+        return MaterialPageRoute(
+            builder: (_) => const VerificationWayScreen(
+                  //todo
+                  // connections: (args as PassengerModel).connections,
+                  connections:
+                      Connections(email: 'ewew@ewew.com', phone: '01207340018'),
+                ));
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
         return MaterialPageRoute(
@@ -76,10 +84,9 @@ class RouteGenerator {
                 providers: BlocProvidersManager.onboardingProviders,
                 child: const OnboardingScreen()));
       case Routes.start:
-        final passengerName = settings.arguments as String;
         return MaterialPageRoute(
             builder: (_) => StartScreen(
-                  passengerName: passengerName,
+                  passengerName: args as String,
                 ));
       case Routes.testRoute:
         return MaterialPageRoute(builder: (_) => const TestScreen());

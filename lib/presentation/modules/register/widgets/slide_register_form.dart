@@ -125,8 +125,8 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
       widget.riveController.addState(BearState.success);
 
       Timer(DurationManager.s2, () {
-        context.pushNamedAndRemoveUntil(Routes.start.path,
-            arguments: passengerModel.firstName);
+        context.pushNamedAndRemoveUntil(Routes.verificationWayRoute.path,
+            arguments: passengerModel);
       });
     });
   }

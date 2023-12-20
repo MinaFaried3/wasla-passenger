@@ -38,4 +38,5 @@ export "package:wasla/presentation/resources/managers/values_manager.dart";
 export "package:wasla/presentation/widgets/button.dart";
 export "package:wasla/presentation/widgets/conditional_builder.dart";
 export "package:wasla/presentation/widgets/loading_indicator.dart";
+export 'package:wasla/presentation/widgets/space.dart';
 export "package:wasla/presentation/widgets/text_form_field.dart";

@@ -77,5 +77,16 @@
   "verifyYourAccountTitle": "تاكيد تسجيل الحساب",
   "verifyYourAccountSubtitle": "من فضلك اختار بين البريد الإلكتروني أو رقم الهاتف حتي \nنتمكن من التحقق لبيانات الحساب لديك",
   "verifyWithPhone": "تاكيد برقم الهاتف",
-  "verifyWithEmail": "تاكيد بالبريد الإلكتروني"
+  "verifyWithEmail": "تاكيد بالبريد الإلكتروني",
+  "unEnteredEmail": "انت لم تدخل اي بريد الإلكتروني",
+  "unEnteredPhone": "انت لم تدخل اي رقم الهاتف",
+  "pleaseEnterEmail": "من فضلك يجب إدخال البريد الإلكتروني اولاً",
+  "pleaseEnterPhone": "من فضلك يجب إدخال رقم الهاتف اولاً",
+  "enterEmail": "ادخل البريد الإلكتروني",
+  "enterPhone": "ادخل رقم الهاتف",
+  "yourEmailIs": "بريدك الإلكتروني هو",
+  "yourPhoneIs": "رقم هاتفك هو",
+  "editYourEmail": "تعديل البريد الإلكتروني",
+  "editYourPhone": "تعديل رقم الهاتف",
+  "verifyNow": "تاكيد الأن"
 }

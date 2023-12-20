@@ -19,7 +19,10 @@ class Tittles extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: AppPadding.p8.h),
           child: Text(
             AppStrings.verifyYourAccountSubtitle.tr(),
-            style: Theme.of(context).textTheme.titleMedium,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium
+                ?.copyWith(fontSize: FontSize.s16.sp),
           ),
         ),
       ],

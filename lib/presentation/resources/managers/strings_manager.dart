@@ -82,6 +82,17 @@ class AppStrings {
   static const String verifyYourAccountSubtitle = 'verifyYourAccountSubtitle';
   static const String verifyWithPhone = 'verifyWithPhone';
   static const String verifyWithEmail = 'verifyWithEmail';
+  static const String unEnteredEmail = 'unEnteredEmail';
+  static const String unEnteredPhone = 'unEnteredPhone';
+  static const String pleaseEnterEmail = 'pleaseEnterEmail';
+  static const String pleaseEnterPhone = 'pleaseEnterPhone';
+  static const String enterEmail = 'enterEmail';
+  static const String enterPhone = 'enterPhone';
+  static const String yourEmailIs = 'yourEmailIs';
+  static const String yourPhoneIs = 'yourPhoneIs';
+  static const String editYourEmail = 'editYourEmail';
+  static const String editYourPhone = 'editYourPhone';
+  static const String verifyNow = 'verifyNow';
 
   // error handler
   static const String badRequestError = 'bad_request_error';
