@@ -101,5 +101,8 @@
   "verificationCodeNotSent": "لم يصلني كود تحقق؟",
   "sendAgain": "إرسال مرة أخري",
   "inputYourOwnEmail": "ادخل البريد الإلكتروني الخاص بك",
-  "inputYourOwnPhone": "ادخل رقم الهاتف الخاص بك"
+  "inputYourOwnPhone": "ادخل رقم الهاتف الخاص بك",
+  "codeHasBeenSent": "لقد تم إرسال كود مكون من 4 ارقام علي رقم الهاتف/ البريد الإلكتروني الخاص بك ",
+  "doNotReceiveCode": "لم يصلني كود تحقق؟",
+  "resendAgain": "إرسال مرة أخري "
 }
