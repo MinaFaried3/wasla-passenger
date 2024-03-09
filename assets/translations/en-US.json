@@ -101,5 +101,8 @@
   "verificationCodeNotSent": "Don’t receive code ?",
   "sendAgain": "Resend again",
   "inputYourOwnPhone": "Input your phone number",
-  "inputYourOwnEmail": "Input your email"
+  "inputYourOwnEmail": "Input your email",
+  "codeHasBeenSent": "A 4-digit code has been sent to your phone number/email address Your email",
+  "doNotReceiveCode": "Don’t receive code ?",
+  "resendAgain": "Resend again"
 }

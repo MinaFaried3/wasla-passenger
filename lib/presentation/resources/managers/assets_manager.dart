@@ -12,8 +12,7 @@ class AssetsProvider {
   //images_dirs
   static const String _logo = '$_imagePath/logo';
   static const String _onboarding = '$_imagePath/onboarding';
-  static const String _account_verification =
-      '$_imagePath/account_verification';
+  static const String _accountVerification = '$_imagePath/account_verification';
   static const String _svg = '$_imagePath/svg';
   static const String _background = '$_imagePath/background';
   static const String _png = '$_imagePath/png';
@@ -53,8 +52,10 @@ class AssetsProvider {
   static const String onboarding7 = '$_onboarding/seat_onboarding.png';
 
   //verification account(otp)
-  static const String editEmail = '$_account_verification/edit_email.svg';
-  static const String editPhone = '$_account_verification/edit_phone.svg';
+  static const String editEmail = '$_accountVerification/edit_email.svg';
+  static const String editPhone = '$_accountVerification/edit_phone.svg';
+  static const String enterVerificationCode =
+      '$_accountVerification/enter_verification_code.svg';
 
   ///icons
   //svg icons

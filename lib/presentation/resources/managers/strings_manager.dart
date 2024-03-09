@@ -108,6 +108,9 @@ class AppStrings {
       'verificationCodeSentToYourPhone';
   static const String verificationCodeNotSent = 'verificationCodeNotSent';
   static const String sendAgain = 'sendAgain';
+  static const String codeHasBeenSent = 'codeHasBeenSent';
+  static const String doNotReceiveCode = 'doNotReceiveCode';
+  static const String resendAgain = 'resendAgain';
 
   // error handler
   static const String badRequestError = 'bad_request_error';

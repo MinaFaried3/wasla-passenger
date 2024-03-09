@@ -110,7 +110,7 @@ class RouteGenerator {
             builder: (_) => const VerifyPhoneScreen(phone: '01207340018'));
       case Routes.verifyEmailRoute:
         return MaterialPageRoute(
-            builder: (_) => const VerifyEmailScreen(email: 'ewew@ewew.com'));
+            builder: (_) => const VerifyEmailScreen(email: 'mina@se.com'));
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
         return MaterialPageRoute(

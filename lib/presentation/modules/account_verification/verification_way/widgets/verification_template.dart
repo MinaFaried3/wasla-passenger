@@ -29,7 +29,7 @@ class _VerificationTemplateState extends State<VerificationTemplate> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppPadding.p20.w),
+          padding: const EdgeInsets.symmetric(horizontal: AppPadding.p20),
           child: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(

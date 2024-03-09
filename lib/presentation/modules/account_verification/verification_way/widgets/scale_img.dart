@@ -38,11 +38,11 @@ class _ScaleImageState extends State<ScaleImage>
     return ScaleTransition(
       scale: scaleAnimation,
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: AppPadding.p50.h),
+        padding: EdgeInsets.symmetric(vertical: 35.h),
         child: Center(
           child: SvgPicture.asset(
             widget.path,
-            width: AppSize.s275.w,
+            width: AppSize.s300.w,
           ),
         ),
       ),
