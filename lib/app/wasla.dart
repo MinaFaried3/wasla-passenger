@@ -2,13 +2,18 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
 
 class WaslaApp extends StatefulWidget {
+  final Routes route;
+
   //named constructor
-  const WaslaApp._internal();
+  const WaslaApp._internal({required this.route});
 
   //singleton instance
-  static const WaslaApp _instance = WaslaApp._internal();
+  static WaslaApp? _instance;
 
-  factory WaslaApp() => _instance;
+  factory WaslaApp({required Routes route}) {
+    _instance ??= WaslaApp._internal(route: route);
+    return _instance!;
+  }
 
   @override
   State<WaslaApp> createState() => _WaslaAppState();
@@ -40,7 +45,8 @@ class _WaslaAppState extends State<WaslaApp> {
         themeMode: ThemeMode.dark,
         home: child,
         onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: Routes.verifyEmailRoute.path,
+        initialRoute: widget.route.path,
+        // initialRoute: Routes.verificationWayRoute.path,
       ),
     );
   }

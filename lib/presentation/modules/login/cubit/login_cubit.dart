@@ -55,6 +55,8 @@ final class LoginCubit extends Cubit<LoginState> {
       },
       (loginModel) {
         emit(LoginState.success(loginModel: loginModel));
+        //save tokens data to shared pref
+        getIt<AppPreferences>().saveTokensData(tokens: loginModel.tokens);
       },
     );
   }

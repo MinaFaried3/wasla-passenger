@@ -6,18 +6,16 @@ class SkipButton extends StatelessWidget {
   const SkipButton({
     super.key,
     required this.textColor,
+    required this.onFinish,
   });
 
-  void _onFinish(BuildContext context) {
-    context.pushNamedAndRemoveUntil(
-        predicate: (routes) => false, RoutesStrings.loginRoute);
-  }
+  final Function(BuildContext) onFinish;
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        _onFinish(context);
+        onFinish(context);
       },
       child: Text(
         AppStrings.skip.tr(),

@@ -3,10 +3,12 @@ import 'package:wasla/presentation/modules/onboarding/widgets/skip_button.dart';
 
 class PageContent extends StatelessWidget {
   final OnboardingModel content;
+  final Function(BuildContext) onFinish;
 
   const PageContent({
     super.key,
     required this.content,
+    required this.onFinish,
   });
 
   @override
@@ -18,7 +20,10 @@ class PageContent extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SkipButton(textColor: content.nextColor),
+            SkipButton(
+              textColor: content.nextColor,
+              onFinish: onFinish,
+            ),
             responsive.heightSpace(3),
             Text(
               content.title,
