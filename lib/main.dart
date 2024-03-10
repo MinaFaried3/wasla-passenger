@@ -19,6 +19,10 @@ void main() async {
 
   Bloc.observer = getIt<MyBlocObserver>();
 
+  final Routes openingRoute = await getIt<AppPreferences>().getOpeningRoute();
+  PrintManager.print("the opening route is $openingRoute",
+      color: ConsoleColor.blueBg);
+
   runApp(
     EasyLocalization(
       supportedLocales: const [
@@ -27,7 +31,9 @@ void main() async {
       ],
       path: LocalizationManager.assetsPath,
       child: Phoenix(
-        child: WaslaApp(),
+        child: WaslaApp(
+          route: openingRoute,
+        ),
       ),
     ),
   );

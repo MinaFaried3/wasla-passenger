@@ -44,41 +44,46 @@ class _StartNowScreenState extends State<StartNowScreen>
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context, hasAppBar: false);
 
-    return Container(
-      decoration: const BoxDecoration(
-        gradient: LinearGradient(
-          colors: GradientManager.startNowGradient,
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          stops: GradientManager.startNowStops,
+    return PopScope(
+      onPopInvoked: (pop) {
+        // SystemNavigator.pop();
+      },
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: GradientManager.startNowGradient,
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            stops: GradientManager.startNowStops,
+          ),
+          image: DecorationImage(
+            image: AssetImage(AssetsProvider.startNowBackground),
+            fit: BoxFit.contain,
+          ),
         ),
-        image: DecorationImage(
-          image: AssetImage(AssetsProvider.startNowBackground),
-          fit: BoxFit.contain,
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          alignment: Alignment.bottomCenter,
-          children: [
-            const BottomStackElements(),
-            SlideTransition(
-              position: _offsetAnimation,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  bottom: responsive.screenHeight * AppSize.s0_2,
-                ),
-                child: Center(
-                  child: Image.asset(
-                    AssetsProvider.logo,
-                    width: responsive.screenWidth * AppSize.s0_5,
-                    height: responsive.screenHeight * AppSize.s0_5,
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              const BottomStackElements(),
+              SlideTransition(
+                position: _offsetAnimation,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    bottom: responsive.screenHeight * AppSize.s0_2,
+                  ),
+                  child: Center(
+                    child: Image.asset(
+                      AssetsProvider.logo,
+                      width: responsive.screenWidth * AppSize.s0_5,
+                      height: responsive.screenHeight * AppSize.s0_5,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

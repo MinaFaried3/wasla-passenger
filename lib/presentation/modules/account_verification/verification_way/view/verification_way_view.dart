@@ -1,4 +1,5 @@
 import 'package:flutter/services.dart';
+import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/otp_lottie.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/verification_buttons.dart';
@@ -53,7 +54,9 @@ class _VerificationWayScreenState extends State<VerificationWayScreen> {
       padding: EdgeInsetsDirectional.only(end: AppPadding.p18.sp),
       child: TextButton(
         onPressed: () {
-          //todo
+          getIt<AppPreferences>().setData<bool>(
+              key: PrefKeys.isDoneAccountVerification, data: true);
+          context.pushNamed(Routes.start.path);
         },
         child: Text(
           AppStrings.skip.tr(),

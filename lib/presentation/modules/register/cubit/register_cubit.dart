@@ -1,3 +1,4 @@
+import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/services/validator/string_validator.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/common/constants.dart';
@@ -33,8 +34,14 @@ class RegisterCubit extends Cubit<RegisterState> {
 
     result.fold(
       (failure) => emit(RegisterState.error(failure: failure)),
-      (passengerModel) =>
-          emit(RegisterState.success(passengerModel: passengerModel)),
+      (passengerModel) {
+        emit(RegisterState.success(passengerModel: passengerModel));
+
+        //save tokens data to shared pref
+        getIt<AppPreferences>()
+          ..saveTokensData(tokens: passengerModel.tokens)
+          ..setData<bool>(key: PrefKeys.isRegistered, data: true);
+      },
     );
   }
 
