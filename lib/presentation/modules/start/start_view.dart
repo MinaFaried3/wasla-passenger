@@ -1,34 +1,35 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/start/widgets/custom_slider_button.dart';
-import 'package:wasla/presentation/modules/start/widgets/welcome_img.dart';
+import 'package:wasla/presentation/modules/start/widgets/start_swipe_stack_body.dart';
 
-class StartScreen extends StatelessWidget {
-  final String passengerName;
+class StartScreen extends StatefulWidget {
+  const StartScreen({super.key});
 
-  const StartScreen({super.key, required this.passengerName});
+  @override
+  State<StartScreen> createState() => _StartScreenState();
+}
+
+class _StartScreenState extends State<StartScreen> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<LocalCubit>().getPassengerModelFromLocalDataBase();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //todo overlay
-      body: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          //image
-          WelcomeImg(
-            passengerName: passengerName,
-          ),
-
-          Padding(
-            padding: EdgeInsets.all(AppPadding.p28.sp),
-            child: CustomSliderButton(
-              height: AppSize.s80.h,
-              width: AppSize.s300.w,
-            ),
-          )
-
-          //slider
-        ],
+      body: BlocBuilder<LocalCubit, LocalState>(
+        builder: (context, state) {
+          return state.maybeWhen(getLocalPassengerLoading: () {
+            return const LoadingIndicator();
+          }, getLocalPassengerSuccess: (passengerModel) {
+            return StartSwipeStackBody(passengerName: passengerModel.firstName);
+          }, orElse: () {
+            return const StartSwipeStackBody(
+                passengerName: AppConstants.emptyString);
+          });
+        },
       ),
     );
   }

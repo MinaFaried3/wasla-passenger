@@ -1,7 +1,6 @@
 import 'package:wasla/app/services/validator/string_validator.dart';
 import 'package:wasla/app/services/validator/validator_input_formatter.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/slide_button_widget.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/verification_template.dart';
 

@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/modules/start_now/widgets/bottom_stack_element.dart';
 
 class StartNowScreen extends StatefulWidget {

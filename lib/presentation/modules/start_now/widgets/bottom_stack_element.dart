@@ -1,6 +1,5 @@
 import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/modules/start_now/widgets/bottom_curved_widget.dart';
 
 class BottomStackElements extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class CustomSliderButton extends StatefulWidget {
   final double width;

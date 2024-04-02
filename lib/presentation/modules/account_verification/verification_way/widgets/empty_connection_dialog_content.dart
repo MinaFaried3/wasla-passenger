@@ -3,7 +3,6 @@ import 'package:wasla/app/shared/enums/connection_type.dart';
 
 class EmptyConnectionDialogContent extends StatelessWidget {
   const EmptyConnectionDialogContent._({
-    super.key,
     required this.connectionType,
     required this.title,
     required this.caption,

@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 final class PassengerModel extends Equatable {
   final int points;
@@ -35,6 +34,30 @@ final class PassengerModel extends Equatable {
       tokens: Tokens.empty(),
       role: AppConstants.emptyString);
 
+  PassengerModel copyWith({
+    int? points,
+    String? firstName,
+    String? lastName,
+    String? profile,
+    String? userName,
+    bool? isAuthenticated,
+    Connections? connections,
+    Tokens? tokens,
+    String? role,
+  }) {
+    return PassengerModel(
+      points: points ?? this.points,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      profile: profile ?? this.profile,
+      userName: userName ?? this.userName,
+      isAuthenticated: isAuthenticated ?? this.isAuthenticated,
+      connections: connections ?? this.connections,
+      tokens: tokens ?? this.tokens,
+      role: role ?? this.role,
+    );
+  }
+
   @override
   List<Object> get props => [
         points,
@@ -65,6 +88,16 @@ final class Connections extends Equatable {
         phone: AppConstants.emptyString,
       );
 
+  Connections copyWith({
+    String? email,
+    String? phone,
+  }) {
+    return Connections(
+      email: email ?? this.email,
+      phone: phone ?? this.phone,
+    );
+  }
+
   @override
   List<Object> get props => [email, phone];
 
@@ -94,6 +127,20 @@ final class Tokens extends Equatable {
         refreshToken: AppConstants.emptyString,
         refTokenExpiryDate: AppConstants.emptyString,
       );
+
+  Tokens copyWith({
+    String? token,
+    String? tokenExpiryDate,
+    String? refreshToken,
+    String? refTokenExpiryDate,
+  }) {
+    return Tokens(
+      token: token ?? this.token,
+      tokenExpiryDate: tokenExpiryDate ?? this.tokenExpiryDate,
+      refreshToken: refreshToken ?? this.refreshToken,
+      refTokenExpiryDate: refTokenExpiryDate ?? this.refTokenExpiryDate,
+    );
+  }
 
   @override
   List<Object> get props => [

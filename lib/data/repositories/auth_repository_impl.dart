@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/data/data_source/local_data_source.dart';
 import 'package:wasla/data/mappers/auth/login_mapper.dart';
 import 'package:wasla/data/mappers/auth/register_mappers.dart';
 import 'package:wasla/data/network/error/data_source_status.dart';
@@ -10,12 +11,15 @@ import 'package:wasla/domain/entities/auth/check_username_model.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final RemoteDataSource _remoteDataSource;
+  final LocalDataSource _localDataSource;
   final NetworkChecker _networkChecker;
 
   const AuthRepositoryImpl(
       {required RemoteDataSource remoteDataSource,
+      required LocalDataSource localDataSource,
       required NetworkChecker networkChecker})
       : _remoteDataSource = remoteDataSource,
+        _localDataSource = localDataSource,
         _networkChecker = networkChecker;
 
   @override
@@ -37,6 +41,7 @@ class AuthRepositoryImpl extends AuthRepository {
           await remoteDataSource.login(loginRequestBody);
 
       if (response.success == true) {
+        _localDataSource.setPassengerModel(response.toDomain());
         return Right(response.toDomain());
       } else {
         return Left(
@@ -94,6 +99,7 @@ class AuthRepositoryImpl extends AuthRepository {
           await remoteDataSource.register(registerRequestBody);
 
       if (response.success == true) {
+        _localDataSource.setPassengerModel(response.toDomain());
         return Right(response.toDomain());
       } else {
         return Left(

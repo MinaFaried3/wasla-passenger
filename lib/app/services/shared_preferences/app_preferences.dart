@@ -1,6 +1,5 @@
 import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class AppPreferences extends Equatable {
   final SharedPreferences _sharedPreferences;

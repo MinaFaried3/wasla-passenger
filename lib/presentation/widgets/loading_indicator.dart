@@ -1,7 +1,6 @@
 import 'package:lottie/lottie.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class LoadingIndicator extends StatelessWidget {
   const LoadingIndicator({

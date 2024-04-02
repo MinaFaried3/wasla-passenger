@@ -1,7 +1,6 @@
 import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/services/validator/string_validator.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
 import 'package:wasla/domain/usecases/auth_usecases/register_usecase.dart';
 
