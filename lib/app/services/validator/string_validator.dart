@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 part 'package:wasla/app/services/validator/regex_validator_types.dart';
 

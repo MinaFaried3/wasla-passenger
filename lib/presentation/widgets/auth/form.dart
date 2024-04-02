@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/widgets/auth/components/auth_bear.dart';
 import 'package:wasla/presentation/widgets/auth/components/auth_providers.dart';

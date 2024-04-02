@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/data/network/end_points_manager.dart';
 
 class DioFactory extends Equatable {

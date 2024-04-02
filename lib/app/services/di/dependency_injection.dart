@@ -3,6 +3,7 @@ import 'package:get_it/get_it.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:wasla/app/shared/common/bloc_observer.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/data/data_source/local_data_source.dart';
 import 'package:wasla/data/network/api_service_client.dart';
 import 'package:wasla/data/network/dio_factory.dart';
 import 'package:wasla/data/repositories/auth_repository_impl.dart';
@@ -59,7 +60,14 @@ final class DIModulesManger {
     getIt.registerLazySingleton<RemoteDataSource>(() =>
         RemoteDataSourceImpl(apiServiceClient: getIt<ApiServiceClient>()));
 
+    //local data source
+    getIt.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
+
     //repository
+
+    //cubit
+    getIt.registerFactory<LocalCubit>(
+        () => LocalCubit(localDataSource: getIt<LocalDataSource>()));
   }
 
   static void _registerFactory<T extends Object>(T object) {
@@ -135,6 +143,7 @@ final class DIModulesManger {
   static void _prepareAuthModule() {
     _registerFactory<AuthRepository>(AuthRepositoryImpl(
       remoteDataSource: getIt<RemoteDataSource>(),
+      localDataSource: getIt<LocalDataSource>(),
       networkChecker: getIt<NetworkChecker>(),
     ));
 

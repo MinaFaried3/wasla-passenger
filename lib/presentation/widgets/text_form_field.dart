@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField({

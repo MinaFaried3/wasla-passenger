@@ -1,7 +1,6 @@
 import 'package:rive/rive.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/widgets/bear_clip_bath.dart';
 

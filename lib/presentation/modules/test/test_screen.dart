@@ -25,7 +25,7 @@ class _TestScreenState extends State<TestScreen> {
       body: ListView.builder(
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.all(10),
+            margin: const EdgeInsets.all(10),
             color: Colors.blue,
             width: 100,
             height: 200,
@@ -39,12 +39,12 @@ class _TestScreenState extends State<TestScreen> {
           elevation: 10,
           borderRadius: BorderRadius.circular(20),
           color: Colors.black,
-          child: Container(
+          child: SizedBox(
             height: 70,
             width: double.infinity,
             child: ListView.builder(
               itemCount: data.length,
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               itemBuilder: (ctx, i) => Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 15),
                 child: GestureDetector(
@@ -54,11 +54,11 @@ class _TestScreenState extends State<TestScreen> {
                     });
                   },
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 250),
+                    duration: const Duration(milliseconds: 250),
                     width: 35,
                     decoration: BoxDecoration(
                       border: i == selectedIndex
-                          ? Border(
+                          ? const Border(
                               top: BorderSide(width: 3.0, color: Colors.white))
                           : null,
                       gradient: i == selectedIndex

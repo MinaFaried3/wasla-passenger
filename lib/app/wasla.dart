@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class WaslaApp extends StatefulWidget {
   final Routes route;
@@ -28,25 +27,28 @@ class _WaslaAppState extends State<WaslaApp> {
 
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(
-        AppConstants.screenUtilWidth,
-        AppConstants.screenUtilHeight,
-      ),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context, child) => MaterialApp(
-        localizationsDelegates: context.localizationDelegates,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        debugShowCheckedModeBanner: false,
-        title: AppStrings.appTitle,
-        darkTheme: getApplicationTheme(),
-        themeMode: ThemeMode.dark,
-        home: child,
-        onGenerateRoute: RouteGenerator.getRoute,
-        initialRoute: widget.route.path,
-        // initialRoute: Routes.verificationWayRoute.path,
+    return BlocProvider(
+      create: (context) => getIt<LocalCubit>(),
+      child: ScreenUtilInit(
+        designSize: const Size(
+          AppConstants.screenUtilWidth,
+          AppConstants.screenUtilHeight,
+        ),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => MaterialApp(
+          localizationsDelegates: context.localizationDelegates,
+          supportedLocales: context.supportedLocales,
+          locale: context.locale,
+          debugShowCheckedModeBanner: false,
+          title: AppStrings.appTitle,
+          darkTheme: getApplicationTheme(),
+          themeMode: ThemeMode.dark,
+          home: child,
+          onGenerateRoute: RouteGenerator.getRoute,
+          initialRoute: widget.route.path,
+          // initialRoute: Routes.verificationWayRoute.path,
+        ),
       ),
     );
   }

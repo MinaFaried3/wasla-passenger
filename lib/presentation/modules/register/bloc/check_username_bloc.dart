@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:stream_transform/stream_transform.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart';
 
 part 'check_username_bloc.freezed.dart';

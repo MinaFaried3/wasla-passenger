@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 class Titles extends StatefulWidget {
   const Titles({super.key, required this.title, required this.subTitle});

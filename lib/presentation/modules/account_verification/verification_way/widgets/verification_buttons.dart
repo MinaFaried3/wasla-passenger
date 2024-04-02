@@ -1,5 +1,4 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 import 'package:wasla/presentation/common/enums/button_type_enum.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/connection_dialog_content.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/empty_connection_dialog_content.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/app/shared/common/constants.dart';
 
 /*
 * todo
@@ -261,14 +260,14 @@ ThemeData getApplicationTheme() {
     scaffoldBackgroundColor: ColorsManager.darkTealBackground2,
 
     //todo
-    badgeTheme: BadgeThemeData(),
-    datePickerTheme: DatePickerThemeData(),
-    timePickerTheme: TimePickerThemeData(),
-    listTileTheme: ListTileThemeData(),
-    floatingActionButtonTheme: FloatingActionButtonThemeData(),
-    dataTableTheme: DataTableThemeData(),
-    snackBarTheme: SnackBarThemeData(),
-    bannerTheme: MaterialBannerThemeData(),
+    badgeTheme: const BadgeThemeData(),
+    datePickerTheme: const DatePickerThemeData(),
+    timePickerTheme: const TimePickerThemeData(),
+    listTileTheme: const ListTileThemeData(),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(),
+    dataTableTheme: const DataTableThemeData(),
+    snackBarTheme: const SnackBarThemeData(),
+    bannerTheme: const MaterialBannerThemeData(),
     // platform: TargetPlatform.android,
 
     // ripple effect color
