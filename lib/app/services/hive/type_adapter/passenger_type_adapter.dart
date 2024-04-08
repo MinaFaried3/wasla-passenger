@@ -30,6 +30,8 @@ class ConnectionsTypeAdapter extends TypeAdapter<Connections> {
     return Connections(
       email: reader.readString(),
       phone: reader.readString(),
+      emailConfirmed: reader.readBool(),
+      phoneConfirmed: reader.readBool(),
     );
   }
 
@@ -37,6 +39,8 @@ class ConnectionsTypeAdapter extends TypeAdapter<Connections> {
   void write(BinaryWriter writer, Connections obj) {
     writer.writeString(obj.email);
     writer.writeString(obj.phone);
+    writer.writeBool(obj.emailConfirmed);
+    writer.writeBool(obj.phoneConfirmed);
   }
 
   @override

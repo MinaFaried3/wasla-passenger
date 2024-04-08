@@ -11,6 +11,10 @@ class LocalState with _$LocalState {
           {required PassengerModel passengerModel}) =
       _GetLocalPassengerSuccessState;
 
+  const factory LocalState.getLocalPassengerConnectionsSuccess(
+          {required Connections passengerConnections}) =
+      _GetLocalPassengerConnectionsSuccessState;
+
   const factory LocalState.getLocalPassengerFailure(
       {required String failureMessage}) = _GetLocalPassengerFailureState;
 }

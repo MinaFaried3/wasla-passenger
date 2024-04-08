@@ -1,6 +1,6 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/account_verification/edit_email/view/edit_email_view.dart';
-import 'package:wasla/presentation/modules/account_verification/edit_phone/view/edit_phone_view.dart';
+import 'package:wasla/presentation/modules/account_verification/edit_contacts/view/edit_email_view.dart';
+import 'package:wasla/presentation/modules/account_verification/edit_contacts/view/edit_phone_view.dart';
 import 'package:wasla/presentation/modules/account_verification/email_verfy/view/verify_email_view.dart';
 import 'package:wasla/presentation/modules/account_verification/phone_verify/view/verify_phone_view.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/view/verification_way_view.dart';
@@ -82,29 +82,21 @@ class RouteGenerator {
       case Routes.resetPasswordRoute:
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
       case Routes.verificationWayRoute:
+        DIModulesManger.prepareVerificationModule();
         return MaterialPageRoute(
-            builder: (_) => const VerificationWayScreen(
-                  //todo
-                  //get connections from local
-                  connections:
-                      Connections(email: 'mina@se.com', phone: '01207340018'),
-                ));
+            builder: (_) => MultiBlocProvider(
+                providers: BlocProvidersManager.verificationProviders,
+                child: const VerificationWayScreen()));
       case Routes.editPhoneRoute:
-        //todo
-        //get connections from local
         return MaterialPageRoute(
-            builder: (_) => EditPhoneScreen(
-                  phone: '01207340018',
-                  title: (args as String?) ?? AppStrings.editYourOwnPhone,
-                ));
+            builder: (_) => MultiBlocProvider(
+                providers: BlocProvidersManager.verificationProviders,
+                child: const EditPhoneScreen()));
       case Routes.editEmailRoute:
-        //todo
-        //get connections from local
         return MaterialPageRoute(
-            builder: (_) => EditEmailScreen(
-                  email: 'ewew@ewew.com',
-                  title: (args as String?) ?? AppStrings.editYourOwnEmail,
-                ));
+            builder: (_) => MultiBlocProvider(
+                providers: BlocProvidersManager.verificationProviders,
+                child: const EditEmailScreen()));
       case Routes.verifyPhoneRoute:
         return MaterialPageRoute(
             builder: (_) => const VerifyPhoneScreen(phone: '01207340018'));

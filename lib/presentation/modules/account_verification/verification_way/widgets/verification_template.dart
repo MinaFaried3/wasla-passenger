@@ -4,7 +4,6 @@ import 'package:wasla/presentation/modules/account_verification/widgets/titles.d
 import 'package:wasla/presentation/widgets/app_bar_back_button.dart';
 
 class VerificationTemplate extends StatefulWidget {
-  final String contact;
   final String title;
   final String subTitle;
   final String imgPath;
@@ -12,7 +11,6 @@ class VerificationTemplate extends StatefulWidget {
 
   const VerificationTemplate({
     super.key,
-    required this.contact,
     required this.title,
     required this.subTitle,
     required this.imgPath,

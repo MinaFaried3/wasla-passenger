@@ -1,5 +1,6 @@
 import 'package:wasla/app/services/validator/string_validator.dart';
 import 'package:wasla/app/services/validator/validator_input_formatter.dart';
+import 'package:wasla/app/services/validator/validator_manager.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
@@ -62,7 +63,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                   editingFormatter: const PhoneNumberEditingRegexValidator(),
                 )
               ],
-              validator: _validatePhone,
+              validator: (phone) => ValidatorManager.validatePhone(phone),
               onChanged: _onChange,
               textInputAction: TextInputAction.next,
               labelText: AppStrings.phone.tr(),
@@ -87,7 +88,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                   editingFormatter: const EmailEditingRegexValidator(),
                 )
               ],
-              validator: _validateEmail,
+              validator: (email) => ValidatorManager.validateEmail(email),
               onChanged: _onChange,
               autofillHints: const [AutofillHints.email],
             ),
@@ -95,36 +96,6 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
         ],
       ),
     );
-  }
-
-  String? _validatePhone(String? phone) {
-    if (phone == null || phone.isEmpty || widget.phoneController.text.isEmpty) {
-      return AppStrings.cannotBeEmpty.tr();
-    }
-
-    if (phone.length < AppConstants.phoneNumberLength) {
-      return AppStrings.phoneLengthNotValid.tr();
-    }
-
-    final validPhone = const PhoneNumberSubmitRegexValidator().isValid(phone);
-    if (!validPhone) {
-      return AppStrings.phoneInvalid.tr();
-    }
-
-    return null;
-  }
-
-  String? _validateEmail(String? email) {
-    if (email == null || email.isEmpty || widget.emailController.text.isEmpty) {
-      return null;
-    }
-
-    final validEmail = const EmailSubmitRegexValidator().isValid(email);
-    if (!validEmail) {
-      return AppStrings.emailInvalid.tr();
-    }
-
-    return null;
   }
 
   void _dispose() {
