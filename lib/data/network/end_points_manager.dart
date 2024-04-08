@@ -4,15 +4,28 @@ class EndPointsManager {
   //dirs
   static const String _authentication = "/auth";
   static const String _passengerAuth = "$_authentication/passenger";
+  static const String _verification = "/verification";
 
   //endpoint
   //auth
-  // passenger dir
+
+  /// passenger dir
   static const String register = "$_passengerAuth/register";
 
-  // auth dir
+  /// auth dir
   static const String login = "$_authentication/login";
-  static const String checkUsername = "$_authentication/checkUserName";
+
+  ///verification
+  //edit
+  static const String _edit = "$_verification/edit";
+  static const String editPhone = "$_edit/phone";
+  static const String editEmail = "$_edit/email";
+
+  //check
+  static const String _check = "$_verification/check";
+  static const String checkPhone = "$_check/phone";
+  static const String checkEmail = "$_check/email";
+  static const String checkUserName = "$_check/userName";
 }
 
 class HeadersManager {

@@ -2,12 +2,14 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/data_source/local_data_source.dart';
 import 'package:wasla/data/mappers/auth/login_mapper.dart';
 import 'package:wasla/data/mappers/auth/register_mappers.dart';
-import 'package:wasla/data/network/error/data_source_status.dart';
-import 'package:wasla/data/network/network_error_handler.dart';
+import 'package:wasla/data/mappers/base_response_without_data_mapper.dart';
+import 'package:wasla/data/requests/auth/edit_phone_and_email.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
+import 'package:wasla/data/responses/base_response.dart';
 import 'package:wasla/domain/entities/auth/check_username_model.dart';
+import 'package:wasla/domain/entities/base_model.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   final RemoteDataSource _remoteDataSource;
@@ -28,90 +30,65 @@ class AuthRepositoryImpl extends AuthRepository {
   @override
   RemoteDataSource get remoteDataSource => _remoteDataSource;
 
+  @override
+  LocalDataSource get localDataSource => _localDataSource;
+
   ///login
   @override
-  Future<Either<Failure, PassengerModel>> login(
-      LoginRequestBody loginRequestBody) async {
-    if (await networkChecker.isConnected == false) {
-      return Left(DataSourceStatus.noInternetConnection.getFailure());
-    }
-
-    try {
-      final AuthResponse response =
-          await remoteDataSource.login(loginRequestBody);
-
-      if (response.success == true) {
-        _localDataSource.setPassengerModel(response.toDomain());
-        return Right(response.toDomain());
-      } else {
-        return Left(
-          ServerFailure(
-            code: response.status ?? ApiInternalStatus.failure,
-            message: response.message ?? AppStrings.defaultError,
-          ),
-        );
-      }
-    } catch (error) {
-      PrintManager.print(error.toString(), color: ConsoleColor.reset);
-      return Left(ErrorHandler.handle(error).failure);
-    }
+  FailureOrPassengerModel login(LoginRequestBody loginRequestBody) async {
+    return await executeApiCall<AuthResponse, PassengerModel>(
+        apiCall: () => remoteDataSource.login(loginRequestBody),
+        onSuccess: (response) {
+          localDataSource.setPassengerModel(response.toDomain());
+          return response.toDomain();
+        });
   }
-
-  //----------------------------------------------------------
 
   ///register
   @override
-  Future<Either<Failure, CheckUsernameModel>> checkUsername(
-      String username) async {
-    if (await networkChecker.isConnected == false) {
-      return Left(DataSourceStatus.noInternetConnection.getFailure());
-    }
-
-    try {
-      final CheckUsernameResponse response =
-          await remoteDataSource.checkUsername(username);
-
-      if (response.success == true) {
-        return Right(response.toDomain());
-      } else {
-        return Left(
-          ServerFailure(
-            code: response.status ?? ApiInternalStatus.failure,
-            message: response.message ?? AppStrings.defaultError,
-          ),
-        );
-      }
-    } catch (error) {
-      PrintManager.print(error.toString(), color: ConsoleColor.reset);
-      return Left(ErrorHandler.handle(error).failure);
-    }
+  FailureOr<CheckUsernameModel> checkUsername(String username) async {
+    return await executeApiCall<CheckUsernameResponse, CheckUsernameModel>(
+        apiCall: () => remoteDataSource.checkUsername(username),
+        onSuccess: (response) {
+          return response.toDomain();
+        });
   }
 
   @override
-  Future<Either<Failure, PassengerModel>> register(
+  FailureOrPassengerModel register(
       RegisterRequestBody registerRequestBody) async {
-    if (await networkChecker.isConnected == false) {
-      return Left(DataSourceStatus.noInternetConnection.getFailure());
-    }
+    return await executeApiCall<AuthResponse, PassengerModel>(
+        apiCall: () => remoteDataSource.register(registerRequestBody),
+        onSuccess: (response) {
+          localDataSource.setPassengerModel(response.toDomain());
+          return response.toDomain();
+        });
+  }
 
-    try {
-      final AuthResponse response =
-          await remoteDataSource.register(registerRequestBody);
+  ///verification
+  @override
+  FailureOrBaseModel editEmail(String email) async {
+    return await executeApiCall<BaseResponseWithOutData, BaseModel>(
+        apiCall: () => remoteDataSource.editEmail(EditEmailRequestBody(
+              refreshToken: getRefreshToken(),
+              email: email,
+            )),
+        onSuccess: (response) {
+          localDataSource.updatePassengerModelEmail(email);
+          return response.toDomain();
+        });
+  }
 
-      if (response.success == true) {
-        _localDataSource.setPassengerModel(response.toDomain());
-        return Right(response.toDomain());
-      } else {
-        return Left(
-          ServerFailure(
-            code: response.status ?? ApiInternalStatus.failure,
-            message: response.message ?? AppStrings.defaultError,
-          ),
-        );
-      }
-    } catch (error) {
-      PrintManager.print(error.toString(), color: ConsoleColor.reset);
-      return Left(ErrorHandler.handle(error).failure);
-    }
+  @override
+  FailureOrBaseModel editPhone(String phone) async {
+    return await executeApiCall<BaseResponseWithOutData, BaseModel>(
+        apiCall: () => remoteDataSource.editPhone(EditPhoneRequestBody(
+              refreshToken: getRefreshToken(),
+              phone: phone,
+            )),
+        onSuccess: (response) {
+          localDataSource.updatePassengerModelPhone(phone);
+          return response.toDomain();
+        });
   }
 }

@@ -5,5 +5,5 @@ abstract class BaseUseCase<Input, Output, Repository> {
 
   const BaseUseCase({required this.repository});
 
-  Future<Either<Failure, Output>> call(Input input);
+  FailureOr<Output> call(Input input);
 }
