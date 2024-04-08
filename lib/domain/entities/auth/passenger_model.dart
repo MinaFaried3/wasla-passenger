@@ -80,30 +80,42 @@ final class PassengerModel extends Equatable {
 final class Connections extends Equatable {
   final String email;
   final String phone;
+  final bool emailConfirmed;
+  final bool phoneConfirmed;
 
-  const Connections({required this.email, required this.phone});
+  const Connections(
+      {required this.email,
+      required this.phone,
+      required this.emailConfirmed,
+      required this.phoneConfirmed});
 
   factory Connections.empty() => const Connections(
         email: AppConstants.emptyString,
         phone: AppConstants.emptyString,
+        emailConfirmed: false,
+        phoneConfirmed: false,
       );
 
   Connections copyWith({
     String? email,
     String? phone,
+    bool? emailConfirmed,
+    bool? phoneConfirmed,
   }) {
     return Connections(
       email: email ?? this.email,
       phone: phone ?? this.phone,
+      emailConfirmed: emailConfirmed ?? this.emailConfirmed,
+      phoneConfirmed: phoneConfirmed ?? this.phoneConfirmed,
     );
   }
 
   @override
-  List<Object> get props => [email, phone];
+  List<Object> get props => [email, phone, emailConfirmed, phoneConfirmed];
 
   @override
   String toString() {
-    return 'Connections{email: $email, phone: $phone}';
+    return 'Connections{email: $email, phone: $phone, emailConfirmed: $emailConfirmed, phoneConfirmed: $phoneConfirmed}';
   }
 }
 

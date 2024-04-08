@@ -25,6 +25,9 @@ dependencies:
   concentric_transition: ^1.0.3
   smooth_page_indicator: ^1.1.0
 
+  #ui tools
+  fluttertoast: ^8.2.4
+
   #animation
   rive: ^0.12.3
   lottie: ^2.7.0
@@ -67,6 +70,7 @@ dependencies:
 
   #for matrix clipping
   vector_math:
+
 
 
 

@@ -11,10 +11,25 @@ class LocalCubit extends Cubit<LocalState> {
       : super(const LocalState.initial());
 
   void getPassengerModelFromLocalDataBase() async {
-    emit(const LocalState.getLocalPassengerLoading());
-    try {
+    localStateHelper(callback: () async {
       PassengerModel passengerModel = await localDataSource.getPassengerModel();
       emit(LocalState.getLocalPassengerSuccess(passengerModel: passengerModel));
+    });
+  }
+
+  void getPassengerModelConnections() async {
+    localStateHelper(callback: () async {
+      Connections connections =
+          (await localDataSource.getPassengerModel()).connections;
+      emit(LocalState.getLocalPassengerConnectionsSuccess(
+          passengerConnections: connections));
+    });
+  }
+
+  void localStateHelper({required VoidCallback callback}) async {
+    emit(const LocalState.getLocalPassengerLoading());
+    try {
+      callback();
     } catch (error) {
       emit(LocalState.getLocalPassengerFailure(
           failureMessage: error.toString()));

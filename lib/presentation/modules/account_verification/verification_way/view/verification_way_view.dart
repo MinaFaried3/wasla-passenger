@@ -6,9 +6,7 @@ import 'package:wasla/presentation/modules/account_verification/verification_way
 import 'package:wasla/presentation/modules/account_verification/widgets/titles.dart';
 
 class VerificationWayScreen extends StatefulWidget {
-  final Connections connections;
-
-  const VerificationWayScreen({super.key, required this.connections});
+  const VerificationWayScreen({super.key});
 
   @override
   State<VerificationWayScreen> createState() => _VerificationWayScreenState();
@@ -18,10 +16,10 @@ class _VerificationWayScreenState extends State<VerificationWayScreen> {
   @override
   Widget build(BuildContext context) {
     final responsive = ResponsiveManager(context);
-    PrintManager.print(widget.connections.toString());
     return PopScope(
       onPopInvoked: (canPop) => SystemNavigator.pop(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           toolbarHeight: responsive.appBarHeight,
           automaticallyImplyLeading: false,
@@ -39,9 +37,7 @@ class _VerificationWayScreenState extends State<VerificationWayScreen> {
               VerticalSpace(AppSize.s20.h),
               const OtpLottie(),
               VerticalSpace(AppSize.s50.h),
-              VerificationButtons(
-                connections: widget.connections,
-              ),
+              const VerificationButtons(),
             ],
           ),
         ),

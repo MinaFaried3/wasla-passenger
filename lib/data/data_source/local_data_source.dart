@@ -1,6 +1,5 @@
-import 'package:hive/hive.dart';
 import 'package:wasla/app/services/hive/hive_constants.dart';
-import 'package:wasla/domain/entities/auth/passenger_model.dart';
+import 'package:wasla/app/shared/common/common_libs.dart';
 
 abstract class LocalDataSource {
   Future<PassengerModel> getPassengerModel();
@@ -23,7 +22,8 @@ class LocalDataSourceImpl extends LocalDataSource {
   }) async {
     Box hiveBox = await Hive.openBox(boxName);
     T model = (hiveBox.get(fieldName) as T);
-    hiveBox.close();
+    //todo
+    // hiveBox.close();
     return model;
   }
 
@@ -34,8 +34,19 @@ class LocalDataSourceImpl extends LocalDataSource {
   }) async {
     Box hiveBox = await Hive.openBox(boxName);
     hiveBox.put(fieldName, data);
-    hiveBox.close();
+    PrintManager.print(data, color: ConsoleColor.blue);
+    //todo
+    // hiveBox.close();
   }
+
+  // @override
+  // Future<PassengerModel> getPassengerModel() async {
+  //   Box hiveBox = await Hive.openBox(HiveConstants.passengerBox);
+  //   PassengerModel model =
+  //       (hiveBox.get(HiveConstants.passengerModel) as PassengerModel);
+  //   hiveBox.close();
+  //   return model.copyWith();
+  // }
 
   @override
   Future<PassengerModel> getPassengerModel() async {

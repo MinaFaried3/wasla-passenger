@@ -15,6 +15,7 @@ import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
+import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
@@ -217,9 +218,20 @@ final class DIModulesManger {
   }
 
   static void prepareVerificationModule() {
+    _prepareAuthModule();
     _registerFactory<EditEmailUseCase>(
         EditEmailUseCase(repository: getIt<AuthRepository>()));
     _registerFactory<EditPhoneUseCase>(
         EditPhoneUseCase(repository: getIt<AuthRepository>()));
+
+    //cubits
+    if (!GetIt.I.isRegistered<EditContactsCubit>()) {
+      getIt.registerFactory<EditContactsCubit>(() => EditContactsCubit(
+            editEmailUseCase: getIt<EditEmailUseCase>(),
+            editPhoneUseCase: getIt<EditPhoneUseCase>(),
+          ));
+
+      _printIsRegistered<EditContactsCubit>();
+    }
   }
 }

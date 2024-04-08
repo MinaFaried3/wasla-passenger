@@ -22,6 +22,8 @@ mixin _$LocalState {
     required TResult Function() getLocalPassengerLoading,
     required TResult Function(PassengerModel passengerModel)
         getLocalPassengerSuccess,
+    required TResult Function(Connections passengerConnections)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(String failureMessage) getLocalPassengerFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,6 +32,8 @@ mixin _$LocalState {
     TResult? Function()? initial,
     TResult? Function()? getLocalPassengerLoading,
     TResult? Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult? Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(String failureMessage)? getLocalPassengerFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -38,6 +42,8 @@ mixin _$LocalState {
     TResult Function()? initial,
     TResult Function()? getLocalPassengerLoading,
     TResult Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(String failureMessage)? getLocalPassengerFailure,
     required TResult orElse(),
   }) =>
@@ -49,6 +55,8 @@ mixin _$LocalState {
         getLocalPassengerLoading,
     required TResult Function(_GetLocalPassengerSuccessState value)
         getLocalPassengerSuccess,
+    required TResult Function(_GetLocalPassengerConnectionsSuccessState value)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(_GetLocalPassengerFailureState value)
         getLocalPassengerFailure,
   }) =>
@@ -60,6 +68,8 @@ mixin _$LocalState {
         getLocalPassengerLoading,
     TResult? Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult? Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
   }) =>
@@ -71,6 +81,8 @@ mixin _$LocalState {
         getLocalPassengerLoading,
     TResult Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
     required TResult orElse(),
@@ -138,6 +150,8 @@ class _$InitialStateImpl implements _InitialState {
     required TResult Function() getLocalPassengerLoading,
     required TResult Function(PassengerModel passengerModel)
         getLocalPassengerSuccess,
+    required TResult Function(Connections passengerConnections)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(String failureMessage) getLocalPassengerFailure,
   }) {
     return initial();
@@ -149,6 +163,8 @@ class _$InitialStateImpl implements _InitialState {
     TResult? Function()? initial,
     TResult? Function()? getLocalPassengerLoading,
     TResult? Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult? Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(String failureMessage)? getLocalPassengerFailure,
   }) {
     return initial?.call();
@@ -160,6 +176,8 @@ class _$InitialStateImpl implements _InitialState {
     TResult Function()? initial,
     TResult Function()? getLocalPassengerLoading,
     TResult Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(String failureMessage)? getLocalPassengerFailure,
     required TResult orElse(),
   }) {
@@ -177,6 +195,8 @@ class _$InitialStateImpl implements _InitialState {
         getLocalPassengerLoading,
     required TResult Function(_GetLocalPassengerSuccessState value)
         getLocalPassengerSuccess,
+    required TResult Function(_GetLocalPassengerConnectionsSuccessState value)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(_GetLocalPassengerFailureState value)
         getLocalPassengerFailure,
   }) {
@@ -191,6 +211,8 @@ class _$InitialStateImpl implements _InitialState {
         getLocalPassengerLoading,
     TResult? Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult? Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
   }) {
@@ -205,6 +227,8 @@ class _$InitialStateImpl implements _InitialState {
         getLocalPassengerLoading,
     TResult Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
     required TResult orElse(),
@@ -266,6 +290,8 @@ class _$GetLocalPassengerLoadingStateImpl
     required TResult Function() getLocalPassengerLoading,
     required TResult Function(PassengerModel passengerModel)
         getLocalPassengerSuccess,
+    required TResult Function(Connections passengerConnections)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(String failureMessage) getLocalPassengerFailure,
   }) {
     return getLocalPassengerLoading();
@@ -277,6 +303,8 @@ class _$GetLocalPassengerLoadingStateImpl
     TResult? Function()? initial,
     TResult? Function()? getLocalPassengerLoading,
     TResult? Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult? Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(String failureMessage)? getLocalPassengerFailure,
   }) {
     return getLocalPassengerLoading?.call();
@@ -288,6 +316,8 @@ class _$GetLocalPassengerLoadingStateImpl
     TResult Function()? initial,
     TResult Function()? getLocalPassengerLoading,
     TResult Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(String failureMessage)? getLocalPassengerFailure,
     required TResult orElse(),
   }) {
@@ -305,6 +335,8 @@ class _$GetLocalPassengerLoadingStateImpl
         getLocalPassengerLoading,
     required TResult Function(_GetLocalPassengerSuccessState value)
         getLocalPassengerSuccess,
+    required TResult Function(_GetLocalPassengerConnectionsSuccessState value)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(_GetLocalPassengerFailureState value)
         getLocalPassengerFailure,
   }) {
@@ -319,6 +351,8 @@ class _$GetLocalPassengerLoadingStateImpl
         getLocalPassengerLoading,
     TResult? Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult? Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
   }) {
@@ -333,6 +367,8 @@ class _$GetLocalPassengerLoadingStateImpl
         getLocalPassengerLoading,
     TResult Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
     required TResult orElse(),
@@ -423,6 +459,8 @@ class _$GetLocalPassengerSuccessStateImpl
     required TResult Function() getLocalPassengerLoading,
     required TResult Function(PassengerModel passengerModel)
         getLocalPassengerSuccess,
+    required TResult Function(Connections passengerConnections)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(String failureMessage) getLocalPassengerFailure,
   }) {
     return getLocalPassengerSuccess(passengerModel);
@@ -434,6 +472,8 @@ class _$GetLocalPassengerSuccessStateImpl
     TResult? Function()? initial,
     TResult? Function()? getLocalPassengerLoading,
     TResult? Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult? Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(String failureMessage)? getLocalPassengerFailure,
   }) {
     return getLocalPassengerSuccess?.call(passengerModel);
@@ -445,6 +485,8 @@ class _$GetLocalPassengerSuccessStateImpl
     TResult Function()? initial,
     TResult Function()? getLocalPassengerLoading,
     TResult Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(String failureMessage)? getLocalPassengerFailure,
     required TResult orElse(),
   }) {
@@ -462,6 +504,8 @@ class _$GetLocalPassengerSuccessStateImpl
         getLocalPassengerLoading,
     required TResult Function(_GetLocalPassengerSuccessState value)
         getLocalPassengerSuccess,
+    required TResult Function(_GetLocalPassengerConnectionsSuccessState value)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(_GetLocalPassengerFailureState value)
         getLocalPassengerFailure,
   }) {
@@ -476,6 +520,8 @@ class _$GetLocalPassengerSuccessStateImpl
         getLocalPassengerLoading,
     TResult? Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult? Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
   }) {
@@ -490,6 +536,8 @@ class _$GetLocalPassengerSuccessStateImpl
         getLocalPassengerLoading,
     TResult Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
     required TResult orElse(),
@@ -510,6 +558,185 @@ abstract class _GetLocalPassengerSuccessState implements LocalState {
   @JsonKey(ignore: true)
   _$$GetLocalPassengerSuccessStateImplCopyWith<
           _$GetLocalPassengerSuccessStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetLocalPassengerConnectionsSuccessStateImplCopyWith<$Res> {
+  factory _$$GetLocalPassengerConnectionsSuccessStateImplCopyWith(
+          _$GetLocalPassengerConnectionsSuccessStateImpl value,
+          $Res Function(_$GetLocalPassengerConnectionsSuccessStateImpl) then) =
+      __$$GetLocalPassengerConnectionsSuccessStateImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Connections passengerConnections});
+}
+
+/// @nodoc
+class __$$GetLocalPassengerConnectionsSuccessStateImplCopyWithImpl<$Res>
+    extends _$LocalStateCopyWithImpl<$Res,
+        _$GetLocalPassengerConnectionsSuccessStateImpl>
+    implements _$$GetLocalPassengerConnectionsSuccessStateImplCopyWith<$Res> {
+  __$$GetLocalPassengerConnectionsSuccessStateImplCopyWithImpl(
+      _$GetLocalPassengerConnectionsSuccessStateImpl _value,
+      $Res Function(_$GetLocalPassengerConnectionsSuccessStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? passengerConnections = null,
+  }) {
+    return _then(_$GetLocalPassengerConnectionsSuccessStateImpl(
+      passengerConnections: null == passengerConnections
+          ? _value.passengerConnections
+          : passengerConnections // ignore: cast_nullable_to_non_nullable
+              as Connections,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetLocalPassengerConnectionsSuccessStateImpl
+    implements _GetLocalPassengerConnectionsSuccessState {
+  const _$GetLocalPassengerConnectionsSuccessStateImpl(
+      {required this.passengerConnections});
+
+  @override
+  final Connections passengerConnections;
+
+  @override
+  String toString() {
+    return 'LocalState.getLocalPassengerConnectionsSuccess(passengerConnections: $passengerConnections)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetLocalPassengerConnectionsSuccessStateImpl &&
+            (identical(other.passengerConnections, passengerConnections) ||
+                other.passengerConnections == passengerConnections));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, passengerConnections);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetLocalPassengerConnectionsSuccessStateImplCopyWith<
+          _$GetLocalPassengerConnectionsSuccessStateImpl>
+      get copyWith =>
+          __$$GetLocalPassengerConnectionsSuccessStateImplCopyWithImpl<
+              _$GetLocalPassengerConnectionsSuccessStateImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() getLocalPassengerLoading,
+    required TResult Function(PassengerModel passengerModel)
+        getLocalPassengerSuccess,
+    required TResult Function(Connections passengerConnections)
+        getLocalPassengerConnectionsSuccess,
+    required TResult Function(String failureMessage) getLocalPassengerFailure,
+  }) {
+    return getLocalPassengerConnectionsSuccess(passengerConnections);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? getLocalPassengerLoading,
+    TResult? Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult? Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
+    TResult? Function(String failureMessage)? getLocalPassengerFailure,
+  }) {
+    return getLocalPassengerConnectionsSuccess?.call(passengerConnections);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? getLocalPassengerLoading,
+    TResult Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
+    TResult Function(String failureMessage)? getLocalPassengerFailure,
+    required TResult orElse(),
+  }) {
+    if (getLocalPassengerConnectionsSuccess != null) {
+      return getLocalPassengerConnectionsSuccess(passengerConnections);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_InitialState value) initial,
+    required TResult Function(_GetLocalPassengerLoadingState value)
+        getLocalPassengerLoading,
+    required TResult Function(_GetLocalPassengerSuccessState value)
+        getLocalPassengerSuccess,
+    required TResult Function(_GetLocalPassengerConnectionsSuccessState value)
+        getLocalPassengerConnectionsSuccess,
+    required TResult Function(_GetLocalPassengerFailureState value)
+        getLocalPassengerFailure,
+  }) {
+    return getLocalPassengerConnectionsSuccess(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_InitialState value)? initial,
+    TResult? Function(_GetLocalPassengerLoadingState value)?
+        getLocalPassengerLoading,
+    TResult? Function(_GetLocalPassengerSuccessState value)?
+        getLocalPassengerSuccess,
+    TResult? Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
+    TResult? Function(_GetLocalPassengerFailureState value)?
+        getLocalPassengerFailure,
+  }) {
+    return getLocalPassengerConnectionsSuccess?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_InitialState value)? initial,
+    TResult Function(_GetLocalPassengerLoadingState value)?
+        getLocalPassengerLoading,
+    TResult Function(_GetLocalPassengerSuccessState value)?
+        getLocalPassengerSuccess,
+    TResult Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
+    TResult Function(_GetLocalPassengerFailureState value)?
+        getLocalPassengerFailure,
+    required TResult orElse(),
+  }) {
+    if (getLocalPassengerConnectionsSuccess != null) {
+      return getLocalPassengerConnectionsSuccess(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetLocalPassengerConnectionsSuccessState implements LocalState {
+  const factory _GetLocalPassengerConnectionsSuccessState(
+          {required final Connections passengerConnections}) =
+      _$GetLocalPassengerConnectionsSuccessStateImpl;
+
+  Connections get passengerConnections;
+  @JsonKey(ignore: true)
+  _$$GetLocalPassengerConnectionsSuccessStateImplCopyWith<
+          _$GetLocalPassengerConnectionsSuccessStateImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -587,6 +814,8 @@ class _$GetLocalPassengerFailureStateImpl
     required TResult Function() getLocalPassengerLoading,
     required TResult Function(PassengerModel passengerModel)
         getLocalPassengerSuccess,
+    required TResult Function(Connections passengerConnections)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(String failureMessage) getLocalPassengerFailure,
   }) {
     return getLocalPassengerFailure(failureMessage);
@@ -598,6 +827,8 @@ class _$GetLocalPassengerFailureStateImpl
     TResult? Function()? initial,
     TResult? Function()? getLocalPassengerLoading,
     TResult? Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult? Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(String failureMessage)? getLocalPassengerFailure,
   }) {
     return getLocalPassengerFailure?.call(failureMessage);
@@ -609,6 +840,8 @@ class _$GetLocalPassengerFailureStateImpl
     TResult Function()? initial,
     TResult Function()? getLocalPassengerLoading,
     TResult Function(PassengerModel passengerModel)? getLocalPassengerSuccess,
+    TResult Function(Connections passengerConnections)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(String failureMessage)? getLocalPassengerFailure,
     required TResult orElse(),
   }) {
@@ -626,6 +859,8 @@ class _$GetLocalPassengerFailureStateImpl
         getLocalPassengerLoading,
     required TResult Function(_GetLocalPassengerSuccessState value)
         getLocalPassengerSuccess,
+    required TResult Function(_GetLocalPassengerConnectionsSuccessState value)
+        getLocalPassengerConnectionsSuccess,
     required TResult Function(_GetLocalPassengerFailureState value)
         getLocalPassengerFailure,
   }) {
@@ -640,6 +875,8 @@ class _$GetLocalPassengerFailureStateImpl
         getLocalPassengerLoading,
     TResult? Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult? Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult? Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
   }) {
@@ -654,6 +891,8 @@ class _$GetLocalPassengerFailureStateImpl
         getLocalPassengerLoading,
     TResult Function(_GetLocalPassengerSuccessState value)?
         getLocalPassengerSuccess,
+    TResult Function(_GetLocalPassengerConnectionsSuccessState value)?
+        getLocalPassengerConnectionsSuccess,
     TResult Function(_GetLocalPassengerFailureState value)?
         getLocalPassengerFailure,
     required TResult orElse(),

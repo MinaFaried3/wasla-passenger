@@ -8,6 +8,8 @@ extension ConnectionDataResponseMapper on ConnectionsDataResponse? {
   Connections toDomain() => Connections(
         email: this?.email.orEmpty() ?? AppConstants.emptyString,
         phone: this?.phone.orEmpty() ?? AppConstants.emptyString,
+        emailConfirmed: this?.emailConfirmed.orFalse() ?? false,
+        phoneConfirmed: this?.phoneConfirmed.orFalse() ?? false,
       );
 }
 

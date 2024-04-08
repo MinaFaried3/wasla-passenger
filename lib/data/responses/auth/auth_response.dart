@@ -88,8 +88,15 @@ final class ConnectionsDataResponse extends Equatable {
   final String? email;
   @JsonKey(name: "phone")
   final String? phone;
+  final bool? emailConfirmed;
+  final bool? phoneConfirmed;
 
-  const ConnectionsDataResponse({this.email, this.phone});
+  const ConnectionsDataResponse({
+    this.email,
+    this.phone,
+    this.emailConfirmed,
+    this.phoneConfirmed,
+  });
 
   //from json
   factory ConnectionsDataResponse.fromJson(Map<String, dynamic> json) =>
@@ -102,6 +109,8 @@ final class ConnectionsDataResponse extends Equatable {
   List<Object?> get props => [
         email,
         phone,
+        emailConfirmed,
+        phoneConfirmed,
       ];
 }
 

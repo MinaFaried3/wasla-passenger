@@ -5,9 +5,7 @@ import 'package:wasla/presentation/modules/account_verification/verification_way
 import 'package:wasla/presentation/widgets/dialog.dart';
 
 class VerificationButtons extends StatefulWidget {
-  final Connections connections;
-
-  const VerificationButtons({super.key, required this.connections});
+  const VerificationButtons({super.key});
 
   @override
   State<VerificationButtons> createState() => _VerificationButtonsState();
@@ -46,6 +44,9 @@ class _VerificationButtonsState extends State<VerificationButtons>
     // firstAnimationController.addListener(_firstAnimationListener);
     firstAnimationController.forward();
     secondAnimationController.forward();
+
+    //load connections
+    context.read<LocalCubit>().getPassengerModelConnections();
   }
 
   @override
@@ -58,6 +59,21 @@ class _VerificationButtonsState extends State<VerificationButtons>
 
   @override
   Widget build(BuildContext context) {
+    final responsive = ResponsiveManager(context);
+    return BlocBuilder<LocalCubit, LocalState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          getLocalPassengerConnectionsSuccess: (connections) =>
+              buildButtons(context, connections),
+          orElse: () => LoadingIndicator(
+            height: responsive.getBodyHeightPercentage(20),
+          ),
+        );
+      },
+    );
+  }
+
+  Column buildButtons(BuildContext context, Connections connections) {
     return Column(
       children: [
         SlideTransition(
@@ -66,7 +82,7 @@ class _VerificationButtonsState extends State<VerificationButtons>
             buttonType: ButtonContentType.iconText,
             svgIconPath: AssetsProvider.emailIcon,
             text: AppStrings.verifyWithEmail.tr(),
-            onPressed: () => verifyEmailOnPressed(context),
+            onPressed: () => verifyEmailOnPressed(context, connections.email),
           ),
         ),
         VerticalSpace(AppSize.s20.h),
@@ -76,18 +92,18 @@ class _VerificationButtonsState extends State<VerificationButtons>
             buttonType: ButtonContentType.iconText,
             svgIconPath: AssetsProvider.phoneIcon,
             text: AppStrings.verifyWithPhone.tr(),
-            onPressed: () => verifyPhoneOnPressed(context),
+            onPressed: () => verifyPhoneOnPressed(context, connections.phone),
           ),
         ),
       ],
     );
   }
 
-  void verifyEmailOnPressed(BuildContext context) {
+  void verifyEmailOnPressed(BuildContext context, String email) {
     showDialog(
         context: context,
         builder: (context) {
-          if (widget.connections.email.isEmpty) {
+          if (email.isEmpty) {
             return AppDialog(
               child: Center(
                 child: EmptyConnectionDialogContent.email(),
@@ -99,12 +115,14 @@ class _VerificationButtonsState extends State<VerificationButtons>
                 child: Center(
                   child: ConnectionDialogContent(
                     text: AppStrings.yourEmailIs,
-                    connection: widget.connections.email,
+                    connection: email,
                     editButtonText: AppStrings.editYourEmail,
                     onEditPressed: () {
+                      context.pop();
                       context.pushNamed(Routes.editEmailRoute.path);
                     },
                     onVerifyPressed: () {
+                      context.pop();
                       context.pushNamed(Routes.verifyEmailRoute.path);
                     },
                   ),
@@ -113,11 +131,11 @@ class _VerificationButtonsState extends State<VerificationButtons>
         });
   }
 
-  void verifyPhoneOnPressed(BuildContext context) {
+  void verifyPhoneOnPressed(BuildContext context, String phone) {
     showDialog(
         context: context,
         builder: (context) {
-          if (widget.connections.phone.isEmpty) {
+          if (phone.isEmpty) {
             return AppDialog(
               child: Center(
                 child: EmptyConnectionDialogContent.phone(),
@@ -129,12 +147,14 @@ class _VerificationButtonsState extends State<VerificationButtons>
                 child: Center(
                   child: ConnectionDialogContent(
                     text: AppStrings.yourPhoneIs,
-                    connection: widget.connections.phone,
+                    connection: phone,
                     editButtonText: AppStrings.editYourPhone,
                     onEditPressed: () {
+                      context.pop();
                       context.pushNamed(Routes.editPhoneRoute.path);
                     },
                     onVerifyPressed: () {
+                      context.pop();
                       context.pushNamed(Routes.verifyPhoneRoute.path);
                     },
                   ),

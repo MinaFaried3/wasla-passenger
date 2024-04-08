@@ -7,6 +7,7 @@ final class RegisterRequestBody extends Equatable {
   final String userName;
   final String firstName;
   final String lastName;
+  @JsonKey(name: 'phoneNumber')
   final String phone;
   final String email;
   final String password;
