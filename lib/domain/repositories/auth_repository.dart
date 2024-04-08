@@ -5,14 +5,17 @@ import 'package:wasla/domain/entities/auth/check_username_model.dart';
 
 abstract class AuthRepository extends BaseRepository {
   ///login
-  Future<Either<Failure, PassengerModel>> login(
-      LoginRequestBody loginRequestBody);
+  FailureOrPassengerModel login(LoginRequestBody loginRequestBody);
 
   ///register
-  Future<Either<Failure, PassengerModel>> register(
-      RegisterRequestBody registerRequestBody);
+  FailureOrPassengerModel register(RegisterRequestBody registerRequestBody);
 
-  Future<Either<Failure, CheckUsernameModel>> checkUsername(String username);
+  FailureOr<CheckUsernameModel> checkUsername(String username);
+
+  ///verification
+  FailureOrBaseModel editEmail(String email);
+
+  FailureOrBaseModel editPhone(String phone);
 
   const AuthRepository();
 }

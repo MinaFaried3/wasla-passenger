@@ -10,6 +10,7 @@ import 'package:wasla/data/repositories/auth_repository_impl.dart';
 import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/register_usecase.dart';
+import 'package:wasla/domain/usecases/verification_usecase/edit_contact_usecase.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
@@ -213,5 +214,12 @@ final class DIModulesManger {
 
       _printIsRegistered<FormIndexCubit>();
     }
+  }
+
+  static void prepareVerificationModule() {
+    _registerFactory<EditEmailUseCase>(
+        EditEmailUseCase(repository: getIt<AuthRepository>()));
+    _registerFactory<EditPhoneUseCase>(
+        EditPhoneUseCase(repository: getIt<AuthRepository>()));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
 
 class AppPreferences extends Equatable {
   final SharedPreferences _sharedPreferences;
@@ -21,7 +22,7 @@ class AppPreferences extends Equatable {
     }
   }
 
-  Future<bool> getBool(String key) async {
+  bool getBool(String key) {
     bool? done = _sharedPreferences.getBool(key);
 
     if (done == null) {
@@ -29,6 +30,21 @@ class AppPreferences extends Equatable {
     }
 
     return true;
+  }
+
+  String getString(String key) {
+    String? result = _sharedPreferences.getString(key);
+    return result.orEmpty();
+  }
+
+  int getInt(String key) {
+    int? result = _sharedPreferences.getInt(key);
+    return result.orZero();
+  }
+
+  double getDouble(String key) {
+    double? result = _sharedPreferences.getDouble(key);
+    return result.orZero();
   }
 
   // language
@@ -57,10 +73,10 @@ class AppPreferences extends Equatable {
 
   //first route when opening the app
   Future<Routes> getOpeningRoute() async {
-    if (await getBool(PrefKeys.isDoneStartNowScreen) == false) {
+    if (getBool(PrefKeys.isDoneStartNowScreen) == false) {
       return Routes.startNowRoute;
     }
-    if (await getBool(PrefKeys.isDoneOnboardingScreen) == false) {
+    if (getBool(PrefKeys.isDoneOnboardingScreen) == false) {
       return Routes.onboardingRoute;
     }
 
@@ -69,12 +85,12 @@ class AppPreferences extends Equatable {
       return Routes.loginRoute;
     }
 
-    if (await getBool(PrefKeys.isRegistered) == true &&
-        await getBool(PrefKeys.isDoneAccountVerification) == false) {
+    if (getBool(PrefKeys.isRegistered) == true &&
+        getBool(PrefKeys.isDoneAccountVerification) == false) {
       return Routes.verificationWayRoute;
     }
 
-    if (await getBool(PrefKeys.isDoneStartScreen) == false) {
+    if (getBool(PrefKeys.isDoneStartScreen) == false) {
       return Routes.start;
     }
 

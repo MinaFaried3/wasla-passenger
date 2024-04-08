@@ -68,7 +68,7 @@ class _ApiServiceClient implements ApiServiceClient {
     )
             .compose(
               _dio.options,
-              '/auth/checkUserName',
+              '/verification/check/userName',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -109,6 +109,64 @@ class _ApiServiceClient implements ApiServiceClient {
               baseUrl,
             ))));
     final value = AuthResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BaseResponseWithOutData> editPhone(
+      {required EditPhoneRequestBody editPhoneRequestBody}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(editPhoneRequestBody.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseWithOutData>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/verification/edit/phone',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseWithOutData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BaseResponseWithOutData> editEmail(
+      {required EditEmailRequestBody editEmailRequestBody}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(editEmailRequestBody.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseWithOutData>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/verification/edit/email',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseWithOutData.fromJson(_result.data!);
     return value;
   }
 

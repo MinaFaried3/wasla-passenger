@@ -19,6 +19,7 @@ export "package:wasla/app/services/localization/language_manager.dart";
 export "package:wasla/app/services/shared_preferences/app_preferences.dart";
 export 'package:wasla/app/shared/common/constants.dart';
 export 'package:wasla/app/shared/common/printer_manager.dart';
+export 'package:wasla/app/shared/common/typedefs.dart';
 export 'package:wasla/app/shared/error/failure.dart';
 export "package:wasla/app/shared/extensions/navigation.dart";
 export 'package:wasla/data/data_source/remote_data_source.dart';
