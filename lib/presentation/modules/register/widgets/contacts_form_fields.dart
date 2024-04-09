@@ -63,7 +63,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                   editingFormatter: const PhoneNumberEditingRegexValidator(),
                 )
               ],
-              validator: (phone) => ValidatorManager.validatePhone(phone),
+              validator: (phone) => _validateContactsForm(email: widget.emailController.text, phone: phone),
               onChanged: _onChange,
               textInputAction: TextInputAction.next,
               labelText: AppStrings.phone.tr(),
@@ -88,7 +88,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                   editingFormatter: const EmailEditingRegexValidator(),
                 )
               ],
-              validator: (email) => ValidatorManager.validateEmail(email),
+              validator: (email) => _validateContactsForm(email: email, phone: widget.phoneController.text),
               onChanged: _onChange,
               autofillHints: const [AutofillHints.email],
             ),
@@ -139,5 +139,21 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
         .read<BearAnimationCubit>()
         .riveController
         .followFieldText(value: contact);
+  }
+
+  String? _validateContactsForm({
+    required String? email,
+    required String? phone,
+  }) {
+    String? isValidEmail = ValidatorManager.validateEmail(email);
+    String? isValidPhone = ValidatorManager.validatePhone(phone);
+
+    if (isValidEmail == null || isValidPhone == null) {
+      return null;
+    }
+    context
+        .read<BearDialogCubit>()
+        .writeMessage(AppStrings.youMustEnterAtLeastOneContact.tr());
+    return AppStrings.cannotBeEmpty.tr();
   }
 }

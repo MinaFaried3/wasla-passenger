@@ -68,6 +68,7 @@
   "start_contacts_form": "Enter your contact information correctly and we recommend entering your email",
   "email_not_valid": "email is invalid",
   "phone_not_valid": "phone number is invalid",
+  "youMustEnterAtLeastOneContact": "You should at least enter one contact to can go next",
   "phone_length_not_valid": "number of mobile phone digits is incorrect",
   "password_info": "The password must have:\n 1- lowercase or uppercase letters.\n 2- numbers.\n 3- its length is 8 chars or more.",
   "confirm_Password_invalid": "password mismatch",
