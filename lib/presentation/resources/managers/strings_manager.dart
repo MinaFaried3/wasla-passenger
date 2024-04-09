@@ -72,6 +72,8 @@ class AppStrings {
   static const String phoneInfo = 'phone_info';
   static const String emailInfo = 'email_info';
   static const String passwordInfo = 'password_info';
+  static const String youMustEnterAtLeastOneContact =
+      'youMustEnterAtLeastOneContact';
 
   //start screen
   static const String welcomeWith = 'welcome_with';

@@ -21,7 +21,7 @@ abstract class ValidatorManager {
 
   static String? validateEmail(String? email) {
     if (email == null || email.isEmpty) {
-      return null;
+      return AppStrings.cannotBeEmpty.tr();
     }
 
     final validEmail = const EmailSubmitRegexValidator().isValid(email);

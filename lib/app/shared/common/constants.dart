@@ -28,7 +28,9 @@ class AppConstants {
       '^[a-zA-Z0-9_.+-]*(@([a-zA-Z0-9-]*(\\.[a-zA-Z0-9-]*)?)?)?\$';
   static const String emailSubmittedRegExSource =
       '(^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-]+\$)';
-  static const String phoneNumberEditingRegexSource = r"^(01)[0-9]{0,9}$";
+  static const String phoneNumberEditingRegexSource = r"^(01)?[0-9]{0,11}$";
+  static const String phoneNumberEditingMustStartWithZeroOneRegexSource =
+      r"^(01)[0-9]{0,9}$";
   static const String phoneNumberSubmittedRegexSource = r"^01[0-9]{9}$";
 
   /*
