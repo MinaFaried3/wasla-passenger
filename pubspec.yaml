@@ -24,6 +24,7 @@ dependencies:
   #ui components
   concentric_transition: ^1.0.3
   smooth_page_indicator: ^1.1.0
+  carousel_slider: ^4.2.1
 
   #ui tools
   fluttertoast: ^8.2.4

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 
 class CustomSliderButton extends StatefulWidget {
@@ -83,9 +84,12 @@ class CustomSliderButtonState extends State<CustomSliderButton>
     }
     if (_isSlideCompleted) {
       Timer(const Duration(milliseconds: 500), () async {
-        //todo
-        PrintManager.print('DONE+++++++++++++++++++');
+        context.pushNamedAndRemoveUntil(Routes.home.path);
       });
+      getIt<AppPreferences>().setData<bool>(
+        key: PrefKeys.isDoneStartScreen,
+        data: true,
+      );
     }
   }
 

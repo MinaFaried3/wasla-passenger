@@ -96,8 +96,7 @@ class ThemeManger {
       color: ColorsManager.darkTealBackground2,
       elevation: AppSize.s0,
       // shadowColor: ColorManager.lightPrimary,
-      titleTextStyle:
-          getRegularStyle(fontSize: FontSize.s16, color: ColorsManager.beige1));
+      titleTextStyle: getExtraBoldStyle(fontSize: FontSize.s18.sp));
 
   static const ButtonThemeData buttonThemeData = ButtonThemeData(
       shape: StadiumBorder(),

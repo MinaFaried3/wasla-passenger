@@ -5,6 +5,7 @@ import 'package:wasla/presentation/modules/account_verification/email_verfy/view
 import 'package:wasla/presentation/modules/account_verification/phone_verify/view/verify_phone_view.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/view/verification_way_view.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
+import 'package:wasla/presentation/modules/home/home/view/home_screen.dart';
 import 'package:wasla/presentation/modules/login/view/login_view.dart';
 import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
 import 'package:wasla/presentation/modules/register/view/register_view.dart';
@@ -26,6 +27,7 @@ class RoutesStrings {
   static const String verifyPhoneRoute = '/verify_phone';
   static const String verifyEmailRoute = '/verify_email';
   static const String startRoute = '/start';
+  static const String home = '/';
   static const String unDefinedRoute = '/un_defined';
   static const String testRoute = '/test';
 }
@@ -44,6 +46,7 @@ enum Routes {
   verifyEmailRoute(RoutesStrings.verifyEmailRoute),
   start(RoutesStrings.startRoute),
   testRoute(RoutesStrings.testRoute),
+  home(RoutesStrings.home),
   unDefined(RoutesStrings.unDefinedRoute);
 
   final String path;
@@ -65,6 +68,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const StartNowScreen());
       case Routes.loginRoute:
         DIModulesManger.prepareLoginModule();
+
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                   providers: BlocProvidersManager.loginProviders,
@@ -72,6 +76,7 @@ class RouteGenerator {
                 ));
       case Routes.registerRoute:
         DIModulesManger.prepareRegisterModule();
+
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                   providers: BlocProvidersManager.registerProviders,
@@ -83,6 +88,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const ResetPasswordScreen());
       case Routes.verificationWayRoute:
         DIModulesManger.prepareVerificationModule();
+
         return MaterialPageRoute(
             builder: (_) => MultiBlocProvider(
                 providers: BlocProvidersManager.verificationProviders,
@@ -105,12 +111,22 @@ class RouteGenerator {
             builder: (_) => const VerifyEmailScreen(email: 'mina@se.com'));
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
+
         return MaterialPageRoute(
             builder: (context) => MultiBlocProvider(
                 providers: BlocProvidersManager.onboardingProviders,
                 child: const OnboardingScreen()));
       case Routes.start:
         return MaterialPageRoute(builder: (_) => const StartScreen());
+      case Routes.home:
+        DIModulesManger.prepareHomeModule();
+
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: BlocProvidersManager.homeProviders,
+            child: const HomeScreen(),
+          ),
+        );
       case Routes.testRoute:
         return MaterialPageRoute(builder: (_) => const TestScreen());
       case Routes.unDefined:

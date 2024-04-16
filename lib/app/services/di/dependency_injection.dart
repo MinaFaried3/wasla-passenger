@@ -16,6 +16,7 @@ import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_c
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
+import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
@@ -232,6 +233,16 @@ final class DIModulesManger {
           ));
 
       _printIsRegistered<EditContactsCubit>();
+    }
+  }
+
+  static void prepareHomeModule() {
+    //cubits
+    //home cubit
+    if (!GetIt.I.isRegistered<HomeCubit>()) {
+      getIt.registerFactory<HomeCubit>(() => HomeCubit());
+
+      _printIsRegistered<HomeCubit>();
     }
   }
 }

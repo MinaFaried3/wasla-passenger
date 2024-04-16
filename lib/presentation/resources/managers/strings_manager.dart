@@ -114,6 +114,30 @@ class AppStrings {
   static const String doNotReceiveCode = 'doNotReceiveCode';
   static const String resendAgain = 'resendAgain';
 
+  //home screen
+  static const String main = 'main';
+  static const String location = 'location';
+  static const String searchTrip = 'searchTrip';
+  static const String myTickets = 'myTickets';
+  static const String profile = 'profile';
+
+  //main body
+  static const String nearestTrip = 'nearestTrip';
+  static const String yourTripWillStartThrough = 'yourTripWillStartThrough';
+  static const String from = 'from';
+  static const String to = 'to';
+  static const String company = 'company';
+  static const String driver = 'driver';
+  static const String seatNumber = 'seatNumber';
+  static const String shippingService = 'shippingService';
+  static const String passengerFollowing = 'passengerFollowing';
+  static const String ads = 'ads';
+  static const String seatPosition = 'seatPosition';
+  static const String privateBus = 'privateBus';
+  static const String more = 'more';
+  static const String ourServices = 'ourServices';
+  static const String discoverYourTrips = 'discoverYourTrips';
+
   // error handler
   static const String badRequestError = 'bad_request_error';
   static const String noContent = 'no_content';

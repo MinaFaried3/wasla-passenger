@@ -36,13 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     state.whenOrNull(
       success: (loginModel) {
-        riveController.addState(BearState.success);
-        dialogCubit.loginSuccessMsg(loginModel.firstName);
-
-        Timer(DurationManager.s2, () {
-          context.pushNamedAndRemoveUntil(Routes.start.path,
-              arguments: loginModel.firstName);
-        });
+        _listenWhenSuccessLogin(dialogCubit, loginModel, context);
       },
       error: (failure) {
         riveController.addState(BearState.fail);
@@ -61,6 +55,25 @@ class _LoginScreenState extends State<LoginScreen> {
         dialogCubit.usernameAndPasswordFieldEmptyMsg();
       },
     );
+  }
+
+  void _listenWhenSuccessLogin(BearDialogCubit dialogCubit,
+      PassengerModel loginModel, BuildContext context) {
+    riveController.addState(BearState.success);
+    dialogCubit.loginSuccessMsg(loginModel.firstName);
+
+    Timer(DurationManager.s2, () {
+      if (loginModel.connections.phoneConfirmed ||
+          loginModel.connections.emailConfirmed) {
+        context.pushNamedAndRemoveUntil(
+          Routes.start.path,
+        );
+      } else {
+        context.pushNamedAndRemoveUntil(
+          Routes.verificationWayRoute.path,
+        );
+      }
+    });
   }
 
   @override

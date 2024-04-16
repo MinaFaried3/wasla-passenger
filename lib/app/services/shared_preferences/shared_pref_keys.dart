@@ -3,6 +3,7 @@ final class PrefKeys {
   static const String isDoneStartNowScreen = 'IS_DONE_SHOW_START_NOW_SCREEN';
   static const String isDoneStartScreen = 'IS_DONE_SHOW_START_SCREEN';
   static const String isDoneOnboardingScreen = 'IS_DONE_SHOW_ONBOARDING_SCREEN';
+  static const String showHomeScreen = 'SHOW_HOME_SCREEN';
   static const String token = 'TOKEN';
   static const String tokenExpireDate = 'TOKEN_EXPIRE_DATE';
   static const String refreshToken = 'REFRESH_TOKEN';
