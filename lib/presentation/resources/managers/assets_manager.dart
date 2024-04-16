@@ -42,6 +42,9 @@ class AssetsProvider {
       '$_background/background_start_now.png';
   static const String startImg = '$_png/start.png';
 
+  //home - main
+  static const String adsImg = '$_png/ads.png';
+
   //onboarding
   static const String onboarding1 = '$_onboarding/welcome_onboarding.png';
   static const String onboarding2 = '$_onboarding/ticket_onboarding.png';
@@ -62,9 +65,11 @@ class AssetsProvider {
   static const String arrowDown1Icon = '$_svg/arrow_down1.svg';
   static const String arrowDown2Icon = '$_svg/arrow_down2.svg';
   static const String arrowDown3Icon = '$_svg/right_arrow_ic.svg';
-  static const String homeIcon = '$_svg/home.svg';
+  static const String homeIcon = '$_svg/home_icon.svg';
+  static const String locationIcon = '$_svg/location_icon.svg';
+  static const String ticketsIcon = '$_svg/tickets_icon.svg';
   static const String wifiIcon = '$_svg/wifi.svg';
-  static const String searchIcon = '$_svg/search.svg';
+  static const String searchIcon = '$_svg/search_icon.svg';
   static const String userIcon = '$_svg/user_icon.svg';
   static const String openEyeIcon = '$_svg/open_eye_icon.svg';
   static const String closedEyeIcon = '$_svg/closed_eye_icon.svg';
@@ -84,4 +89,16 @@ class AssetsProvider {
   static const String arrowRightIcon = '$_svg/arrow_right_icon.svg';
   static const String arrowBackIcon = '$_svg/arrow_back_icon.svg';
   static const String exitIcon = '$_svg/exit_icon.svg';
+
+  //appbar icon
+  static const String menuIcon = '$_svg/menu_icon.svg';
+  static const String notificationIcon = '$_svg/notification_icon.svg';
+  static const String walletIcon = '$_svg/wallet_icon.svg';
+
+  //main icon
+  static const String shippingIcon = '$_svg/shipping_icon.svg';
+  static const String followPassengerIcon = '$_svg/follow_passenger_icon.svg';
+  static const String adsIcon = '$_svg/ads_icon.svg';
+  static const String seatsPositionIcon = '$_svg/seats_position_icon.svg';
+  static const String privateBusIcon = '$_svg/private_bus_icon.svg';
 }

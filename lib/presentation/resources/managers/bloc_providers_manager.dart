@@ -3,6 +3,7 @@ import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
+import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
@@ -55,5 +56,8 @@ class BlocProvidersManager {
 
   static final List<BlocProvider> verificationProviders = [
     BlocProvider<EditContactsCubit>.value(value: getIt<EditContactsCubit>()),
+  ];
+  static final List<BlocProvider> homeProviders = [
+    BlocProvider<HomeCubit>(create: (context) => getIt<HomeCubit>()),
   ];
 }

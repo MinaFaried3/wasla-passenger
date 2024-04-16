@@ -58,6 +58,8 @@ ConnectionsDataResponse _$ConnectionsDataResponseFromJson(
     ConnectionsDataResponse(
       email: json['email'] as String?,
       phone: json['phone'] as String?,
+      emailConfirmed: json['emailConfirmed'] as bool?,
+      phoneConfirmed: json['phoneConfirmed'] as bool?,
     );
 
 Map<String, dynamic> _$ConnectionsDataResponseToJson(
@@ -65,6 +67,8 @@ Map<String, dynamic> _$ConnectionsDataResponseToJson(
     <String, dynamic>{
       'email': instance.email,
       'phone': instance.phone,
+      'emailConfirmed': instance.emailConfirmed,
+      'phoneConfirmed': instance.phoneConfirmed,
     };
 
 TokensDataResponse _$TokensDataResponseFromJson(Map<String, dynamic> json) =>

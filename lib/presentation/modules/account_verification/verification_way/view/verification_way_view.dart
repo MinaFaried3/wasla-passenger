@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:wasla/app/services/shared_preferences/shared_pref_keys.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/otp_lottie.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/widgets/verification_buttons.dart';
 import 'package:wasla/presentation/modules/account_verification/widgets/titles.dart';
@@ -52,7 +53,8 @@ class _VerificationWayScreenState extends State<VerificationWayScreen> {
         onPressed: () {
           getIt<AppPreferences>().setData<bool>(
               key: PrefKeys.isDoneAccountVerification, data: true);
-          context.pushNamed(Routes.start.path);
+          context.pushNamedAndRemoveUntil(Routes.start.path);
+          DIModulesManger.disposeBloc<EditContactsCubit>();
         },
         child: Text(
           AppStrings.skip.tr(),

@@ -40,6 +40,7 @@ export "package:wasla/presentation/resources/managers/strings_manager.dart";
 export "package:wasla/presentation/resources/managers/styles_manager.dart";
 export "package:wasla/presentation/resources/managers/theme_manager.dart";
 export "package:wasla/presentation/resources/managers/values_manager.dart";
+export 'package:wasla/presentation/widgets/app_svg.dart';
 export 'package:wasla/presentation/widgets/buttons/button.dart';
 export "package:wasla/presentation/widgets/conditional_builder.dart";
 export "package:wasla/presentation/widgets/loading_indicator.dart";

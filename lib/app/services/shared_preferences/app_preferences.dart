@@ -94,9 +94,7 @@ class AppPreferences extends Equatable {
       return Routes.start;
     }
 
-    //todo
-    //home route
-    return Routes.startNowRoute;
+    return Routes.home;
   }
 
   //save auth data

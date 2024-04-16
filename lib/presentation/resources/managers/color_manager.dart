@@ -108,6 +108,8 @@ class ColorsManager {
   static const Color lightFuchsia = Color(0xffF5D7DB);
   static const Color beige1 = Color(0xffF5e9d0);
   static const Color beige2 = Color(0xfff6d6c5);
+  static const Color calico = Color(0xffd8b188);
+  static const Color twine = Color(0xffc18653);
 
   // new colors
 
