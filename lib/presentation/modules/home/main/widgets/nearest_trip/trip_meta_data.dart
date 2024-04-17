@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/provider_seat_num.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/nearest_trip/provider_seat_num.dart';
 import 'package:wasla/presentation/widgets/to_from_chart.dart';
 
 class TripMetaData extends StatelessWidget {

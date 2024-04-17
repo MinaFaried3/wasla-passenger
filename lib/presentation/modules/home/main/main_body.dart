@@ -1,38 +1,55 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/ads_slider.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/nearest_trip.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/neartest_trip_content.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/wasla_features.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/ads/ads_slider.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/discover_trip/discover_trips_content.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/features/wasla_features.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/nearest_trip/neartest_trip_content.dart';
+import 'package:wasla/presentation/widgets/section/section_with_tittle.dart';
+import 'package:wasla/presentation/widgets/section/sliver_section_tittle.dart';
 
 class MainBody extends StatelessWidget {
   const MainBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          //nearestTrip
-          SectionWithTitle(
+    return CustomScrollView(
+      slivers: [
+        //nearestTrip
+        SliverToBoxAdapter(
+          child: SectionWithTitle(
             tittle: AppStrings.nearestTrip.tr(),
             content: const NearestTripContent(),
           ),
+        ),
 
-          //wasla features
-          const WaslaFeatures(),
+        //wasla features
+        const SliverToBoxAdapter(child: WaslaFeatures()),
 
-          //ads
-          SectionWithTitle(
+        //ads
+        SliverToBoxAdapter(
+          child: SectionWithTitle(
             tittle: AppStrings.ourServices.tr(),
             content: const AdsSlider(),
             enableContentPadding: false,
           ),
+        ),
 
-          //discover trips
-        ],
-      ),
+        //discover trips title with more button
+        SliverSectionHead(
+          tittle: AppStrings.discoverYourTrips.tr(),
+          action: TextButton(
+            child: Text(
+              AppStrings.more.tr(),
+              style: getSemiBoldStyle(
+                fontSize: 12,
+                color: ColorsManager.tealPrimary,
+              ),
+            ),
+            onPressed: () {},
+          ),
+        ),
+        //discover content => sliver padding => sliver grid
+        const DiscoverTripsContent()
+      ],
     );
   }
 }

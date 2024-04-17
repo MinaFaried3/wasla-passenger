@@ -64,7 +64,7 @@ class AppButton extends StatelessWidget {
             ),
           ),
           minimumSize: MaterialStatePropertyAll(
-            Size(AppSize.s100.w, AppSize.s40.h),
+            Size(AppSize.s40.w, AppSize.s20.h),
           ),
           maximumSize: MaterialStatePropertyAll(
             Size(AppSize.s400.w, AppSize.s100.h),

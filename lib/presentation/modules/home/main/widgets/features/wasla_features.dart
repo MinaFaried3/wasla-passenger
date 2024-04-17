@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/feature_item.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/features/feature_item.dart';
 
 class WaslaFeatures extends StatelessWidget {
   const WaslaFeatures({super.key});

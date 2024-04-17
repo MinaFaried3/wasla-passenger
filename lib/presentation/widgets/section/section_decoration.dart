@@ -1,4 +1,4 @@
-import '../../app/shared/common/common_libs.dart';
+import '../../../app/shared/common/common_libs.dart';
 
 BoxDecoration buildSectionDecoration({double radius = 35}) {
   return BoxDecoration(

@@ -5,25 +5,34 @@ class AppListTile extends StatelessWidget {
     super.key,
     required this.tittle,
     required this.iconPath,
+    this.iconSize,
+    this.fontSize,
+    this.iconColor = ColorsManager.offWhite300,
   });
 
   final String tittle;
   final String iconPath;
+  final Color iconColor;
+  final double? iconSize;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         AppSvg(
           path: iconPath,
-          color: ColorsManager.offWhite300,
+          color: iconColor,
+          height: iconSize,
         ),
         const HorizontalSpace(5),
         FittedBox(
           child: Text(
             tittle,
-            style: getMediumStyle(fontSize: 12.sp),
+            style: getMediumStyle(
+              fontSize: fontSize?.sp ?? 12.sp,
+            ),
           ),
         )
       ],
