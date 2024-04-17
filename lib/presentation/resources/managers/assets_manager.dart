@@ -16,6 +16,7 @@ class AssetsProvider {
   static const String _svg = '$_imagePath/svg';
   static const String _background = '$_imagePath/background';
   static const String _png = '$_imagePath/png';
+  static const String _temp = '$_imagePath/temp';
 
   //animation_dirs
   static const String _rive = '$_animationPath/rive';
@@ -43,7 +44,6 @@ class AssetsProvider {
   static const String startImg = '$_png/start.png';
 
   //home - main
-  static const String adsImg = '$_png/ads.png';
 
   //onboarding
   static const String onboarding1 = '$_onboarding/welcome_onboarding.png';
@@ -101,4 +101,11 @@ class AssetsProvider {
   static const String adsIcon = '$_svg/ads_icon.svg';
   static const String seatsPositionIcon = '$_svg/seats_position_icon.svg';
   static const String privateBusIcon = '$_svg/private_bus_icon.svg';
+  static const String priceIcon = '$_svg/price_icon.svg';
+  static const String starIcon = '$_svg/star_icon.svg';
+  static const String heartIcon = '$_svg/heart_icon.svg';
+
+  //temp
+  static const String adsImg = '$_png/ads.png';
+  static const String horusLogoImg = '$_temp/horus_logo.jpg';
 }

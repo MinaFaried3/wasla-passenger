@@ -137,6 +137,7 @@ class AppStrings {
   static const String more = 'more';
   static const String ourServices = 'ourServices';
   static const String discoverYourTrips = 'discoverYourTrips';
+  static const String bookNow = 'bookNow';
 
   // error handler
   static const String badRequestError = 'bad_request_error';

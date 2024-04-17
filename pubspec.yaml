@@ -111,6 +111,7 @@ flutter:
     - assets/images/account_verification/
     - assets/images/svg/
     - assets/images/png/
+    - assets/images/temp/
     - assets/animation/rive/
     - assets/animation/json/
     - assets/translations/

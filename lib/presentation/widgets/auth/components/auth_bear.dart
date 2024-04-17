@@ -2,7 +2,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
-import 'package:wasla/presentation/widgets/animated_bear.dart';
+import 'package:wasla/presentation/widgets/bear/animated_bear.dart';
 
 class AuthBear extends StatefulWidget {
   final RiveControllerManager riveController;

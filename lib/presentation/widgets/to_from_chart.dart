@@ -5,10 +5,12 @@ class FromToStationChart extends StatelessWidget {
     super.key,
     required this.from,
     required this.to,
+    this.iconsSize = 15,
   });
 
   final String from;
   final String to;
+  final double iconsSize;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,11 @@ class FromToStationChart extends StatelessWidget {
           Flexible(child: FittedBox(child: Text(from))),
 
           //direction
-          const Expanded(flex: 3, child: DottedLine()),
+          Expanded(
+              flex: 3,
+              child: DottedLine(
+                size: iconsSize,
+              )),
 
           //to
           Flexible(child: FittedBox(child: Text(to))),
@@ -36,9 +42,10 @@ class FromToStationChart extends StatelessWidget {
 class StationDot extends StatelessWidget {
   const StationDot({
     super.key,
+    required this.width,
   });
 
-  final double width = 15;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +67,10 @@ class StationDot extends StatelessWidget {
 class DottedLine extends StatelessWidget {
   const DottedLine({
     super.key,
+    required this.size,
   });
+
+  final double size;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +78,9 @@ class DottedLine extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          const StationDot(),
+          StationDot(
+            width: size,
+          ),
           Expanded(
             child: LayoutBuilder(builder: (context, constraints) {
               int listLength = (((constraints.constrainWidth() / 10).floor()));
@@ -79,9 +91,10 @@ class DottedLine extends StatelessWidget {
                 children: List.generate(
                     ((constraints.constrainWidth() / 10).floor()), (index) {
                   if (index + 1 == (listLength / 2).round()) {
-                    return const AppSvg(
+                    return AppSvg(
                       path: AssetsProvider.arrowRightIcon,
                       color: ColorsManager.tealPrimary300,
+                      height: size,
                     );
                   }
                   return const SizedBox(
@@ -95,7 +108,9 @@ class DottedLine extends StatelessWidget {
               );
             }),
           ),
-          const StationDot(),
+          StationDot(
+            width: size,
+          ),
         ],
       ),
     );

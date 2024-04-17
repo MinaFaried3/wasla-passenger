@@ -1,5 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/widgets/section_title.dart';
+import 'package:wasla/presentation/widgets/section/section_title.dart';
 
 class SectionWithTitle extends StatelessWidget {
   const SectionWithTitle({
@@ -19,17 +19,9 @@ class SectionWithTitle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //title
-        Padding(
-          padding: const EdgeInsets.only(
-            top: AppPadding.fromLR,
-            right: AppPadding.fromLR,
-            left: AppPadding.fromLR,
-          ),
-          child: SectionTitle(title: tittle),
-        ),
+        SectionTitle(title: tittle),
 
         //container
-
         enableContentPadding
             ? Padding(
                 padding: const EdgeInsets.only(
