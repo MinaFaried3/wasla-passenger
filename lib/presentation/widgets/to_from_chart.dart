@@ -27,7 +27,7 @@ class FromToStationChart extends StatelessWidget {
           //direction
           Expanded(
               flex: 3,
-              child: DottedLine(
+              child: DottedLineWithIcon(
                 size: iconsSize,
               )),
 
@@ -64,13 +64,17 @@ class StationDot extends StatelessWidget {
   }
 }
 
-class DottedLine extends StatelessWidget {
-  const DottedLine({
+class DottedLineWithIcon extends StatelessWidget {
+  const DottedLineWithIcon({
     super.key,
     required this.size,
+    this.iconPath,
+    this.iconSize,
   });
 
   final double size;
+  final double? iconSize;
+  final String? iconPath;
 
   @override
   Widget build(BuildContext context) {
@@ -88,18 +92,17 @@ class DottedLine extends StatelessWidget {
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 mainAxisSize: MainAxisSize.max,
-                children: List.generate(
-                    ((constraints.constrainWidth() / 10).floor()), (index) {
+                children: List.generate(listLength, (index) {
                   if (index + 1 == (listLength / 2).round()) {
                     return AppSvg(
-                      path: AssetsProvider.arrowRightIcon,
+                      path: iconPath ?? AssetsProvider.arrowRightIcon,
                       color: ColorsManager.tealPrimary300,
-                      height: size,
+                      height: iconSize ?? size,
                     );
                   }
                   return const SizedBox(
                     height: 1,
-                    width: 5,
+                    width: 3,
                     child: DecoratedBox(
                       decoration: BoxDecoration(color: Colors.grey),
                     ),
@@ -114,5 +117,32 @@ class DottedLine extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class DottedLine extends StatelessWidget {
+  const DottedLine({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(builder: (context, constraints) {
+      int listLength = (((constraints.constrainWidth() / 10).floor()));
+      return Flex(
+        direction: Axis.horizontal,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: List.generate(listLength, (index) {
+          return const SizedBox(
+            height: 1.5,
+            width: 5,
+            child: DecoratedBox(
+              decoration: BoxDecoration(color: Colors.grey),
+            ),
+          );
+        }),
+      );
+    });
   }
 }

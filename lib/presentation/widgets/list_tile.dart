@@ -8,6 +8,7 @@ class AppListTile extends StatelessWidget {
     this.iconSize,
     this.fontSize,
     this.iconColor = ColorsManager.offWhite300,
+    this.style,
   });
 
   final String tittle;
@@ -15,6 +16,7 @@ class AppListTile extends StatelessWidget {
   final Color iconColor;
   final double? iconSize;
   final double? fontSize;
+  final TextStyle? style;
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +32,10 @@ class AppListTile extends StatelessWidget {
         FittedBox(
           child: Text(
             tittle,
-            style: getMediumStyle(
-              fontSize: fontSize?.sp ?? 12.sp,
-            ),
+            style: style ??
+                getMediumStyle(
+                  fontSize: fontSize?.sp ?? 12.sp,
+                ),
           ),
         )
       ],

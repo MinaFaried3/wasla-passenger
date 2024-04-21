@@ -132,5 +132,8 @@
   "forFreeTrip": "لهدية رحلة مجانية",
   "followers": "تابعون",
   "followings": "متابعون",
-  "viewAll": "عرض الجميع"
+  "viewAll": "عرض الجميع",
+  "tripStart": "قيام الرحلة",
+  "tripEnd": "وصول الرحلة",
+  "ticketPrice": "سعر التذكرة"
 }

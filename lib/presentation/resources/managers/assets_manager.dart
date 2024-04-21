@@ -37,6 +37,7 @@ class AssetsProvider {
   static const String logo1000 = '$_logo/logo_1000.png';
   static const String logoIcon = '$_logo/logo_icon.png';
   static const String logoTypo = '$_logo/logo_typo.png';
+  static const String waslaTicketLogo = '$_logo/wasla_ticket_logo.png';
 
   //start now
   static const String startNowBackground =
