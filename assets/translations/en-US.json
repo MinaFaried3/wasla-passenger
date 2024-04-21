@@ -132,5 +132,8 @@
   "forFreeTrip": "To Get Free Trip",
   "followers": "followers",
   "followings": "followings",
-  "viewAll": "view all"
+  "viewAll": "view all",
+  "tripStart": "Trip Start",
+  "tripEnd": "Trip End",
+  "ticketPrice": "ticket price"
 }

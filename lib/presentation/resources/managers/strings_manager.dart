@@ -147,6 +147,11 @@ class AppStrings {
   static const String followings = "followings";
   static const String viewAll = "viewAll";
 
+  //tickets body
+  static const String tripStart = "tripStart";
+  static const String tripEnd = "tripEnd";
+  static const String ticketPrice = "ticketPrice";
+
   // error handler
   static const String badRequestError = 'bad_request_error';
   static const String noContent = 'no_content';
