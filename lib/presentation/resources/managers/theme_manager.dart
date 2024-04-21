@@ -117,20 +117,20 @@ class ThemeManger {
   static final OutlinedButtonThemeData outlinedButtonThemeData =
       OutlinedButtonThemeData(
     style: ButtonStyle(
-      foregroundColor:
-          const MaterialStatePropertyAll(ColorsManager.tealPrimary700),
-      side: const MaterialStatePropertyAll(
-        BorderSide(color: ColorsManager.tealPrimary1000),
-      ),
-      shape: MaterialStatePropertyAll(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s14),
+        foregroundColor:
+            const MaterialStatePropertyAll(ColorsManager.tealPrimary700),
+        side: const MaterialStatePropertyAll(
+          BorderSide(color: ColorsManager.tealPrimary1000),
         ),
-      ),
-      textStyle: MaterialStatePropertyAll(
-        getSemiBoldStyle(fontSize: FontSize.s18.sp),
-      ),
-    ),
+        shape: MaterialStatePropertyAll(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSize.s14),
+          ),
+        ),
+        textStyle: MaterialStatePropertyAll(
+          getSemiBoldStyle(fontSize: FontSize.s18.sp),
+        ),
+        padding: const MaterialStatePropertyAll(EdgeInsets.zero)),
   );
 
   static const IconButtonThemeData iconButtonThemeData = IconButtonThemeData(

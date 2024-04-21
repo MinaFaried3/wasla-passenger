@@ -1,48 +1,65 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/enums/button_type_enum.dart';
 
-Widget buildButtonChild(
-    {required BuildContext context,
-    required ButtonContentType buttonType,
-    String? svgIconPath,
-    required Color fontColor,
-    required String text,
-    double? fontSize}) {
+Widget buildButtonChild({
+  required BuildContext context,
+  required ButtonContentType buttonType,
+  String? svgIconPath,
+  required Color fontColor,
+  required String text,
+  double? fontSize,
+  double? iconSize,
+  bool matchFontColor = false,
+}) {
   switch (buttonType) {
     case ButtonContentType.text:
       return buildText(context, text, buttonType, fontColor, fontSize);
     case ButtonContentType.icon:
-      return buildIcon(context, svgIconPath, fontColor);
+      return buildIcon(
+          context, svgIconPath, fontColor, iconSize, matchFontColor);
     case ButtonContentType.iconText:
-      return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          buildIcon(context, svgIconPath, fontColor),
-          HorizontalSpace(AppSize.s8.w),
-          buildText(context, text, buttonType, fontColor, fontSize),
-        ],
+      return FittedBox(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              buildIcon(
+                  context, svgIconPath, fontColor, iconSize, matchFontColor),
+              HorizontalSpace(AppSize.s4.w),
+              buildText(context, text, buttonType, fontColor, fontSize),
+            ],
+          ),
+        ),
       );
   }
 }
 
-Widget buildIcon(BuildContext context, String? svgIconPath, Color fontColor) =>
+Widget buildIcon(BuildContext context, String? svgIconPath, Color fontColor,
+        double? iconSize, bool matchFontColor) =>
     svgIconPath != null
         ? SvgPicture.asset(
             svgIconPath,
-            height: AppSize.s37_5.sp,
+            height: iconSize ?? AppSize.s37_5.sp,
             matchTextDirection: true,
-            colorFilter: const ColorFilter.mode(
-              ColorsManager.tealPrimary800,
+            colorFilter: ColorFilter.mode(
+              matchFontColor ? fontColor : ColorsManager.tealPrimary500,
               BlendMode.srcIn,
             ),
           )
         : const SizedBox.shrink();
 
-Text buildText(BuildContext context, String text, ButtonContentType buttonType,
-    Color fontColor, double? fontSize) {
-  return Text(
-    text,
-    style: buildStyle(context, buttonType, fontColor, fontSize),
+Widget buildText(BuildContext context, String text,
+    ButtonContentType buttonType, Color fontColor, double? fontSize) {
+  return FittedBox(
+    child: Text(
+      text,
+      style: buildStyle(context, buttonType, fontColor, fontSize),
+      textAlign: TextAlign.center,
+      softWrap: false,
+      maxLines: 1,
+      overflow: TextOverflow.fade,
+    ),
   );
 }
 

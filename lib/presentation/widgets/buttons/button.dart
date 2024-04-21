@@ -8,10 +8,13 @@ class AppButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double? fontSize;
+  final double? iconSize;
+  final double? radius;
   final ButtonContentType buttonType;
   final String? svgIconPath;
   final Color? backgroundColor;
   final Color? fontColor;
+  final bool matchFontColor;
 
   const AppButton({
     super.key,
@@ -24,6 +27,9 @@ class AppButton extends StatelessWidget {
     this.svgIconPath,
     this.backgroundColor,
     this.fontColor,
+    this.iconSize,
+    this.matchFontColor = false,
+    this.radius,
   });
 
   factory AppButton.dark({
@@ -32,8 +38,11 @@ class AppButton extends StatelessWidget {
     double? width,
     double? height,
     double? fontSize,
+    double? iconSize,
     ButtonContentType buttonType = ButtonContentType.text,
     String? svgIconPath,
+    double? radius,
+    bool matchFontColor = false,
   }) =>
       AppButton(
         text: text,
@@ -45,6 +54,9 @@ class AppButton extends StatelessWidget {
         svgIconPath: svgIconPath,
         buttonType: buttonType,
         fontSize: fontSize,
+        iconSize: iconSize,
+        matchFontColor: matchFontColor,
+        radius: radius,
       );
 
   @override
@@ -63,15 +75,12 @@ class AppButton extends StatelessWidget {
               height ?? AppSize.s60.h,
             ),
           ),
-          minimumSize: MaterialStatePropertyAll(
-            Size(AppSize.s40.w, AppSize.s20.h),
-          ),
           maximumSize: MaterialStatePropertyAll(
             Size(AppSize.s400.w, AppSize.s100.h),
           ),
           shape: MaterialStatePropertyAll(
             RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppSize.s20.r),
+              borderRadius: BorderRadius.circular(radius ?? AppSize.s20.r),
             ),
           ),
         ),
@@ -80,7 +89,9 @@ class AppButton extends StatelessWidget {
           context: context,
           buttonType: buttonType,
           text: text,
+          iconSize: iconSize,
           fontSize: fontSize,
+          matchFontColor: matchFontColor,
           fontColor: fontColor ?? Theme.of(context).colorScheme.surfaceVariant,
           svgIconPath: svgIconPath,
         ));

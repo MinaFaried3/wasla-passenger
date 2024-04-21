@@ -105,7 +105,15 @@ class AssetsProvider {
   static const String starIcon = '$_svg/star_icon.svg';
   static const String heartIcon = '$_svg/heart_icon.svg';
 
+  //profile icon
+  static const String edit = '$_svg/edit_icon.svg';
+  static const String birthdate = '$_svg/birthdate_icon.svg';
+  static const String maleFemale = '$_svg/male_female_icon.svg';
+  static const String idIcon = '$_svg/id_icon.svg';
+  static const String trashIcon = '$_svg/trash_icon.svg';
+
   //temp
   static const String adsImg = '$_png/ads.png';
   static const String horusLogoImg = '$_temp/horus_logo.jpg';
+  static const String minaUserImg = '$_temp/mina_user.png';
 }

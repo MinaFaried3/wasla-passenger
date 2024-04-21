@@ -139,6 +139,14 @@ class AppStrings {
   static const String discoverYourTrips = 'discoverYourTrips';
   static const String bookNow = 'bookNow';
 
+  //profile body
+  static const String editProfile = "editProfile";
+  static const String totalPoints = "totalPoints";
+  static const String forFreeTrip = "forFreeTrip";
+  static const String followers = "followers";
+  static const String followings = "followings";
+  static const String viewAll = "viewAll";
+
   // error handler
   static const String badRequestError = 'bad_request_error';
   static const String noContent = 'no_content';

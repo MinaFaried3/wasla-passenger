@@ -1,11 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:wasla/app/services/hive/hive_constants.dart';
 import 'package:wasla/app/shared/common/bloc_observer.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/wasla.dart';
-import 'package:wasla/data/network/http_overrides.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +10,7 @@ void main() async {
   //todo
   // FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   //todo
-  HttpOverrides.global = AppHttpOverrides();
+  // HttpOverrides.global = AppHttpOverrides();
 
   await Hive.initFlutter();
   HiveConstants.registerHiveTypeAdapters();

@@ -126,5 +126,11 @@
   "more": "more",
   "ourServices": "Our Services",
   "discoverYourTrips": "Discover Trips",
-  "bookNow": "book now"
+  "bookNow": "book now",
+  "editProfile": "edit profile",
+  "totalPoints": "Total Points",
+  "forFreeTrip": "To Get Free Trip",
+  "followers": "followers",
+  "followings": "followings",
+  "viewAll": "view all"
 }

@@ -13,7 +13,7 @@ class _ApiServiceClient implements ApiServiceClient {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://10.0.2.2:7095/api';
+    baseUrl ??= 'https://wasla.runasp.net/api';
   }
 
   final Dio _dio;
