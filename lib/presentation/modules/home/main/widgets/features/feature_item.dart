@@ -25,7 +25,7 @@ class _WaslaFeatureItemState extends State<WaslaFeatureItem>
   void initState() {
     super.initState();
     animationController =
-        AnimationController(vsync: this, duration: DurationManager.s6);
+        AnimationController(vsync: this, duration: DurationManager.s2);
     scaleAnimation =
         CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
     animationController.forward();

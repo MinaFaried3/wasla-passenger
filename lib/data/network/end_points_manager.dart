@@ -1,5 +1,7 @@
 class EndPointsManager {
-  static const String baseUrl = "https://10.0.2.2:7095/api";
+  // static const String baseUrl = "https://10.0.2.2:7095/api";
+  // static const String baseUrl = "https://localhost:7095/api";
+  static const String baseUrl = "https://wasla.runasp.net/api";
 
   //dirs
   static const String _authentication = "/auth";

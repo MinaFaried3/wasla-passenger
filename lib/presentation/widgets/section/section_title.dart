@@ -21,7 +21,7 @@ class _SectionTitleState extends State<SectionTitle>
   void initState() {
     super.initState();
     animationController =
-        AnimationController(vsync: this, duration: DurationManager.s6);
+        AnimationController(vsync: this, duration: DurationManager.s4);
     fadeAnimation = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
       parent: animationController,
       curve: Curves.easeInOut,

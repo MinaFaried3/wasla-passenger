@@ -5,7 +5,7 @@ import 'package:wasla/presentation/widgets/buttons/buttons_methods.dart';
 class AppOutlinedButton extends StatelessWidget {
   const AppOutlinedButton(
       {super.key,
-      required this.text,
+      this.text = '',
       required this.onPressed,
       this.width,
       this.height,
@@ -14,13 +14,15 @@ class AppOutlinedButton extends StatelessWidget {
       this.svgIconPath,
       this.backgroundColor,
       this.fontColor,
-      this.borderColor});
+      this.borderColor,
+      this.radius});
 
   final String text;
   final void Function() onPressed;
   final double? width;
   final double? height;
   final double? fontSize;
+  final double? radius;
   final ButtonContentType buttonType;
   final String? svgIconPath;
   final Color? backgroundColor;
@@ -45,14 +47,14 @@ class AppOutlinedButton extends StatelessWidget {
           ),
         ),
         minimumSize: MaterialStatePropertyAll(
-          Size(AppSize.s100.w, AppSize.s40.h),
+          Size(AppSize.s10.w, AppSize.s10.w),
         ),
         maximumSize: MaterialStatePropertyAll(
           Size(AppSize.s400.w, AppSize.s100.h),
         ),
         shape: MaterialStatePropertyAll(
           RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSize.s20.r),
+            borderRadius: BorderRadius.circular(radius ?? AppSize.s20.r),
           ),
         ),
       ),

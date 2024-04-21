@@ -31,11 +31,11 @@ class _NearestTripContentState extends State<NearestTripContent>
   void initState() {
     super.initState();
     animationController =
-        AnimationController(vsync: this, duration: DurationManager.s6);
+        AnimationController(vsync: this, duration: DurationManager.s4);
     slideAnimation = Tween<Offset>(begin: const Offset(1, 0), end: Offset.zero)
         .animate(CurvedAnimation(
       parent: animationController,
-      curve: Curves.easeInOut,
+      curve: Curves.easeInOutBack,
     ));
 
     animationController.forward();
