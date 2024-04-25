@@ -5,7 +5,7 @@ class Or extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: responsive.getWidthOf(AppSize.s0_075),

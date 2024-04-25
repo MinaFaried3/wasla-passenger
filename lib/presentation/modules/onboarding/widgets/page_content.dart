@@ -13,7 +13,7 @@ class PageContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: AppPadding.p16),

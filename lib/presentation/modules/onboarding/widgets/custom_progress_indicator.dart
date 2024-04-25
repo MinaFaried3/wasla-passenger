@@ -11,7 +11,7 @@ class CustomProgressIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return CustomPaint(
       size: Size(responsive.screenWidth * AppSize.s1_5,
           responsive.screenWidth * AppSize.s1_5),

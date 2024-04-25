@@ -47,7 +47,7 @@ class _AuthBearState extends State<AuthBear>
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
 
     return SizedBox(
       width: double.infinity,

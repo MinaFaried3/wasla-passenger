@@ -6,6 +6,7 @@ Widget buildButtonChild({
   required ButtonContentType buttonType,
   String? svgIconPath,
   required Color fontColor,
+  Color? iconColor,
   required String text,
   double? fontSize,
   double? iconSize,
@@ -16,7 +17,7 @@ Widget buildButtonChild({
       return buildText(context, text, buttonType, fontColor, fontSize);
     case ButtonContentType.icon:
       return buildIcon(
-          context, svgIconPath, fontColor, iconSize, matchFontColor);
+          context, svgIconPath, fontColor, iconColor, iconSize, matchFontColor);
     case ButtonContentType.iconText:
       return FittedBox(
         child: Padding(
@@ -24,8 +25,8 @@ Widget buildButtonChild({
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              buildIcon(
-                  context, svgIconPath, fontColor, iconSize, matchFontColor),
+              buildIcon(context, svgIconPath, fontColor, iconColor, iconSize,
+                  matchFontColor),
               HorizontalSpace(AppSize.s4.w),
               buildText(context, text, buttonType, fontColor, fontSize),
             ],
@@ -36,14 +37,15 @@ Widget buildButtonChild({
 }
 
 Widget buildIcon(BuildContext context, String? svgIconPath, Color fontColor,
-        double? iconSize, bool matchFontColor) =>
+        Color? iconColor, double? iconSize, bool matchFontColor) =>
     svgIconPath != null
         ? SvgPicture.asset(
             svgIconPath,
             height: iconSize ?? AppSize.s37_5.sp,
             matchTextDirection: true,
             colorFilter: ColorFilter.mode(
-              matchFontColor ? fontColor : ColorsManager.tealPrimary500,
+              iconColor ??
+                  (matchFontColor ? fontColor : ColorsManager.tealPrimary500),
               BlendMode.srcIn,
             ),
           )

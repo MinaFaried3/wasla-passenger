@@ -135,5 +135,12 @@
   "viewAll": "view all",
   "tripStart": "Trip Start",
   "tripEnd": "Trip End",
-  "ticketPrice": "ticket price"
+  "ticketPrice": "ticket price",
+  "takeOffDate": "Take-Off Date",
+  "takeOffTime": "Take-Off Time",
+  "passengersCount": "Passenger Count",
+  "ticket": "Ticket",
+  "searchForTrip": "Search For Trip",
+  "am": "AM",
+  "pm": "PM"
 }

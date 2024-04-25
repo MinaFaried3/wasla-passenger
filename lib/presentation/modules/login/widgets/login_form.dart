@@ -59,7 +59,7 @@ class _LoginFormState extends State<LoginForm>
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     const double containerPadding = AppPadding.p8;
     const double containerRadius = containerPadding + AppSize.s20;
     const double paddingBottom = AppPadding.p20;

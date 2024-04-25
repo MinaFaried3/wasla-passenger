@@ -27,7 +27,7 @@ class FromToStationChart extends StatelessWidget {
           //direction
           Expanded(
               flex: 3,
-              child: DottedLineWithIcon(
+              child: DottedLineWithIconDotSection(
                 size: iconsSize,
               )),
 
@@ -64,8 +64,8 @@ class StationDot extends StatelessWidget {
   }
 }
 
-class DottedLineWithIcon extends StatelessWidget {
-  const DottedLineWithIcon({
+class DottedLineWithIconDotSection extends StatelessWidget {
+  const DottedLineWithIconDotSection({
     super.key,
     required this.size,
     this.iconPath,
@@ -78,13 +78,38 @@ class DottedLineWithIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return DottedLineWithIcon(
+      size: size,
+      boundaries: StationDot(
+        width: size,
+      ),
+      iconSize: iconSize,
+      iconPath: iconPath,
+    );
+  }
+}
+
+class DottedLineWithIcon extends StatelessWidget {
+  const DottedLineWithIcon({
+    super.key,
+    required this.size,
+    this.iconPath,
+    this.iconSize,
+    required this.boundaries,
+  });
+
+  final double size;
+  final double? iconSize;
+  final String? iconPath;
+  final Widget boundaries;
+
+  @override
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
-          StationDot(
-            width: size,
-          ),
+          boundaries,
           Expanded(
             child: LayoutBuilder(builder: (context, constraints) {
               int listLength = (((constraints.constrainWidth() / 10).floor()));
@@ -111,9 +136,7 @@ class DottedLineWithIcon extends StatelessWidget {
               );
             }),
           ),
-          StationDot(
-            width: size,
-          ),
+          boundaries,
         ],
       ),
     );

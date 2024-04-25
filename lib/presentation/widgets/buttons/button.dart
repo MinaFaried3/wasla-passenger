@@ -14,6 +14,7 @@ class AppButton extends StatelessWidget {
   final String? svgIconPath;
   final Color? backgroundColor;
   final Color? fontColor;
+  final Color? iconColor;
   final bool matchFontColor;
 
   const AppButton({
@@ -30,6 +31,7 @@ class AppButton extends StatelessWidget {
     this.iconSize,
     this.matchFontColor = false,
     this.radius,
+    this.iconColor,
   });
 
   factory AppButton.dark({
@@ -93,6 +95,7 @@ class AppButton extends StatelessWidget {
           fontSize: fontSize,
           matchFontColor: matchFontColor,
           fontColor: fontColor ?? Theme.of(context).colorScheme.surfaceVariant,
+          iconColor: iconColor,
           svgIconPath: svgIconPath,
         ));
   }

@@ -41,7 +41,7 @@ class _StartNowScreenState extends State<StartNowScreen>
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
 
     return PopScope(
       onPopInvoked: (pop) {

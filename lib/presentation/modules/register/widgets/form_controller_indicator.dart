@@ -25,7 +25,7 @@ class FormControllerIndicator extends StatefulWidget {
 class _FormControllerIndicatorState extends State<FormControllerIndicator> {
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return BlocBuilder<FormIndexCubit, int>(
       builder: (context, formIndex) {
         return Padding(
@@ -45,7 +45,7 @@ class _FormControllerIndicatorState extends State<FormControllerIndicator> {
   }
 
   Widget _buildIndicator(
-      int formIndex, BuildContext context, ResponsiveManager responsive) {
+      int formIndex, BuildContext context, ContextManager responsive) {
     return Padding(
       padding: const EdgeInsets.only(right: 8.0),
       child: AnimatedSmoothIndicator(
