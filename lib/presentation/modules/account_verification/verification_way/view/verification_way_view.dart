@@ -16,7 +16,7 @@ class VerificationWayScreen extends StatefulWidget {
 class _VerificationWayScreenState extends State<VerificationWayScreen> {
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context);
+    final responsive = ContextManager(context);
     return PopScope(
       onPopInvoked: (canPop) => SystemNavigator.pop(),
       child: Scaffold(

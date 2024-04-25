@@ -22,7 +22,7 @@ class LoadingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
 
     return AnimatedSwitcher(
       duration: const Duration(seconds: 1),

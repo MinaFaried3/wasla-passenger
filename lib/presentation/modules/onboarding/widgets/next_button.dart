@@ -17,7 +17,7 @@ class NextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     const Color iconColor = ColorsManager.offWhite;
     return SizedBox(
       width: responsive.screenWidth * AppSize.s2,

@@ -4,9 +4,11 @@ class SectionTitle extends StatefulWidget {
   const SectionTitle({
     super.key,
     required this.title,
+    this.iconPath,
   });
 
   final String title;
+  final String? iconPath;
 
   @override
   State<SectionTitle> createState() => _SectionTitleState();
@@ -43,9 +45,17 @@ class _SectionTitleState extends State<SectionTitle>
           AppPadding.fromLR + 8, AppPadding.fromLR, AppPadding.fromLR, 10),
       child: FadeTransition(
         opacity: fadeAnimation,
-        child: Text(
-          widget.title,
-          style: getBoldStyle(fontSize: FontSize.sectionTitles),
+        child: Row(
+          children: [
+            if (widget.iconPath != null) ...[
+              AppSvg(height: 30, path: widget.iconPath!),
+              HorizontalSpace(15.w),
+            ],
+            Text(
+              widget.title,
+              style: getBoldStyle(fontSize: FontSize.sectionTitles),
+            ),
+          ],
         ),
       ),
     );

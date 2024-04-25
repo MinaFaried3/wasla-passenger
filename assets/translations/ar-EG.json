@@ -135,5 +135,12 @@
   "viewAll": "عرض الجميع",
   "tripStart": "قيام الرحلة",
   "tripEnd": "وصول الرحلة",
-  "ticketPrice": "سعر التذكرة"
+  "ticketPrice": "سعر التذكرة",
+  "takeOffDate": "تاريخ الذهاب",
+  "takeOffTime": "وقت الذهاب",
+  "passengersCount": "عدد الركـاب",
+  "ticket": "تذكرة",
+  "searchForTrip": "بحث عن الرحلة",
+  "am": "صباحا",
+  "pm": "مساءا"
 }

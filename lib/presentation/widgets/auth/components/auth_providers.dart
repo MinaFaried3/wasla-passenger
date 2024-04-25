@@ -5,7 +5,7 @@ class AuthProviders extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       textDirection: TextDirection.ltr,
@@ -28,7 +28,7 @@ class AuthProviders extends StatelessWidget {
 
   Widget _buildProviderElement(
       {required String icon,
-      required ResponsiveManager responsiveManager,
+      required ContextManager responsiveManager,
       required void Function() onPressed}) {
     final double width = responsiveManager.getWidthOf(AppSize.s0_1);
     final double iconWidth = width * AppSize.s0_65;

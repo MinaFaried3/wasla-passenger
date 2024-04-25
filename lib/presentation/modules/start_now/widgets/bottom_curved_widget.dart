@@ -2,7 +2,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/start_now/widgets/stack_clip_path.dart';
 
 class BottomCurvedWidget extends StatelessWidget {
-  final ResponsiveManager responsive;
+  final ContextManager responsive;
   final double size;
   final Widget? child;
 

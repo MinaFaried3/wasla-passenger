@@ -59,7 +59,7 @@ class _VerificationButtonsState extends State<VerificationButtons>
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context);
+    final responsive = ContextManager(context);
     return BlocBuilder<LocalCubit, LocalState>(
       builder: (context, state) {
         return state.maybeWhen(

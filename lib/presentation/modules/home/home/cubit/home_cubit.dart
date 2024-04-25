@@ -10,7 +10,7 @@ part 'home_cubit.freezed.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeState.initial(_myTicketsContent));
+  HomeCubit() : super(const HomeState.initial(_searchTripContent));
 
   static const HomeContentItem _mainContent = HomeContentItem(
     title: AppStrings.main,
