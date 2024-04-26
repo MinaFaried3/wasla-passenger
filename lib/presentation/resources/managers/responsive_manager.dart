@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:wasla/app/services/localization/language_manager.dart';
 
-class ResponsiveManager {
+class ContextManager {
   static late MediaQueryData mediaQueryData;
+  static late Locale locale;
+  static late TextDirection textDirection;
 
   late final double screenWidth;
   late final double screenHeight;
@@ -13,8 +16,15 @@ class ResponsiveManager {
   //default appbar height
   late final double appBarHeight;
 
-  ResponsiveManager(BuildContext context, {bool hasAppBar = true}) {
+  bool get isArabic => locale == LocalizationManager.arabicLocal;
+
+  bool get isEnglish => locale == LocalizationManager.englishLocal;
+
+  ContextManager(BuildContext context, {bool hasAppBar = true}) {
     mediaQueryData = MediaQuery.of(context);
+    locale = Localizations.localeOf(context);
+    textDirection = Directionality.of(context);
+
     screenWidth = mediaQueryData.size.width;
     screenHeight = mediaQueryData.size.height;
     orientation = mediaQueryData.orientation;
@@ -67,7 +77,7 @@ class ResponsiveManager {
 
 // Get the proportionate height as per screen size
 double getProportionateScreenHeight(double inputHeight, BuildContext context) {
-  final sizeConfig = ResponsiveManager(context);
+  final sizeConfig = ContextManager(context);
 
   double screenHeight = sizeConfig.screenHeight;
   // 812 is the layout height that designer use
@@ -76,7 +86,7 @@ double getProportionateScreenHeight(double inputHeight, BuildContext context) {
 
 // Get the proportionate height as per screen size
 double getProportionateScreenWidth(double inputWidth, BuildContext context) {
-  final sizeConfig = ResponsiveManager(context);
+  final sizeConfig = ContextManager(context);
 
   double screenWidth = sizeConfig.screenWidth;
   // 375 is the layout width that designer use

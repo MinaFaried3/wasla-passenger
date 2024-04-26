@@ -50,7 +50,7 @@ class _AuthFormState extends State<AuthForm> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return Scaffold(
       body: SafeArea(
         child: Padding(

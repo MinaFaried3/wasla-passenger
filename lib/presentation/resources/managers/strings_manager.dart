@@ -152,6 +152,15 @@ class AppStrings {
   static const String tripEnd = "tripEnd";
   static const String ticketPrice = "ticketPrice";
 
+  //search
+  static const String takeOffDate = "takeOffDate";
+  static const String takeOffTime = "takeOffTime";
+  static const String passengersCount = "passengersCount";
+  static const String ticket = "ticket";
+  static const String searchForTrip = "searchForTrip";
+  static const String am = "am";
+  static const String pm = "pm";
+
   // error handler
   static const String badRequestError = 'bad_request_error';
   static const String noContent = 'no_content';

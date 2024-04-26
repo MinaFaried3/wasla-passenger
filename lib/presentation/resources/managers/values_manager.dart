@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class AppMargin {
   static const double m8 = 8.0;
   static const double m12 = 12.0;
@@ -25,6 +27,8 @@ class AppPadding {
   static const double p100 = 100.0;
 
   static const double fromLR = p20;
+
+  static const EdgeInsets leftRight = EdgeInsets.symmetric(horizontal: fromLR);
 }
 
 class AppSize {

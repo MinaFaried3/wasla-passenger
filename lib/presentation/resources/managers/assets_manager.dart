@@ -113,6 +113,11 @@ class AssetsProvider {
   static const String idIcon = '$_svg/id_icon.svg';
   static const String trashIcon = '$_svg/trash_icon.svg';
 
+  //search tickets
+  static const String flipIcon = '$_svg/flip_icon.svg';
+  static const String calendarIcon = '$_svg/calendar_icon.svg';
+  static const String clockIcon = '$_svg/clock_icon.svg';
+
   //temp
   static const String adsImg = '$_png/ads.png';
   static const String horusLogoImg = '$_temp/horus_logo.jpg';

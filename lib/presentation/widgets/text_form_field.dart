@@ -24,6 +24,8 @@ class AppTextFormField extends StatelessWidget {
     this.textCapitalization,
     this.inputFormatters,
     this.onSaved,
+    this.textAlign,
+    this.floatingLabelAlignment,
   });
 
   final bool isPassword;
@@ -47,6 +49,8 @@ class AppTextFormField extends StatelessWidget {
   final Iterable<String>? autofillHints;
   final TextCapitalization? textCapitalization;
   final List<TextInputFormatter>? inputFormatters;
+  final TextAlign? textAlign;
+  final FloatingLabelAlignment? floatingLabelAlignment;
 
   @override
   Widget build(BuildContext context) {
@@ -73,11 +77,12 @@ class AppTextFormField extends StatelessWidget {
       inputFormatters: inputFormatters,
       maxLength: _getFieldLength(),
       cursorOpacityAnimates: true,
+      textAlign: textAlign ?? TextAlign.start,
       cursorWidth: AppSize.s1,
       //todo
       // todo add english family
       style: getRegularStyle(
-          color: ColorsManager.offWhite400, fontSize: AppSize.s28.sp),
+          color: ColorsManager.offWhite400, fontSize: AppSize.s14.sp),
       decoration: InputDecoration(
         isDense: true,
         contentPadding: EdgeInsets.symmetric(
@@ -86,11 +91,11 @@ class AppTextFormField extends StatelessWidget {
         ),
         counterStyle: getMediumStyle(
             color: Theme.of(context).colorScheme.primary,
-            fontSize: FontSize.s16.sp),
-        prefixIcon: Padding(
-          padding: EdgeInsets.all(AppPadding.p6.sp),
-          child: svgPrefixPath != null
-              ? SvgPicture.asset(
+            fontSize: FontSize.s10.sp),
+        prefixIcon: svgPrefixPath != null
+            ? Padding(
+                padding: EdgeInsets.all(AppPadding.p6.sp),
+                child: SvgPicture.asset(
                   svgPrefixPath!,
                   matchTextDirection: true,
                   width: AppSize.s10.sp,
@@ -99,9 +104,9 @@ class AppTextFormField extends StatelessWidget {
                     ColorsManager.offWhite.withOpacity(AppSize.s0_9),
                     BlendMode.srcIn,
                   ),
-                )
-              : null,
-        ),
+                ),
+              )
+            : null,
         suffixIcon: suffix,
         alignLabelWithHint: true,
         icon: outSideIcon,
@@ -110,7 +115,7 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         labelStyle: getRegularStyle(
             color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
-            fontSize: FontSize.s20.sp),
+            fontSize: FontSize.s16.sp),
         label: labelText != null
             ? Container(
                 padding: EdgeInsets.symmetric(
@@ -119,19 +124,20 @@ class AppTextFormField extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   color: ColorsManager.tealPrimary1000,
-                  borderRadius: BorderRadius.circular(AppSize.s20.r),
+                  borderRadius: BorderRadius.circular(AppSize.s20),
                 ),
                 child: FittedBox(child: Text(labelText!)),
               )
             : null,
         hintStyle: getRegularStyle(
             color: ColorsManager.offWhite500.withOpacity(AppSize.s0_75),
-            fontSize: AppSize.s18.sp),
+            fontSize: AppSize.s12.sp),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSize.s20.r),
           borderSide: BorderSide.none,
         ),
-        floatingLabelAlignment: FloatingLabelAlignment.start,
+        floatingLabelAlignment:
+            floatingLabelAlignment ?? FloatingLabelAlignment.start,
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSize.s20.r),
           borderSide: BorderSide.none,

@@ -7,7 +7,7 @@ class WelcomeText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return DefaultTextStyle(
       style: getBoldStyle(fontSize: FontSize.s40.sp),
       child: SizedBox(

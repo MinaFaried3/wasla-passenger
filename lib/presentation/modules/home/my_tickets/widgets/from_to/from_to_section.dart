@@ -19,7 +19,7 @@ class TicketFromToSection extends StatelessWidget {
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              DottedLineWithIcon(
+              DottedLineWithIconDotSection(
                 size: 15.sp,
                 iconPath: AssetsProvider.busIcon,
                 iconSize: 30.sp,

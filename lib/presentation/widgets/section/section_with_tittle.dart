@@ -7,9 +7,11 @@ class SectionWithTitle extends StatelessWidget {
     required this.tittle,
     required this.content,
     this.enableContentPadding = true,
+    this.iconPath,
   });
 
   final String tittle;
+  final String? iconPath;
   final Widget content;
   final bool enableContentPadding;
 
@@ -19,7 +21,10 @@ class SectionWithTitle extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //title
-        SectionTitle(title: tittle),
+        SectionTitle(
+          title: tittle,
+          iconPath: iconPath,
+        ),
 
         //container
         enableContentPadding

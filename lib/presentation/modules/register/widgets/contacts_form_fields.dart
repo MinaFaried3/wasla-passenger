@@ -40,7 +40,7 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
 
     //bottom padding
     final double paddingBottom = responsive.getScreenHeightOf(AppSize.s0_03);
@@ -63,7 +63,8 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                   editingFormatter: const PhoneNumberEditingRegexValidator(),
                 )
               ],
-              validator: (phone) => _validateContactsForm(email: widget.emailController.text, phone: phone),
+              validator: (phone) => _validateContactsForm(
+                  email: widget.emailController.text, phone: phone),
               onChanged: _onChange,
               textInputAction: TextInputAction.next,
               labelText: AppStrings.phone.tr(),
@@ -88,7 +89,8 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
                   editingFormatter: const EmailEditingRegexValidator(),
                 )
               ],
-              validator: (email) => _validateContactsForm(email: email, phone: widget.phoneController.text),
+              validator: (email) => _validateContactsForm(
+                  email: email, phone: widget.phoneController.text),
               onChanged: _onChange,
               autofillHints: const [AutofillHints.email],
             ),

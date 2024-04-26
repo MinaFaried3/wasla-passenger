@@ -43,7 +43,7 @@ class _NamesFieldsState extends State<NamesFields> {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     const autoFill = [
       AutofillHints.name,
       AutofillHints.namePrefix,

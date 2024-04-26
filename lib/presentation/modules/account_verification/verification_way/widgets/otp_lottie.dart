@@ -8,7 +8,7 @@ class OtpLottie extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context);
+    final responsive = ContextManager(context);
     return Padding(
       padding: EdgeInsets.only(left: AppPadding.p8.w),
       child: Lottie.asset(

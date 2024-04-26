@@ -49,7 +49,7 @@ class _PasswordFormFieldsState extends State<PasswordFormFields>
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
 
     //bottom padding
     final double paddingBottom = responsive.getScreenHeightOf(AppSize.s0_03);

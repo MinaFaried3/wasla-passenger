@@ -9,13 +9,14 @@ class TicketDividerChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    ContextManager contextManager = ContextManager(context);
+    return Row(
       children: [
-        TicketChartBoundaries(isLeft: false),
-        Expanded(
+        TicketChartBoundaries(isLeft: contextManager.isEnglish ? true : false),
+        const Expanded(
           child: DottedLine(),
         ),
-        TicketChartBoundaries(isLeft: true),
+        TicketChartBoundaries(isLeft: contextManager.isEnglish ? false : true),
       ],
     );
   }

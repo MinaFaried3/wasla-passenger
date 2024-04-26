@@ -10,7 +10,7 @@ class OnboardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ResponsiveManager(context, hasAppBar: false);
+    final responsive = ContextManager(context, hasAppBar: false);
     return PopScope(
       onPopInvoked: (pop) {
         SystemNavigator.pop();
