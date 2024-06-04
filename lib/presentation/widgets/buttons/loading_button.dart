@@ -22,8 +22,6 @@ class LoadingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final responsive = ContextManager(context, hasAppBar: false);
-
     return AnimatedSwitcher(
       duration: const Duration(seconds: 1),
       transitionBuilder: (child, animation) => SizeTransition(
@@ -33,7 +31,7 @@ class LoadingButton extends StatelessWidget {
       ),
       child: isLoading
           ? LoadingIndicator(
-              height: responsive.getBodyHeightOf(AppSize.s0_2),
+              width: 150.w,
             )
           : _buildButton(),
     );

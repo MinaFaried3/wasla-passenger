@@ -4,7 +4,10 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 class CodeDigitFormField extends StatelessWidget {
   const CodeDigitFormField({
     super.key,
+    required this.controller,
   });
+
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -12,6 +15,7 @@ class CodeDigitFormField extends StatelessWidget {
       aspectRatio: 1,
       child: Center(
         child: TextFormField(
+          controller: controller,
           textAlign: TextAlign.center,
           textInputAction: TextInputAction.next,
           keyboardType: TextInputType.number,

@@ -136,18 +136,23 @@ class _SlideRegisterFormState extends State<SlideRegisterForm>
     passwordFocusNode.unfocus();
     confirmPasswordFocusNode.unfocus();
     await _addDelay();
-    if (context.mounted) {
+    if (mounted) {
       context.read<RegisterCubit>().register(
           RegisterRequestBody(
             userName: usernameController.text,
             firstName: firstnameController.text,
             lastName: lastnameController.text,
-            phone: phoneController.text,
-            email: emailController.text,
+            phone: orNull(phoneController.text),
+            email: orNull(emailController.text),
             password: passwordController.text,
           ),
           confirmPasswordController.text);
     }
+  }
+
+  String? orNull(String str) {
+    if (str.isEmpty) return null;
+    return str;
   }
 
   Future<void> _addDelay() async {

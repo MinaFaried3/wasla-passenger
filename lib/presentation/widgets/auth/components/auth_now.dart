@@ -43,22 +43,30 @@ class AuthNow extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //todo RichText(text: text)
-          Text(
-            caption,
-            style: getExtraLightStyle(
-              color: ColorsManager.offWhite400,
-              fontSize: FontSize.s22.sp,
+          Flexible(
+            child: FittedBox(
+              child: Text(
+                caption,
+                style: getExtraLightStyle(
+                  color: ColorsManager.offWhite400,
+                  fontSize: 16.sp,
+                ),
+              ),
             ),
           ),
-          TextButton(
-            style: ButtonStyle(
-                textStyle: MaterialStatePropertyAll(
-                    getRegularStyle(fontSize: FontSize.s28.sp))),
-            onPressed: () {
-              _onPressed(context);
-            },
-            child: Text(
-              buttonName,
+          Flexible(
+            child: FittedBox(
+              child: TextButton(
+                style: ButtonStyle(
+                    textStyle: MaterialStatePropertyAll(
+                        getRegularStyle(fontSize: 22.sp))),
+                onPressed: () {
+                  _onPressed(context);
+                },
+                child: Text(
+                  buttonName,
+                ),
+              ),
             ),
           ),
         ],

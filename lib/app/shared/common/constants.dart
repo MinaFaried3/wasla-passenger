@@ -13,6 +13,7 @@ class AppConstants {
 
   static const int phoneNumberLength = 11;
   static const int minPasswordLength = 8;
+  static const int otpCodeLength = 4;
 
   static const String emailSample = 'example@gmail.com';
 

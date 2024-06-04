@@ -10,13 +10,18 @@ import 'package:wasla/data/repositories/auth_repository_impl.dart';
 import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/register_usecase.dart';
+import 'package:wasla/domain/usecases/home/main/get_suggestions_trips_use_case.dart';
+import 'package:wasla/domain/usecases/verification_usecase/confirm_email_usecase.dart';
 import 'package:wasla/domain/usecases/verification_usecase/edit_contact_usecase.dart';
+import 'package:wasla/domain/usecases/verification_usecase/send_verification_email_usecase.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
+import 'package:wasla/presentation/modules/account_verification/email_verfy/cubit/email_verify_cubit.dart';
 import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
+import 'package:wasla/presentation/modules/home/main/cubit/main_home_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
@@ -60,8 +65,9 @@ final class DIModulesManger {
         () => ApiServiceClient(getDio));
 
     //remote data source
-    getIt.registerLazySingleton<RemoteDataSource>(() =>
-        RemoteDataSourceImpl(apiServiceClient: getIt<ApiServiceClient>()));
+    getIt.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImpl(
+        apiServiceClient: getIt<ApiServiceClient>(),
+        appPreferences: getIt<AppPreferences>()));
 
     //local data source
     getIt.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
@@ -220,10 +226,18 @@ final class DIModulesManger {
 
   static void prepareVerificationModule() {
     _prepareAuthModule();
+
+    //edit use cases
     _registerFactory<EditEmailUseCase>(
         EditEmailUseCase(repository: getIt<AuthRepository>()));
     _registerFactory<EditPhoneUseCase>(
         EditPhoneUseCase(repository: getIt<AuthRepository>()));
+
+    //verify use cases
+    _registerFactory<SendVerificationEmailUseCase>(
+        SendVerificationEmailUseCase(repository: getIt<AuthRepository>()));
+    _registerFactory<ConfirmEmailUseCase>(
+        ConfirmEmailUseCase(repository: getIt<AuthRepository>()));
 
     //cubits
     if (!GetIt.I.isRegistered<EditContactsCubit>()) {
@@ -234,15 +248,46 @@ final class DIModulesManger {
 
       _printIsRegistered<EditContactsCubit>();
     }
+
+    if (!GetIt.I.isRegistered<EmailVerifyCubit>()) {
+      getIt.registerFactory<EmailVerifyCubit>(
+        () => EmailVerifyCubit(
+            sendVerificationEmailUseCase: getIt<SendVerificationEmailUseCase>(),
+            confirmEmailUseCase: getIt<ConfirmEmailUseCase>()),
+      );
+
+      _printIsRegistered<EmailVerifyCubit>();
+    }
   }
 
   static void prepareHomeModule() {
+    _prepareAuthModule();
+
     //cubits
     //home cubit
     if (!GetIt.I.isRegistered<HomeCubit>()) {
       getIt.registerFactory<HomeCubit>(() => HomeCubit());
 
       _printIsRegistered<HomeCubit>();
+    }
+
+    //main home
+    prepareMainModule();
+  }
+
+  static void prepareMainModule() {
+    _prepareAuthModule();
+
+    //use case
+    _registerFactory<GetSuggestionsTripsUseCase>(
+        GetSuggestionsTripsUseCase(repository: getIt<AuthRepository>()));
+
+    //cubits
+    if (!GetIt.I.isRegistered<MainHomeCubit>()) {
+      getIt.registerFactory<MainHomeCubit>(() => MainHomeCubit(
+          getSuggestionsTripsUseCase: getIt<GetSuggestionsTripsUseCase>()));
+
+      _printIsRegistered<MainHomeCubit>();
     }
   }
 }

@@ -111,7 +111,7 @@ class _VerificationButtonsState extends State<VerificationButtons>
             );
           } else {
             return AppDialog(
-                height: 250.h,
+                height: 260.h,
                 child: Center(
                   child: ConnectionDialogContent(
                     text: AppStrings.yourEmailIs,

@@ -28,6 +28,7 @@ AuthData _$AuthDataFromJson(Map<String, dynamic> json) => AuthData(
       firstName: json['firstName'] as String?,
       lastName: json['lastName'] as String?,
       userName: json['userName'] as String?,
+      userId: json['userId'] as String?,
       profile: json['photoUrl'] as String?,
       isAuthenticated: json['isAuthenticated'] as bool?,
       connectionsData: json['connectionData'] == null
@@ -47,6 +48,7 @@ Map<String, dynamic> _$AuthDataToJson(AuthData instance) => <String, dynamic>{
       'lastName': instance.lastName,
       'photoUrl': instance.profile,
       'userName': instance.userName,
+      'userId': instance.userId,
       'isAuthenticated': instance.isAuthenticated,
       'connectionData': instance.connectionsData,
       'tokensData': instance.tokensData,

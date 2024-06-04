@@ -45,3 +45,28 @@ class BaseResponseWithOutData extends BaseResponse<Object?> {
         data,
       ];
 }
+
+@JsonSerializable()
+class BaseResponseWithStringData extends BaseResponse<String?> {
+  const BaseResponseWithStringData({
+    required super.status,
+    required super.message,
+    required super.success,
+    super.data,
+  });
+
+  //from json
+  factory BaseResponseWithStringData.fromJson(Map<String, dynamic> json) =>
+      _$BaseResponseWithStringDataFromJson(json);
+
+  //to json
+  Map<String, dynamic> toJson() => _$BaseResponseWithStringDataToJson(this);
+
+  @override
+  List<Object?> get props => [
+        status,
+        message,
+        success,
+        data,
+      ];
+}

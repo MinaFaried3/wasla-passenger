@@ -36,9 +36,9 @@ class RegisterCubit extends Cubit<RegisterState> {
       (passengerModel) {
         emit(RegisterState.success(passengerModel: passengerModel));
 
-        //save tokens data to shared pref
+        //save main data to shared pref
         getIt<AppPreferences>()
-          ..saveTokensData(tokens: passengerModel.tokens)
+          ..saveMainPassengerData(passengerModel: passengerModel)
           ..setData<bool>(key: PrefKeys.isRegistered, data: true);
       },
     );

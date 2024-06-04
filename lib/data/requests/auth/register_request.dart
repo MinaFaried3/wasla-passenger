@@ -8,8 +8,8 @@ final class RegisterRequestBody extends Equatable {
   final String firstName;
   final String lastName;
   @JsonKey(name: 'phoneNumber')
-  final String phone;
-  final String email;
+  final String? phone;
+  final String? email;
   final String password;
 
   const RegisterRequestBody({
@@ -25,7 +25,7 @@ final class RegisterRequestBody extends Equatable {
   Map<String, dynamic> toJson() => _$RegisterRequestBodyToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         userName,
         firstName,
         lastName,

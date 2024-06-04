@@ -1,6 +1,7 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/view/edit_email_view.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/view/edit_phone_view.dart';
+import 'package:wasla/presentation/modules/account_verification/email_verfy/cubit/email_verify_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/email_verfy/view/verify_email_view.dart';
 import 'package:wasla/presentation/modules/account_verification/phone_verify/view/verify_phone_view.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/view/verification_way_view.dart';
@@ -104,11 +105,14 @@ class RouteGenerator {
                 providers: BlocProvidersManager.verificationProviders,
                 child: const EditEmailScreen()));
       case Routes.verifyPhoneRoute:
-        return MaterialPageRoute(
-            builder: (_) => const VerifyPhoneScreen(phone: '01207340018'));
+        return MaterialPageRoute(builder: (_) => const VerifyPhoneScreen());
       case Routes.verifyEmailRoute:
         return MaterialPageRoute(
-            builder: (_) => const VerifyEmailScreen(email: 'mina@se.com'));
+            builder: (_) => BlocProvider(
+                  create: (context) =>
+                      getIt<EmailVerifyCubit>()..sendVerificationEmail(),
+                  child: const VerifyEmailScreen(),
+                ));
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
 

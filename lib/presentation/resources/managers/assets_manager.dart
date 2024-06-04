@@ -105,6 +105,7 @@ class AssetsProvider {
   static const String priceIcon = '$_svg/price_icon.svg';
   static const String starIcon = '$_svg/star_icon.svg';
   static const String heartIcon = '$_svg/heart_icon.svg';
+  static const String retryIcon = '$_svg/retry_icon.svg';
 
   //profile icon
   static const String edit = '$_svg/edit_icon.svg';

@@ -3,6 +3,8 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/end_points_manager.dart';
 
+late Map<String, String> headers;
+
 class DioFactory extends Equatable {
   final AppPreferences _appPreferences;
   final Dio _dio;
@@ -18,8 +20,8 @@ class DioFactory extends Equatable {
   Future<Dio> getDio() async {
     String lang = await _appPreferences.getAppLanguage();
 
-    Map<String, String> headers =
-        HeadersManager.baseHeaders(lang, AppConstants.token);
+    headers =
+        HeadersManager.baseHeaders(lang, await _appPreferences.getToken());
 
     _dio.options = BaseOptions(
         baseUrl: EndPointsManager.baseUrl,

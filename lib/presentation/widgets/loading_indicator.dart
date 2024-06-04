@@ -28,7 +28,7 @@ class LoadingIndicator extends StatelessWidget {
           clipper: LoadingClipper(),
           child: Lottie.asset(
             AssetsProvider.loadingIndicator,
-            width: width,
+            width: width ?? 200.w,
             height: height,
           ),
         ),

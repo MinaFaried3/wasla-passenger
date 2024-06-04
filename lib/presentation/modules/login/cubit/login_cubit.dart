@@ -2,6 +2,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
 
 part 'login_cubit.freezed.dart';
+
 part 'login_state.dart';
 
 final class LoginCubit extends Cubit<LoginState> {
@@ -50,13 +51,14 @@ final class LoginCubit extends Cubit<LoginState> {
         LoginRequestBody(userName: userName, password: password));
 
     result.fold(
-      (failure) {
+          (failure) {
         emit(LoginState.error(failure: failure));
       },
-      (loginModel) {
+          (loginModel) {
         emit(LoginState.success(loginModel: loginModel));
         //save tokens data to shared pref
-        getIt<AppPreferences>().saveTokensData(tokens: loginModel.tokens);
+        getIt<AppPreferences>().saveMainPassengerData(
+            passengerModel: loginModel);
       },
     );
   }

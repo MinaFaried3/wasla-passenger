@@ -4,7 +4,10 @@ import 'package:wasla/presentation/modules/account_verification/verification_way
 class VerificationCodeFields extends StatelessWidget {
   const VerificationCodeFields({
     super.key,
+    required this.digitsControllers,
   });
+
+  final List<TextEditingController> digitsControllers;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,10 @@ class VerificationCodeFields extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              for (var i = 0; i < 4; i++) const CodeDigitFormField(),
+              for (var i = 0; i < AppConstants.otpCodeLength; i++)
+                CodeDigitFormField(
+                  controller: digitsControllers[i],
+                ),
             ],
           ),
         ),

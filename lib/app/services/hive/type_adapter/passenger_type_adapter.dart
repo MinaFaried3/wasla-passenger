@@ -60,6 +60,7 @@ class PassengerModelTypeAdapter extends TypeAdapter<PassengerModel> {
       connections: reader.read() as Connections,
       tokens: reader.read() as Tokens,
       role: reader.readString(),
+      userId: reader.readString(),
     );
   }
 
@@ -77,5 +78,6 @@ class PassengerModelTypeAdapter extends TypeAdapter<PassengerModel> {
     writer.write(obj.connections);
     writer.write(obj.tokens);
     writer.writeString(obj.role);
+    writer.writeString(obj.userId);
   }
 }

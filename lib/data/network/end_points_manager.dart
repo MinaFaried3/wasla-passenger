@@ -7,6 +7,7 @@ class EndPointsManager {
   static const String _authentication = "/auth";
   static const String _passengerAuth = "$_authentication/passenger";
   static const String _verification = "/verification";
+  static const String _passanger = "/passanger";
 
   //endpoint
   //auth
@@ -23,11 +24,23 @@ class EndPointsManager {
   static const String editPhone = "$_edit/phone";
   static const String editEmail = "$_edit/email";
 
+  //send
+  static const String _send = "$_verification/send";
+  static const String sendMessage = "$_send/message";
+  static const String sendEmail = "$_send/email/{email}";
+
+  //confirm
+  static const String _confirm = "$_verification/confirm";
+  static const String confirmEmail = "$_confirm/email";
+
   //check
   static const String _check = "$_verification/check";
   static const String checkPhone = "$_check/phone";
   static const String checkEmail = "$_check/email";
   static const String checkUserName = "$_check/userName";
+
+  //home
+  static const String tripSuggestions = "$_passanger/tripsSuggestions";
 }
 
 class HeadersManager {
@@ -46,7 +59,7 @@ class HeadersManager {
 
   static Map<String, String> baseHeaders(String lang, String token) => {
         accept: applicationJson,
-        authorization: token,
+        authorization: "Bearer $token",
         acceptLanguage: lang,
       };
 }

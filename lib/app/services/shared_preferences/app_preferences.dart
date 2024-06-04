@@ -107,6 +107,23 @@ class AppPreferences extends Equatable {
         key: PrefKeys.refreshTokenExpireDate, data: tokens.refTokenExpiryDate);
   }
 
+  Future<String> getToken() async {
+    String? token = _sharedPreferences.getString(PrefKeys.token);
+
+    return token ?? AppConstants.emptyString;
+  }
+
+  Future<String> getRefreshToken() async {
+    String? refToken = _sharedPreferences.getString(PrefKeys.refreshToken);
+
+    return refToken ?? AppConstants.emptyString;
+  }
+
+  void saveMainPassengerData({required PassengerModel passengerModel}) {
+    saveTokensData(tokens: passengerModel.tokens);
+    setData<String>(key: PrefKeys.userId, data: passengerModel.userId);
+  }
+
   @override
   List<Object> get props => [_sharedPreferences];
 }

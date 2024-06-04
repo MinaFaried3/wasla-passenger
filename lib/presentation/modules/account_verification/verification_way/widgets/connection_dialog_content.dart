@@ -33,26 +33,31 @@ class ConnectionDialogContent extends StatelessWidget {
         ),
         VerticalSpace(AppSize.s20.h),
         OutlinedButton(
-            style: ButtonStyle(
-              fixedSize: MaterialStatePropertyAll(
-                Size(AppSize.s220.w, AppSize.s20.h),
-              ),
-            ),
+            style: buildButtonStyle(),
             onPressed: onEditPressed,
-            child: Text(
-              editButtonText.tr(),
+            child: FittedBox(
+              child: Text(
+                editButtonText.tr(),
+              ),
             )),
         OutlinedButton(
-            style: ButtonStyle(
-              fixedSize: MaterialStatePropertyAll(
-                Size(AppSize.s220.w, AppSize.s20.h),
-              ),
-            ),
+            style: buildButtonStyle(),
             onPressed: onVerifyPressed,
-            child: Text(
-              AppStrings.verifyNow.tr(),
+            child: FittedBox(
+              child: Text(
+                AppStrings.verifyNow.tr(),
+              ),
             )),
       ],
+    );
+  }
+
+  ButtonStyle buildButtonStyle() {
+    return ButtonStyle(
+      padding: MaterialStateProperty.all(const EdgeInsets.all(4)),
+      fixedSize: MaterialStatePropertyAll(
+        Size(AppSize.s220, AppSize.s20.h),
+      ),
     );
   }
 }

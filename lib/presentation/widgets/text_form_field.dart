@@ -82,7 +82,7 @@ class AppTextFormField extends StatelessWidget {
       //todo
       // todo add english family
       style: getRegularStyle(
-          color: ColorsManager.offWhite400, fontSize: AppSize.s14.sp),
+          color: ColorsManager.offWhite400, fontSize: AppSize.s16.sp),
       decoration: InputDecoration(
         isDense: true,
         contentPadding: EdgeInsets.symmetric(

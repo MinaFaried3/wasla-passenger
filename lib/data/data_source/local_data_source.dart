@@ -9,6 +9,10 @@ abstract class LocalDataSource {
   void updatePassengerModelEmail(String email);
 
   void updatePassengerModelPhone(String phone);
+
+  Future<String> getPassengerEmail();
+
+  void confirmPassengerEmail();
 }
 
 class LocalDataSourceImpl extends LocalDataSource {
@@ -83,6 +87,24 @@ class LocalDataSourceImpl extends LocalDataSource {
     setPassengerModel(
       passengerModel.copyWith(
         connections: passengerModel.connections.copyWith(phone: phone),
+      ),
+    );
+  }
+
+  @override
+  Future<String> getPassengerEmail() async {
+    PassengerModel passengerModel = await getPassengerModel();
+    return passengerModel.copyWith().connections.email;
+  }
+
+  @override
+  void confirmPassengerEmail() async {
+    PassengerModel passengerModel = await getPassengerModel();
+    setPassengerModel(
+      passengerModel.copyWith(
+        connections: passengerModel.connections.copyWith(
+          emailConfirmed: true,
+        ),
       ),
     );
   }

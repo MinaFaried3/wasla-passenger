@@ -24,6 +24,8 @@ void main() async {
   PrintManager.print("the opening route is $openingRoute",
       color: ConsoleColor.blueBg);
 
+  // getIt<RemoteDataSource>().getSuggestionsTrips();
+
   runApp(
     EasyLocalization(
       supportedLocales: const [

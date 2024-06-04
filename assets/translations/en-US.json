@@ -142,5 +142,6 @@
   "ticket": "Ticket",
   "searchForTrip": "Search For Trip",
   "am": "AM",
-  "pm": "PM"
+  "pm": "PM",
+  "verificationCodeMustContain4digits": "verification code should contain 4 digits"
 }

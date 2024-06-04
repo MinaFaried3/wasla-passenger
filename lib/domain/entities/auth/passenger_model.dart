@@ -6,6 +6,7 @@ final class PassengerModel extends Equatable {
   final String lastName;
   final String profile;
   final String userName;
+  final String userId;
   final bool isAuthenticated;
   final Connections connections;
   final Tokens tokens;
@@ -17,10 +18,11 @@ final class PassengerModel extends Equatable {
     required this.lastName,
     required this.profile,
     required this.userName,
-    required this.role,
+    required this.userId,
     required this.isAuthenticated,
     required this.connections,
     required this.tokens,
+    required this.role,
   });
 
   factory PassengerModel.empty() => PassengerModel(
@@ -32,7 +34,8 @@ final class PassengerModel extends Equatable {
       isAuthenticated: false,
       connections: Connections.empty(),
       tokens: Tokens.empty(),
-      role: AppConstants.emptyString);
+      role: AppConstants.emptyString,
+      userId: AppConstants.emptyString);
 
   PassengerModel copyWith({
     int? points,
@@ -51,6 +54,7 @@ final class PassengerModel extends Equatable {
       lastName: lastName ?? this.lastName,
       profile: profile ?? this.profile,
       userName: userName ?? this.userName,
+      userId: AppConstants.emptyString,
       isAuthenticated: isAuthenticated ?? this.isAuthenticated,
       connections: connections ?? this.connections,
       tokens: tokens ?? this.tokens,
@@ -65,6 +69,7 @@ final class PassengerModel extends Equatable {
         lastName,
         profile,
         userName,
+        userId,
         isAuthenticated,
         connections,
         tokens,
@@ -73,7 +78,7 @@ final class PassengerModel extends Equatable {
 
   @override
   String toString() {
-    return 'PassengerModel{points: $points, firstName: $firstName, lastName: $lastName, profile: $profile, userName: $userName, isAuthenticated: $isAuthenticated, connections: $connections, tokens: $tokens, role: $role}';
+    return 'PassengerModel{points: $points, firstName: $firstName, lastName: $lastName, profile: $profile, userName: $userName, userId: $userId, isAuthenticated: $isAuthenticated, connections: $connections, tokens: $tokens, role: $role}';
   }
 }
 

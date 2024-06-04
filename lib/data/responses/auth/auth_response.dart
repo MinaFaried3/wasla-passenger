@@ -40,6 +40,8 @@ class AuthData extends Equatable {
   final String? profile;
   @JsonKey(name: "userName")
   final String? userName;
+  @JsonKey(name: "userId")
+  final String? userId;
   @JsonKey(name: "isAuthenticated")
   final bool? isAuthenticated;
   @JsonKey(name: "connectionData")
@@ -54,6 +56,7 @@ class AuthData extends Equatable {
     this.firstName,
     this.lastName,
     this.userName,
+    this.userId,
     this.profile,
     this.isAuthenticated,
     this.connectionsData,
@@ -74,6 +77,7 @@ class AuthData extends Equatable {
         firstName,
         lastName,
         userName,
+        userId,
         profile,
         isAuthenticated,
         connectionsData,

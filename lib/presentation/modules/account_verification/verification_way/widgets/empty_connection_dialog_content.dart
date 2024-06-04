@@ -35,13 +35,22 @@ class EmptyConnectionDialogContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          title.tr(),
-          style: getBoldStyle(fontSize: FontSize.s18.sp),
+        FittedBox(
+          child: Text(
+            title.tr(),
+            style: getBoldStyle(fontSize: FontSize.s16.sp),
+          ),
         ),
-        Text(caption.tr(), style: getMediumStyle(fontSize: FontSize.s16.sp)),
+        VerticalSpace(5.h),
+        Text(
+          caption.tr(),
+          style: getMediumStyle(fontSize: FontSize.s12.sp),
+          textAlign: TextAlign.center,
+        ),
         VerticalSpace(AppSize.s20.h),
         OutlinedButton(
+            style: const ButtonStyle(
+                padding: MaterialStatePropertyAll(EdgeInsets.all(8))),
             onPressed: () {
               switch (connectionType) {
                 case ConnectionType.phone:

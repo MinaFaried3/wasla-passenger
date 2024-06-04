@@ -37,6 +37,7 @@ extension AuthResponseMapper on AuthResponse? {
       points: this?.data?.points.orZero() ?? AppConstants.zero,
       profile: this?.data?.profile.orEmpty() ?? AppConstants.emptyString,
       userName: this?.data?.userName.orEmpty() ?? AppConstants.emptyString,
+      userId: this?.data?.userId.orEmpty() ?? AppConstants.emptyString,
     );
   }
 }

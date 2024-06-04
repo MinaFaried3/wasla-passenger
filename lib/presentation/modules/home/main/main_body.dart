@@ -1,8 +1,8 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/home/main/widgets/ads/ads_slider.dart';
-import 'package:wasla/presentation/modules/home/main/widgets/discover_trip/discover_trips_content.dart';
 import 'package:wasla/presentation/modules/home/main/widgets/features/wasla_features.dart';
 import 'package:wasla/presentation/modules/home/main/widgets/nearest_trip/neartest_trip_content.dart';
+import 'package:wasla/presentation/modules/home/main/widgets/suggestions_trips/suggestions_trips_content.dart';
 import 'package:wasla/presentation/widgets/section/section_with_tittle.dart';
 import 'package:wasla/presentation/widgets/section/sliver_section_tittle.dart';
 
@@ -49,7 +49,9 @@ class MainBody extends StatelessWidget {
           ),
         ),
         //discover content => sliver padding => sliver grid
-        const DiscoverTripsContent()
+        const SuggestionTripsContent(),
+
+        const SliverPadding(padding: EdgeInsets.only(bottom: 100))
       ],
     );
   }

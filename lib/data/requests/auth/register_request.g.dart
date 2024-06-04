@@ -11,8 +11,8 @@ RegisterRequestBody _$RegisterRequestBodyFromJson(Map<String, dynamic> json) =>
       userName: json['userName'] as String,
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
-      phone: json['phoneNumber'] as String,
-      email: json['email'] as String,
+      phone: json['phoneNumber'] as String?,
+      email: json['email'] as String?,
       password: json['password'] as String,
     );
 

@@ -142,5 +142,6 @@
   "ticket": "تذكرة",
   "searchForTrip": "بحث عن الرحلة",
   "am": "صباحا",
-  "pm": "مساءا"
+  "pm": "مساءا",
+  "verificationCodeMustContain4digits": "كود التجقق يجب ان يتكون من 4 ارقام"
 }

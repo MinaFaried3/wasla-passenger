@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/modules/start_now/widgets/bottom_stack_element.dart';
 
@@ -45,7 +46,7 @@ class _StartNowScreenState extends State<StartNowScreen>
 
     return PopScope(
       onPopInvoked: (pop) {
-        // SystemNavigator.pop();
+        SystemNavigator.pop();
       },
       child: Container(
         decoration: const BoxDecoration(

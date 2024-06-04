@@ -113,6 +113,8 @@ class AppStrings {
   static const String codeHasBeenSent = 'codeHasBeenSent';
   static const String doNotReceiveCode = 'doNotReceiveCode';
   static const String resendAgain = 'resendAgain';
+  static const String verificationCodeMustContain4digits =
+      'verificationCodeMustContain4digits';
 
   //home screen
   static const String main = 'main';

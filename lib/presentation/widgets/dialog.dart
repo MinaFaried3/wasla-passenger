@@ -45,7 +45,7 @@ class AppDialog extends StatelessWidget {
             ),
           )),
       child: SizedBox(
-          height: height ?? AppSize.s200.h,
+          height: height ?? 230.h,
           width: double.infinity,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,

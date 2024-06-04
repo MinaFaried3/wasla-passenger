@@ -21,7 +21,7 @@ class WaslaApp extends StatefulWidget {
 class _WaslaAppState extends State<WaslaApp> {
   @override
   void didChangeDependencies() {
-    context.setLocale(LocalizationManager.arabicLocal);
+    context.setLocale(LocalizationManager.englishLocal);
     super.didChangeDependencies();
   }
 
@@ -47,7 +47,7 @@ class _WaslaAppState extends State<WaslaApp> {
           home: child,
           onGenerateRoute: RouteGenerator.getRoute,
           initialRoute: widget.route.path,
-          // initialRoute: Routes.loginRoute.path,
+          // initialRoute: Routes.verificationWayRoute.path,
         ),
       ),
     );
