@@ -6,7 +6,8 @@ import 'package:wasla/data/requests/verification/edit_phone_and_email.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
 import 'package:wasla/data/responses/base_response.dart';
-import 'package:wasla/data/responses/home/suggestion_trips_response.dart';
+import 'package:wasla/data/responses/home/main/suggestion_trips_response.dart';
+import 'package:wasla/data/responses/home/profile/profile_response.dart';
 
 abstract class RemoteDataSource {
   Future<AuthResponse> login(LoginRequestBody loginRequestBody);
@@ -28,6 +29,8 @@ abstract class RemoteDataSource {
       ConfirmEmailRequestBody confirmEmailRequestBody);
 
   Future<SuggestionTripsResponse> getSuggestionsTrips();
+
+  Future<ProfileResponse> getProfile();
 
   const RemoteDataSource();
 }
@@ -94,5 +97,10 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   Future<SuggestionTripsResponse> getSuggestionsTrips() async {
     return await _apiServiceClient.getSuggestionTrips(
         authorization: await bearerToken);
+  }
+
+  @override
+  Future<ProfileResponse> getProfile() async {
+    return await _apiServiceClient.getProfile(authorization: await bearerToken);
   }
 }

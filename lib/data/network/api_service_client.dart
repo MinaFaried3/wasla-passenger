@@ -1,13 +1,20 @@
 import 'package:retrofit/http.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/end_points_manager.dart';
+import 'package:wasla/data/requests/OrgTripReserveResponse.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
+import 'package:wasla/data/requests/publicTripReserveRequest.dart';
 import 'package:wasla/data/requests/verification/confirm_email_phone.dart';
 import 'package:wasla/data/requests/verification/edit_phone_and_email.dart';
+import 'package:wasla/data/responses/IncomingTripsResponse.dart';
+import 'package:wasla/data/responses/TripSeatsResponse.dart';
+import 'package:wasla/data/responses/TripsSearchResponse.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
 import 'package:wasla/data/responses/base_response.dart';
-import 'package:wasla/data/responses/home/suggestion_trips_response.dart';
+import 'package:wasla/data/responses/home/FollowRequestsResponse.dart';
+import 'package:wasla/data/responses/home/main/suggestion_trips_response.dart';
+import 'package:wasla/data/responses/home/profile/profile_response.dart';
 
 part 'api_service_client.g.dart';
 
@@ -60,6 +67,72 @@ abstract class ApiServiceClient {
   ///main screen
   @GET(EndPointsManager.tripSuggestions)
   Future<SuggestionTripsResponse> getSuggestionTrips({
+    @Header("Authorization") required String authorization,
+  });
+
+  ///profile
+  @GET(EndPointsManager.profile)
+  Future<ProfileResponse> getProfile({
+    @Header("Authorization") required String authorization,
+  });
+
+  @GET(EndPointsManager.searchByUserName)
+  Future<PassengerItemResponse> searchByUserName({
+    @Header("Authorization") required String authorization,
+    @Query('userName') required String userName,
+  });
+
+  @POST(EndPointsManager.createFollowRequest)
+  Future<BaseResponseWithOutData> createFollowRequest({
+    @Header("Authorization") required String authorization,
+    @Field("followerId") required String followerId,
+  });
+
+  @GET(EndPointsManager.displayFollowRequest)
+  Future<FollowRequestsResponse> displayFollowRequest({
+    @Header("Authorization") required String authorization,
+  });
+
+  @POST('/passanger/ConfirmFollowRequest')
+  Future<BaseResponseWithOutData> confirmFollowRequest({
+    @Header("Authorization") required String authorization,
+    @Query('senderId') required String senderId,
+  });
+
+  @DELETE('/passanger/rejectFollowRequest')
+  Future<BaseResponseWithOutData> rejectFollowRequest({
+    @Header("Authorization") required String authorization,
+    @Field('senderId') required String senderId,
+  });
+
+  @GET(EndPointsManager.searchTrip)
+  Future<TripsSearchResponse> searchForTrip({
+    @Header("Authorization") required String authorization,
+    @Path('from') required String from,
+    @Path('to') required String to,
+    @Query('date') required String date,
+  });
+
+  @POST('/passanger/reqeustPublicTrip')
+  Future<BaseResponseWithOutData> requestPublicTrip({
+    @Header("Authorization") required String authorization,
+    @Body() required PublicTripReserveRequest publicTripReserveRequest,
+  });
+
+  @GET('/passanger/tripSeats/{tripId}')
+  Future<TripSeatsResponse> getTripsSeats({
+    @Header("Authorization") required String authorization,
+    @Path('tripId') required String tripId,
+  });
+
+  @POST('/passanger/trip/reserve')
+  Future<BaseResponseWithOutData> requestOrgTrip({
+    @Header("Authorization") required String authorization,
+    @Body() required OrgTripReserveRequest orgTripReserveRequest,
+  });
+
+  @GET('/passanger/incomingTrips')
+  Future<IncomingTripsResponse> getComingTrips({
     @Header("Authorization") required String authorization,
   });
 }

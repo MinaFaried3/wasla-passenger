@@ -21,4 +21,6 @@ class PasswordIconCubit extends Cubit<PasswordIconState> {
       emit(PasswordIconState.shownIcon(AssetsProvider.openEyeIcon, _isClosed));
     }
   }
+
+  void forceClose() => _isClosed = false;
 }

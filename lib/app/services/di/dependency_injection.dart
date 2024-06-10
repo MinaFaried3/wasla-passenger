@@ -11,12 +11,12 @@ import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart'
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/register_usecase.dart';
 import 'package:wasla/domain/usecases/home/main/get_suggestions_trips_use_case.dart';
+import 'package:wasla/domain/usecases/home/profile/get_profile_use_case.dart';
 import 'package:wasla/domain/usecases/verification_usecase/confirm_email_usecase.dart';
 import 'package:wasla/domain/usecases/verification_usecase/edit_contact_usecase.dart';
 import 'package:wasla/domain/usecases/verification_usecase/send_verification_email_usecase.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
-import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/email_verfy/cubit/email_verify_cubit.dart';
@@ -73,6 +73,11 @@ final class DIModulesManger {
     getIt.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
 
     //repository
+    getIt.registerLazySingleton<AuthRepositoryImpl>(() => AuthRepositoryImpl(
+        remoteDataSource: getIt<RemoteDataSource>(),
+        localDataSource: getIt<LocalDataSource>(),
+        networkChecker: getIt<NetworkChecker>(),
+        apiServiceClient: getIt<ApiServiceClient>()));
 
     //cubit
     getIt.registerFactory<LocalCubit>(
@@ -154,6 +159,7 @@ final class DIModulesManger {
       remoteDataSource: getIt<RemoteDataSource>(),
       localDataSource: getIt<LocalDataSource>(),
       networkChecker: getIt<NetworkChecker>(),
+      apiServiceClient: getIt<ApiServiceClient>(),
     ));
 
     ///ui
@@ -162,12 +168,6 @@ final class DIModulesManger {
     _registerFactory<BearAnimationCubit>(
         BearAnimationCubit(getIt<RiveControllerManager>()));
     _registerFactory<BearDialogCubit>(BearDialogCubit());
-
-    if (!GetIt.I.isRegistered<PasswordIconCubit>()) {
-      getIt.registerFactory<PasswordIconCubit>(() => PasswordIconCubit());
-
-      _printIsRegistered<PasswordIconCubit>();
-    }
   }
 
   static void prepareLoginModule() {
@@ -273,6 +273,7 @@ final class DIModulesManger {
 
     //main home
     prepareMainModule();
+    prepareProfileModule();
   }
 
   static void prepareMainModule() {
@@ -289,5 +290,21 @@ final class DIModulesManger {
 
       _printIsRegistered<MainHomeCubit>();
     }
+  }
+
+  static void prepareProfileModule() {
+    _prepareAuthModule();
+
+    //use case
+    _registerFactory<GetProfileUseCase>(
+        GetProfileUseCase(repository: getIt<AuthRepository>()));
+
+    //cubits
+    // if (!GetIt.I.isRegistered<ProfileCubit>()) {
+    //   getIt.registerFactory<ProfileCubit>(
+    //       () => ProfileCubit(getProfileUseCase: getIt<GetProfileUseCase>()));
+    //
+    //   _printIsRegistered<ProfileCubit>();
+    // }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/home/search_trip/trip_search_cubit.dart';
 
 class FromToInputsFields extends StatefulWidget {
   const FromToInputsFields({
@@ -57,6 +58,8 @@ class _FromToInputsFieldsState extends State<FromToInputsFields>
           child: AppTextFormField(
             controller: fromController,
             focusNode: fromFocusNode,
+            onChanged: (text) =>
+                context.read<TripSearchCubit>().onChangeFrom(text),
             labelText: AppStrings.from.tr(),
             textAlign: TextAlign.center,
             floatingLabelAlignment: FloatingLabelAlignment.center,
@@ -79,6 +82,8 @@ class _FromToInputsFieldsState extends State<FromToInputsFields>
           child: AppTextFormField(
             controller: toController,
             focusNode: toFocusNode,
+            onChanged: (text) =>
+                context.read<TripSearchCubit>().onChangeTo(text),
             labelText: AppStrings.to.tr(),
             textAlign: TextAlign.center,
             floatingLabelAlignment: FloatingLabelAlignment.center,
@@ -104,6 +109,8 @@ class _FromToInputsFieldsState extends State<FromToInputsFields>
       fromController.text = toText;
       toController.text = fromText;
     });
+    PrintManager.print('form ${fromController.text}');
+    PrintManager.print('to ${toController.text}');
   }
 
   void _focusNextField(

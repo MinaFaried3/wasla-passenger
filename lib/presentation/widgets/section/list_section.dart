@@ -1,27 +1,25 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/domain/entities/home/profile_model.dart';
+import 'package:wasla/presentation/modules/home/profile/widgets/followers/follower_item.dart';
 
 class ListSection extends StatelessWidget {
   const ListSection({
     super.key,
     required this.tittle,
-    required this.item,
+    required this.list,
     this.action,
-    required this.viewAllPressed,
-    this.viewedItemLength = 5,
   });
 
   final String tittle;
-  final Widget item;
-  final int? viewedItemLength;
+  final List<UserTileModel> list;
   final Widget? action;
-  final VoidCallback viewAllPressed;
 
   @override
   Widget build(BuildContext context) {
     double width =
         (MediaQuery.sizeOf(context).width - (2 * AppPadding.fromLR) - 5) / 2;
     return SizedBox(
-      height: 500.h,
+      height: list.length > 5 ? list.length * 70 : 500,
       child: Stack(
         children: [
           Container(
@@ -57,19 +55,14 @@ class ListSection extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20)),
                   child: ListView.builder(
                     itemBuilder: (context, index) {
-                      return item;
+                      return FollowerItem(
+                        user: list[index],
+                      );
                     },
-                    itemCount: viewedItemLength,
+                    itemCount: list.length,
                     shrinkWrap: true,
                   ),
                 ),
-                AppButton.dark(
-                    text: AppStrings.viewAll.tr(),
-                    width: width,
-                    fontSize: 15.sp,
-                    height: 25,
-                    radius: 15,
-                    onPressed: viewAllPressed),
               ],
             ),
           ),

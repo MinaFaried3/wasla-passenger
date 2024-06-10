@@ -3,7 +3,19 @@ import 'package:wasla/presentation/modules/home/my_tickets/widgets/from_to/trip_
 import 'package:wasla/presentation/widgets/to_from_chart.dart';
 
 class TicketFromToSection extends StatelessWidget {
-  const TicketFromToSection({super.key});
+  const TicketFromToSection(
+      {super.key,
+      this.startTime = '10:00am',
+      this.startCity = 'سوهاج',
+      this.endTime = '10:00am',
+      this.endCity = 'طما',
+      this.date = 'Nov 12'});
+
+  final String startTime;
+  final String startCity;
+  final String endTime;
+  final String endCity;
+  final String date;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +25,8 @@ class TicketFromToSection extends StatelessWidget {
         children: [
           TripPoint(
               tittle: AppStrings.tripStart.tr(),
-              time: '10:00am',
-              city: 'سوهاج'),
+              time: startCity,
+              city: startTime),
           Expanded(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -25,13 +37,13 @@ class TicketFromToSection extends StatelessWidget {
                 iconSize: 30.sp,
               ),
               Text(
-                'Nov 12',
+                date,
                 style: getBoldStyle(fontSize: 8),
               )
             ],
           )),
           TripPoint(
-              tittle: AppStrings.tripEnd.tr(), time: '11:00am', city: 'طما'),
+              tittle: AppStrings.tripEnd.tr(), time: endCity, city: endTime),
         ],
       ),
     );

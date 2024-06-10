@@ -1,32 +1,34 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
-import 'package:wasla/presentation/modules/home/profile/widgets/followers/follower_item.dart';
+import 'package:wasla/domain/entities/home/profile_model.dart';
 import 'package:wasla/presentation/widgets/section/list_section.dart';
 
 class FollowersAndFollowings extends StatelessWidget {
   const FollowersAndFollowings({
     super.key,
+    required this.followers,
+    required this.followings,
   });
+
+  final List<UserTileModel> followers;
+  final List<UserTileModel> followings;
 
   @override
   Widget build(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: ListSection(
               tittle: AppStrings.followers.tr(),
-              item: const FollowerItem(),
-              viewedItemLength: 3,
-              viewAllPressed: () {},
-              action: buildAnimatedCount(3)),
+              list: followers,
+              action: buildAnimatedCount(followers.length)),
         ),
         const HorizontalSpace(5),
         Expanded(
             child: ListSection(
                 tittle: AppStrings.followings.tr(),
-                item: const FollowerItem(),
-                viewedItemLength: 5,
-                viewAllPressed: () {},
-                action: buildAnimatedCount(5))),
+                list: followings,
+                action: buildAnimatedCount(followings.length))),
       ],
     );
   }

@@ -1,7 +1,6 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
-import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
 import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/home/main/cubit/main_home_cubit.dart';
@@ -25,9 +24,6 @@ class BlocProvidersManager {
       value: getIt<BearDialogCubit>()
         ..writeMessage(AppStrings.loginWelcomeDialog.tr()),
     ),
-    BlocProvider<PasswordIconCubit>.value(
-      value: getIt<PasswordIconCubit>(),
-    )
   ];
 
   static final List<BlocProvider> loginProviders = [
@@ -58,9 +54,12 @@ class BlocProvidersManager {
   static final List<BlocProvider> verificationProviders = [
     BlocProvider<EditContactsCubit>.value(value: getIt<EditContactsCubit>()),
   ];
+
   static final List<BlocProvider> homeProviders = [
     BlocProvider<HomeCubit>(create: (context) => getIt<HomeCubit>()),
     BlocProvider<MainHomeCubit>(
         create: (context) => getIt<MainHomeCubit>()..getSuggestionsTrips()),
+    // BlocProvider<ProfileCubit>(
+    //     create: (context) => getIt<ProfileCubit>()..getProfile()),
   ];
 }

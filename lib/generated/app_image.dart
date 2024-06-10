@@ -62,6 +62,7 @@ class Assets {
   static const String onboardingWelcomeOnboarding =
       'assets/images/onboarding/welcome_onboarding.png';
   static const String pngAds = 'assets/images/png/ads.png';
+  static const String pngEmptySearch = 'assets/images/png/empty_search.png';
   static const String pngStart = 'assets/images/png/start.png';
   static const String riveBear = 'assets/animation/rive/bear.riv';
   static const String svgAdsIcon = 'assets/images/svg/ads_icon.svg';
@@ -75,13 +76,16 @@ class Assets {
   static const String svgArrowRightIcon =
       'assets/images/svg/arrow_right_icon.svg';
   static const String svgBirthdateIcon = 'assets/images/svg/birthdate_icon.svg';
+  static const String svgBrandIcon = 'assets/images/svg/brand_icon.svg';
   static const String svgBusIcon = 'assets/images/svg/bus_icon.svg';
   static const String svgCalendarIcon = 'assets/images/svg/calendar_icon.svg';
   static const String svgCameraIcon = 'assets/images/svg/camera_icon.svg';
+  static const String svgCategoryIcon = 'assets/images/svg/category_icon.svg';
   static const String svgClockIcon = 'assets/images/svg/clock_icon.svg';
   static const String svgClosedEyeIcon =
       'assets/images/svg/closed_eye_icon.svg';
   static const String svgDoneIcon = 'assets/images/svg/done_icon.svg';
+  static const String svgDriverIcon = 'assets/images/svg/driver_icon.svg';
   static const String svgEditIcon = 'assets/images/svg/edit_icon.svg';
   static const String svgEmailIcon = 'assets/images/svg/email_icon.svg';
   static const String svgErrorIcon = 'assets/images/svg/error_icon.svg';
@@ -116,6 +120,7 @@ class Assets {
       'assets/images/svg/seats_position_icon.svg';
   static const String svgShippingIcon = 'assets/images/svg/shipping_icon.svg';
   static const String svgStarIcon = 'assets/images/svg/star_icon.svg';
+  static const String svgStationIcon = 'assets/images/svg/station_icon.svg';
   static const String svgTicketsIcon = 'assets/images/svg/tickets_icon.svg';
   static const String svgTrashIcon = 'assets/images/svg/trash_icon.svg';
   static const String svgUserIcon = 'assets/images/svg/user_icon.svg';

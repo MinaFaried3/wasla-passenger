@@ -1,16 +1,18 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 
 class FromToStationChart extends StatelessWidget {
-  const FromToStationChart({
-    super.key,
-    required this.from,
-    required this.to,
-    this.iconsSize = 15,
-  });
-
+  const FromToStationChart(
+      {super.key,
+      required this.from,
+      required this.to,
+      this.iconsSize = 15,
+      this.insiderFlex = 3,
+      this.iconPath});
+  final String? iconPath;
   final String from;
   final String to;
   final double iconsSize;
+  final int insiderFlex;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +24,22 @@ class FromToStationChart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           //from
-          Flexible(child: FittedBox(child: Text(from))),
+          Flexible(
+              flex: insiderFlex == 1 ? 2 : 1,
+              child: FittedBox(child: Text(from))),
 
           //direction
           Expanded(
-              flex: 3,
+              flex: insiderFlex,
               child: DottedLineWithIconDotSection(
                 size: iconsSize,
+                iconPath: iconPath,
               )),
 
           //to
-          Flexible(child: FittedBox(child: Text(to))),
+          Flexible(
+              flex: insiderFlex == 1 ? 2 : 1,
+              child: FittedBox(child: Text(to))),
         ],
       ),
     );

@@ -23,12 +23,12 @@ class ProfileTile extends StatelessWidget {
           ),
           const HorizontalSpace(10),
           Flexible(
-            child: FittedBox(
-              child: Text(
-                tittle,
-                style: getLightStyle(
-                    fontSize: 16.sp, color: ColorsManager.offWhite500),
-              ),
+            child: Text(
+              tittle,
+              style: getLightStyle(
+                  fontSize: 16.sp, color: ColorsManager.offWhite500),
+              maxLines: 3,
+              overflow: TextOverflow.fade,
             ),
           ),
         ],

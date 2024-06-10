@@ -4,13 +4,12 @@ import 'package:wasla/presentation/common/enums/button_type_enum.dart';
 class NameAndUsername extends StatelessWidget {
   const NameAndUsername({
     super.key,
-    required this.firstName,
-    required this.lastName,
+    required this.fullName,
     required this.userName,
   });
 
-  final String firstName;
-  final String lastName;
+  final String fullName;
+
   final String userName;
 
   @override
@@ -21,7 +20,7 @@ class NameAndUsername extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            "$firstName $lastName",
+            fullName,
             style: getBoldStyle(fontSize: 22.sp),
             textDirection: TextDirection.ltr,
             maxLines: 2,

@@ -6,6 +6,8 @@ final class HomeContentItem extends Equatable {
 
   const HomeContentItem({required this.title, required this.body});
 
+  HomeContentItem copyWith() => HomeContentItem(title: title, body: body);
+
   @override
   List<Object> get props => [title, body];
 }

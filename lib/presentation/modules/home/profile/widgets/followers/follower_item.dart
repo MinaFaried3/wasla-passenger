@@ -1,10 +1,14 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/domain/entities/home/profile_model.dart';
 import 'package:wasla/presentation/modules/home/profile/widgets/followers/follower_name_and_user_name.dart';
 
 class FollowerItem extends StatelessWidget {
   const FollowerItem({
     super.key,
+    required this.user,
   });
+
+  final UserTileModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +24,10 @@ class FollowerItem extends StatelessWidget {
             const HorizontalSpace(5),
 
             //names column
-            const Expanded(
-              child: FollowersNameUserName(),
+            Expanded(
+              child: FollowersNameUserName(
+                user: user,
+              ),
             ),
 
             //delete follower button
@@ -51,8 +57,8 @@ class FollowerItem extends StatelessWidget {
   }
 
   Image buildProfileImage(double itemHeight) {
-    return Image.asset(
-      AssetsProvider.minaUserImg,
+    return Image.network(
+      user.photoUrl,
       width: itemHeight,
       height: itemHeight,
     );

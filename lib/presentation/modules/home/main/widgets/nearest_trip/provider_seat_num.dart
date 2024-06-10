@@ -18,10 +18,12 @@ class TripProviderAndSeatNumber extends StatelessWidget {
         AppListTile(
           tittle: companyOrDriver,
           iconPath: AssetsProvider.busIcon,
+          fontSize: 20,
         ),
         AppListTile(
           tittle: seatNumber,
           iconPath: AssetsProvider.ticketsIcon,
+          fontSize: 20,
         ),
       ],
     );

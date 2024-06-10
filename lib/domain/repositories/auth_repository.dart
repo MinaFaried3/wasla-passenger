@@ -2,6 +2,7 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/repositories/base_repository.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
 import 'package:wasla/domain/entities/auth/check_username_model.dart';
+import 'package:wasla/domain/entities/home/profile_model.dart';
 import 'package:wasla/domain/entities/home/trip_suggestion_model.dart';
 
 abstract class AuthRepository extends BaseRepository {
@@ -25,6 +26,9 @@ abstract class AuthRepository extends BaseRepository {
   ///home
   ///main
   FailureOr<List<SuggestionTripModel>> getSuggestionTrips();
+
+  ///profile
+  FailureOr<ProfileModel> getProfile();
 
   const AuthRepository();
 }

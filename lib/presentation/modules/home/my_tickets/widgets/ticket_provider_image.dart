@@ -3,7 +3,10 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 class TicketProviderImage extends StatelessWidget {
   const TicketProviderImage({
     super.key,
+    required this.imageUrl,
   });
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -11,12 +14,12 @@ class TicketProviderImage extends StatelessWidget {
       child: SizedBox(
         width: 90.w,
         height: 40.w,
-        child: const DecoratedBox(
+        child: DecoratedBox(
           decoration: BoxDecoration(
             color: ColorsManager.darkTealBackground4,
             image: DecorationImage(
-                image: AssetImage(
-                  AssetsProvider.horusLogoImg,
+                image: NetworkImage(
+                  imageUrl,
                 ),
                 fit: BoxFit.cover),
             borderRadius: BorderRadius.only(

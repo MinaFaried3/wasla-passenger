@@ -29,7 +29,7 @@ dependencies:
   #date and time picker
   date_picker_timeline: ^1.2.6
   flutter_time_picker_spinner: ^2.0.0
-
+  intl:
   #ui tools
   fluttertoast: ^8.2.4
 

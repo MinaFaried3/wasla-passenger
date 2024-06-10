@@ -10,38 +10,44 @@ part 'home_cubit.freezed.dart';
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(const HomeState.initial(_mainContent));
+  HomeCubit()
+      : super(const HomeState.initial(HomeContentItem(
+          title: AppStrings.main,
+          body: MainBody(),
+        ))) {
+    homeContentItems = [
+      _mainContent,
+      _locationContent,
+      _searchTripContent,
+      _myTicketsContent,
+      _profileContent,
+    ];
+  }
 
-  static const HomeContentItem _mainContent = HomeContentItem(
+  HomeContentItem _mainContent = HomeContentItem(
     title: AppStrings.main,
     body: MainBody(),
   );
-  static const HomeContentItem _locationContent = HomeContentItem(
+  HomeContentItem _locationContent = HomeContentItem(
     title: AppStrings.location,
     body: LocationBody(),
   );
-  static const HomeContentItem _searchTripContent = HomeContentItem(
+  HomeContentItem _searchTripContent = HomeContentItem(
     title: AppStrings.searchTrip,
     body: SearchTripBody(),
   );
-  static const HomeContentItem _myTicketsContent = HomeContentItem(
+  HomeContentItem _myTicketsContent = HomeContentItem(
     title: AppStrings.myTickets,
     body: MyTicketsBody(),
   );
-  static const HomeContentItem _profileContent = HomeContentItem(
+  HomeContentItem _profileContent = HomeContentItem(
     title: AppStrings.profile,
     body: ProfileBody(),
   );
 
-  final List<HomeContentItem> homeContentItems = const [
-    _mainContent,
-    _locationContent,
-    _searchTripContent,
-    _myTicketsContent,
-    _profileContent,
-  ];
+  late List<HomeContentItem> homeContentItems;
 
   void changeBodyContent(int idx) {
-    emit(HomeState.changeBodyContent(homeContentItems[idx]));
+    emit(HomeState.changeBodyContent(homeContentItems[idx].copyWith()));
   }
 }

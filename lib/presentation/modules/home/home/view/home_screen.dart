@@ -1,8 +1,9 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/follow_request/follow_request_screen.dart';
 import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/home/home/model/home_content_item.dart';
+import 'package:wasla/presentation/modules/home/profile/cubit/profile_cubit.dart';
 import 'package:wasla/presentation/widgets/app_bottom_nav_bar/app_bottom_nav_bar.dart';
-import 'package:wasla/presentation/widgets/app_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -55,10 +56,13 @@ class _HomeScreenState extends State<HomeScreen>
   List<Widget> getAppBarActions() {
     return [
       InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => FollowRequestScreen()));
+        },
         splashColor: Colors.transparent,
         child: const AppSvg(
-          path: AssetsProvider.walletIcon,
+          path: AssetsProvider.userIcon,
           height: 30,
         ),
       ),
@@ -78,6 +82,7 @@ class _HomeScreenState extends State<HomeScreen>
   AppBottomNavBar buildAppBottomNavBar(BuildContext context) {
     return AppBottomNavBar(
       onChangePage: (index) {
+        if (index == 4) context.read<ProfileCubit>().getProfile();
         context.read<HomeCubit>().changeBodyContent(index);
         replayTitleAnimation();
       },

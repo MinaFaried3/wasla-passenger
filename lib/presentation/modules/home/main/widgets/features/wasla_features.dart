@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/home/main/add_following/add_following.dart';
 import 'package:wasla/presentation/modules/home/main/widgets/features/feature_item.dart';
 
 class WaslaFeatures extends StatelessWidget {
@@ -18,7 +19,11 @@ class WaslaFeatures extends StatelessWidget {
           WaslaFeatureItem(
             iconPath: AssetsProvider.followPassengerIcon,
             title: AppStrings.passengerFollowing.tr(),
-            onPressed: () {},
+            onPressed: () {
+              showDialog(
+                  context: context,
+                  builder: (context) => const AddFollowingDialog());
+            },
           ),
           WaslaFeatureItem(
             iconPath: AssetsProvider.adsIcon,

@@ -1,9 +1,13 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/domain/entities/home/profile_model.dart';
 
 class FollowersNameUserName extends StatelessWidget {
   const FollowersNameUserName({
     super.key,
+    required this.user,
   });
+
+  final UserTileModel user;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +18,7 @@ class FollowersNameUserName extends StatelessWidget {
         Flexible(
           child: FittedBox(
             child: Text(
-              'Mina Faried',
+              user.name,
               style: getBoldStyle(fontSize: 16.sp),
               textDirection: TextDirection.ltr,
               overflow: TextOverflow.fade,
@@ -24,16 +28,14 @@ class FollowersNameUserName extends StatelessWidget {
           ),
         ),
         Flexible(
-          child: FittedBox(
-            child: Text(
-              '@mina_faried',
-              style: getLightStyle(
-                  fontSize: 8.sp, color: ColorsManager.tealPrimary400),
-              textDirection: TextDirection.ltr,
-              overflow: TextOverflow.fade,
-              maxLines: 1,
-              softWrap: false,
-            ),
+          child: Text(
+            user.userName,
+            style: getLightStyle(
+                fontSize: 8.sp, color: ColorsManager.tealPrimary400),
+            textDirection: TextDirection.ltr,
+            overflow: TextOverflow.fade,
+            maxLines: 1,
+            softWrap: false,
           ),
         ),
       ],

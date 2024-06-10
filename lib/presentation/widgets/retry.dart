@@ -22,10 +22,11 @@ class Retry extends StatelessWidget {
           IconButton(
               onPressed: onPressed,
               icon: const AppSvg(
-                color: ColorsManager.offWhite,
-                height: 30,
+                color: ColorsManager.tealPrimary600,
+                height: 40,
                 path: AssetsProvider.retryIcon,
               )),
+          const VerticalSpace(10),
           FittedFlexible(
             child: Text(
               text,

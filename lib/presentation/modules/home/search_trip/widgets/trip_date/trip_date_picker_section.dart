@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/modules/home/search_trip/trip_search_cubit.dart';
 import 'package:wasla/presentation/widgets/date_picker/date_picker.dart';
 import 'package:wasla/presentation/widgets/section/section_with_tittle.dart';
 
@@ -14,11 +15,14 @@ class TripDatePickerSection extends StatelessWidget {
         tittle: AppStrings.takeOffDate.tr(),
         content: DatePicker(
           DateTime.now(),
-          initialSelectedDate: DateTime.now(),
           height: 140.h,
           width: 80.w,
           directionality: Directionality.of(context),
-          onDateChange: (dateTime) {},
+          onDateChange: (dateTime) {
+            context.read<TripSearchCubit>().onChangeDate(dateTime);
+            context.read<TripSearchCubit>().selected = true;
+            PrintManager.print(context.read<TripSearchCubit>().date);
+          },
           daysCount: 30,
           locale: Localizations.localeOf(context).toString(),
           dateTextStyle: getBoldStyle(

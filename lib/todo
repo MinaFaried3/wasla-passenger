@@ -20,7 +20,7 @@ void main() async {
 
 generate username
 
-
+foad
 
 
 
@@ -34,3 +34,15 @@ generate username
 
   ///todo
   local failure and server failure
+
+
+        "userId": "899ede58-8ae2-4d14-b37f-90bbe9c516ce",
+        "userName": "foad",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJmb2FkIiwianRpIjoiNzJjNTIwYzQtM2I5OC00ZjY5LTlkOWItZDQzMmM2MTI5M2JkIiwidWlkIjoiODk5ZWRlNTgtOGFlMi00ZDE0LWIzN2YtOTBiYmU5YzUxNmNlIiwicm9sZXMiOiJQYXNzZW5nZXIiLCJleHAiOjE3MTg4MDEyOTIsImlzcyI6IlNlY3VyZUFwaSIsImF1ZCI6IlNlY3VyZUFwaVVzZXIifQ.FMlvN6Fg6SJ5KkbgUF6m7SKN5oWWL0LWIk55x_B1Vx4",
+
+
+
+
+        "userId": "6fd71a67-5743-47f8-be76-ec7c888e98a7",
+        "userName": "monir",
+"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtb25pciIsImp0aSI6ImJiMGQ0ZDMxLTgwNmMtNDZmMy04MzZiLTlkODRkMzFmNzFiNyIsInVpZCI6IjZmZDcxYTY3LTU3NDMtNDdmOC1iZTc2LWVjN2M4ODhlOThhNyIsInJvbGVzIjoiUGFzc2VuZ2VyIiwiZXhwIjoxNzE4ODAxMzc3LCJpc3MiOiJTZWN1cmVBcGkiLCJhdWQiOiJTZWN1cmVBcGlVc2VyIn0.1I1PThq9LhbERiXCYVHaKJYXjNSDHtu_4O4nC1BcR7M",

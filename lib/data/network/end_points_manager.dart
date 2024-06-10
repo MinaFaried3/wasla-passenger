@@ -40,7 +40,18 @@ class EndPointsManager {
   static const String checkUserName = "$_check/userName";
 
   //home
+  //main
   static const String tripSuggestions = "$_passanger/tripsSuggestions";
+
+  //profile
+  static const String profile = "$_passanger/profile";
+  static const String searchByUserName = "$_passanger/searchByUserName";
+  static const String createFollowRequest = "$_passanger/createFollowRequest";
+  static const String displayFollowRequest = "$_passanger/displayFollowRequest";
+
+  //search
+  static const String searchTrip =
+      "$_passanger/search/trips/user/{from}/{to}/date";
 }
 
 class HeadersManager {
