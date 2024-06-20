@@ -3,7 +3,7 @@ import 'package:wasla/domain/entities/home/profile_model.dart';
 import 'package:wasla/domain/usecases/base_usecase.dart';
 
 final class GetProfileUseCase
-    extends BaseUseCase<void, ProfileModel, AuthRepository> {
+    extends ParameterizedBaseUseCase<void, ProfileModel, AuthRepository> {
   const GetProfileUseCase({required super.repository});
 
   @override

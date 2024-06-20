@@ -3,6 +3,8 @@ import 'package:wasla/domain/usecases/home/profile/get_profile_use_case.dart';
 import 'package:wasla/presentation/common/cubits/password_icon_cubit/password_icon_cubit.dart';
 import 'package:wasla/presentation/modules/follow_request/cubit/action_follow_request_cubit.dart';
 import 'package:wasla/presentation/modules/follow_request/cubit/follow_request_cubit.dart';
+import 'package:wasla/presentation/modules/home/location/follower_location_cubit.dart';
+import 'package:wasla/presentation/modules/home/location/follower_trip_cubit.dart';
 import 'package:wasla/presentation/modules/home/main/add_following/cubit/create_follow_cubit.dart';
 import 'package:wasla/presentation/modules/home/main/add_following/cubit/follow_cubit.dart';
 import 'package:wasla/presentation/modules/home/my_tickets/cubit/coming_trip_cubit.dart';
@@ -68,6 +70,12 @@ class _WaslaAppState extends State<WaslaApp> {
           create: (context) => ComingTripCubit(),
         ),
         BlocProvider(
+          create: (context) => FollowerTripCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FollowerLocationCubit(),
+        ),
+        BlocProvider(
           create: (context) => createFollowCubit,
         ),
         BlocProvider(
@@ -101,7 +109,7 @@ class _WaslaAppState extends State<WaslaApp> {
           home: child,
           onGenerateRoute: RouteGenerator.getRoute,
           initialRoute: widget.route.path,
-          // initialRoute: Routes.verificationWayRoute.path,
+          // initialRoute: Routes.notification.path,
         ),
       ),
     );

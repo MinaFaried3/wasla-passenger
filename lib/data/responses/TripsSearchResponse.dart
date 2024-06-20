@@ -76,15 +76,15 @@ class TripSearchResultModel {
   }
 
   TripSearchResultModel.fromJson(dynamic json) {
-    if (json['orgTrips'] != null) {
+    if (json['orgquery'] != null) {
       _orgTrips = [];
-      json['orgTrips'].forEach((v) {
+      json['orgquery'].forEach((v) {
         _orgTrips?.add(OrgTripModel.fromJson(v));
       });
     }
-    if (json['publicTrips'] != null) {
+    if (json['publicquery'] != null) {
       _publicTrips = [];
-      json['publicTrips'].forEach((v) {
+      json['publicquery'].forEach((v) {
         _publicTrips?.add(PublicTripModel.fromJson(v));
       });
     }
@@ -109,10 +109,10 @@ class TripSearchResultModel {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (_orgTrips != null) {
-      map['orgTrips'] = _orgTrips?.map((v) => v.toJson()).toList();
+      map['orgquery'] = _orgTrips?.map((v) => v.toJson()).toList();
     }
     if (_publicTrips != null) {
-      map['publicTrips'] = _publicTrips?.map((v) => v.toJson()).toList();
+      map['publicquery'] = _publicTrips?.map((v) => v.toJson()).toList();
     }
     return map;
   }

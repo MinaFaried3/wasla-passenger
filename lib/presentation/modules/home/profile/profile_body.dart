@@ -12,7 +12,7 @@ class ProfileBody extends StatelessWidget {
   Widget build(BuildContext context) {
     var profileCubit = context.read<ProfileCubit>();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: AppPadding.fromLR),
+      padding: const EdgeInsets.symmetric(horizontal: AppPadding.screenPadding),
       child: BlocBuilder<ProfileCubit, ProfileState>(
         builder: (context, state) {
           return state.maybeWhen(

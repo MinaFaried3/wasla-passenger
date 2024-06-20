@@ -48,7 +48,9 @@ class NameAndUsername extends StatelessWidget {
               iconSize: 18.sp,
               radius: 10,
               buttonType: ButtonContentType.iconText,
-              onPressed: () {},
+              onPressed: () {
+                context.pushNamed(Routes.editProfile.path);
+              },
             ),
           ),
         ],

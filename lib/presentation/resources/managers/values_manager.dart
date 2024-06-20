@@ -26,9 +26,11 @@ class AppPadding {
   static const double p50 = 50.0;
   static const double p100 = 100.0;
 
-  static const double fromLR = p20;
+  static const double screenPadding = p20;
 
-  static const EdgeInsets leftRight = EdgeInsets.symmetric(horizontal: fromLR);
+  static const EdgeInsets leftRight =
+      EdgeInsets.symmetric(horizontal: screenPadding);
+  static const EdgeInsets all = EdgeInsets.all(screenPadding);
 }
 
 class AppSize {

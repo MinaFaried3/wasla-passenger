@@ -18,7 +18,7 @@ class SearchTripBody extends StatelessWidget {
           children: [
             //from to inputs
             const FromToInputsSection(),
-
+            const VerticalSpace(30),
             //date picker
             const TripDatePickerSection(),
 

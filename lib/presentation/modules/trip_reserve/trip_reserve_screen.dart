@@ -89,10 +89,14 @@ class _TripReserveScreenState extends State<TripReserveScreen> {
                                 final seat = seats[index];
                                 if (seat.setNum == -1)
                                   return buildDriverSeat();
+                                else if (seat.setNum == -2)
+                                  return SizedBox();
                                 else if (seat.isAvailable!)
-                                  return buildSelectableSeat(index);
+                                  return buildSelectableSeat(
+                                      seat.setNum!.toInt());
                                 else
-                                  return buildUnAvailableSeat(index);
+                                  return buildUnAvailableSeat(
+                                      seat.setNum!.toInt());
                               },
                               itemCount: length,
                             );

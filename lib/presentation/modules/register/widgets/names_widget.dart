@@ -8,10 +8,12 @@ class NamesFields extends StatefulWidget {
     super.key,
     required this.firstnameController,
     required this.lastnameController,
+    this.withDialog = true,
   });
 
   final TextEditingController firstnameController;
   final TextEditingController lastnameController;
+  final bool withDialog;
 
   @override
   State<NamesFields> createState() => _NamesFieldsState();
@@ -23,12 +25,16 @@ class _NamesFieldsState extends State<NamesFields> {
   @override
   void initState() {
     super.initState();
-    lastnameFocusNode.addListener(_lastnameListener);
+    if (widget.withDialog) {
+      lastnameFocusNode.addListener(_lastnameListener);
+    }
   }
 
   @override
   void dispose() {
-    lastnameFocusNode.removeListener(_lastnameListener);
+    if (widget.withDialog) {
+      lastnameFocusNode.removeListener(_lastnameListener);
+    }
     lastnameFocusNode.dispose();
     super.dispose();
   }

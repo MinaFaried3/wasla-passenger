@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
+import 'package:wasla/data/responses/IncomingTripsResponse.dart';
+import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/home/main/widgets/nearest_trip/trip_meta_data.dart';
 import 'package:wasla/presentation/modules/home/main/widgets/nearest_trip/trip_timer.dart';
 import 'package:wasla/presentation/modules/home/my_tickets/cubit/coming_trip_cubit.dart';
@@ -83,50 +85,110 @@ class _NearestTripContentState extends State<NearestTripContent>
                 ),
             getComingTripsSuccess: (comingTrips) => SlideTransition(
                   position: slideAnimation,
-                  child: Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(10),
-                    height: 145.h,
-                    decoration: buildSectionDecoration(),
-                    child: Row(
-                      children: [
-                        //timer
-                        NearestTripTimer(
-                            time: remainingTime.isNegative
-                                ? "Time's up!"
-                                : formatDuration(remainingTime)),
-
-                        //meta data
-                        Expanded(
-                          flex: 2,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 15, left: 8, right: 8),
-                            child: TripMetaData(
-                              from: comingTrips[0].startStation.orEmpty(),
-                              to: comingTrips[0].endStation.orEmpty(),
-                              companyOrDriver: comingTrips[0].organization !=
-                                      null
-                                  ? comingTrips[0].organization!.name.orEmpty()
-                                  : comingTrips[0]
-                                      .publicDriver!
-                                      .fullName
-                                      .orEmpty(),
-                              seatNumber: comingTrips[0].organization != null
-                                  ? comingTrips[0]
-                                      .seatNumber
-                                      .orZero()
-                                      .toString()
-                                  : '',
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  child: buildNearestTrip(comingTrips[0]),
+                ),
+            emptyTickets: () => SlideTransition(
+                  position: slideAnimation,
+                  child: buildNoComingTrip(),
                 ),
             orElse: () => SizedBox());
       },
+    );
+  }
+
+  Container buildNoComingTrip() {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      height: 145.h,
+      decoration: buildSectionDecoration(),
+      child: Row(
+        children: [
+          //timer
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                  color: ColorsManager.offWhite,
+                  borderRadius: BorderRadius.circular(35)),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FittedBox(
+                    child: Text(
+                      'احجز رحلتك الان',
+                      style: getSemiBoldStyle(
+                        color: ColorsManager.tealPrimary1000,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ),
+                  VerticalSpace(10),
+                  Flexible(
+                    child: FittedBox(
+                      child: MaterialButton(
+                        onPressed: () {
+                          context.read<HomeCubit>().changeBodyContent(2);
+                        },
+                        child: AppSvg(
+                          path: AssetsProvider.searchIcon,
+                          height: 60,
+                          color: ColorsManager.tealPrimary1000,
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+
+          //meta data
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15, left: 8, right: 8),
+              child: LoadingIndicator(),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Container buildNearestTrip(IncomingTripModel comingTrip) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(10),
+      height: 145.h,
+      decoration: buildSectionDecoration(),
+      child: Row(
+        children: [
+          //timer
+          NearestTripTimer(
+              time: remainingTime.isNegative
+                  ? "Time's up!"
+                  : formatDuration(remainingTime)),
+
+          //meta data
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 15, left: 8, right: 8),
+              child: TripMetaData(
+                from: comingTrip.startStation.orEmpty(),
+                to: comingTrip.endStation.orEmpty(),
+                companyOrDriver: comingTrip.organization != null
+                    ? comingTrip.organization!.name.orEmpty()
+                    : comingTrip.publicDriver!.fullName.orEmpty(),
+                seatNumber: comingTrip.organization != null
+                    ? comingTrip.seatNumber.orZero().toString()
+                    : '',
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

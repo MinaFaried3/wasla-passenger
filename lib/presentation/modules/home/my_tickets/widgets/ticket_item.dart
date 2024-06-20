@@ -67,7 +67,7 @@ class _TicketItemState extends State<TicketItem>
             //to from
             TicketFromToSection(
               startCity: widget.comingTripModel.startStation.orEmpty(),
-              endCity: widget.comingTripModel.startStation.orEmpty(),
+              endCity: widget.comingTripModel.endStation.orEmpty(),
               startTime: getFormattedTimeFromString(
                   widget.comingTripModel.startTime.orEmpty()),
               endTime: getFormattedTimeFromString(

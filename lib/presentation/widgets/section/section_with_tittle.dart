@@ -30,9 +30,9 @@ class SectionWithTitle extends StatelessWidget {
         enableContentPadding
             ? Padding(
                 padding: const EdgeInsets.only(
-                  left: AppPadding.fromLR,
-                  right: AppPadding.fromLR,
-                  bottom: AppPadding.fromLR,
+                  left: AppPadding.screenPadding,
+                  right: AppPadding.screenPadding,
+                  bottom: AppPadding.screenPadding,
                 ),
                 child: content,
               )

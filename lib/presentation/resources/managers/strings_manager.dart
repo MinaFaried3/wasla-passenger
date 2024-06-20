@@ -140,6 +140,7 @@ class AppStrings {
   static const String ourServices = 'ourServices';
   static const String discoverYourTrips = 'discoverYourTrips';
   static const String bookNow = 'bookNow';
+  static const String notification = 'notification';
 
   //profile body
   static const String editProfile = "editProfile";
@@ -148,6 +149,10 @@ class AppStrings {
   static const String followers = "followers";
   static const String followings = "followings";
   static const String viewAll = "viewAll";
+  static const String gender = "gender";
+  static const String male = "male";
+  static const String female = "female";
+  static const String birthdate = "birthdate";
 
   //tickets body
   static const String tripStart = "tripStart";

@@ -17,7 +17,7 @@ class PriceAndSeat extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         AppListTile(
-          tittle: price.orZero().toString(),
+          tittle: seat.orZero().toString(),
           iconPath: AssetsProvider.ticketsIcon,
           iconSize: 30.sp,
           iconColor: ColorsManager.tealPrimary200,
@@ -25,7 +25,7 @@ class PriceAndSeat extends StatelessWidget {
           style: getBoldStyle(),
         ),
         AppListTile(
-          tittle: seat.orZero().toString(),
+          tittle: price.orZero().toString(),
           iconPath: AssetsProvider.priceIcon,
           iconSize: 30.sp,
           iconColor: ColorsManager.tealPrimary200,

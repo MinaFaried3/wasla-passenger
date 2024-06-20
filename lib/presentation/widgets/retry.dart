@@ -26,7 +26,7 @@ class Retry extends StatelessWidget {
                 height: 40,
                 path: AssetsProvider.retryIcon,
               )),
-          const VerticalSpace(10),
+          const VerticalSpace(20),
           FittedFlexible(
             child: Text(
               text,

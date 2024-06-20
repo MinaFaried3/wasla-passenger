@@ -17,8 +17,8 @@ class SuggestionTripsContent extends StatelessWidget {
               const SliverToBoxAdapter(child: LoadingIndicator()),
           getSuggestionsTripsSuccess: (trips) {
             return SliverPadding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: AppPadding.fromLR),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: AppPadding.screenPadding),
               sliver: SliverGrid.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,

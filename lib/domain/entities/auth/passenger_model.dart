@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/enums/gender.dart';
 
 final class PassengerModel extends Equatable {
   final int points;
@@ -7,23 +8,12 @@ final class PassengerModel extends Equatable {
   final String profile;
   final String userName;
   final String userId;
+  final String gender;
+  final String birthdate;
   final bool isAuthenticated;
   final Connections connections;
   final Tokens tokens;
   final String role;
-
-  const PassengerModel({
-    required this.points,
-    required this.firstName,
-    required this.lastName,
-    required this.profile,
-    required this.userName,
-    required this.userId,
-    required this.isAuthenticated,
-    required this.connections,
-    required this.tokens,
-    required this.role,
-  });
 
   factory PassengerModel.empty() => PassengerModel(
       points: AppConstants.zero,
@@ -32,10 +22,26 @@ final class PassengerModel extends Equatable {
       profile: AppConstants.emptyString,
       userName: AppConstants.emptyString,
       isAuthenticated: false,
+      gender: Gender.male.name,
+      birthdate: AppConstants.emptyString,
       connections: Connections.empty(),
       tokens: Tokens.empty(),
       role: AppConstants.emptyString,
       userId: AppConstants.emptyString);
+
+  const PassengerModel(
+      {required this.points,
+      required this.firstName,
+      required this.lastName,
+      required this.profile,
+      required this.userName,
+      required this.userId,
+      required this.gender,
+      required this.birthdate,
+      required this.isAuthenticated,
+      required this.connections,
+      required this.tokens,
+      required this.role});
 
   PassengerModel copyWith({
     int? points,
@@ -47,6 +53,8 @@ final class PassengerModel extends Equatable {
     Connections? connections,
     Tokens? tokens,
     String? role,
+    String? gender,
+    String? birthdate,
   }) {
     return PassengerModel(
       points: points ?? this.points,
@@ -59,6 +67,8 @@ final class PassengerModel extends Equatable {
       connections: connections ?? this.connections,
       tokens: tokens ?? this.tokens,
       role: role ?? this.role,
+      birthdate: birthdate ?? this.birthdate,
+      gender: gender ?? this.gender,
     );
   }
 
@@ -70,6 +80,8 @@ final class PassengerModel extends Equatable {
         profile,
         userName,
         userId,
+        gender,
+        birthdate,
         isAuthenticated,
         connections,
         tokens,
@@ -78,7 +90,7 @@ final class PassengerModel extends Equatable {
 
   @override
   String toString() {
-    return 'PassengerModel{points: $points, firstName: $firstName, lastName: $lastName, profile: $profile, userName: $userName, userId: $userId, isAuthenticated: $isAuthenticated, connections: $connections, tokens: $tokens, role: $role}';
+    return 'PassengerModel{points: $points, firstName: $firstName, lastName: $lastName, profile: $profile, userName: $userName, userId: $userId, gender: $gender, birthdate: $birthdate, isAuthenticated: $isAuthenticated, connections: $connections, tokens: $tokens, role: $role}';
   }
 }
 

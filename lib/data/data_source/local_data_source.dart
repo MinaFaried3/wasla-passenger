@@ -1,5 +1,6 @@
 import 'package:wasla/app/services/hive/hive_constants.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/data/requests/home/profile/edit_profile_request.dart';
 
 abstract class LocalDataSource {
   Future<PassengerModel> getPassengerModel();
@@ -9,6 +10,10 @@ abstract class LocalDataSource {
   void updatePassengerModelEmail(String email);
 
   void updatePassengerModelPhone(String phone);
+
+  void updatePassengerModelProfileData(EditProfileRequest editProfile);
+
+  void updateProfileImage(String profileImageUrl);
 
   Future<String> getPassengerEmail();
 
@@ -107,5 +112,25 @@ class LocalDataSourceImpl extends LocalDataSource {
         ),
       ),
     );
+  }
+
+  @override
+  void updatePassengerModelProfileData(EditProfileRequest editProfile) async {
+    final passenger = await getPassengerModel();
+    setPassengerModel(passenger.copyWith(
+      firstName: editProfile.firstname,
+      lastName: editProfile.lastname,
+      userName: editProfile.username,
+      connections: passenger.connections
+          .copyWith(email: editProfile.email, phone: editProfile.phone),
+      gender: editProfile.gender,
+      birthdate: editProfile.birthdate,
+    ));
+  }
+
+  @override
+  void updateProfileImage(String profileImageUrl) async {
+    final passenger = await getPassengerModel();
+    setPassengerModel(passenger.copyWith(profile: profileImageUrl));
   }
 }

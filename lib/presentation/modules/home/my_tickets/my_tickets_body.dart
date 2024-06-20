@@ -21,7 +21,7 @@ class _MyTicketsBodyState extends State<MyTicketsBody> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppPadding.fromLR,
+        horizontal: AppPadding.screenPadding,
       ),
       child: BlocBuilder<ComingTripCubit, ComingTripState>(
         builder: (context, state) {
@@ -47,7 +47,24 @@ class _MyTicketsBodyState extends State<MyTicketsBody> {
                       )
                     ],
                   ),
-              orElse: () => SizedBox());
+              orElse: () => Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        AppSvg(
+                          path: Assets.svgEmptyTickets,
+                          height: 200,
+                          color: ColorsManager.tealPrimary,
+                        ),
+                        VerticalSpace(10),
+                        Text(
+                          ' لا توجد تزاكر بعد ',
+                          style: getMediumStyle(
+                              fontSize: 30, color: ColorsManager.tealPrimary),
+                        )
+                      ],
+                    ),
+                  ));
         },
       ),
     );

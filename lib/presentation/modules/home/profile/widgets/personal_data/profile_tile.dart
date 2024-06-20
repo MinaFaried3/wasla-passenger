@@ -29,6 +29,8 @@ class ProfileTile extends StatelessWidget {
                   fontSize: 16.sp, color: ColorsManager.offWhite500),
               maxLines: 3,
               overflow: TextOverflow.fade,
+              textDirection: TextDirection.ltr,
+              textAlign: TextAlign.center,
             ),
           ),
         ],

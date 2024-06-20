@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/helper_functions.dart';
 import 'package:wasla/presentation/modules/home/profile/widgets/personal_data/profile_tile.dart';
 
 class PersonalInfo extends StatelessWidget {
@@ -36,7 +37,7 @@ class PersonalInfo extends StatelessWidget {
         ),
         ProfileTile(
           iconPath: AssetsProvider.birthdate,
-          tittle: birthdate,
+          tittle: formatBirthdateForUi(birthdate),
         ),
         ProfileTile(
           iconPath: AssetsProvider.maleFemale,

@@ -22,6 +22,7 @@ mixin _$ComingTripState {
     required TResult Function() loading,
     required TResult Function(List<IncomingTripModel> comingTrip)
         getComingTripsSuccess,
+    required TResult Function() emptyTickets,
     required TResult Function(String message) getComingTripsFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -31,6 +32,7 @@ mixin _$ComingTripState {
     TResult? Function()? loading,
     TResult? Function(List<IncomingTripModel> comingTrip)?
         getComingTripsSuccess,
+    TResult? Function()? emptyTickets,
     TResult? Function(String message)? getComingTripsFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,6 +41,7 @@ mixin _$ComingTripState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<IncomingTripModel> comingTrip)? getComingTripsSuccess,
+    TResult Function()? emptyTickets,
     TResult Function(String message)? getComingTripsFailure,
     required TResult orElse(),
   }) =>
@@ -49,6 +52,7 @@ mixin _$ComingTripState {
     required TResult Function(_loading value) loading,
     required TResult Function(_getComingTripsSuccess value)
         getComingTripsSuccess,
+    required TResult Function(_emptyTickets value) emptyTickets,
     required TResult Function(_getComingTripsFailure value)
         getComingTripsFailure,
   }) =>
@@ -58,6 +62,7 @@ mixin _$ComingTripState {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loading value)? loading,
     TResult? Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult? Function(_emptyTickets value)? emptyTickets,
     TResult? Function(_getComingTripsFailure value)? getComingTripsFailure,
   }) =>
       throw _privateConstructorUsedError;
@@ -66,6 +71,7 @@ mixin _$ComingTripState {
     TResult Function(_Initial value)? initial,
     TResult Function(_loading value)? loading,
     TResult Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult Function(_emptyTickets value)? emptyTickets,
     TResult Function(_getComingTripsFailure value)? getComingTripsFailure,
     required TResult orElse(),
   }) =>
@@ -132,6 +138,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function() loading,
     required TResult Function(List<IncomingTripModel> comingTrip)
         getComingTripsSuccess,
+    required TResult Function() emptyTickets,
     required TResult Function(String message) getComingTripsFailure,
   }) {
     return initial();
@@ -144,6 +151,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function()? loading,
     TResult? Function(List<IncomingTripModel> comingTrip)?
         getComingTripsSuccess,
+    TResult? Function()? emptyTickets,
     TResult? Function(String message)? getComingTripsFailure,
   }) {
     return initial?.call();
@@ -155,6 +163,7 @@ class _$InitialImpl implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<IncomingTripModel> comingTrip)? getComingTripsSuccess,
+    TResult Function()? emptyTickets,
     TResult Function(String message)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -171,6 +180,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(_loading value) loading,
     required TResult Function(_getComingTripsSuccess value)
         getComingTripsSuccess,
+    required TResult Function(_emptyTickets value) emptyTickets,
     required TResult Function(_getComingTripsFailure value)
         getComingTripsFailure,
   }) {
@@ -183,6 +193,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loading value)? loading,
     TResult? Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult? Function(_emptyTickets value)? emptyTickets,
     TResult? Function(_getComingTripsFailure value)? getComingTripsFailure,
   }) {
     return initial?.call(this);
@@ -194,6 +205,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_loading value)? loading,
     TResult Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult Function(_emptyTickets value)? emptyTickets,
     TResult Function(_getComingTripsFailure value)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -250,6 +262,7 @@ class _$loadingImpl implements _loading {
     required TResult Function() loading,
     required TResult Function(List<IncomingTripModel> comingTrip)
         getComingTripsSuccess,
+    required TResult Function() emptyTickets,
     required TResult Function(String message) getComingTripsFailure,
   }) {
     return loading();
@@ -262,6 +275,7 @@ class _$loadingImpl implements _loading {
     TResult? Function()? loading,
     TResult? Function(List<IncomingTripModel> comingTrip)?
         getComingTripsSuccess,
+    TResult? Function()? emptyTickets,
     TResult? Function(String message)? getComingTripsFailure,
   }) {
     return loading?.call();
@@ -273,6 +287,7 @@ class _$loadingImpl implements _loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<IncomingTripModel> comingTrip)? getComingTripsSuccess,
+    TResult Function()? emptyTickets,
     TResult Function(String message)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -289,6 +304,7 @@ class _$loadingImpl implements _loading {
     required TResult Function(_loading value) loading,
     required TResult Function(_getComingTripsSuccess value)
         getComingTripsSuccess,
+    required TResult Function(_emptyTickets value) emptyTickets,
     required TResult Function(_getComingTripsFailure value)
         getComingTripsFailure,
   }) {
@@ -301,6 +317,7 @@ class _$loadingImpl implements _loading {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loading value)? loading,
     TResult? Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult? Function(_emptyTickets value)? emptyTickets,
     TResult? Function(_getComingTripsFailure value)? getComingTripsFailure,
   }) {
     return loading?.call(this);
@@ -312,6 +329,7 @@ class _$loadingImpl implements _loading {
     TResult Function(_Initial value)? initial,
     TResult Function(_loading value)? loading,
     TResult Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult Function(_emptyTickets value)? emptyTickets,
     TResult Function(_getComingTripsFailure value)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -405,6 +423,7 @@ class _$getComingTripsSuccessImpl implements _getComingTripsSuccess {
     required TResult Function() loading,
     required TResult Function(List<IncomingTripModel> comingTrip)
         getComingTripsSuccess,
+    required TResult Function() emptyTickets,
     required TResult Function(String message) getComingTripsFailure,
   }) {
     return getComingTripsSuccess(comingTrip);
@@ -417,6 +436,7 @@ class _$getComingTripsSuccessImpl implements _getComingTripsSuccess {
     TResult? Function()? loading,
     TResult? Function(List<IncomingTripModel> comingTrip)?
         getComingTripsSuccess,
+    TResult? Function()? emptyTickets,
     TResult? Function(String message)? getComingTripsFailure,
   }) {
     return getComingTripsSuccess?.call(comingTrip);
@@ -428,6 +448,7 @@ class _$getComingTripsSuccessImpl implements _getComingTripsSuccess {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<IncomingTripModel> comingTrip)? getComingTripsSuccess,
+    TResult Function()? emptyTickets,
     TResult Function(String message)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -444,6 +465,7 @@ class _$getComingTripsSuccessImpl implements _getComingTripsSuccess {
     required TResult Function(_loading value) loading,
     required TResult Function(_getComingTripsSuccess value)
         getComingTripsSuccess,
+    required TResult Function(_emptyTickets value) emptyTickets,
     required TResult Function(_getComingTripsFailure value)
         getComingTripsFailure,
   }) {
@@ -456,6 +478,7 @@ class _$getComingTripsSuccessImpl implements _getComingTripsSuccess {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loading value)? loading,
     TResult? Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult? Function(_emptyTickets value)? emptyTickets,
     TResult? Function(_getComingTripsFailure value)? getComingTripsFailure,
   }) {
     return getComingTripsSuccess?.call(this);
@@ -467,6 +490,7 @@ class _$getComingTripsSuccessImpl implements _getComingTripsSuccess {
     TResult Function(_Initial value)? initial,
     TResult Function(_loading value)? loading,
     TResult Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult Function(_emptyTickets value)? emptyTickets,
     TResult Function(_getComingTripsFailure value)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -486,6 +510,130 @@ abstract class _getComingTripsSuccess implements ComingTripState {
   @JsonKey(ignore: true)
   _$$getComingTripsSuccessImplCopyWith<_$getComingTripsSuccessImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$emptyTicketsImplCopyWith<$Res> {
+  factory _$$emptyTicketsImplCopyWith(
+          _$emptyTicketsImpl value, $Res Function(_$emptyTicketsImpl) then) =
+      __$$emptyTicketsImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$emptyTicketsImplCopyWithImpl<$Res>
+    extends _$ComingTripStateCopyWithImpl<$Res, _$emptyTicketsImpl>
+    implements _$$emptyTicketsImplCopyWith<$Res> {
+  __$$emptyTicketsImplCopyWithImpl(
+      _$emptyTicketsImpl _value, $Res Function(_$emptyTicketsImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$emptyTicketsImpl implements _emptyTickets {
+  const _$emptyTicketsImpl();
+
+  @override
+  String toString() {
+    return 'ComingTripState.emptyTickets()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$emptyTicketsImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() loading,
+    required TResult Function(List<IncomingTripModel> comingTrip)
+        getComingTripsSuccess,
+    required TResult Function() emptyTickets,
+    required TResult Function(String message) getComingTripsFailure,
+  }) {
+    return emptyTickets();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? loading,
+    TResult? Function(List<IncomingTripModel> comingTrip)?
+        getComingTripsSuccess,
+    TResult? Function()? emptyTickets,
+    TResult? Function(String message)? getComingTripsFailure,
+  }) {
+    return emptyTickets?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? loading,
+    TResult Function(List<IncomingTripModel> comingTrip)? getComingTripsSuccess,
+    TResult Function()? emptyTickets,
+    TResult Function(String message)? getComingTripsFailure,
+    required TResult orElse(),
+  }) {
+    if (emptyTickets != null) {
+      return emptyTickets();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_loading value) loading,
+    required TResult Function(_getComingTripsSuccess value)
+        getComingTripsSuccess,
+    required TResult Function(_emptyTickets value) emptyTickets,
+    required TResult Function(_getComingTripsFailure value)
+        getComingTripsFailure,
+  }) {
+    return emptyTickets(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_loading value)? loading,
+    TResult? Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult? Function(_emptyTickets value)? emptyTickets,
+    TResult? Function(_getComingTripsFailure value)? getComingTripsFailure,
+  }) {
+    return emptyTickets?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_loading value)? loading,
+    TResult Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult Function(_emptyTickets value)? emptyTickets,
+    TResult Function(_getComingTripsFailure value)? getComingTripsFailure,
+    required TResult orElse(),
+  }) {
+    if (emptyTickets != null) {
+      return emptyTickets(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _emptyTickets implements ComingTripState {
+  const factory _emptyTickets() = _$emptyTicketsImpl;
 }
 
 /// @nodoc
@@ -558,6 +706,7 @@ class _$getComingTripsFailureImpl implements _getComingTripsFailure {
     required TResult Function() loading,
     required TResult Function(List<IncomingTripModel> comingTrip)
         getComingTripsSuccess,
+    required TResult Function() emptyTickets,
     required TResult Function(String message) getComingTripsFailure,
   }) {
     return getComingTripsFailure(message);
@@ -570,6 +719,7 @@ class _$getComingTripsFailureImpl implements _getComingTripsFailure {
     TResult? Function()? loading,
     TResult? Function(List<IncomingTripModel> comingTrip)?
         getComingTripsSuccess,
+    TResult? Function()? emptyTickets,
     TResult? Function(String message)? getComingTripsFailure,
   }) {
     return getComingTripsFailure?.call(message);
@@ -581,6 +731,7 @@ class _$getComingTripsFailureImpl implements _getComingTripsFailure {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<IncomingTripModel> comingTrip)? getComingTripsSuccess,
+    TResult Function()? emptyTickets,
     TResult Function(String message)? getComingTripsFailure,
     required TResult orElse(),
   }) {
@@ -597,6 +748,7 @@ class _$getComingTripsFailureImpl implements _getComingTripsFailure {
     required TResult Function(_loading value) loading,
     required TResult Function(_getComingTripsSuccess value)
         getComingTripsSuccess,
+    required TResult Function(_emptyTickets value) emptyTickets,
     required TResult Function(_getComingTripsFailure value)
         getComingTripsFailure,
   }) {
@@ -609,6 +761,7 @@ class _$getComingTripsFailureImpl implements _getComingTripsFailure {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_loading value)? loading,
     TResult? Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult? Function(_emptyTickets value)? emptyTickets,
     TResult? Function(_getComingTripsFailure value)? getComingTripsFailure,
   }) {
     return getComingTripsFailure?.call(this);
@@ -620,6 +773,7 @@ class _$getComingTripsFailureImpl implements _getComingTripsFailure {
     TResult Function(_Initial value)? initial,
     TResult Function(_loading value)? loading,
     TResult Function(_getComingTripsSuccess value)? getComingTripsSuccess,
+    TResult Function(_emptyTickets value)? emptyTickets,
     TResult Function(_getComingTripsFailure value)? getComingTripsFailure,
     required TResult orElse(),
   }) {

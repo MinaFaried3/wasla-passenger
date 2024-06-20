@@ -7,5 +7,5 @@ class BaseModel extends Equatable {
   const BaseModel({required this.success, required this.message});
 
   @override
-  List<Object> get props => [success, message];
+  List<Object?> get props => [success, message];
 }

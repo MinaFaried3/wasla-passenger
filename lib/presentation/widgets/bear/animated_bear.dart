@@ -1,6 +1,7 @@
 import 'package:rive/rive.dart';
 import 'package:vector_math/vector_math_64.dart' hide Colors;
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/widgets/bear/bear_clip_bath.dart';
 
@@ -29,12 +30,18 @@ class AnimatedBear extends StatelessWidget {
           clipper: BearClipper(),
           child: Align(
             alignment: Alignment.bottomCenter,
-            child: Rive(
-              artboard: riveController.riveArtBoard!,
-              fit: BoxFit.contain,
-              enablePointerEvents: true,
-              useArtboardSize: true,
-              alignment: Alignment.topCenter,
+            child: BlocBuilder<BearAnimationCubit, BearAnimationState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                    loading: () => const LoadingIndicator(),
+                    orElse: () => Rive(
+                          artboard: riveController.riveArtBoard!,
+                          fit: BoxFit.contain,
+                          enablePointerEvents: true,
+                          useArtboardSize: true,
+                          alignment: Alignment.topCenter,
+                        ));
+              },
             ),
           ),
         ),

@@ -42,7 +42,10 @@ class _SectionTitleState extends State<SectionTitle>
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(
-          AppPadding.fromLR + 8, AppPadding.fromLR, AppPadding.fromLR, 10),
+          AppPadding.screenPadding + 8,
+          AppPadding.screenPadding,
+          AppPadding.screenPadding,
+          10),
       child: FadeTransition(
         opacity: fadeAnimation,
         child: Row(

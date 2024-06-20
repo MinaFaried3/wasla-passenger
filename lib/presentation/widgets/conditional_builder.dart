@@ -8,11 +8,11 @@ class ConditionalBuilder extends StatelessWidget {
       required this.onFalse});
 
   final bool condition;
-  final Widget onTrue;
-  final Widget onFalse;
+  final WidgetBuilder onTrue;
+  final WidgetBuilder onFalse;
 
   @override
   Widget build(BuildContext context) {
-    return condition ? onTrue : onFalse;
+    return condition ? onTrue(context) : onFalse(context);
   }
 }

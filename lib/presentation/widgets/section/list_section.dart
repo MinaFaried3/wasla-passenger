@@ -16,8 +16,10 @@ class ListSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width =
-        (MediaQuery.sizeOf(context).width - (2 * AppPadding.fromLR) - 5) / 2;
+    double width = (MediaQuery.sizeOf(context).width -
+            (2 * AppPadding.screenPadding) -
+            5) /
+        2;
     return SizedBox(
       height: list.length > 5 ? list.length * 70 : 500,
       child: Stack(

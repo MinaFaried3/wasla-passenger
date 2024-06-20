@@ -42,16 +42,18 @@ class EndPointsManager {
   //home
   //main
   static const String tripSuggestions = "$_passanger/tripsSuggestions";
+  static const String getNotification = "$_authentication/GetUserNotifications";
 
   //profile
   static const String profile = "$_passanger/profile";
+  static const String editProfile = "$_passanger/EditProflie";
   static const String searchByUserName = "$_passanger/searchByUserName";
   static const String createFollowRequest = "$_passanger/createFollowRequest";
   static const String displayFollowRequest = "$_passanger/displayFollowRequest";
 
   //search
   static const String searchTrip =
-      "$_passanger/search/trips/user/{from}/{to}/date";
+      "$_passanger/search/trips/user/{from}/{to}/date/time";
 }
 
 class HeadersManager {

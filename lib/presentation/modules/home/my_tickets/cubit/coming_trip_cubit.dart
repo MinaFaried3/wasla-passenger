@@ -20,8 +20,12 @@ class ComingTripCubit extends Cubit<ComingTripState> {
     result.fold(
         (l) => emit(ComingTripState.getComingTripsFailure(message: l.message)),
         (r) {
-      incomingTripDateTime = DateTime.parse(r[0].startTime.orEmpty());
-      emit(ComingTripState.getComingTripsSuccess(comingTrip: r));
+      if (r.isNotEmpty) {
+        incomingTripDateTime = DateTime.parse(r[0].startTime.orEmpty());
+        emit(ComingTripState.getComingTripsSuccess(comingTrip: r));
+      } else {
+        emit(ComingTripState.emptyTickets());
+      }
     });
   }
 

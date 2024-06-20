@@ -1,4 +1,5 @@
 import 'package:wasla/app/shared/common/constants.dart';
+import 'package:wasla/app/shared/enums/gender.dart';
 import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/domain/entities/auth/passenger_model.dart';
@@ -38,6 +39,8 @@ extension AuthResponseMapper on AuthResponse? {
       profile: this?.data?.profile.orEmpty() ?? AppConstants.emptyString,
       userName: this?.data?.userName.orEmpty() ?? AppConstants.emptyString,
       userId: this?.data?.userId.orEmpty() ?? AppConstants.emptyString,
+      gender: Gender.male.name,
+      birthdate: AppConstants.emptyString,
     );
   }
 }

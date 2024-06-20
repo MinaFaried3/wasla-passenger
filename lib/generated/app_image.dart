@@ -8,6 +8,8 @@ class Assets {
       'assets/images/account_verification/edit_phone.svg';
   static const String accountVerificationEnterVerificationCode =
       'assets/images/account_verification/enter_verification_code.svg';
+  static const String assetsMapsStylesNightStyle =
+      'assets/maps_styles/night_style.json';
   static const String backgroundBackgroundStartNow =
       'assets/images/background/background_start_now.png';
   static const String cairoCairoBlack = 'assets/fonts/cairo/Cairo-Black.ttf';
@@ -47,6 +49,8 @@ class Assets {
   static const String logoLogoTypo = 'assets/images/logo/logo_typo.png';
   static const String logoWaslaTicketLogo =
       'assets/images/logo/wasla_ticket_logo.png';
+  static const String mapsStylesNightStyle =
+      'assets/maps_styles/night_style.json';
   static const String onboardingAdsOnboarding =
       'assets/images/onboarding/ads_onboarding.png';
   static const String onboardingDeliveryOnboarding =
@@ -85,12 +89,16 @@ class Assets {
   static const String svgClosedEyeIcon =
       'assets/images/svg/closed_eye_icon.svg';
   static const String svgDoneIcon = 'assets/images/svg/done_icon.svg';
+  static const String svgDownArrowIcon =
+      'assets/images/svg/down_arrow_icon.svg';
   static const String svgDriverIcon = 'assets/images/svg/driver_icon.svg';
   static const String svgEditIcon = 'assets/images/svg/edit_icon.svg';
   static const String svgEmailIcon = 'assets/images/svg/email_icon.svg';
+  static const String svgEmptyTickets = 'assets/images/svg/empty_tickets.svg';
   static const String svgErrorIcon = 'assets/images/svg/error_icon.svg';
   static const String svgExitIcon = 'assets/images/svg/exit_icon.svg';
   static const String svgFacebookIcon = 'assets/images/svg/facebook_icon.svg';
+  static const String svgFemaleIcon = 'assets/images/svg/female_icon.svg';
   static const String svgFlipIcon = 'assets/images/svg/flip_icon.svg';
   static const String svgFollowPassengerIcon =
       'assets/images/svg/follow_passenger_icon.svg';
@@ -99,12 +107,17 @@ class Assets {
   static const String svgHomeIcon = 'assets/images/svg/home_icon.svg';
   static const String svgIdIcon = 'assets/images/svg/id_icon.svg';
   static const String svgLocationIcon = 'assets/images/svg/location_icon.svg';
+  static const String svgMaleAndFemaleIcon =
+      'assets/images/svg/male_and_female_icon.svg';
   static const String svgMaleFemaleIcon =
       'assets/images/svg/male_female_icon.svg';
+  static const String svgMaleIcon = 'assets/images/svg/male_icon.svg';
   static const String svgMenuIcon = 'assets/images/svg/menu_icon.svg';
   static const String svgNotificationIcon =
       'assets/images/svg/notification_icon.svg';
   static const String svgOpenEyeIcon = 'assets/images/svg/open_eye_icon.svg';
+  static const String svgPackageNotificationIcon =
+      'assets/images/svg/package_notification_icon.svg';
   static const String svgPassword1Icon = 'assets/images/svg/password1_icon.svg';
   static const String svgPasswordIcon = 'assets/images/svg/password_icon.svg';
   static const String svgPhoneIcon = 'assets/images/svg/phone_icon.svg';
@@ -115,6 +128,8 @@ class Assets {
   static const String svgProIcon = 'assets/images/svg/pro_icon.svg';
   static const String svgRetryIcon = 'assets/images/svg/retry_icon.svg';
   static const String svgRightArrowIc = 'assets/images/svg/right_arrow_ic.svg';
+  static const String svgRiskNotificationAlarm =
+      'assets/images/svg/risk_notification_alarm.svg';
   static const String svgSearchIcon = 'assets/images/svg/search_icon.svg';
   static const String svgSeatsPositionIcon =
       'assets/images/svg/seats_position_icon.svg';

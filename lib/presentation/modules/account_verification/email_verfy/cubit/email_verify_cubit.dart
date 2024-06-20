@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
 import 'package:wasla/domain/usecases/verification_usecase/confirm_email_usecase.dart';
 import 'package:wasla/domain/usecases/verification_usecase/send_verification_email_usecase.dart';
 
@@ -31,7 +32,9 @@ class EmailVerifyCubit extends Cubit<EmailVerifyState> {
 
     final result = await confirmEmailUseCase(verifyCode);
 
-    result.fold((l) => emit(EmailVerifyState.confirmEmailErrorState(l.message)),
-        (r) => emit(EmailVerifyState.confirmEmailSuccessState(r.message)));
+    result.fold(
+        (l) => emit(EmailVerifyState.confirmEmailErrorState(l.message)),
+        (r) => emit(
+            EmailVerifyState.confirmEmailSuccessState(r.message.orEmpty())));
   }
 }

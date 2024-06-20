@@ -1,4 +1,4 @@
-class AppConstants {
+abstract class AppConstants {
   static const role = 'Passenger';
 
   static const zero = 0;
@@ -16,6 +16,8 @@ class AppConstants {
   static const int otpCodeLength = 4;
 
   static const String emailSample = 'example@gmail.com';
+  static const String defaultProfileImageUrl =
+      'https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg';
 
   //todo for phone
   static const double screenUtilWidth = 428;
@@ -57,7 +59,7 @@ class AppConstants {
 }
 
 class DurationManager {
-  static const int timeOutMin = 2;
+  static const int timeOutMin = 5;
   static const int bearHandsDownMS = 600;
 
   static const Duration apiTimeOut = Duration(minutes: timeOutMin);
@@ -68,6 +70,7 @@ class DurationManager {
   static const Duration s2 = Duration(seconds: 2);
   static const Duration s3 = Duration(seconds: 3);
   static const Duration s4 = Duration(seconds: 4);
+  static const Duration s5 = Duration(seconds: 5);
   static const Duration s6 = Duration(seconds: 6);
 
   static const Duration m300 = Duration(milliseconds: 300);

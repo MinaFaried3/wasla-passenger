@@ -12,11 +12,13 @@ class ContactsFormFields extends StatefulWidget {
     required this.contactsFormKey,
     required this.phoneController,
     required this.emailController,
+    this.withDialog = true,
   });
 
   final GlobalKey<FormState> contactsFormKey;
   final TextEditingController phoneController;
   final TextEditingController emailController;
+  final bool withDialog;
 
   @override
   State<ContactsFormFields> createState() => _ContactsFormFieldsState();
@@ -101,16 +103,25 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
   }
 
   void _dispose() {
-    emailFocusNode.removeListener(_emailListener);
-    phoneFocusNode.removeListener(_phoneListener);
+    if (widget.withDialog) {
+      emailFocusNode.removeListener(_emailListener);
+      phoneFocusNode.removeListener(_phoneListener);
+    }
     phoneFocusNode.dispose();
     emailFocusNode.dispose();
   }
 
   _init() {
-    context
-        .read<BearDialogCubit>()
-        .writeMessage(AppStrings.startContactsForm.tr());
+    if (widget.withDialog) {
+      context
+          .read<BearDialogCubit>()
+          .writeMessage(AppStrings.startContactsForm.tr());
+
+      emailFocusNode.addListener(_emailListener);
+      phoneFocusNode.addListener(_phoneListener);
+      phoneFocusNode.requestFocus();
+    }
+
     if (context.read<BearAnimationCubit>().riveController.currentState ==
         BearState.handsUp) {
       context
@@ -118,10 +129,6 @@ class _ContactsFormFieldsState extends State<ContactsFormFields> {
           .riveController
           .addState(BearState.handsDown);
     }
-
-    phoneFocusNode.requestFocus();
-    emailFocusNode.addListener(_emailListener);
-    phoneFocusNode.addListener(_phoneListener);
   }
 
   void _emailListener() {

@@ -5,9 +5,11 @@ import 'package:wasla/presentation/modules/account_verification/email_verfy/cubi
 import 'package:wasla/presentation/modules/account_verification/email_verfy/view/verify_email_view.dart';
 import 'package:wasla/presentation/modules/account_verification/phone_verify/view/verify_phone_view.dart';
 import 'package:wasla/presentation/modules/account_verification/verification_way/view/verification_way_view.dart';
+import 'package:wasla/presentation/modules/edit_profile/edit_profile_view.dart';
 import 'package:wasla/presentation/modules/forgot_password/forgot_password_view.dart';
 import 'package:wasla/presentation/modules/home/home/view/home_screen.dart';
 import 'package:wasla/presentation/modules/login/view/login_view.dart';
+import 'package:wasla/presentation/modules/notification/notification_screen.dart';
 import 'package:wasla/presentation/modules/onboarding/view/onboarding_view.dart';
 import 'package:wasla/presentation/modules/register/view/register_view.dart';
 import 'package:wasla/presentation/modules/reset_password/reset_password_view.dart';
@@ -29,6 +31,8 @@ class RoutesStrings {
   static const String verifyEmailRoute = '/verify_email';
   static const String startRoute = '/start';
   static const String home = '/';
+  static const String editProfile = '/edit_profile';
+  static const String notification = '/notification';
   static const String unDefinedRoute = '/un_defined';
   static const String testRoute = '/test';
 }
@@ -48,6 +52,8 @@ enum Routes {
   start(RoutesStrings.startRoute),
   testRoute(RoutesStrings.testRoute),
   home(RoutesStrings.home),
+  editProfile(RoutesStrings.editProfile),
+  notification(RoutesStrings.notification),
   unDefined(RoutesStrings.unDefinedRoute);
 
   final String path;
@@ -58,7 +64,7 @@ enum Routes {
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     Routes currentRoute = Routes.values.firstWhere(
-      (element) => element.path == settings.name,
+          (element) => element.path == settings.name,
       orElse: () => Routes.unDefined,
     );
 
@@ -71,7 +77,8 @@ class RouteGenerator {
         DIModulesManger.prepareLoginModule();
 
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
+            builder: (_) =>
+                MultiBlocProvider(
                   providers: BlocProvidersManager.loginProviders,
                   child: const LoginScreen(),
                 ));
@@ -79,7 +86,8 @@ class RouteGenerator {
         DIModulesManger.prepareRegisterModule();
 
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
+            builder: (_) =>
+                MultiBlocProvider(
                   providers: BlocProvidersManager.registerProviders,
                   child: const RegisterScreen(),
                 ));
@@ -91,59 +99,98 @@ class RouteGenerator {
         DIModulesManger.prepareVerificationModule();
 
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
-                providers: BlocProvidersManager.verificationProviders,
-                child: const VerificationWayScreen()));
+            builder: (_) =>
+                MultiBlocProvider(
+                    providers: BlocProvidersManager.verificationProviders,
+                    child: const VerificationWayScreen()));
       case Routes.editPhoneRoute:
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
-                providers: BlocProvidersManager.verificationProviders,
-                child: const EditPhoneScreen()));
+            builder: (_) =>
+                MultiBlocProvider(
+                    providers: BlocProvidersManager.verificationProviders,
+                    child: const EditPhoneScreen()));
       case Routes.editEmailRoute:
         return MaterialPageRoute(
-            builder: (_) => MultiBlocProvider(
-                providers: BlocProvidersManager.verificationProviders,
-                child: const EditEmailScreen()));
+            builder: (_) =>
+                MultiBlocProvider(
+                    providers: BlocProvidersManager.verificationProviders,
+                    child: const EditEmailScreen()));
       case Routes.verifyPhoneRoute:
         return MaterialPageRoute(builder: (_) => const VerifyPhoneScreen());
       case Routes.verifyEmailRoute:
         return MaterialPageRoute(
-            builder: (_) => BlocProvider(
+            builder: (_) =>
+                BlocProvider(
                   create: (context) =>
-                      getIt<EmailVerifyCubit>()..sendVerificationEmail(),
+                  getIt<EmailVerifyCubit>()
+                    ..sendVerificationEmail(),
                   child: const VerifyEmailScreen(),
                 ));
       case Routes.onboardingRoute:
         DIModulesManger.prepareOnboardingModule();
 
         return MaterialPageRoute(
-            builder: (context) => MultiBlocProvider(
-                providers: BlocProvidersManager.onboardingProviders,
-                child: const OnboardingScreen()));
+            builder: (context) =>
+                MultiBlocProvider(
+                    providers: BlocProvidersManager.onboardingProviders,
+                    child: const OnboardingScreen()));
       case Routes.start:
         return MaterialPageRoute(builder: (_) => const StartScreen());
       case Routes.home:
         DIModulesManger.prepareHomeModule();
 
         return MaterialPageRoute(
-          builder: (_) => MultiBlocProvider(
-            providers: BlocProvidersManager.homeProviders,
-            child: const HomeScreen(),
-          ),
+          builder: (_) =>
+              MultiBlocProvider(
+                providers: BlocProvidersManager.homeProviders,
+                child: const HomeScreen(),
+              ),
         );
       case Routes.testRoute:
         return MaterialPageRoute(builder: (_) => const TestScreen());
       case Routes.unDefined:
         return unDefinedRoute();
+
+      case Routes.editProfile:
+        DIModulesManger.prepareEditProfileModule();
+        return MaterialPageRoute(
+          builder: (_) =>
+              MultiBlocProvider(
+                providers: BlocProvidersManager.editProfileProviders,
+                child: const EditProfileScreen(),
+              ),
+        );
+      case Routes.notification:
+        return buildRoute(
+          prepareModule: DIModulesManger.prepareNotificationModule,
+          providers: BlocProvidersManager.notificationProviders,
+          screen: const NotificationScreen(),
+        );
     }
+  }
+
+  static MaterialPageRoute buildRoute({
+    required VoidCallback prepareModule,
+    required List<BlocProvider> Function() providers,
+    required Widget screen,
+  }) {
+    prepareModule();
+    return MaterialPageRoute(
+      builder: (_) =>
+          MultiBlocProvider(
+            providers: providers(),
+            child: screen,
+          ),
+    );
   }
 
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
-        builder: (_) => const Scaffold(
-              body: Center(
-                child: Text(AppStrings.noRoute),
-              ),
-            ));
+        builder: (_) =>
+        const Scaffold(
+          body: Center(
+            child: Text(AppStrings.noRoute),
+          ),
+        ));
   }
 }

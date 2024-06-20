@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:wasla/app/shared/extensions/not_nullable_extensions.dart';
 import 'package:wasla/domain/usecases/verification_usecase/edit_contact_usecase.dart';
 
 part 'edit_contacts_cubit.freezed.dart';
@@ -21,7 +22,7 @@ class EditContactsCubit extends Cubit<EditContactsState> {
     result.fold((l) {
       emit(EditContactsState.editEmailFailureState(l.message));
     }, (r) {
-      emit(EditContactsState.editEmailSuccessState(r.message));
+      emit(EditContactsState.editEmailSuccessState(r.message.orEmpty()));
     });
   }
 
@@ -32,7 +33,7 @@ class EditContactsCubit extends Cubit<EditContactsState> {
     result.fold((l) {
       emit(EditContactsState.editPhoneFailureState(l.message));
     }, (r) {
-      emit(EditContactsState.editPhoneSuccessState(r.message));
+      emit(EditContactsState.editPhoneSuccessState(r.message.orEmpty()));
     });
   }
 }

@@ -1,5 +1,9 @@
+import 'dart:io';
+
 import 'package:retrofit/http.dart';
 import 'package:wasla/app/shared/common/common_libs.dart';
+import 'package:wasla/data/network/FollowerLocationResponse.dart';
+import 'package:wasla/data/network/MapFollowersResponse.dart';
 import 'package:wasla/data/network/end_points_manager.dart';
 import 'package:wasla/data/requests/OrgTripReserveResponse.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
@@ -13,6 +17,7 @@ import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
 import 'package:wasla/data/responses/base_response.dart';
 import 'package:wasla/data/responses/home/FollowRequestsResponse.dart';
+import 'package:wasla/data/responses/home/NotificationResponse.dart';
 import 'package:wasla/data/responses/home/main/suggestion_trips_response.dart';
 import 'package:wasla/data/responses/home/profile/profile_response.dart';
 
@@ -70,18 +75,18 @@ abstract class ApiServiceClient {
     @Header("Authorization") required String authorization,
   });
 
-  ///profile
-  @GET(EndPointsManager.profile)
-  Future<ProfileResponse> getProfile({
-    @Header("Authorization") required String authorization,
-  });
-
   @GET(EndPointsManager.searchByUserName)
   Future<PassengerItemResponse> searchByUserName({
     @Header("Authorization") required String authorization,
     @Query('userName') required String userName,
   });
 
+  @GET(EndPointsManager.getNotification)
+  Future<NotificationResponse> getNotification({
+    @Header("Authorization") required String authorization,
+  });
+
+  ///follow
   @POST(EndPointsManager.createFollowRequest)
   Future<BaseResponseWithOutData> createFollowRequest({
     @Header("Authorization") required String authorization,
@@ -105,12 +110,36 @@ abstract class ApiServiceClient {
     @Field('senderId') required String senderId,
   });
 
+  ///-------------------------------------------------
+  ///profile
+  @GET(EndPointsManager.profile)
+  Future<ProfileResponse> getProfile({
+    @Header("Authorization") required String authorization,
+  });
+
+  @PUT(EndPointsManager.editProfile)
+  @MultiPart()
+  Future<BaseResponseWithOutData> editProfile({
+    @Header("Authorization") required String authorization,
+    @Part(name: 'FirstName') required String firstname,
+    @Part(name: 'LastName') required String lastname,
+    @Part(name: 'UserName') required String username,
+    @Part(name: 'Email') required String email,
+    @Part(name: 'PhoneNumber') required String phone,
+    @Part(name: 'Gender') required String gender,
+    @Part(name: 'Birthdate') required String birthdate,
+    @Part(name: 'Photo') File? profileImage,
+  });
+
+  ///
+
   @GET(EndPointsManager.searchTrip)
   Future<TripsSearchResponse> searchForTrip({
     @Header("Authorization") required String authorization,
     @Path('from') required String from,
     @Path('to') required String to,
     @Query('date') required String date,
+    @Query('time') required String time,
   });
 
   @POST('/passanger/reqeustPublicTrip')
@@ -134,5 +163,16 @@ abstract class ApiServiceClient {
   @GET('/passanger/incomingTrips')
   Future<IncomingTripsResponse> getComingTrips({
     @Header("Authorization") required String authorization,
+  });
+
+  @GET('/passanger/followerTrips')
+  Future<MapFollowersResponse> getFollowerTrips({
+    @Header("Authorization") required String authorization,
+  });
+
+  @GET('/passanger/getFollowerLocation/{userId}')
+  Future<FollowerLocationResponse> getFollowerLocation({
+    @Header("Authorization") required String authorization,
+    @Path("userId") required String userId,
   });
 }

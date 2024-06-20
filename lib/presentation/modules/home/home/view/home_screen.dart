@@ -57,25 +57,27 @@ class _HomeScreenState extends State<HomeScreen>
     return [
       InkWell(
         onTap: () {
-          Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => FollowRequestScreen()));
+          Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const FollowRequestScreen()));
         },
         splashColor: Colors.transparent,
         child: const AppSvg(
-          path: AssetsProvider.userIcon,
+          path: AssetsProvider.followPassengerIcon,
           height: 30,
         ),
       ),
       const HorizontalSpace(8),
       InkWell(
-        onTap: () {},
+        onTap: () {
+          context.pushNamed(Routes.notification.path);
+        },
         splashColor: Colors.transparent,
         child: const AppSvg(
           path: AssetsProvider.notificationIcon,
           height: 30,
         ),
       ),
-      const HorizontalSpace(AppPadding.fromLR),
+      const HorizontalSpace(AppPadding.screenPadding),
     ];
   }
 

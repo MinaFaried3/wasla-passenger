@@ -143,5 +143,10 @@
   "searchForTrip": "Search For Trip",
   "am": "AM",
   "pm": "PM",
-  "verificationCodeMustContain4digits": "verification code should contain 4 digits"
+  "verificationCodeMustContain4digits": "verification code should contain 4 digits",
+  "gender": "gender",
+  "birthdate": "birthdate",
+  "male": "male",
+  "female": "female",
+  "notification": "notification"
 }

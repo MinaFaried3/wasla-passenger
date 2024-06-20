@@ -1,11 +1,13 @@
 import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/data/network/api_service_client.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
+import 'package:wasla/data/requests/home/profile/edit_profile_request.dart';
 import 'package:wasla/data/requests/verification/confirm_email_phone.dart';
 import 'package:wasla/data/requests/verification/edit_phone_and_email.dart';
 import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
 import 'package:wasla/data/responses/base_response.dart';
+import 'package:wasla/data/responses/home/NotificationResponse.dart';
 import 'package:wasla/data/responses/home/main/suggestion_trips_response.dart';
 import 'package:wasla/data/responses/home/profile/profile_response.dart';
 
@@ -31,6 +33,11 @@ abstract class RemoteDataSource {
   Future<SuggestionTripsResponse> getSuggestionsTrips();
 
   Future<ProfileResponse> getProfile();
+
+  Future<BaseResponseWithOutData> editProfile(
+      EditProfileRequest editProfileRequest);
+
+  Future<NotificationResponse> getNotification();
 
   const RemoteDataSource();
 }
@@ -102,5 +109,26 @@ class RemoteDataSourceImpl extends RemoteDataSource {
   @override
   Future<ProfileResponse> getProfile() async {
     return await _apiServiceClient.getProfile(authorization: await bearerToken);
+  }
+
+  @override
+  Future<BaseResponseWithOutData> editProfile(
+      EditProfileRequest editProfileRequest) async {
+    return await _apiServiceClient.editProfile(
+        authorization: await bearerToken,
+        firstname: editProfileRequest.firstname,
+        lastname: editProfileRequest.lastname,
+        username: editProfileRequest.username,
+        email: editProfileRequest.email,
+        phone: editProfileRequest.phone,
+        gender: editProfileRequest.gender,
+        birthdate: editProfileRequest.birthdate,
+        profileImage: editProfileRequest.profileImage);
+  }
+
+  @override
+  Future<NotificationResponse> getNotification() async {
+    return await _apiServiceClient.getNotification(
+        authorization: await bearerToken);
   }
 }

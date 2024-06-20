@@ -3,7 +3,7 @@ import 'package:wasla/domain/entities/base_model.dart';
 import 'package:wasla/domain/usecases/base_usecase.dart';
 
 class SendVerificationEmailUseCase
-    extends BaseUseCase<void, BaseModel, AuthRepository> {
+    extends ParameterizedBaseUseCase<void, BaseModel, AuthRepository> {
   SendVerificationEmailUseCase({required super.repository});
 
   @override

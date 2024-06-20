@@ -143,5 +143,10 @@
   "searchForTrip": "بحث عن الرحلة",
   "am": "صباحا",
   "pm": "مساءا",
-  "verificationCodeMustContain4digits": "كود التجقق يجب ان يتكون من 4 ارقام"
+  "verificationCodeMustContain4digits": "كود التجقق يجب ان يتكون من 4 ارقام",
+  "gender": "الجنس",
+  "birthdate": "تاريخ الميلاد",
+  "male": "ذكر",
+  "female": "انثي",
+  "notification": "الاشعارات"
 }

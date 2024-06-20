@@ -7,4 +7,5 @@ typedef Json = Map<String, dynamic>;
 typedef FailureOr<X> = Future<Either<Failure, X>>;
 typedef FailureOrPassengerModel = FailureOr<PassengerModel>;
 typedef FailureOrBaseModel = FailureOr<BaseModel>;
+typedef FailureOrList<X> = FailureOr<List<X>>;
 typedef FutureBaseResponse = Future<BaseResponseWithOutData>;

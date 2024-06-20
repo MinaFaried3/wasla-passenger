@@ -12,12 +12,14 @@ class NamesFormFields extends StatefulWidget {
     required this.usernameController,
     required this.firstnameController,
     required this.lastnameController,
+    this.withDialog = true,
   });
 
   final GlobalKey<FormState> namesFormKey;
   final TextEditingController usernameController;
   final TextEditingController firstnameController;
   final TextEditingController lastnameController;
+  final bool withDialog;
 
   @override
   State<NamesFormFields> createState() => _NamesFormFieldsState();
@@ -37,7 +39,9 @@ class _NamesFormFieldsState extends State<NamesFormFields>
 
   void _init() {
     _initAnimation();
-    usernameFocusNode.addListener(_usernameListener);
+    if (widget.withDialog) {
+      usernameFocusNode.addListener(_usernameListener);
+    }
   }
 
   @override
@@ -55,7 +59,10 @@ class _NamesFormFieldsState extends State<NamesFormFields>
   }
 
   void _dispose() {
-    usernameFocusNode.removeListener(_usernameListener);
+    if (widget.withDialog) {
+      usernameFocusNode.removeListener(_usernameListener);
+    }
+
     usernameFocusNode.dispose();
     _animationController.dispose();
   }
@@ -76,6 +83,7 @@ class _NamesFormFieldsState extends State<NamesFormFields>
           child: NamesFields(
             firstnameController: widget.firstnameController,
             lastnameController: widget.lastnameController,
+            withDialog: widget.withDialog,
           ),
         ),
         Padding(

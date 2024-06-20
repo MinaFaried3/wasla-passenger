@@ -7,10 +7,14 @@ import 'package:wasla/data/data_source/local_data_source.dart';
 import 'package:wasla/data/network/api_service_client.dart';
 import 'package:wasla/data/network/dio_factory.dart';
 import 'package:wasla/data/repositories/auth_repository_impl.dart';
+import 'package:wasla/data/repositories/home_repository_impl.dart';
+import 'package:wasla/domain/repositories/home_repository.dart';
 import 'package:wasla/domain/usecases/auth_usecases/check_username_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/login_usecase.dart';
 import 'package:wasla/domain/usecases/auth_usecases/register_usecase.dart';
+import 'package:wasla/domain/usecases/home/get_notification_use_case.dart';
 import 'package:wasla/domain/usecases/home/main/get_suggestions_trips_use_case.dart';
+import 'package:wasla/domain/usecases/home/profile/edit_profile_use_case.dart';
 import 'package:wasla/domain/usecases/home/profile/get_profile_use_case.dart';
 import 'package:wasla/domain/usecases/verification_usecase/confirm_email_usecase.dart';
 import 'package:wasla/domain/usecases/verification_usecase/edit_contact_usecase.dart';
@@ -20,8 +24,10 @@ import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_c
 import 'package:wasla/presentation/common/rive_controller.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/email_verfy/cubit/email_verify_cubit.dart';
+import 'package:wasla/presentation/modules/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/home/main/cubit/main_home_cubit.dart';
+import 'package:wasla/presentation/modules/notification/cubit/notification_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
@@ -306,5 +312,62 @@ final class DIModulesManger {
     //
     //   _printIsRegistered<ProfileCubit>();
     // }
+  }
+
+  static void prepareEditProfileModule() {
+    _prepareAuthModule();
+
+    ///use case
+    _registerFactory<CheckUsernameUseCase>(
+        CheckUsernameUseCase(repository: getIt<AuthRepository>()));
+    _registerFactory<EditProfileUseCase>(
+        EditProfileUseCase(repository: getIt<AuthRepository>()));
+
+    ///cubit
+
+    if (!GetIt.I.isRegistered<CheckUsernameBloc>()) {
+      getIt.registerFactory<CheckUsernameBloc>(
+          () => CheckUsernameBloc(getIt<CheckUsernameUseCase>()));
+
+      _printIsRegistered<CheckUsernameBloc>();
+    }
+    if (!GetIt.I.isRegistered<EditProfileCubit>()) {
+      getIt.registerFactory<EditProfileCubit>(
+          () => EditProfileCubit(getIt<EditProfileUseCase>()));
+
+      _printIsRegistered<EditProfileCubit>();
+    }
+  }
+
+  static void _prepareHomeModule() {
+    _registerFactory<HomeRepository>(HomeRepositoryImpl(
+      remoteDataSource: getIt<RemoteDataSource>(),
+      localDataSource: getIt<LocalDataSource>(),
+      networkChecker: getIt<NetworkChecker>(),
+      apiServiceClient: getIt<ApiServiceClient>(),
+    ));
+
+    ///ui
+    _registerFactory<RiveControllerManager>(RiveControllerManager());
+    //cubits used on auth
+    _registerFactory<BearAnimationCubit>(
+        BearAnimationCubit(getIt<RiveControllerManager>()));
+    _registerFactory<BearDialogCubit>(BearDialogCubit());
+  }
+
+  static void prepareNotificationModule() {
+    _prepareHomeModule();
+
+    ///use case
+    _registerFactory<GetNotificationUseCase>(
+        GetNotificationUseCase(repository: getIt<HomeRepository>()));
+
+    ///cubit
+    if (!GetIt.I.isRegistered<NotificationCubit>()) {
+      getIt.registerFactory<NotificationCubit>(
+          () => NotificationCubit(getIt<GetNotificationUseCase>()));
+
+      _printIsRegistered<NotificationCubit>();
+    }
   }
 }

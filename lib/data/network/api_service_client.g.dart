@@ -260,34 +260,6 @@ class _ApiServiceClient implements ApiServiceClient {
   }
 
   @override
-  Future<ProfileResponse> getProfile({required String authorization}) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{r'Authorization': authorization};
-    _headers.removeWhere((k, v) => v == null);
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<ProfileResponse>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/passanger/profile',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final value = ProfileResponse.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
   Future<PassengerItemResponse> searchByUserName({
     required String authorization,
     required String userName,
@@ -315,6 +287,35 @@ class _ApiServiceClient implements ApiServiceClient {
               baseUrl,
             ))));
     final value = PassengerItemResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<NotificationResponse> getNotification(
+      {required String authorization}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<NotificationResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/auth/GetUserNotifications',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = NotificationResponse.fromJson(_result.data!);
     return value;
   }
 
@@ -441,14 +442,123 @@ class _ApiServiceClient implements ApiServiceClient {
   }
 
   @override
+  Future<ProfileResponse> getProfile({required String authorization}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<ProfileResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/passanger/profile',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ProfileResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<BaseResponseWithOutData> editProfile({
+    required String authorization,
+    required String firstname,
+    required String lastname,
+    required String username,
+    required String email,
+    required String phone,
+    required String gender,
+    required String birthdate,
+    File? profileImage,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'FirstName',
+      firstname,
+    ));
+    _data.fields.add(MapEntry(
+      'LastName',
+      lastname,
+    ));
+    _data.fields.add(MapEntry(
+      'UserName',
+      username,
+    ));
+    _data.fields.add(MapEntry(
+      'Email',
+      email,
+    ));
+    _data.fields.add(MapEntry(
+      'PhoneNumber',
+      phone,
+    ));
+    _data.fields.add(MapEntry(
+      'Gender',
+      gender,
+    ));
+    _data.fields.add(MapEntry(
+      'Birthdate',
+      birthdate,
+    ));
+    if (profileImage != null) {
+      _data.files.add(MapEntry(
+        'Photo',
+        MultipartFile.fromFileSync(
+          profileImage.path,
+          filename: profileImage.path.split(Platform.pathSeparator).last,
+        ),
+      ));
+    }
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<BaseResponseWithOutData>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+            .compose(
+              _dio.options,
+              '/passanger/EditProflie',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = BaseResponseWithOutData.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<TripsSearchResponse> searchForTrip({
     required String authorization,
     required String from,
     required String to,
     required String date,
+    required String time,
   }) async {
     const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'date': date};
+    final queryParameters = <String, dynamic>{
+      r'date': date,
+      r'time': time,
+    };
     final _headers = <String, dynamic>{r'Authorization': authorization};
     _headers.removeWhere((k, v) => v == null);
     final Map<String, dynamic>? _data = null;
@@ -460,7 +570,7 @@ class _ApiServiceClient implements ApiServiceClient {
     )
             .compose(
               _dio.options,
-              '/passanger/search/trips/user/${from}/${to}/date',
+              '/passanger/search/trips/user/${from}/${to}/date/time',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -594,6 +704,66 @@ class _ApiServiceClient implements ApiServiceClient {
               baseUrl,
             ))));
     final value = IncomingTripsResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<MapFollowersResponse> getFollowerTrips(
+      {required String authorization}) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<MapFollowersResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/passanger/followerTrips',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = MapFollowersResponse.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<FollowerLocationResponse> getFollowerLocation({
+    required String authorization,
+    required String userId,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': authorization};
+    _headers.removeWhere((k, v) => v == null);
+    final Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<FollowerLocationResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/passanger/getFollowerLocation/${userId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = FollowerLocationResponse.fromJson(_result.data!);
     return value;
   }
 

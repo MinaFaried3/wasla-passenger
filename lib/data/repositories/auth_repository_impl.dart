@@ -3,13 +3,17 @@ import 'package:wasla/data/data_source/local_data_source.dart';
 import 'package:wasla/data/mappers/auth/login_mapper.dart';
 import 'package:wasla/data/mappers/auth/register_mappers.dart';
 import 'package:wasla/data/mappers/base_response_without_data_mapper.dart';
+import 'package:wasla/data/mappers/home/notification_mappers.dart';
 import 'package:wasla/data/mappers/home/profile_mappers.dart';
 import 'package:wasla/data/mappers/home/suggestions_trips_mapper.dart';
+import 'package:wasla/data/network/FollowerLocationResponse.dart';
+import 'package:wasla/data/network/MapFollowersResponse.dart';
 import 'package:wasla/data/network/api_service_client.dart';
 import 'package:wasla/data/network/error/data_source_status.dart';
 import 'package:wasla/data/network/network_error_handler.dart';
 import 'package:wasla/data/requests/OrgTripReserveResponse.dart';
 import 'package:wasla/data/requests/auth/register_request.dart';
+import 'package:wasla/data/requests/home/profile/edit_profile_request.dart';
 import 'package:wasla/data/requests/publicTripReserveRequest.dart';
 import 'package:wasla/data/requests/verification/confirm_email_phone.dart';
 import 'package:wasla/data/requests/verification/edit_phone_and_email.dart';
@@ -20,10 +24,12 @@ import 'package:wasla/data/responses/auth/auth_response.dart';
 import 'package:wasla/data/responses/auth/check_username_response.dart';
 import 'package:wasla/data/responses/base_response.dart';
 import 'package:wasla/data/responses/home/FollowRequestsResponse.dart';
+import 'package:wasla/data/responses/home/NotificationResponse.dart';
 import 'package:wasla/data/responses/home/main/suggestion_trips_response.dart';
 import 'package:wasla/data/responses/home/profile/profile_response.dart';
 import 'package:wasla/domain/entities/auth/check_username_model.dart';
 import 'package:wasla/domain/entities/base_model.dart';
+import 'package:wasla/domain/entities/home/notification_model.dart';
 import 'package:wasla/domain/entities/home/profile_model.dart';
 import 'package:wasla/domain/entities/home/trip_suggestion_model.dart';
 
@@ -148,10 +154,18 @@ class AuthRepositoryImpl extends AuthRepository {
   ///HOME
   ///main
   @override
-  FailureOr<List<SuggestionTripModel>> getSuggestionTrips() async {
+  FailureOrList<SuggestionTripModel> getSuggestionTrips() async {
     return await executeApiCall<SuggestionTripsResponse,
         List<SuggestionTripModel>>(
       apiCall: () async => remoteDataSource.getSuggestionsTrips(),
+      onSuccess: (response) => response.toDomain(),
+    );
+  }
+
+  @override
+  FailureOrList<NotificationModel> getNotification() async {
+    return await executeApiCall<NotificationResponse, List<NotificationModel>>(
+      apiCall: () async => remoteDataSource.getNotification(),
       onSuccess: (response) => response.toDomain(),
     );
   }
@@ -161,8 +175,36 @@ class AuthRepositoryImpl extends AuthRepository {
   FailureOr<ProfileModel> getProfile() async {
     return await executeApiCall<ProfileResponse, ProfileModel>(
       apiCall: () async => remoteDataSource.getProfile(),
-      onSuccess: (response) => response.toDomain(),
+      onSuccess: (response) {
+        updatePassengerModelLocalDateFromProfileModel(response.toDomain());
+        return response.toDomain();
+      },
     );
+  }
+
+  Future<void> updatePassengerModelLocalDateFromProfileModel(
+      ProfileModel profile) async {
+    final passenger = await localDataSource.getPassengerModel();
+    localDataSource.setPassengerModel(passenger.copyWith(
+        profile: profile.photoUrl,
+        birthdate: profile.birthdate,
+        gender: profile.gender.name,
+        firstName: profile.fullName.split(' ')[0],
+        lastName: profile.fullName.split(' ')[1],
+        userName: profile.userName,
+        connections: passenger.connections
+            .copyWith(phone: profile.phoneNumber, email: profile.email)));
+  }
+
+  @override
+  FailureOrBaseModel editProfile(
+      {required EditProfileRequest editProfileRequest}) async {
+    return await executeApiCall<BaseResponseWithOutData, BaseModel>(
+        apiCall: () async => remoteDataSource.editProfile(editProfileRequest),
+        onSuccess: (response) {
+          localDataSource.updatePassengerModelProfileData(editProfileRequest);
+          return response.toDomain();
+        });
   }
 
   FailureOr<PassengerItemModel> searchByUserName(
@@ -284,13 +326,18 @@ class AuthRepositoryImpl extends AuthRepository {
     required String from,
     required String to,
     required String date,
+    required String time,
   }) async {
     if (!await networkChecker.isConnected) {
       return Left(DataSourceStatus.noInternetConnection.getFailure());
     }
     try {
       final response = await apiServiceClient.searchForTrip(
-          authorization: (await bearerToken), from: from, to: to, date: date);
+          authorization: (await bearerToken),
+          from: from,
+          to: to,
+          date: date,
+          time: time);
 
       if (response.isSuccess == true) {
         return Right(response.data!);
@@ -388,6 +435,52 @@ class AuthRepositoryImpl extends AuthRepository {
       final response = await apiServiceClient.getComingTrips(
         authorization: (await bearerToken),
       );
+
+      if (response.isSuccess == true) {
+        return Right(response.data!);
+      } else {
+        return Left(ServerFailure(
+          code: response.status!.toInt() ?? ApiInternalStatus.failure,
+          message: response.message ?? AppStrings.defaultError,
+        ));
+      }
+    } catch (error) {
+      PrintManager.print(error.toString(), color: ConsoleColor.reset);
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  FailureOr<List<MapFollowerModel>> getFollowerTrips() async {
+    if (!await networkChecker.isConnected) {
+      return Left(DataSourceStatus.noInternetConnection.getFailure());
+    }
+    try {
+      final response = await apiServiceClient.getFollowerTrips(
+        authorization: (await bearerToken),
+      );
+
+      if (response.isSuccess == true) {
+        return Right(response.data!);
+      } else {
+        return Left(ServerFailure(
+          code: response.status!.toInt() ?? ApiInternalStatus.failure,
+          message: response.message ?? AppStrings.defaultError,
+        ));
+      }
+    } catch (error) {
+      PrintManager.print(error.toString(), color: ConsoleColor.reset);
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  FailureOr<FollowerLocationModel> getFollowerLocation(
+      {required String userId}) async {
+    if (!await networkChecker.isConnected) {
+      return Left(DataSourceStatus.noInternetConnection.getFailure());
+    }
+    try {
+      final response = await apiServiceClient.getFollowerLocation(
+          authorization: (await bearerToken), userId: userId);
 
       if (response.isSuccess == true) {
         return Right(response.data!);

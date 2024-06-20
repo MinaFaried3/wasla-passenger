@@ -15,8 +15,8 @@ class SliverSectionHead extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding:
-            const EdgeInsetsDirectional.fromSTEB(0, 0, AppPadding.fromLR, 0),
+        padding: const EdgeInsetsDirectional.fromSTEB(
+            0, 0, AppPadding.screenPadding, 0),
         child: Row(
           children: [
             SectionTitle(title: tittle),

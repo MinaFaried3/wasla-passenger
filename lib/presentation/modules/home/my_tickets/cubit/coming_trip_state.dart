@@ -9,6 +9,8 @@ class ComingTripState with _$ComingTripState {
   const factory ComingTripState.getComingTripsSuccess(
       {required List<IncomingTripModel> comingTrip}) = _getComingTripsSuccess;
 
+  const factory ComingTripState.emptyTickets() = _emptyTickets;
+
   const factory ComingTripState.getComingTripsFailure(
       {required String message}) = _getComingTripsFailure;
 }

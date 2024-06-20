@@ -2,8 +2,10 @@ import 'package:wasla/app/shared/common/common_libs.dart';
 import 'package:wasla/presentation/common/cubits/bear_cubit/bear_animation_cubit.dart';
 import 'package:wasla/presentation/common/cubits/bear_dialog_cubit/bear_dialog_cubit.dart';
 import 'package:wasla/presentation/modules/account_verification/edit_contacts/cubit/edit_contacts_cubit.dart';
+import 'package:wasla/presentation/modules/edit_profile/cubit/edit_profile_cubit.dart';
 import 'package:wasla/presentation/modules/home/home/cubit/home_cubit.dart';
 import 'package:wasla/presentation/modules/home/main/cubit/main_home_cubit.dart';
+import 'package:wasla/presentation/modules/notification/cubit/notification_cubit.dart';
 import 'package:wasla/presentation/modules/register/bloc/check_username_bloc.dart';
 import 'package:wasla/presentation/modules/register/cubit/form_index_cubit.dart';
 import 'package:wasla/presentation/modules/register/cubit/register_cubit.dart';
@@ -62,4 +64,22 @@ class BlocProvidersManager {
     // BlocProvider<ProfileCubit>(
     //     create: (context) => getIt<ProfileCubit>()..getProfile()),
   ];
+
+  static final List<BlocProvider> editProfileProviders = [
+    BlocProvider<BearAnimationCubit>.value(
+      value: getIt<BearAnimationCubit>()..loadAndBuildTheAnimation(),
+    ),
+    BlocProvider<CheckUsernameBloc>.value(
+      value: getIt<CheckUsernameBloc>(),
+    ),
+    BlocProvider<EditProfileCubit>.value(
+      value: getIt<EditProfileCubit>(),
+    ),
+  ];
+
+  static List<BlocProvider> notificationProviders() => [
+        BlocProvider<NotificationCubit>.value(
+          value: getIt<NotificationCubit>(),
+        ),
+      ];
 }
